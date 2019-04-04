@@ -1,0 +1,2 @@
+class OrganizationTaskTemplateAssociation < ApplicationRecord
+end
