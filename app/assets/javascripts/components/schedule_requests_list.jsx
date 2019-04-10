@@ -4,7 +4,7 @@ class ScheduleRequestsList extends React.Component{
             <div>
                 {this.props.schedule_requests.map(function(schedule_request) {
                     return (
-                        <ScheduleRequest schedule_request={schedule_request}/>
+                        <ScheduleRequest schedule_request={schedule_request} key={schedule_request.id}/>
                     )
                 })}
             </div>

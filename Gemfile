@@ -46,6 +46,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # Use react-rails for react components
 gem 'react-rails'
 
+# Install webpack to dowload additional libs
+gem 'webpacker'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
