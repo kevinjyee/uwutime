@@ -1,7 +1,8 @@
 %h1 React Calendar
 
-%h2 Schedule Request
+%h2 Appointments
 
-%h3 Make a new schedule request
+#schedule_request_data{data: @schedule_requests.to_json}
 
-= react_component('ScheduleRequests', schedule_requests: @schedule_requests)
+= javascript_pack_tag 'schedule_requests'
+= stylesheet_pack_tag 'schedule_requests'

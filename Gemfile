@@ -20,7 +20,6 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 
 # JQuery Rails
-gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 
 # Add haml for ruby rendering 
 gem 'haml', '~> 5.0', '>= 5.0.4'
@@ -44,10 +43,9 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 # Use react-rails for react components
-gem 'react-rails'
 
 # Install webpack to dowload additional libs
-gem 'webpacker'
+gem 'webpacker', git: 'https://github.com/rails/webpacker.git'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

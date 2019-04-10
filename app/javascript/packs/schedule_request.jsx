@@ -1,4 +1,6 @@
-class ScheduleRequest extends React.Component{
+import React from 'react';
+
+export default class ScheduleRequest extends React.Component{
     render() {
         return (
             <div>

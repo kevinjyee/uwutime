@@ -1,4 +1,6 @@
-class ScheduleRequestForm extends React.Component{
+import React from 'react';
+
+export default class ScheduleRequestForm extends React.Component{
 
     constructor(props) {
         super(props)
