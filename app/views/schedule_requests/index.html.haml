@@ -4,11 +4,4 @@
 
 %h3 Make a new schedule request
 
-
-= form_for @schedule_request, remote: true do |f|
-  = f.text_field :product_name
-  = f.text_field :requested_preferred_date
-  = f.submit 'Submit'
-
-#schedule_requests
-  = render 'schedule_requests'
+= react_component('ScheduleRequests', schedule_requests: @schedule_requests)
