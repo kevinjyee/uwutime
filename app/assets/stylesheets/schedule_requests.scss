@@ -3,11 +3,11 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-body {
-  width:500px;
-  margin:auto;
-  font-family: Arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.5;
-  padding-bottom: 200px;
+.backlog {
+  margin: auto;
+  width: 50%;
+}
+
+.title {
+  flexGrow: 1,
 }
