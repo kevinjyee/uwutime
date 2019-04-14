@@ -1,9 +1,7 @@
 import React from 'react';
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap/dist/css/bootstrap-theme.css'
-import Button from '@material-ui/core/Button';
+import Button from 'antd/lib/button';
 
 export default class ScheduleRequestForm extends React.Component{
 
@@ -54,9 +52,9 @@ export default class ScheduleRequestForm extends React.Component{
                             selected={this.props.input_preferred_date}
                             onChange={this.handleChange}
                         />
-                    <input type='submit' value='Submit' className='btn btn-primary mb-2' />
-                </div>
 
+                    <Button type="primary" htmlType="submit">Submit</Button>
+                </div>
 
 
             </form>
