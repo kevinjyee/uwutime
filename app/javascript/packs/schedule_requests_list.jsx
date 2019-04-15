@@ -9,22 +9,27 @@ const columns = [{
     dataIndex: 'identifier',
     key: 'identifier',
     render: text => <a href="javascript:;">{text}</a>,
+    width: 300,
 },{
     title: 'Product Name',
     dataIndex: 'product_name',
     key: 'product_name',
+    width: 300,
 }, {
     title: 'Run Quantity',
     dataIndex: 'run_quantity',
     key: 'run_quantity',
+    width: 300,
 }, {
     title: 'Preferred Run Date',
     dataIndex: 'requested_preferred_date',
     key: 'requested_preferred_date',
+    width: 300,
 },{
     title: 'Status',
     dataIndex: 'status',
     key: 'status',
+    width: 300,
 }];
 
 export default class ScheduleRequestsList extends React.Component{
@@ -75,7 +80,7 @@ export default class ScheduleRequestsList extends React.Component{
         return (
             <div className="schedule_request_list">
                 <div className="title"><h4>{computedTitle}</h4></div>
-                <Table pagination={{ pageSize: 9 }} columns={columns} dataSource={data} />
+                <Table pagination={{ pageSize: 8 }} columns={columns} dataSource={data} scroll={{ y: 400 }} />
             </div>
         )
     }

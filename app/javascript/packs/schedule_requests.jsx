@@ -43,7 +43,7 @@ const PandaIcon = props => (
 
 
 const success = () => {
-    message.success('Request successfully Submitted');
+    message.success('Request successfully submitted');
 };
 
 const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
@@ -252,6 +252,7 @@ export default class ScheduleRequests extends React.Component{
     handleFormSubmit(params) {
         $.post('/schedule_requests', {schedule_request: params}).done(function(data){
             this.addNewRequest(data);
+            success()
         }.bind(this));
     }
 
@@ -279,16 +280,12 @@ export default class ScheduleRequests extends React.Component{
                   </Menu>
               </Header>
               <Content style={{ height: '100vh', width: '90%', margin: 'auto' }}>
-                  {/*<ScheduleRequestForm input_product_name={this.state.input_product_name}*/}
-                  {/*input_preferred_date={this.state.input_preferred_date}*/}
-                  {/*onUserInput={this.handleUserInput}*/}
-                  {/*onFormSubmit={this.handleFormSubmit}/>*/}
+
 
                     <div className="button-container">
                         <Button type="primary" onClick={this.showModal}>
                             <Icon type="plus" /> Add Request</Button>
                     </div>
-
 
                   <CollectionCreateForm
                       wrappedComponentRef={this.saveFormRef}
@@ -297,11 +294,14 @@ export default class ScheduleRequests extends React.Component{
                       onCreate={this.handleCreate}
                   />
 
-                  <ScheduleRequestsList schedule_requests={this.state.schedule_requests}
-                                        status={true}/>
+                  <div className ='content-grid'>
+                      <ScheduleRequestsList schedule_requests={this.state.schedule_requests}
+                                            status={true}/>
 
-                  <ScheduleRequestsList schedule_requests={this.state.schedule_requests}
-                                        status={false}/>
+                      <ScheduleRequestsList schedule_requests={this.state.schedule_requests}
+                                            status={false}/>
+                  </div>
+
               </Content>
               <Footer style={{ textAlign: 'center' }}>
                   <PandaIcon style={{ fontSize: '32px' }} /> uluwu ©2019
