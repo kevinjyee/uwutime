@@ -1,7 +1,8 @@
 import React from 'react';
-import ScheduleRequest from './schedule_request'
-import moment from "moment/moment";
-
+import ReactDOM from 'react-dom';
+import 'antd/dist/antd.css';
+import { Table, Divider, Tag } from 'antd';
+import '../../assets/stylesheets/schedule_request_list.scss'
 
 const columns = [{
     title: 'Identifier',
@@ -33,9 +34,10 @@ export default class ScheduleRequestsList extends React.Component{
         super(props);
         this.state = {
             schedule_requests: this.props.schedule_requests,
-            status: this.props.scheduled
+            status: this.props.status
            };
-        this.filterForStatus  = this.filterForStatus.bind(this)
+        this.filterForStatus  = this.filterForStatus.bind(this);
+        this.computedTitle = this.computedTitle.bind(this);
     }
 
     filterForStatus(status) {
@@ -51,22 +53,29 @@ export default class ScheduleRequestsList extends React.Component{
         return schedule_to_list
     }
 
+    computedTitle(status) {
+        if (status == true) {
+            return 'Scheduled'
+        }
+        else
+        {
+            return 'Not Scheduled'
+        }
+    }
+
     componentDidMount() {
         console.log("fired");
     }
 
     render() {
 
-        schedule_to_list = this.filterForStatus(this.state.status)
+        var data = this.filterForStatus(this.state.status);
+        var computedTitle = this.computedTitle(this.state.status);
 
         return (
-            <div>
-                {this.props.schedule_requests.map(function(schedule_request) {
-                    return (
-                        <ScheduleRequest schedule_request={schedule_request}
-                                         key={schedule_request.id}/>
-                    )
-                })}
+            <div className="schedule_request_list">
+                <div className="title"><h4>{computedTitle}</h4></div>
+                <Table pagination={{ pageSize: 25 }} columns={columns} dataSource={data} />
             </div>
         )
     }

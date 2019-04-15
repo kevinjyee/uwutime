@@ -1,0 +1,23 @@
+// Place all the styles related to the ScheduleRequests controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.logo {
+  margin-right: 25px;
+  float: left;
+  img {
+    width: 43px;
+    height: 43px;
+  }
+}
+
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
+}

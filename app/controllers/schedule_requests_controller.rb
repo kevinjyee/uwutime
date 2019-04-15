@@ -1,6 +1,5 @@
 class ScheduleRequestsController < ApplicationController
   def index
-    byebug
     if params[:scheduled].present? && params[:scheduled] == "true"
       @schedule_requests == ScheduleRequest.all.scheduled
     end

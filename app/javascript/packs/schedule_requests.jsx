@@ -10,6 +10,16 @@ import 'bootstrap/dist/css/bootstrap-theme.css'
 import '../../assets/stylesheets/schedule_requests.scss'
 import DemoTable from "./demo_table";
 
+
+
+import 'antd/dist/antd.css';
+import '../../assets/stylesheets/index.scss'
+import logo from '../../assets/images/uwu.jpg'
+import { Layout, Menu, Breadcrumb } from 'antd';
+
+const { Header, Content, Footer } = Layout;
+
+
 var $ = require ('jquery')
 
 
@@ -62,12 +72,40 @@ export default class ScheduleRequests extends React.Component{
             <div>
 
       <div>
-            {/*<ScheduleRequestForm input_product_name={this.state.input_product_name}*/}
-                                 {/*input_preferred_date={this.state.input_preferred_date}*/}
-                                 {/*onUserInput={this.handleUserInput}*/}
-                                 {/*onFormSubmit={this.handleFormSubmit}/>*/}
+          <Layout className="layout">
+              <Header>
+                  <div className="logo">
+                      <img src={logo}/>
+                  </div>
+                  <Menu
+                      theme="dark"
+                      mode="horizontal"
+                      defaultSelectedKeys={['1']}
+                      style={{ lineHeight: '64px' }}
+                  >
+                      <Menu.Item key="1">Request</Menu.Item>
+                      <Menu.Item key="2">Product Type</Menu.Item>
+                      <Menu.Item key="3">Scheduler</Menu.Item>
+                  </Menu>
+              </Header>
+              <Content style={{ height: '100vh', width: '90%', margin: 'auto' }}>
+                  {/*<ScheduleRequestForm input_product_name={this.state.input_product_name}*/}
+                  {/*input_preferred_date={this.state.input_preferred_date}*/}
+                  {/*onUserInput={this.handleUserInput}*/}
+                  {/*onFormSubmit={this.handleFormSubmit}/>*/}
 
-                <ScheduleRequestsList schedule_requests={this.state.schedule_requests}/>
+
+                  <ScheduleRequestsList schedule_requests={this.state.schedule_requests}
+                                        status={true}/>
+
+                  <ScheduleRequestsList schedule_requests={this.state.schedule_requests}
+                                        status={false}/>
+              </Content>
+              <Footer style={{ textAlign: 'center' }}>
+                  uluwu ©2019
+              </Footer>
+          </Layout>
+
 
             </div>
             </div>
