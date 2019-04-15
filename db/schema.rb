@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_04_111014) do
+ActiveRecord::Schema.define(version: 2019_04_15_110630) do
 
   create_table "organization_task_template_associations", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "organization_id"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 2019_04_04_111014) do
     t.boolean "scheduled"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "end_type"
   end
 
   create_table "task_templates", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|

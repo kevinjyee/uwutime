@@ -21,6 +21,13 @@ class ScheduleRequestsController < ApplicationController
   private
 
   def schedule_request_params
-    params.require(:schedule_request).permit(:product_name, :requested_preferred_date)
+    params.require(:schedule_request).permit(:product_name,
+                                             :requested_preferred_date,
+                                             :run_quantity,
+                                             :scheduled_tasks,
+                                             :end_type,
+                                             :notes,
+                                             :status,
+                                             :scheduled)
   end
 end

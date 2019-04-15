@@ -23,4 +23,13 @@ class ScheduleRequest < ApplicationRecord
       where({status: status })
     end
   end
+
+  def total_hours
+    hours = 0
+    scheduled_tasks.each do |_key, task|
+      amount =  task['time_interval'] == 'hours' ? task['time'] : task['time'] * 24
+      hours += amount
+    end
+    hours
+  end
 end

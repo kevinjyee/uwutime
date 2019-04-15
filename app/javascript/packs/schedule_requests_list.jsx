@@ -75,7 +75,7 @@ export default class ScheduleRequestsList extends React.Component{
         return (
             <div className="schedule_request_list">
                 <div className="title"><h4>{computedTitle}</h4></div>
-                <Table pagination={{ pageSize: 25 }} columns={columns} dataSource={data} />
+                <Table pagination={{ pageSize: 9 }} columns={columns} dataSource={data} />
             </div>
         )
     }
