@@ -17,9 +17,7 @@ import {
 
 const {Header, Content, Footer} = Layout;
 
-
 var $ = require('jquery')
-
 
 const PandaSvg = () => (
     <svg viewBox="0 0 1024 1024" width="1em" height="1em" fill="currentColor">
@@ -53,7 +51,6 @@ const PandaSvg = () => (
 const PandaIcon = props => (
     <Icon component={PandaSvg} {...props} />
 );
-
 
 const success = () => {
     message.success('Request successfully submitted');
@@ -195,7 +192,6 @@ const CollectionCreateForm = Form.create({name: 'form_in_modal'})(
 
 export default class ScheduleRequests extends React.Component {
 
-
     constructor(props) {
         super(props);
         this.state = {
@@ -210,7 +206,6 @@ export default class ScheduleRequests extends React.Component {
         this.handleFormSubmit = this.handleFormSubmit.bind(this)
         this.addNewRequest = this.addNewRequest.bind(this)
     }
-
 
     showModal = () => {
         this.setState({show_form: true});
