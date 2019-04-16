@@ -9,28 +9,44 @@ import '../../assets/stylesheets/schedule_requests.scss'
 import 'antd/dist/antd.css';
 import '../../assets/stylesheets/index.scss'
 import logo from '../../assets/images/uwu.jpg'
-import { Layout, Menu, Button, Modal,
-    Select, InputNumber,Form,
-    Input, DatePicker, Icon, message, } from 'antd';
+import {
+    Layout, Menu, Button, Modal,
+    Select, InputNumber, Form,
+    Input, DatePicker, Icon, message, Spin
+} from 'antd';
 
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
-const { Header, Content, Footer } = Layout;
+const {Header, Content, Footer} = Layout;
 
 
-
-var $ = require ('jquery')
+var $ = require('jquery')
 
 
 const PandaSvg = () => (
     <svg viewBox="0 0 1024 1024" width="1em" height="1em" fill="currentColor">
-        <path d="M99.096 315.634s-82.58-64.032-82.58-132.13c0-66.064 33.032-165.162 148.646-148.646 83.37 11.91 99.096 165.162 99.096 165.162l-165.162 115.614zM924.906 315.634s82.58-64.032 82.58-132.13c0-66.064-33.032-165.162-148.646-148.646-83.37 11.91-99.096 165.162-99.096 165.162l165.162 115.614z" fill="#6B676E" p-id="1143" />
-        <path d="M1024 561.548c0 264.526-229.23 429.42-512.002 429.42S0 826.076 0 561.548 283.96 66.064 512.002 66.064 1024 297.022 1024 561.548z" fill="#FFEBD2" p-id="1144" />
-        <path d="M330.324 842.126c0 82.096 81.34 148.646 181.678 148.646s181.678-66.55 181.678-148.646H330.324z" fill="#E9D7C3" p-id="1145" />
-        <path d="M644.13 611.098C594.582 528.516 561.55 512 512.002 512c-49.548 0-82.58 16.516-132.13 99.096-42.488 70.814-78.73 211.264-49.548 247.742 66.064 82.58 165.162 33.032 181.678 33.032 16.516 0 115.614 49.548 181.678-33.032 29.18-36.476-7.064-176.93-49.55-247.74z" fill="#FFFFFF" p-id="1146" />
-        <path d="M611.098 495.484c0-45.608 36.974-82.58 82.58-82.58 49.548 0 198.194 99.098 198.194 165.162s-79.934 144.904-148.646 99.096c-49.548-33.032-132.128-148.646-132.128-181.678zM412.904 495.484c0-45.608-36.974-82.58-82.58-82.58-49.548 0-198.194 99.098-198.194 165.162s79.934 144.904 148.646 99.096c49.548-33.032 132.128-148.646 132.128-181.678z" fill="#6B676E" p-id="1147" />
-        <path d="M512.002 726.622c-30.06 0-115.614 5.668-115.614 33.032 0 49.638 105.484 85.24 115.614 82.58 10.128 2.66 115.614-32.944 115.614-82.58-0.002-27.366-85.556-33.032-115.614-33.032z" fill="#464655" p-id="1148" />
-        <path d="M330.324 495.484m-33.032 0a33.032 33.032 0 1 0 66.064 0 33.032 33.032 0 1 0-66.064 0Z" fill="#464655" p-id="1149" />
-        <path d="M693.678 495.484m-33.032 0a33.032 33.032 0 1 0 66.064 0 33.032 33.032 0 1 0-66.064 0Z" fill="#464655" p-id="1150" />
+        <path
+            d="M99.096 315.634s-82.58-64.032-82.58-132.13c0-66.064 33.032-165.162 148.646-148.646 83.37 11.91 99.096 165.162 99.096 165.162l-165.162 115.614zM924.906 315.634s82.58-64.032 82.58-132.13c0-66.064-33.032-165.162-148.646-148.646-83.37 11.91-99.096 165.162-99.096 165.162l165.162 115.614z"
+            fill="#6B676E" p-id="1143"/>
+        <path
+            d="M1024 561.548c0 264.526-229.23 429.42-512.002 429.42S0 826.076 0 561.548 283.96 66.064 512.002 66.064 1024 297.022 1024 561.548z"
+            fill="#FFEBD2" p-id="1144"/>
+        <path
+            d="M330.324 842.126c0 82.096 81.34 148.646 181.678 148.646s181.678-66.55 181.678-148.646H330.324z"
+            fill="#E9D7C3" p-id="1145"/>
+        <path
+            d="M644.13 611.098C594.582 528.516 561.55 512 512.002 512c-49.548 0-82.58 16.516-132.13 99.096-42.488 70.814-78.73 211.264-49.548 247.742 66.064 82.58 165.162 33.032 181.678 33.032 16.516 0 115.614 49.548 181.678-33.032 29.18-36.476-7.064-176.93-49.55-247.74z"
+            fill="#FFFFFF" p-id="1146"/>
+        <path
+            d="M611.098 495.484c0-45.608 36.974-82.58 82.58-82.58 49.548 0 198.194 99.098 198.194 165.162s-79.934 144.904-148.646 99.096c-49.548-33.032-132.128-148.646-132.128-181.678zM412.904 495.484c0-45.608-36.974-82.58-82.58-82.58-49.548 0-198.194 99.098-198.194 165.162s79.934 144.904 148.646 99.096c49.548-33.032 132.128-148.646 132.128-181.678z"
+            fill="#6B676E" p-id="1147"/>
+        <path
+            d="M512.002 726.622c-30.06 0-115.614 5.668-115.614 33.032 0 49.638 105.484 85.24 115.614 82.58 10.128 2.66 115.614-32.944 115.614-82.58-0.002-27.366-85.556-33.032-115.614-33.032z"
+            fill="#464655" p-id="1148"/>
+        <path
+            d="M330.324 495.484m-33.032 0a33.032 33.032 0 1 0 66.064 0 33.032 33.032 0 1 0-66.064 0Z"
+            fill="#464655" p-id="1149"/>
+        <path
+            d="M693.678 495.484m-33.032 0a33.032 33.032 0 1 0 66.064 0 33.032 33.032 0 1 0-66.064 0Z"
+            fill="#464655" p-id="1150"/>
     </svg>
 );
 
@@ -43,14 +59,14 @@ const success = () => {
     message.success('Request successfully submitted');
 };
 
-const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
+const CollectionCreateForm = Form.create({name: 'form_in_modal'})(
     // eslint-disable-next-line
     class extends React.Component {
         render() {
             const {
                 visible, onCancel, onCreate, form,
             } = this.props;
-            const { getFieldDecorator } = form;
+            const {getFieldDecorator} = form;
             return (
                 <Modal
                     visible={visible}
@@ -67,14 +83,18 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
                         >
                             {getFieldDecorator('product', {
                                 rules: [
-                                    { required: true, message: 'Please select a product!' },
+                                    {
+                                        required: true,
+                                        message: 'Please select a product!'
+                                    },
                                 ],
                             })(
                                 <Select placeholder="Please select a product">
                                     <Option value="Brown">Brown</Option>
                                     <Option value="IPA">IPA</Option>
                                     <Option value="Pale-ale">Pale Ale</Option>
-                                    <Option value="Whiskey-stout">Whiskey Stout</Option>
+                                    <Option value="Whiskey-stout">Whiskey
+                                        Stout</Option>
                                     <Option value="Rye-beer">Rye Beer</Option>
                                 </Select>
                             )}
@@ -85,11 +105,11 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
                         >
                             {getFieldDecorator('run-quantity', {
                                 rules: [
-                                    { required: true },
+                                    {required: true},
                                 ],
-                                initialValue: 1 })(
-                                <InputNumber min={1} max={10} />
-
+                                initialValue: 1
+                            })(
+                                <InputNumber min={1} max={10}/>
                             )}
                             <span className="ant-form-text"> run(s)</span>
                         </Form.Item>
@@ -100,11 +120,11 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
                         >
                             {getFieldDecorator('brew-hours', {
                                 rules: [
-                                    { required: true },
+                                    {required: true},
                                 ],
-                                initialValue: 1 })(
+                                initialValue: 1
+                            })(
                                 <InputNumber min={1}/>
-
                             )}
                             <span className="ant-form-text"> hour(s)</span>
                         </Form.Item>
@@ -115,11 +135,11 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
                         >
                             {getFieldDecorator('ferment-days', {
                                 rules: [
-                                    { required: true },
+                                    {required: true},
                                 ],
-                                initialValue: 1 })(
+                                initialValue: 1
+                            })(
                                 <InputNumber min={1}/>
-
                             )}
                             <span className="ant-form-text"> day(s)</span>
                         </Form.Item>
@@ -130,10 +150,14 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
                         >
                             {getFieldDecorator('end-type', {
                                 rules: [
-                                    { required: true, message: 'Please select an end type!' },
+                                    {
+                                        required: true,
+                                        message: 'Please select an end type!'
+                                    },
                                 ],
                             })(
-                                <Select placeholder="Please select an end type">
+                                <Select
+                                    placeholder="Please select an end type">
                                     <Option value="Can">Can</Option>
                                     <Option value="Bottle">Bottle</Option>
                                     <Option value="Keg 1/4">Keg 1/4</Option>
@@ -146,14 +170,21 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
                             label="Preferred Run Date"
                         >
                             {getFieldDecorator('preferred-run-date',
-                                { rules: [{ type: 'object', required:
-                                            true, message: 'Please select a preferred date' }]})(
-                                <DatePicker />
+                                {
+                                    rules: [{
+                                        type: 'object',
+                                        required:
+                                            true,
+                                        message: 'Please select a preferred date'
+                                    }]
+                                })(
+                                <DatePicker/>
                             )}
                         </Form.Item>
 
                         <Form.Item label="Notes">
-                            {getFieldDecorator('notes')(<Input type="textarea" />)}
+                            {getFieldDecorator('notes')(<Input
+                                type="textarea"/>)}
                         </Form.Item>
                     </Form>
                 </Modal>
@@ -162,30 +193,49 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
     }
 );
 
-export default class ScheduleRequests extends React.Component{
+export default class ScheduleRequests extends React.Component {
 
 
     constructor(props) {
         super(props);
         this.state = {
-            schedule_requests: this.props.schedule_requests,
+            schedule_requests: [],
             input_product_name: 'test',
             input_preferred_date: moment().toDate(),
             open: true,
-            show_form: false
+            show_form: false,
+            isLoading: true,
         };
-        this.handleUserInput  = this.handleUserInput.bind(this)
+        this.handleUserInput = this.handleUserInput.bind(this)
         this.handleFormSubmit = this.handleFormSubmit.bind(this)
         this.addNewRequest = this.addNewRequest.bind(this)
     }
 
 
     showModal = () => {
-        this.setState({ show_form: true });
+        this.setState({show_form: true});
     }
 
     componentDidMount() {
-        console.log("FIRED FIRED")
+        fetch("/schedule_requests")
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    this.setState({
+                        schedule_requests: result,
+                        isLoading: false
+                    });
+                },
+                // Note: it's important to handle errors here
+                // instead of a catch() block so that we don't swallow
+                // exceptions from actual bugs in components.
+                (error) => {
+                    this.setState({
+                        error,
+                        isLoading: false
+                    });
+                }
+            )
     }
 
     handleUserInput(obj) {
@@ -193,12 +243,12 @@ export default class ScheduleRequests extends React.Component{
     }
 
     addNewRequest(schedule_request) {
-        var schedule_requests = update(this.state.schedule_requests, { $push: [schedule_request]});
+        var schedule_requests = update(this.state.schedule_requests, {$push: [schedule_request]});
         this.setState({schedule_requests: schedule_requests});
     }
 
     handleCancel = () => {
-        this.setState({ show_form: false });
+        this.setState({show_form: false});
     }
 
     handleCreate = () => {
@@ -237,7 +287,7 @@ export default class ScheduleRequests extends React.Component{
             console.log(schedule_request_params);
             this.handleFormSubmit(schedule_request_params);
             form.resetFields();
-            this.setState({show_form: false });
+            this.setState({show_form: false});
         });
     }
 
@@ -247,7 +297,7 @@ export default class ScheduleRequests extends React.Component{
 
 
     handleFormSubmit(params) {
-        $.post('/schedule_requests', {schedule_request: params}).done(function(data){
+        $.post('/schedule_requests', {schedule_request: params}).done(function (data) {
             this.addNewRequest(data);
             success()
         }.bind(this));
@@ -255,71 +305,72 @@ export default class ScheduleRequests extends React.Component{
 
 
     render() {
+        if (this.state.isLoading) return (
+            <div className="spinner">
+                <Spin/>
+            </div>
+        )
 
         return (
             <div>
-
-      <div>
-          <Layout className="layout">
-              <Header>
-                  <div className="logo">
-                      <img src={logo}/>
-                  </div>
-                  <Menu
-                      theme="dark"
-                      mode="horizontal"
-                      defaultSelectedKeys={['1']}
-                      style={{ lineHeight: '64px' }}
-                  >
-                      <Menu.Item key="1">Request</Menu.Item>
-                      <Menu.Item key="2">Product Type</Menu.Item>
-                      <Menu.Item key="3">Scheduler</Menu.Item>
-                  </Menu>
-              </Header>
-              <Content style={{ height: '100vh', width: '90%', margin: 'auto' }}>
-
-
-                    <div className="button-container">
-                        <Button type="primary" onClick={this.showModal}>
-                            <Icon type="plus" /> Add Request</Button>
-                    </div>
-
-                  <CollectionCreateForm
-                      wrappedComponentRef={this.saveFormRef}
-                      visible={this.state.show_form}
-                      onCancel={this.handleCancel}
-                      onCreate={this.handleCreate}
-                  />
-
-                  <div className='content-grid'>
-                      <ScheduleRequestsList schedule_requests={this.state.schedule_requests}
-                                            status={true}/>
-
-                      <ScheduleRequestsList schedule_requests={this.state.schedule_requests}
-                                            status={false}/>
-                  </div>
+                <div>
+                    <Layout className="layout">
+                        <Header>
+                            <div className="logo">
+                                <img src={logo}/>
+                            </div>
+                            <Menu
+                                theme="dark"
+                                mode="horizontal"
+                                defaultSelectedKeys={['1']}
+                                style={{lineHeight: '64px'}}
+                            >
+                                <Menu.Item key="1">Request</Menu.Item>
+                                <Menu.Item key="2">Product Type</Menu.Item>
+                                <Menu.Item key="3">Scheduler</Menu.Item>
+                            </Menu>
+                        </Header>
+                        <Content style={{
+                            height: '100vh',
+                            width: '90%',
+                            margin: 'auto'
+                        }}>
 
 
-              </Content>
-              <Footer style={{ textAlign: 'center' }}>
-                  <PandaIcon style={{ fontSize: '32px' }} /> uluwu ©2019
-              </Footer>
-          </Layout>
+                            <div className="button-container">
+                                <Button type="primary"
+                                        onClick={this.showModal}>
+                                    <Icon type="plus"/> Add Request</Button>
+                            </div>
+
+                            <CollectionCreateForm
+                                wrappedComponentRef={this.saveFormRef}
+                                visible={this.state.show_form}
+                                onCancel={this.handleCancel}
+                                onCreate={this.handleCreate}
+                            />
+
+                            <div className='content-grid'>
+                                <ScheduleRequestsList
+                                    schedule_requests={this.state.schedule_requests}
+                                    status={true}/>
+
+                                <ScheduleRequestsList
+                                    schedule_requests={this.state.schedule_requests}
+                                    status={false}/>
+                            </div>
 
 
-            </div>
+                        </Content>
+                        <Footer style={{textAlign: 'center'}}>
+                            <PandaIcon style={{fontSize: '32px'}}/> uluwu ©2019
+                        </Footer>
+                    </Layout>
+
+
+                </div>
             </div>
 
         )
     }
 }
-
-
-document.addEventListener('DOMContentLoaded', () => {
-    const node = document.getElementById('schedule_request_data')
-    const data = JSON.parse(node.getAttribute('data'))
-    ReactDOM.render(
-        <ScheduleRequests schedule_requests={data} />,
-        document.body.appendChild(document.createElement('div')),
-)
-})
