@@ -195,7 +195,6 @@ export default class ScheduleRequests extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            schedule_requests: [],
             input_product_name: 'test',
             input_preferred_date: moment().toDate(),
             open: true,
@@ -211,26 +210,9 @@ export default class ScheduleRequests extends React.Component {
         this.setState({show_form: true});
     }
 
+
     componentDidMount() {
-        fetch("/schedule_requests")
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    this.setState({
-                        schedule_requests: result,
-                        isLoading: false
-                    });
-                },
-                // Note: it's important to handle errors here
-                // instead of a catch() block so that we don't swallow
-                // exceptions from actual bugs in components.
-                (error) => {
-                    this.setState({
-                        error,
-                        isLoading: false
-                    });
-                }
-            )
+        this.props.fetchScheduleRequests();
     }
 
     handleUserInput(obj) {
@@ -238,8 +220,9 @@ export default class ScheduleRequests extends React.Component {
     }
 
     addNewRequest(schedule_request) {
-        var schedule_requests = update(this.state.schedule_requests, {$push: [schedule_request]});
+        var schedule_requests = update(this.props.schedule_requests, {$push: [schedule_request]});
         this.setState({schedule_requests: schedule_requests});
+        this.props.addRequest.bind(null, 0)
     }
 
     handleCancel = () => {
@@ -292,21 +275,12 @@ export default class ScheduleRequests extends React.Component {
 
 
     handleFormSubmit(params) {
-        $.post('/schedule_requests', {schedule_request: params}).done(function (data) {
-            this.addNewRequest(data);
-            success()
-        }.bind(this));
+        this.props.addScheduleRequests(params);
     }
 
 
     render() {
-        if (this.state.isLoading) return (
-            <div className="spinner">
-                <Spin/>
-            </div>
-        )
-
-        return (
+        if (this.props.schedule_requests.isLoading == false) return (
             <div>
                 <div>
                     <Layout className="layout">
@@ -331,7 +305,6 @@ export default class ScheduleRequests extends React.Component {
                             margin: 'auto'
                         }}>
 
-
                             <div className="button-container">
                                 <Button type="primary"
                                         onClick={this.showModal}>
@@ -339,6 +312,7 @@ export default class ScheduleRequests extends React.Component {
                             </div>
 
                             <CollectionCreateForm
+                                {...this.props}
                                 wrappedComponentRef={this.saveFormRef}
                                 visible={this.state.show_form}
                                 onCancel={this.handleCancel}
@@ -347,11 +321,12 @@ export default class ScheduleRequests extends React.Component {
 
                             <div className='content-grid'>
                                 <ScheduleRequestsList
-                                    schedule_requests={this.state.schedule_requests}
+
+                                    schedule_requests={this.props.schedule_requests.payload}
                                     status={true}/>
 
                                 <ScheduleRequestsList
-                                    schedule_requests={this.state.schedule_requests}
+                                    schedule_requests={this.props.schedule_requests.payload}
                                     status={false}/>
                             </div>
 
@@ -366,6 +341,12 @@ export default class ScheduleRequests extends React.Component {
                 </div>
             </div>
 
+        )
+
+        return (
+            <div className="spinner">
+                <Spin/>
+            </div>
         )
     }
 }
