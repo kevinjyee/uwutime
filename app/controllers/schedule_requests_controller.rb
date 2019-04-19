@@ -6,7 +6,7 @@ class ScheduleRequestsController < ApplicationController
     if params[:scheduled].present? && params[:scheduled] == "false"
       @schedule_requests == ScheduleRequest.all.unscheduled
     end
-    @schedule_requests ||= ScheduleRequest.all.order('requested_preferred_date ASC')
+    render json: @schedule_requests ||= ScheduleRequest.all.order('requested_preferred_date ASC')
   end
 
   def create
