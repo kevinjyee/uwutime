@@ -45,11 +45,18 @@ export default class ScheduleRequestsList extends React.Component{
         this.computedTitle = this.computedTitle.bind(this);
     }
 
+    componentDidUpdate() {
+        // Typical usage (don't forget to compare props):
+        if (this.state.schedule_requests !== this.props.schedule_requests) {
+            this.setState({schedule_requests: this.props.schedule_requests});
+        }
+    }
+
     filterForStatus(status) {
 
         var schedule_to_list = []
 
-        this.state.schedule_requests.forEach((r) => {
+        this.props.schedule_requests.forEach((r) => {
             if (r.scheduled == status) {
                 r['identifier'] =  `${r['product_name']}-${r['id']}`
                 schedule_to_list.push(r)

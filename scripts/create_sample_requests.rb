@@ -18,3 +18,4 @@ end
 ScheduleRequest.unscoped.all.each do |schedule|
   schedule.destroy!
 end
+
