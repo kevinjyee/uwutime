@@ -11,3 +11,13 @@
 .title {
   flexGrow: 1,
 }
+
+.button-container {
+  margin-top: 10px;
+  margin-bottom: 60px;
+  .ant-btn {
+    float: right;
+  }
+}
+
+.content-grid { flex-direction: column; }

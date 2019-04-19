@@ -1,13 +1,16 @@
 class ScheduleRequestsController < ApplicationController
   def index
-    @schedule_requests = ScheduleRequest.order('requested_preferred_date ASC')
-    @schedule_request = ScheduleRequest.new
+    if params[:scheduled].present? && params[:scheduled] == "true"
+      @schedule_requests == ScheduleRequest.all.scheduled
+    end
+    if params[:scheduled].present? && params[:scheduled] == "false"
+      @schedule_requests == ScheduleRequest.all.unscheduled
+    end
+    @schedule_requests ||= ScheduleRequest.all.order('requested_preferred_date ASC')
   end
 
   def create
-
     @schedule_request = ScheduleRequest.new(schedule_request_params)
-
     if @schedule_request.save
       render json: @schedule_request
     else
@@ -18,6 +21,13 @@ class ScheduleRequestsController < ApplicationController
   private
 
   def schedule_request_params
-    params.require(:schedule_request).permit(:product_name, :requested_preferred_date)
+    params.require(:schedule_request).permit(:product_name,
+                                             :requested_preferred_date,
+                                             :run_quantity,
+                                             :scheduled_tasks,
+                                             :end_type,
+                                             :notes,
+                                             :status,
+                                             :scheduled)
   end
 end
