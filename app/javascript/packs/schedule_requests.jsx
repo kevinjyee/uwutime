@@ -17,8 +17,6 @@ import {
 
 const {Header, Content, Footer} = Layout;
 
-var $ = require('jquery')
-
 const PandaSvg = () => (
     <svg viewBox="0 0 1024 1024" width="1em" height="1em" fill="currentColor">
         <path
@@ -52,9 +50,6 @@ const PandaIcon = props => (
     <Icon component={PandaSvg} {...props} />
 );
 
-const success = () => {
-    message.success('Request successfully submitted');
-};
 
 const CollectionCreateForm = Form.create({name: 'form_in_modal'})(
     // eslint-disable-next-line
@@ -203,8 +198,12 @@ export default class ScheduleRequests extends React.Component {
         };
         this.handleUserInput = this.handleUserInput.bind(this)
         this.handleFormSubmit = this.handleFormSubmit.bind(this)
-        this.addNewRequest = this.addNewRequest.bind(this)
+        this.success = this.success.bind(this)
     }
+
+    success = () => {
+        message.success('Request successfully submitted');
+    };
 
     showModal = () => {
         this.setState({show_form: true});
@@ -217,12 +216,6 @@ export default class ScheduleRequests extends React.Component {
 
     handleUserInput(obj) {
         this.setState(obj);
-    }
-
-    addNewRequest(schedule_request) {
-        var schedule_requests = update(this.props.schedule_requests, {$push: [schedule_request]});
-        this.setState({schedule_requests: schedule_requests});
-        this.props.addRequest.bind(null, 0)
     }
 
     handleCancel = () => {
@@ -273,11 +266,10 @@ export default class ScheduleRequests extends React.Component {
         this.formRef = formRef;
     }
 
-
     handleFormSubmit(params) {
         this.props.addScheduleRequests(params);
+        this.success();
     }
-
 
     render() {
         if (this.props.schedule_requests.isLoading == false) return (
@@ -304,7 +296,6 @@ export default class ScheduleRequests extends React.Component {
                             width: '90%',
                             margin: 'auto'
                         }}>
-
                             <div className="button-container">
                                 <Button type="primary"
                                         onClick={this.showModal}>
@@ -330,7 +321,6 @@ export default class ScheduleRequests extends React.Component {
                                     status={false}/>
                             </div>
 
-
                         </Content>
                         <Footer style={{textAlign: 'center'}}>
                             <PandaIcon style={{fontSize: '32px'}}/> uluwu ©2019
@@ -342,7 +332,6 @@ export default class ScheduleRequests extends React.Component {
             </div>
 
         )
-
         return (
             <div className="spinner">
                 <Spin/>
