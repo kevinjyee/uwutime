@@ -1,7 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+
 import {
-    Button, Modal, Form, Input, Radio,
+     Modal, Form, Input, Radio,
 } from 'antd';
 
 export default ScheduleCreateForm = Form.create({ name: 'form_in_modal' })(

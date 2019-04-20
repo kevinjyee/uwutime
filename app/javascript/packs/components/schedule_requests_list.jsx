@@ -1,8 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
-import { Table, Divider, Tag } from 'antd';
-import '../../assets/stylesheets/schedule_request_list.scss'
+import { Table } from 'antd';
+import '../../../assets/stylesheets/schedule_request_list.scss'
 
 const columns = [{
     title: 'Identifier',

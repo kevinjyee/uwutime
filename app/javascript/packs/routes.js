@@ -5,12 +5,8 @@ import {
     Switch
 } from 'react-router-dom'
 
-import ScheduleRequests from './schedule_requests';
 import App from './app';
-
-import Products from './products'
-
-import Scheduler from './scheduler'
+import Scheduler from './components/scheduler'
 
 import { Provider } from 'react-redux';
 import store from './store'

@@ -1,14 +1,14 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import ScheduleRequestsList from './schedule_requests_list'
 import update from 'immutability-helper';
 import moment from 'moment';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css'
-import '../../assets/stylesheets/schedule_requests.scss'
+import '../../../assets/stylesheets/schedule_requests.scss'
 import 'antd/dist/antd.css';
-import '../../assets/stylesheets/index.scss'
-import logo from '../../assets/images/uwu.jpg'
+import '../../../assets/stylesheets/index.scss'
+import logo from '../../../assets/images/uwu.jpg'
+
 import {
     Layout, Menu, Button, Modal,
     Select, InputNumber, Form,
@@ -18,8 +18,6 @@ import {
 import { Link } from 'react-router-dom';
 
 const {Header, Content, Footer} = Layout;
-
-var $ = require('jquery')
 
 const PandaSvg = () => (
     <svg viewBox="0 0 1024 1024" width="1em" height="1em" fill="currentColor">
@@ -52,144 +50,6 @@ const PandaSvg = () => (
 
 const PandaIcon = props => (
     <Icon component={PandaSvg} {...props} />
-);
-
-const success = () => {
-    message.success('Request successfully submitted');
-};
-
-const CollectionCreateForm = Form.create({name: 'form_in_modal'})(
-    // eslint-disable-next-line
-    class extends React.Component {
-        render() {
-            const {
-                visible, onCancel, onCreate, form,
-            } = this.props;
-            const {getFieldDecorator} = form;
-            return (
-                <Modal
-                    visible={visible}
-                    title="Create a new collection"
-                    okText="Create"
-                    onCancel={onCancel}
-                    onOk={onCreate}
-                >
-                    <Form layout="vertical">
-
-                        <Form.Item
-                            label="Select"
-                            hasFeedback
-                        >
-                            {getFieldDecorator('product', {
-                                rules: [
-                                    {
-                                        required: true,
-                                        message: 'Please select a product!'
-                                    },
-                                ],
-                            })(
-                                <Select placeholder="Please select a product">
-                                    <Option value="Brown">Brown</Option>
-                                    <Option value="IPA">IPA</Option>
-                                    <Option value="Pale-ale">Pale Ale</Option>
-                                    <Option value="Whiskey-stout">Whiskey
-                                        Stout</Option>
-                                    <Option value="Rye-beer">Rye Beer</Option>
-                                </Select>
-                            )}
-                        </Form.Item>
-
-                        <Form.Item
-                            label="Number of Runs"
-                        >
-                            {getFieldDecorator('run-quantity', {
-                                rules: [
-                                    {required: true},
-                                ],
-                                initialValue: 1
-                            })(
-                                <InputNumber min={1} max={10}/>
-                            )}
-                            <span className="ant-form-text"> run(s)</span>
-                        </Form.Item>
-
-
-                        <Form.Item
-                            label="Brew Hours"
-                        >
-                            {getFieldDecorator('brew-hours', {
-                                rules: [
-                                    {required: true},
-                                ],
-                                initialValue: 1
-                            })(
-                                <InputNumber min={1}/>
-                            )}
-                            <span className="ant-form-text"> hour(s)</span>
-                        </Form.Item>
-
-
-                        <Form.Item
-                            label="Fermentation Days"
-                        >
-                            {getFieldDecorator('ferment-days', {
-                                rules: [
-                                    {required: true},
-                                ],
-                                initialValue: 1
-                            })(
-                                <InputNumber min={1}/>
-                            )}
-                            <span className="ant-form-text"> day(s)</span>
-                        </Form.Item>
-
-                        <Form.Item
-                            label="Select"
-                            hasFeedback
-                        >
-                            {getFieldDecorator('end-type', {
-                                rules: [
-                                    {
-                                        required: true,
-                                        message: 'Please select an end type!'
-                                    },
-                                ],
-                            })(
-                                <Select
-                                    placeholder="Please select an end type">
-                                    <Option value="Can">Can</Option>
-                                    <Option value="Bottle">Bottle</Option>
-                                    <Option value="Keg 1/4">Keg 1/4</Option>
-                                    <Option value="Keg 1/2">Keg 1/2</Option>
-                                </Select>
-                            )}
-                        </Form.Item>
-
-                        <Form.Item
-                            label="Preferred Run Date"
-                        >
-                            {getFieldDecorator('preferred-run-date',
-                                {
-                                    rules: [{
-                                        type: 'object',
-                                        required:
-                                            true,
-                                        message: 'Please select a preferred date'
-                                    }]
-                                })(
-                                <DatePicker/>
-                            )}
-                        </Form.Item>
-
-                        <Form.Item label="Notes">
-                            {getFieldDecorator('notes')(<Input
-                                type="textarea"/>)}
-                        </Form.Item>
-                    </Form>
-                </Modal>
-            );
-        }
-    }
 );
 
 export default class ScheduleRequests extends React.Component {
