@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # receive the form and create a user in our database using the data given to us by the user.
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
+  get '/scheduler' => "pages#root"
   root to: "pages#root"
   resources :schedule_requests
 
