@@ -3,16 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="027dbcea-88e0-4835-8ae9-ff9a8ff356d2" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/javascript/packs/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/javascript/packs/hello_react.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/javascript/packs/products.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/javascript/packs/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/javascript/packs/schedule_create_form.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/components/schedule_create_form.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/javascript/packs/schedule_request_form.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/components/schedule_request_form.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/javascript/packs/schedule_requests.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/components/schedule_requests.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/javascript/packs/schedule_requests_list.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/components/schedule_requests_list.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/javascript/packs/scheduler.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/components/scheduler.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/javascript/packs/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/components/main.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/components/scheduler.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/components/scheduler.jsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,34 +15,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="schedule_requests.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/javascript/packs/reducers/schedule_requests.js">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/javascript/packs/app.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="300">
-              <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/javascript/packs/reducers/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" selection-start-line="8" selection-end-line="8" />
+              <caret line="20" column="19" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
               <folding>
-                <element signature="e#0#39#0" expanded="true" />
+                <element signature="e#0#43#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/javascript/packs/app.js">
+      <file leaf-file-name="routes.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/javascript/packs/routes.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="1" lean-forward="true" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+            <state relative-caret-position="285">
+              <caret line="19" column="49" lean-forward="true" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
               <folding>
-                <element signature="e#0#43#0" expanded="true" />
+                <element signature="e#0#25#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="application.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/javascript/packs/application.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="18" selection-start-line="18" selection-end-line="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/javascript/packs/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -65,20 +69,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="actionCreators.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/javascript/packs/actions/actionCreators.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="35" column="22" selection-start-line="35" selection-start-column="22" selection-end-line="35" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="schedule_requests.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/schedule_requests.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" selection-start-line="10" selection-end-line="10" />
+            <state relative-caret-position="207">
+              <caret line="203" column="21" selection-start-line="203" selection-start-column="12" selection-end-line="203" selection-end-column="21" />
+              <folding>
+                <element signature="e#0#25#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -103,23 +101,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="scheduler.jsx" pinned="false" current-in-tab="false">
+      <file leaf-file-name="scheduler.jsx" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/scheduler.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="2" lean-forward="true" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.jsx" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/main.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
-              <caret line="190" lean-forward="true" selection-start-line="190" selection-end-line="190" />
+            <state relative-caret-position="162">
+              <caret line="12" column="16" lean-forward="true" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="16" />
               <folding>
-                <element signature="e#0#25#0" expanded="true" />
-                <element signature="e#11300#12351#0" />
+                <element signature="e#11398#12250#0" />
               </folding>
             </state>
           </provider>
@@ -137,9 +125,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>classNames</find>
-      <find>schedule_request.s</find>
-      <find>80</find>
       <find>Footer</find>
       <find>preferr</find>
       <find>batch</find>
@@ -167,6 +152,9 @@
       <find>setState</find>
       <find>this.satet</find>
       <find>Link</find>
+      <find>content</find>
+      <find>isLoading</find>
+      <find>Loading</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -219,13 +207,13 @@
         <option value="$PROJECT_DIR$/app/javascript/packs/schedule_requests.jsx" />
         <option value="$PROJECT_DIR$/app/javascript/packs/products.jsx" />
         <option value="$PROJECT_DIR$/app/javascript/packs/routes.js" />
-        <option value="$PROJECT_DIR$/app/javascript/packs/app.js" />
         <option value="$PROJECT_DIR$/app/javascript/packs/components/schedule_requests.jsx" />
         <option value="$PROJECT_DIR$/app/javascript/packs/store.js" />
-        <option value="$PROJECT_DIR$/app/javascript/packs/components/scheduler.jsx" />
         <option value="$PROJECT_DIR$/app/javascript/packs/components/schedule_requests_list.jsx" />
         <option value="$PROJECT_DIR$/app/javascript/packs/components/schedule_create_form.jsx" />
         <option value="$PROJECT_DIR$/app/javascript/packs/components/main.jsx" />
+        <option value="$PROJECT_DIR$/app/javascript/packs/app.js" />
+        <option value="$PROJECT_DIR$/app/javascript/packs/components/scheduler.jsx" />
       </list>
     </option>
   </component>
@@ -427,12 +415,12 @@
       <workItem from="1554889580742" duration="36309000" />
       <workItem from="1555279723781" duration="23182000" />
       <workItem from="1555495965840" duration="16422000" />
-      <workItem from="1555768722817" duration="4656000" />
+      <workItem from="1555768722817" duration="7505000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="99589000" />
+    <option name="totallyTimeSpent" value="102438000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="450" y="23" width="1470" height="1111" extended-state="0" />
@@ -718,43 +706,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="1" lean-forward="true" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/application.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="41" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="1" lean-forward="true" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/javascript/packs/reducers/schedule_requests.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -795,13 +746,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/schedule_requests.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/schedule_requests_list.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -809,20 +753,70 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/scheduler.jsx">
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/routes.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="2" lean-forward="true" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
+        <state relative-caret-position="285">
+          <caret line="19" column="49" lean-forward="true" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/main.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="190" lean-forward="true" selection-start-line="190" selection-end-line="190" />
+        <state relative-caret-position="515">
+          <caret line="124" column="13" selection-start-line="124" selection-start-column="13" selection-end-line="124" selection-end-column="13" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
-            <element signature="e#11300#12351#0" />
+            <element signature="e#5588#6639#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/application.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="19" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/schedule_requests.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="203" column="21" selection-start-line="203" selection-start-column="12" selection-end-line="203" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/scheduler.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="12" column="16" lean-forward="true" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="16" />
+          <folding>
+            <element signature="e#11398#12250#0" />
           </folding>
         </state>
       </provider>
