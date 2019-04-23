@@ -1,4 +1,7 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
+const PRODUCTION = process.env.NODE_ENV === 'production';
+
 module.exports = {
     module: {
         rules: [
@@ -19,11 +22,30 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: ["style-loader", "css-loader"]
+                loader: 'style-loader!css-loader'
             },
             {
                 test: /\.scss$/,
                 loader: 'style!css!sass?outputStyle=expanded',
+            },
+            {
+                test: /antd.*\.less$/,
+                ...(PRODUCTION ? {
+                    use: ExtractTextPlugin.extract({
+                        fallback: 'style-loader',
+                        use: ['css-loader?importLoaders=1', 'postcss-loader', 'less-loader']
+                    })
+                } : {
+                    use: [
+                        "style-loader",
+                        {
+                            loader: 'css-loader',
+                            options: {sourceMap: 1}
+                        },
+                        "postcss-loader",
+                        "less-loader"
+                    ]
+                } )
             }
         ]
     },

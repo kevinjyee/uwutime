@@ -5,10 +5,11 @@ import moment from 'moment';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css'
 import '../../../assets/stylesheets/schedule_requests.scss'
-import 'antd/dist/antd.css';
-import '../../../assets/stylesheets/index.scss'
-import logo from '../../../assets/images/uwu.jpg'
 
+import '../../../assets/stylesheets/index.scss'
+import 'antd/dist/antd.css';
+import logo from '../../../assets/images/uwu.jpg'
+import Basic from './Basic'
 import {
     Layout, Menu, Button, Modal,
     Select, InputNumber, Form,
@@ -103,6 +104,7 @@ export default class Scheduler extends React.Component {
                         width: '90%',
                         margin: 'auto'
                     }}>
+                    <Basic/>
 
                     </Content>
                     <Footer style={{textAlign: 'center'}}>
