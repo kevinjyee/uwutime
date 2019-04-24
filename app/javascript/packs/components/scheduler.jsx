@@ -101,7 +101,7 @@ export default class Scheduler extends React.Component {
                     </Header>
                     <Content style={{
                         height: '100vh',
-                        width: '90%',
+                        width: '100%',
                         margin: 'auto'
                     }}>
                     <Basic/>

@@ -498,7 +498,9 @@ class EventItem extends Component {
         let eventItemTemplate = (
             <div className={roundCls + ' event-item'} key={eventItem.id}
                  style={{height: config.eventItemHeight, backgroundColor: bgColor}}>
-                <span style={{marginLeft: '10px', lineHeight: `${config.eventItemHeight}px` }}>{eventTitle}</span>
+                <div style={{height: config.eventItemHeight, backgroundColor: "#2ab7ca", width: width/2}}/>
+                <div style={{height: config.eventItemHeight, backgroundColor: "#fed766", width: width/2}}/>
+
             </div>
         );
         if(eventItemTemplateResolver != undefined)
