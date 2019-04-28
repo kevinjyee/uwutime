@@ -1,19 +1,21 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import ScheduleRequestsList from './schedule_requests_list'
 import update from 'immutability-helper';
 import moment from 'moment';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css'
-import '../../assets/stylesheets/schedule_requests.scss'
+import '../../../assets/stylesheets/schedule_requests.scss'
 import 'antd/dist/antd.css';
-import '../../assets/stylesheets/index.scss'
-import logo from '../../assets/images/uwu.jpg'
+import '../../../assets/stylesheets/index.scss'
+import logo from '../../../assets/images/uwu.jpg'
+
 import {
     Layout, Menu, Button, Modal,
     Select, InputNumber, Form,
     Input, DatePicker, Icon, message, Spin
 } from 'antd';
+
+import { Link } from 'react-router-dom';
 
 const {Header, Content, Footer} = Layout;
 
@@ -294,9 +296,17 @@ export default class ScheduleRequests extends React.Component {
                                 defaultSelectedKeys={['1']}
                                 style={{lineHeight: '64px'}}
                             >
-                                <Menu.Item key="1">Request</Menu.Item>
+                                <Menu.Item key="1">
+                                    <Link to='/'>
+                                    Request
+                                </Link>
+                                </Menu.Item>
                                 <Menu.Item key="2">Product Type</Menu.Item>
-                                <Menu.Item key="3">Scheduler</Menu.Item>
+                                <Menu.Item key="3">
+                                    <Link to='/scheduler'>
+                                        Scheduler
+                                    </Link>
+                                </Menu.Item>
                             </Menu>
                         </Header>
                         <Content style={{
