@@ -71,7 +71,7 @@ const DemoData = {
             resourceId: 'r1',
             title: 'IPA1',
             bgColor: '#D9D9D9',
-            showPopover: false,
+            showPopover: true,
             maxChild: 'ferment',
             totalHours: 168.0,
             children: {
@@ -79,19 +79,34 @@ const DemoData = {
                     hours: 24.0,
                     start: '2017-12-18 00:00:00',
                     end: '2017-12-19 00:00:00',
-                    backgroundColor: '#2ab7ca'
+                    backgroundColor: '#2ab7ca',
+                    color: '#2f54eb',
+                    background: '#f0f5ff',
+                    border: '#adc6ff',
+                    borderStyle: 'solid',
+                    borderRadius: '10px',
+
                 },
                 'ferment': {
                     hours: 120.0,
                     start: '2017-12-19 00:00:00',
                     end: '2017-12-24 00:00:00',
-                    backgroundColor:'#fed766'
+                    color: '#52c41a',
+                    background: '#f6ffed',
+                    border: '#b7eb8f',
+                    borderStyle: 'solid',
+                    borderRadius:'10px'
                 },
                 'harvest': {
                     hours: 24.0,
                     start: '2017-12-24 00:00:00',
                     end: '2017-12-25 00:00:00',
-                    backgroundColor:'#f4f4f8'
+                    backgroundColor:'#f4f4f8',
+                    color: '#faad14',
+                    background: '#fffbe6',
+                    border: '#ffe58f',
+                    borderStyle: 'solid',
+                    borderRadius:'10px'
                 }
             }
         }
