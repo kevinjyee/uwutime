@@ -152,6 +152,9 @@ table.resource-table tr td:last-child, /*table.scheduler-bg-table tr td:last-chi
     padding-right: 20px !important;
 }
 
+.event-wrapper {
+    display: flex;
+}
 .overflow-text {
     overflow: hidden;
     text-overflow: ellipsis;

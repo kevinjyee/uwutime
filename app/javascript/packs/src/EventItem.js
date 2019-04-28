@@ -15,7 +15,7 @@ class EventItem extends Component {
         this.state = {
             left: left,
             top: top,
-            width: width,
+            width: width
         };
         this.startResizer = null;
         this.endResizer = null;
@@ -53,7 +53,7 @@ class EventItem extends Component {
         this.setState({
             left: left,
             top: top,
-            width: width,
+            width: width
         });
 
         this.subscribeResizeEvent(np);
@@ -495,14 +495,63 @@ class EventItem extends Component {
         if (this.endResizable(this.props))
             endResizeDiv = <div className="event-resizer event-end-resizer" ref={(ref) => this.endResizer = ref}></div>;
 
+
+
+        let scheduleStart = new Date(schedulerData.startDate);
+        let scheduleEnd = new Date(schedulerData.endDate);
+
+        let eventStart = new Date(eventItem.start);
+        let eventEnd = new Date(eventItem.end);
+
+        // Entire range
+        let scheduleBody = <div/>;
+        if (scheduleStart <= eventStart && scheduleEnd >= eventEnd) {
+            let totalHours = (new Date(eventItem.end) - new Date(eventItem.start))/3.6e6
+            if (Object.keys(eventItem.children).length > 0) {
+                scheduleBody = Object.keys(eventItem.children).map((key) => {
+
+                    return (<div className= {key} key={key}
+                                 style={{height: config.eventItemHeight,
+                                     backgroundColor: eventItem.children[key].backgroundColor,
+                                     width: (eventItem.children[key].hours/totalHours) * width}}>
+                        <span style={{marginLeft: '10px', lineHeight: `${config.eventItemHeight}px` }}>{key}</span>
+                        </div>
+                        );
+                })
+            }
+        }
+        // Clipped Start
+        else if( scheduleStart <= eventStart && scheduleEnd <= eventEnd) {
+            let availableHours = (scheduleEnd - scheduleStart)/3e6;
+            let countHours = availableHours
+                scheduleBody = []
+            Object.keys(eventItem.children).forEach((key) => {
+                let value = eventItem.children[key];
+
+                if(countHours > 0){
+                    scheduleBody.push(<div className= {key} key={key} style={{height: config.eventItemHeight,
+                        backgroundColor: value.backgroundColor,
+                        width: (value.hours/availableHours) * width}}>
+                        <span style={{marginLeft: '10px', lineHeight: `${config.eventItemHeight}px` }}>{key}</span>
+                    </div>)
+
+                    countHours-=value.hours
+                }
+             });
+
+
+        }
+
         let eventItemTemplate = (
             <div className={roundCls + ' event-item'} key={eventItem.id}
-                 style={{height: config.eventItemHeight, backgroundColor: bgColor}}>
-                <div style={{height: config.eventItemHeight, backgroundColor: "#2ab7ca", width: width/2}}/>
-                <div style={{height: config.eventItemHeight, backgroundColor: "#fed766", width: width/2}}/>
-
+                 style={{height: config.eventItemHeight, backgroundColor: bgColor, zIndex: -1}}>
+                <div className='event-wrapper'>
+                {scheduleBody}
+                </div>
             </div>
         );
+
+
         if(eventItemTemplateResolver != undefined)
             eventItemTemplate = eventItemTemplateResolver(schedulerData, eventItem, bgColor, isStart, isEnd, 'event-item', config.eventItemHeight, undefined);
 

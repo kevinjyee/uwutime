@@ -10,6 +10,7 @@ import '../../../assets/stylesheets/index.scss'
 import 'antd/dist/antd.css';
 import logo from '../../../assets/images/uwu.jpg'
 import Basic from './Basic'
+import DragAndDrop from './DragAndDrop'
 import {
     Layout, Menu, Button, Modal,
     Select, InputNumber, Form,
@@ -104,7 +105,7 @@ export default class Scheduler extends React.Component {
                         width: '100%',
                         margin: 'auto'
                     }}>
-                    <Basic/>
+                    <DragAndDrop/>
 
                     </Content>
                     <Footer style={{textAlign: 'center'}}>
