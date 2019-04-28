@@ -5,7 +5,7 @@ import {
     Switch
 } from 'react-router-dom'
 
-import App from './app';
+import { App, SchedulerContainer } from './app';
 import Scheduler from './components/scheduler'
 
 import { Provider } from 'react-redux';
@@ -16,7 +16,7 @@ const AppRoute = (props) => (
     <Router>
         <div>
             <Switch>
-                <Route path='/scheduler' component={Scheduler}/>
+                <Route path='/scheduler' component={SchedulerContainer}/>
                 <Route path='/' component={App}/>
             </Switch>
         </div>

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import * as actionCreators from './actions/actionCreators';
 
 import ScheduleRequests from './components/schedule_requests';
-
+import Scheduler from './components/scheduler'
 
 
 function mapStateToProps(state) {
@@ -16,6 +16,5 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators(actionCreators, dispatch);
 }
 
-const App = connect(mapStateToProps, mapDispatchToProps)(ScheduleRequests);
-
-export default App;
+export const App = connect(mapStateToProps, mapDispatchToProps)(ScheduleRequests);
+export const SchedulerContainer = connect(mapStateToProps, mapDispatchToProps)(Scheduler);

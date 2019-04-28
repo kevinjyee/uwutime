@@ -517,7 +517,7 @@ class EventItem extends Component {
                                      borderStyle: eventItem.children[key].borderStyle,
                                      borderRadius: eventItem.children[key].borderRadius,
                                      color: eventItem.children[key].color,
-                                     width: Math.ceil(eventItem.children[key].hours/totalHours) * width}}>
+                                     width: (eventItem.children[key].hours/totalHours) * width}}>
                         <span style={{marginLeft: '10px',
                             lineHeight: `${config.eventItemHeight}px`,
                          }}>{key}</span>
@@ -537,7 +537,7 @@ class EventItem extends Component {
                 if(countHours > 0){
                     scheduleBody.push(<div className= {key} key={key} style={{height: config.eventItemHeight,
                         backgroundColor: value.backgroundColor,
-                        width: Math.ceil(value.hours/availableHours) * width}}>
+                        width: (value.hours/availableHours) * width}}>
                         <span style={{marginLeft: '10px', lineHeight: `${config.eventItemHeight}px` }}>{key}</span>
                     </div>)
 
