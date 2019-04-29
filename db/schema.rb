@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_15_110630) do
+ActiveRecord::Schema.define(version: 2019_04_29_120125) do
 
   create_table "organization_task_template_associations", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "organization_id"
@@ -55,6 +55,16 @@ ActiveRecord::Schema.define(version: 2019_04_15_110630) do
     t.string "email"
     t.string "password_digest"
     t.boolean "admin"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "vessels", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.integer "organization_id"
+    t.string "identifier"
+    t.integer "volume"
+    t.string "volume_unit"
+    t.string "vessel_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

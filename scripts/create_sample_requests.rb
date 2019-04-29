@@ -1,5 +1,5 @@
 template = {'product_name' => '',
- 'run_quantity' => 2,
+            'run_quantity' => 2,
  'requested_preferred_date' => '2019-01-01',
  'notes' => 'N/A',
  'status' => ScheduleRequest::NOT_SCHEDULED,

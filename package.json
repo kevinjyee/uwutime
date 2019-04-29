@@ -45,7 +45,16 @@
     "webpack-merge": "^4.2.1"
   },
   "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^4.2.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-react": "^7.12.4",
     "postcss-loader": "^3.0.0",
+    "prettier": "^1.17.0",
     "redux-devtools": "^3.5.0",
     "sass-loader": "^7.1.0",
     "webpack": "^4.29.6",

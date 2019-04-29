@@ -6,7 +6,6 @@ import {
 } from 'react-router-dom'
 
 import { App, SchedulerContainer } from './app';
-import Scheduler from './components/scheduler'
 
 import { Provider } from 'react-redux';
 import store from './store'

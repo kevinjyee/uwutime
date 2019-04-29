@@ -3,7 +3,7 @@ import {PropTypes} from 'prop-types'
 import Col from 'antd/lib/col'
 import Row from 'antd/lib/row'
 import 'antd/lib/grid/style/index.css'
-import Scheduler, {SchedulerData, ViewTypes, DnDSource, DemoData} from '../src/index'
+import Scheduler, {SchedulerData, ViewTypes, DnDSource, DemoData} from '../lib/index'
 import {DnDTypes} from './DnDTypes'
 import TaskItem from './TaskItem'
 import TaskList from './TaskList'
@@ -26,7 +26,7 @@ class DragAndDrop extends Component{
             ]
         });
         schedulerData.localeMoment.locale('en');
-        schedulerData.setResources(DemoData.resources);
+        schedulerData.setResources(this.props.resources);
         schedulerData.setEvents(DemoData.eventsForTaskView);
         this.state = {
             viewModel: schedulerData,

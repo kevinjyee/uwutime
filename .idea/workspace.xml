@@ -6,9 +6,48 @@
   <component name="ChangeListManager">
     <list default="true" id="027dbcea-88e0-4835-8ae9-ff9a8ff356d2" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/actions/actionCreators.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/actions/actionCreators.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/javascript/packs/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/components/Basic.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/components/Basic.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/components/DragAndDrop.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/components/DragAndDrop.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/components/scheduler.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/components/scheduler.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/reducers/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/reducers/schedule_requests.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/reducers/schedule_requests.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/javascript/packs/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/javascript/packs/src/EventItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/src/EventItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/src/AddMore.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/lib/AddMore.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/src/AddMorePopover.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/lib/AddMorePopover.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/src/AgendaEventItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/lib/AgendaEventItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/src/AgendaResourceEvents.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/lib/AgendaResourceEvents.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/src/AgendaView.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/lib/AgendaView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/src/BodyView.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/lib/BodyView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/src/CellUnits.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/lib/CellUnits.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/src/DemoData.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/lib/DemoData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/src/DnDContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/lib/DnDContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/src/DnDSource.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/lib/DnDSource.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/src/DnDTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/lib/DnDTypes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/src/EventItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/lib/EventItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/src/EventItemPopover.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/lib/EventItemPopover.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/src/HeaderView.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/lib/HeaderView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/src/ResourceEvents.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/lib/ResourceEvents.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/src/ResourceView.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/lib/ResourceView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/src/SchedulerData.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/lib/SchedulerData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/src/SelectedArea.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/lib/SelectedArea.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/src/Summary.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/lib/Summary.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/src/SummaryPos.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/lib/SummaryPos.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/src/Util.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/lib/Util.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/src/ViewTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/lib/ViewTypes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/src/behaviors.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/lib/behaviors.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/src/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/lib/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/src/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/lib/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/lib/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/src/less/antd-globals-hiding-hack.less" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/lib/less/antd-globals-hiding-hack.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/webpack/development.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/webpack/development.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/create_sample_requests.rb" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/create_sample_requests.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,109 +57,205 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DragAndDrop.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/DragAndDrop.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="321">
-              <caret line="33" column="23" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="23" />
-              <folding>
-                <element signature="e#0#38#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ResourceList.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/ResourceList.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="12" lean-forward="true" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
-              <folding>
-                <element signature="e#0#38#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="schedule_request_form.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/schedule_request_form.jsx">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="schedule_requests_list.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/schedule_requests_list.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="660">
-              <caret line="76" column="25" selection-start-line="76" selection-start-column="25" selection-end-line="76" selection-end-column="25" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="scheduler.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/scheduler.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="38" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/javascript/packs/app.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="31" lean-forward="true" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="31" />
-              <folding>
-                <element signature="e#0#43#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="routes.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/javascript/packs/routes.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="25" column="24" lean-forward="true" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
-              <folding>
-                <element signature="e#0#25#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="application.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/javascript/packs/application.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" selection-start-line="18" selection-end-line="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/javascript/packs/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="schedule_requests.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/schedule_requests.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-21">
-              <caret line="245" column="40" selection-start-line="245" selection-start-column="40" selection-end-line="245" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="DragAndDrop.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/DragAndDrop.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="469">
+                  <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+                  <folding>
+                    <element signature="e#0#38#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="actionCreators.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/javascript/packs/actions/actionCreators.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="301">
+                  <caret line="27" selection-start-line="27" selection-end-line="27" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="development.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/config/webpack/development.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="660">
+                  <caret line="44" column="14" lean-forward="true" selection-start-line="44" selection-start-column="14" selection-end-line="44" selection-end-column="14" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/javascript/packs/lib/index.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="321">
+                  <caret line="186" column="58" selection-start-line="186" selection-start-column="53" selection-end-line="186" selection-end-column="58" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/javascript/packs/app.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="165">
+                  <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+                  <folding>
+                    <element signature="e#0#43#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/javascript/packs/reducers/index.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="135">
+                  <caret line="9" selection-start-line="9" selection-end-line="9" />
+                  <folding>
+                    <element signature="e#0#39#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="schedule_requests.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/javascript/packs/reducers/schedule_requests.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="375">
+                  <caret line="25" selection-start-line="25" selection-end-line="25" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="SchedulerData.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/javascript/packs/lib/SchedulerData.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="261">
+                  <caret line="649" selection-start-line="649" selection-end-line="649" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="vessels.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/javascript/packs/reducers/vessels.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="270">
+                  <caret line="18" column="20" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="schedule_requests.jsx" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/schedule_requests.jsx">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="738">
+                  <caret line="331" column="58" lean-forward="true" selection-start-line="331" selection-start-column="58" selection-end-line="331" selection-end-column="58" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="routes.rb" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/config/routes.rb">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="165">
+                  <caret line="11" selection-start-line="11" selection-end-line="11" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="schedule_requests_controller.rb" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/controllers/schedule_requests_controller.rb">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="405">
+                  <caret line="27" column="39" selection-start-line="27" selection-start-column="39" selection-end-line="27" selection-end-column="39" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="DemoData.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/javascript/packs/lib/DemoData.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="240">
+                  <caret line="77" column="25" lean-forward="true" selection-start-line="77" selection-start-column="25" selection-end-line="77" selection-end-column="25" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="schedule_requests_list.jsx" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/schedule_requests_list.jsx">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="495">
+                  <caret line="65" lean-forward="true" selection-start-line="65" selection-end-line="65" />
+                  <folding>
+                    <element signature="e#0#26#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="scheduler.jsx" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/scheduler.jsx">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="570">
+                  <caret line="101" column="22" selection-start-line="101" selection-start-column="22" selection-end-line="101" selection-end-column="22" />
+                  <folding>
+                    <element signature="e#0#26#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/javascript/packs/app.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="165">
+                  <caret line="11" column="30" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
+                  <folding>
+                    <element signature="e#0#43#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="actionCreators.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/javascript/packs/actions/actionCreators.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="407">
+                  <caret line="34" column="51" lean-forward="true" selection-start-line="34" selection-start-column="51" selection-end-line="34" selection-end-column="51" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="vessels.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/javascript/packs/reducers/vessels.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="270">
+                  <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="schedule_requests.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/javascript/packs/reducers/schedule_requests.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="360">
+                  <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -132,15 +267,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>eventsFo</find>
-      <find>groupId</find>
-      <find>move</find>
-      <find>eventGroupsAutoGenerated</find>
-      <find>event-item</find>
-      <find>div</find>
-      <find>content</find>
-      <find>radio</find>
-      <find>radioButtonList</find>
       <find>.map</find>
       <find>Day</find>
       <find>eventItem</find>
@@ -162,6 +288,15 @@
       <find>state</find>
       <find>Re</find>
       <find>resourceDnd</find>
+      <find>this.props</find>
+      <find>resource.name</find>
+      <find>resource.identifier</find>
+      <find>req</find>
+      <find>sc</find>
+      <find>item.name</find>
+      <find>name</find>
+      <find>antd/lib/glo</find>
+      <find>resources</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -170,13 +305,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/app_bar.scss" />
-        <option value="$PROJECT_DIR$/app/javascript/packs/ButtonNavBar.jsx" />
-        <option value="$PROJECT_DIR$/app/javascript/packs/Drawer.jsx" />
-        <option value="$PROJECT_DIR$/app/javascript/packs/ButtonAppBar.jsx" />
-        <option value="$PROJECT_DIR$/app/javascript/packs/schedule_request_form.jsx" />
-        <option value="$PROJECT_DIR$/app/javascript/packs/demo_table.js" />
-        <option value="$PROJECT_DIR$/app/javascript/packs/demo_table.jsx" />
         <option value="$PROJECT_DIR$/app/views/schedule_requests/index.html.erb" />
         <option value="$PROJECT_DIR$/app/views/schedule_requests/index.html.haml" />
         <option value="$PROJECT_DIR$/app/javascript/packs/schedule_create_form.jsx" />
@@ -192,15 +320,10 @@
         <option value="$PROJECT_DIR$/app/views/pages/root.html.haml" />
         <option value="$PROJECT_DIR$/app/controllers/schedule_requests_controller.rb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/index.scss" />
-        <option value="$PROJECT_DIR$/app/javascript/packs/reducers/index.js" />
-        <option value="$PROJECT_DIR$/app/javascript/packs/actions/actionCreators.js" />
-        <option value="$PROJECT_DIR$/scripts/create_sample_requests.rb" />
-        <option value="$PROJECT_DIR$/app/javascript/packs/reducers/schedule_requests.js" />
         <option value="$PROJECT_DIR$/app/javascript/packs/schedule_requests_list.jsx" />
         <option value="$PROJECT_DIR$/app/javascript/packs/schedule_request.jsx" />
         <option value="$PROJECT_DIR$/app/javascript/packs/scheduler.jsx" />
         <option value="$PROJECT_DIR$/app/controllers/scheduler_controller.rb" />
-        <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/app/javascript/packs/schedule_requests.jsx" />
         <option value="$PROJECT_DIR$/app/javascript/packs/products.jsx" />
         <option value="$PROJECT_DIR$/app/javascript/packs/store.js" />
@@ -211,21 +334,39 @@
         <option value="$PROJECT_DIR$/webpack.config.js" />
         <option value="$PROJECT_DIR$/config/webpack/production.js" />
         <option value="$PROJECT_DIR$/app/javascript/packs/src/less/antd-globals-hiding-hack.less" />
-        <option value="$PROJECT_DIR$/config/webpack/development.js" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/style.css" />
         <option value="$PROJECT_DIR$/app/javascript/packs/components/Basic.js" />
-        <option value="$PROJECT_DIR$/app/javascript/packs/components/scheduler.jsx" />
-        <option value="$PROJECT_DIR$/app/javascript/packs/components/DragAndDrop.js" />
         <option value="$PROJECT_DIR$/app/javascript/packs/components/schedule_requests.jsx" />
-        <option value="$PROJECT_DIR$/app/javascript/packs/src/DemoData.js" />
         <option value="$PROJECT_DIR$/app/javascript/packs/src/EventItem.js" />
         <option value="$PROJECT_DIR$/app/javascript/packs/routes.js" />
+        <option value="$PROJECT_DIR$/scripts/schedule_request.json" />
+        <option value="$PROJECT_DIR$/app/models/vessel.rb" />
+        <option value="$PROJECT_DIR$/config/routes.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/vessels_controller.rb" />
+        <option value="$PROJECT_DIR$/scripts/create_sample_requests.rb" />
+        <option value="$PROJECT_DIR$/app/javascript/packs/src/DemoData.js" />
+        <option value="$PROJECT_DIR$/scripts/create_sample_vessels.rb" />
+        <option value="$PROJECT_DIR$/app/javascript/packs/reducers/schedule_requests.js" />
+        <option value="$PROJECT_DIR$/config/webpack/development.js" />
+        <option value="$PROJECT_DIR$/app/javascript/packs/lib/SchedulerData.js" />
+        <option value="$PROJECT_DIR$/app/javascript/packs/reducers/vessels.js" />
+        <option value="$PROJECT_DIR$/app/javascript/packs/actions/actionCreators.js" />
+        <option value="$PROJECT_DIR$/app/javascript/packs/reducers/index.js" />
         <option value="$PROJECT_DIR$/app/javascript/packs/app.js" />
+        <option value="$PROJECT_DIR$/app/javascript/packs/components/DragAndDrop.js" />
+        <option value="$PROJECT_DIR$/app/javascript/packs/components/scheduler.jsx" />
+        <option value="$PROJECT_DIR$/app/javascript/packs/lib/DemoData.js" />
       </list>
     </option>
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
@@ -238,9 +379,9 @@
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="23" />
-    <option name="width" value="1898" />
+    <option name="width" value="1920" />
     <option name="height" value="1111" />
   </component>
   <component name="ProjectView">
@@ -260,77 +401,39 @@
               <item name="uluwu-services" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="uluwu-services" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uluwu-services" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uluwu-services" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uluwu-services" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="stylesheets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uluwu-services" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uluwu-services" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="javascript" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uluwu-services" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uluwu-services" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="javascript" type="462c0819:PsiDirectoryNode" />
-              <item name="packs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uluwu-services" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uluwu-services" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="javascript" type="462c0819:PsiDirectoryNode" />
-              <item name="packs" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uluwu-services" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uluwu-services" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uluwu-services" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uluwu-services" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-              <item name="webpack" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="AndroidView" />
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.selected.package.eslint" value="$PROJECT_DIR$/node_modules/eslint" />
+    <property name="node.js.selected.package.standard" value="$PROJECT_DIR$/node_modules/eslint" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="settings.javascript.linters.eslint" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/javascript/packs/reducers" />
+      <recent name="$PROJECT_DIR$/scripts" />
+      <recent name="$PROJECT_DIR$/app/controllers" />
       <recent name="$PROJECT_DIR$/app/javascript/packs/components" />
       <recent name="$PROJECT_DIR$/app/assets/stylesheets" />
-      <recent name="$PROJECT_DIR$/app/javascript/packs" />
-      <recent name="$PROJECT_DIR$/app/javascript/packs/reducers" />
-      <recent name="$PROJECT_DIR$/public" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -408,15 +511,16 @@
       <workItem from="1555768722817" duration="17773000" />
       <workItem from="1556035978529" duration="6006000" />
       <workItem from="1556119293633" duration="616000" />
-      <workItem from="1556186101419" duration="19419000" />
+      <workItem from="1556186101419" duration="21764000" />
+      <workItem from="1556536406534" duration="6311000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="138747000" />
+    <option name="totallyTimeSpent" value="147403000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1898" height="1111" extended-state="0" />
+    <frame x="0" y="23" width="1920" height="1111" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
@@ -432,7 +536,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15700738" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15520833" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3278846" />
@@ -495,97 +599,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/hello_react.jsx" />
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/schedule_create_form.jsx" />
-    <entry file="file://$PROJECT_DIR$/scripts/create_sample_requests.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/schedule_request_list.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="1" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/schedule_requests_list.jsx" />
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/scheduler.jsx" />
-    <entry file="file://$PROJECT_DIR$/app/controllers/scheduler_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="30" lean-forward="true" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/schedule_requests.jsx" />
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/products.jsx" />
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/store.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="22" selection-start-column="22" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/reducers/schedule_requests.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/reducers/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/actions/actionCreators.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="35" column="22" selection-start-line="35" selection-start-column="22" selection-end-line="35" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/main.jsx" />
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/schedule_create_form.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/src/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="36" column="17" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/webpack/production.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/webpack/environment.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webpack.config.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
@@ -600,34 +613,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/webpack/development.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/src/less/antd-globals-hiding-hack.less">
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/lib/less/antd-globals-hiding-hack.less">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" selection-start-line="6" selection-end-line="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/src/DnDSource.js">
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/lib/DnDSource.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/src/Summary.js">
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/lib/Summary.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/src/CellUnits.js">
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/lib/CellUnits.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="6" selection-start-column="6" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/src/DnDContext.js">
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/lib/DnDContext.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <folding>
@@ -636,7 +642,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/src/config.js">
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/lib/config.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
@@ -656,17 +662,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/src/AddMore.js">
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/lib/AddMore.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="21" column="19" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/src/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="167" column="46" selection-start-line="167" selection-start-column="43" selection-end-line="167" selection-end-column="46" />
         </state>
       </provider>
     </entry>
@@ -680,7 +679,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/src/EventItemPopover.js">
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/lib/EventItemPopover.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="690">
           <caret line="56" column="26" selection-start-line="56" selection-start-column="26" selection-end-line="56" selection-end-column="26" />
@@ -690,43 +689,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/src/DemoData.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="71" column="26" selection-start-line="71" selection-start-column="26" selection-end-line="71" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/src/EventItem.js">
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/lib/EventItem.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/src/SchedulerData.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9750">
-          <caret line="654" column="25" selection-start-line="654" selection-start-column="20" selection-end-line="654" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/TaskList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/TaskItem.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="3" column="9" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -753,40 +722,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/DragAndDrop.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="33" column="23" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/schedule_requests_list.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="76" column="25" selection-start-line="76" selection-start-column="25" selection-end-line="76" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/schedule_requests.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-21">
-          <caret line="245" column="40" selection-start-line="245" selection-start-column="40" selection-end-line="245" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/scheduler.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="38" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/javascript/packs/application.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -801,23 +736,221 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/pages.scss">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/TaskItem.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/TaskList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/task_template.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="2" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/organization.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="38" lean-forward="true" selection-start-column="38" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/schedule_request.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="10" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/pages_controller.rb">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/scheduler_controller.rb">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/vessels_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/create_sample_requests.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/schedule_request.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="750">
+          <caret line="50" column="24" selection-start-line="50" selection-start-column="24" selection-end-line="50" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/vessel.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/create_sample_vessels.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/schedule_requests_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="39" selection-start-line="27" selection-start-column="39" selection-end-line="27" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/environments/development.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="10" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/webpack/development.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="44" column="14" lean-forward="true" selection-start-line="44" selection-start-column="14" selection-end-line="44" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/lib/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="186" column="58" selection-start-line="186" selection-start-column="53" selection-end-line="186" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/lib/SchedulerData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="649" selection-start-line="649" selection-end-line="649" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/actions/actionCreators.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="407">
+          <caret line="34" column="51" lean-forward="true" selection-start-line="34" selection-start-column="51" selection-end-line="34" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/reducers/schedule_requests.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/reducers/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/javascript/packs/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="31" lean-forward="true" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="31" />
+        <state relative-caret-position="165">
+          <caret line="11" column="30" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/routes.js">
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/reducers/vessels.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="24" lean-forward="true" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
+        <state relative-caret-position="270">
+          <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/DragAndDrop.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="469">
+          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
           <folding>
-            <element signature="e#0#25#0" expanded="true" />
+            <element signature="e#0#38#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/schedule_requests_list.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="65" lean-forward="true" selection-start-line="65" selection-end-line="65" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/schedule_requests.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="738">
+          <caret line="331" column="58" lean-forward="true" selection-start-line="331" selection-start-column="58" selection-end-line="331" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/scheduler.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="101" column="22" selection-start-line="101" selection-start-column="22" selection-end-line="101" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/lib/DemoData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="77" column="25" lean-forward="true" selection-start-line="77" selection-start-column="25" selection-end-line="77" selection-end-column="25" />
         </state>
       </provider>
     </entry>

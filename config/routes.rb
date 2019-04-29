@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   get '/scheduler' => "pages#root"
   root to: "pages#root"
   resources :schedule_requests
-
+  resources :vessels, only: [:index]
 end

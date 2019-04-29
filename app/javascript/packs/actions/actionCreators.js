@@ -1,6 +1,6 @@
 import axios from "axios/index";
-var $ = require('jquery')
 
+//
 export function fetchScheduleRequests() {
     return function(dispatch) {
         dispatch(requestSchedule());
@@ -8,10 +8,50 @@ export function fetchScheduleRequests() {
             response => response,
             error => console.log('An error occurred', error)
         ).then(({data}) => {
-            dispatch(receiveRequests(data));
+            dispatch(receivedSchedule(data));
         })
     }
 }
+
+export function requestSchedule() {
+    return {
+        type: 'REQUEST_SCHEDULE'
+    }
+}
+
+export function receivedSchedule(data) {
+    return {
+        type: 'RECEIVED_SCHEDULE',
+        payload: data
+    }
+}
+
+
+export function fetchVessels() {
+    return function(dispatch) {
+        dispatch(requestVessels());
+        return axios.get('/vessels').then(
+            response => response,
+            error => console.log('An error occurred', error)
+        ).then(({data}) => {
+            dispatch(receivedVessels(data));
+        })
+    }
+}
+
+export function requestVessels() {
+    return {
+        type: 'REQUEST_VESSELS'
+    }
+}
+
+export function receivedVessels(data) {
+    return {
+        type: 'RECEIVED_VESSELS',
+        payload: data
+    }
+}
+
 
 export const addScheduleRequests = (params) => {
     return dispatch => {
@@ -25,7 +65,6 @@ export const addScheduleRequests = (params) => {
         })
     };
 };
-
 
 const addScheduleStarted = () => ({
     type: 'ADD_SCHEDULE_STARTED'
@@ -43,24 +82,6 @@ const addScheduleFailure = error => ({
     }
 });
 
-export function requestSchedule() {
-    return {
-        type: 'REQUEST_SCHEDULE_REQUESTS'
-    }
-}
 
-export function receiveRequests(data) {
-    return {
-        type: 'RECEIVED_SCHEDULE_REQUESTS',
-        payload: data
-    }
-}
 
-// schedule request
-export function addRequest(data) {
-        return {
-            type: 'ADD_REQUESTS',
-            newItem: data
-    }
-}
 

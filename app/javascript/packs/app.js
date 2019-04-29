@@ -8,7 +8,8 @@ import Scheduler from './components/scheduler'
 
 function mapStateToProps(state) {
     return {
-        schedule_requests: state.schedule_requests
+        schedule_requests: state.schedule_requests,
+        vessels: state.vessels
     }
 }
 

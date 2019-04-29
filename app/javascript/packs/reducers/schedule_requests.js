@@ -5,10 +5,10 @@
 
 function schedule_requests(state = [], action){
     switch(action.type) {
-        case 'REQUEST_SCHEDULE_REQUESTS':
+        case 'REQUEST_SCHEDULE':
             console.log('Requesting Schedule...')
             return { state, isLoading: true, action, payload: action.payload };
-        case 'RECEIVED_SCHEDULE_REQUESTS':
+        case 'RECEIVED_SCHEDULE':
             console.log('Received_Schedule');
             return { state, isLoading: false, action, payload: action.payload};
         case 'ADD_SCHEDULE_SUCCESS':
@@ -23,6 +23,5 @@ function schedule_requests(state = [], action){
             return state;
     }
 }
-
 
 export default schedule_requests;

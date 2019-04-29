@@ -1,6 +1,4 @@
-import React from 'react'
-import ScheduleRequestsList from './schedule_requests_list'
-import update from 'immutability-helper';
+import React from 'react';
 import moment from 'moment';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css'
@@ -73,8 +71,12 @@ export default class Scheduler extends React.Component {
         };
     }
 
+    componentDidMount() {
+        this.props.fetchVessels();
+    }
+
     render() {
-        return (
+        if (this.props.vessels.isLoading == false) return (
             <div>
                 <Layout className="layout">
                     <Header>
@@ -105,7 +107,8 @@ export default class Scheduler extends React.Component {
                         width: '100%',
                         margin: 'auto'
                     }}>
-                    <DragAndDrop/>
+                    <DragAndDrop schedule_requests={this.props.schedule_requests.payload}
+                                 resources={this.props.vessels.payload}/>
 
                     </Content>
                     <Footer style={{textAlign: 'center'}}>
@@ -114,6 +117,11 @@ export default class Scheduler extends React.Component {
                 </Layout>
 
 
+            </div>
+        )
+        return (
+            <div className="spinner">
+                <Spin/>
             </div>
         )
     }

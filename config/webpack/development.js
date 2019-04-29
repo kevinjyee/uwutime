@@ -50,7 +50,7 @@ environment.plugins.append(
     'ContextReplacement',
     new webpack.NormalModuleReplacementPlugin(
         /node_modules\/antd\/lib\/style\/index\.less/,
-        path.resolve(root, 'src/less/antd-globals-hiding-hack.less')
+        path.resolve(root, 'lib/less/antd-globals-hiding-hack.less')
     )
 );
 

@@ -2,31 +2,31 @@ const DemoData = {
     resources: [
         {
             id: 'r1',
-            name: 'Resource1',
+            identifier: 'Resource1',
         },
         {
             id: 'r2',
-            name: 'Resource2',
+            identifier: 'Resource2',
         },
         {
             id: 'r3',
-            name: 'Resource3',
+            identifier: 'Resource3',
         },
         {
             id: 'r4',
-            name: 'Resource4',
+            identifier: 'Resource4',
         },
         {
             id: 'r5',
-            name: 'Resource5',
+            identifier: 'Resource5',
         },
         {
             id: 'r6',
-            name: 'Resource6',
+            identifier: 'Resource6',
         },
         {
             id: 'r7',
-            name: 'Resource7Resource7Resource7Resource7Resource7',
+            identifier: 'Resource7Resource7Resource7Resource7Resource7',
         }
     ],
     events: [
@@ -68,7 +68,7 @@ const DemoData = {
             groupId: 1,
             start: '2017-12-18 00:00:00',
             end: '2017-12-25 00:00:00',
-            resourceId: 'r1',
+            resourceId: 1,
             title: 'IPA1',
             bgColor: '#D9D9D9',
             showPopover: true,
