@@ -19,7 +19,8 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 
-# JQuery Rails
+# Serializers
+gem 'active_model_serializers', '~> 0.10.2'
 
 # Add haml for ruby rendering 
 gem 'haml', '~> 5.0', '>= 5.0.4'

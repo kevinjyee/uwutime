@@ -1,4 +1,5 @@
 class ScheduleRequestsController < ApplicationController
+
   def index
     if params[:scheduled].present? && params[:scheduled] == "true"
       @schedule_requests == ScheduleRequest.all.scheduled
@@ -24,10 +25,10 @@ class ScheduleRequestsController < ApplicationController
     params.require(:schedule_request).permit(:product_name,
                                              :requested_preferred_date,
                                              :run_quantity,
-                                             :scheduled_tasks,
                                              :end_type,
                                              :notes,
                                              :status,
-                                             :scheduled)
+                                             :scheduled,
+                                             :scheduled_tasks => {})
   end
 end

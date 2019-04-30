@@ -27,7 +27,7 @@ class DragAndDrop extends Component{
         });
         schedulerData.localeMoment.locale('en');
         schedulerData.setResources(this.props.resources);
-        schedulerData.setEvents(DemoData.eventsForTaskView);
+        schedulerData.setEvents(this.props.schedule_requests);
         this.state = {
             viewModel: schedulerData,
             taskDndSource: new DnDSource((props) => {return props.task;}, TaskItem, DnDTypes.TASK),
@@ -190,12 +190,10 @@ class DragAndDrop extends Component{
     }
 
     moveEvent = (schedulerData, event, slotId, slotName, start, end) => {
-        if(confirm(`Do you want to move the event? {eventId: ${event.id}, eventTitle: ${event.title}, newSlotId: ${slotId}, newSlotName: ${slotName}, newStart: ${start}, newEnd: ${end}`)) {
-            schedulerData.moveEvent(event, slotId, slotName, start, end);
-            this.setState({
-                viewModel: schedulerData
-            })
-        }
+        schedulerData.moveEvent(event, slotId, slotName, start, end);
+        this.setState({
+            viewModel: schedulerData
+        })
     }
 
     movingEvent = (schedulerData, slotId, slotName, newStart, newEnd, action, type, item) => {

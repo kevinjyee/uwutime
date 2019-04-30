@@ -3,7 +3,8 @@
   "private": true,
   "scripts": {
     "start": "webpack --mode development",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "webpacker": "node --max_old_space_size=4096 node_modules/.bin/webpack-dev-server --progress --color --config config/webpack/development.js"
   },
   "dependencies": {
     "@babel/preset-react": "^7.0.0",

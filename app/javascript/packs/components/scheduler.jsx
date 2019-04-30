@@ -72,11 +72,12 @@ export default class Scheduler extends React.Component {
     }
 
     componentDidMount() {
+        this.props.fetchScheduleRequests();
         this.props.fetchVessels();
     }
 
     render() {
-        if (this.props.vessels.isLoading == false) return (
+        if (this.props.vessels.isLoading == false && this.props.schedule_requests.isLoading == false) return (
             <div>
                 <Layout className="layout">
                     <Header>

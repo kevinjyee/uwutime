@@ -245,18 +245,21 @@ export default class ScheduleRequests extends React.Component {
                 run_quantity: values['run-quantity'],
                 status: 'not_scheduled',
                 scheduled: false,
-                scheduled_tasks: [
-                    {
-                        name: 'brew_hours',
+                scheduled_tasks: {
+
+                    'brew': {
                         time: values['brew-hours'],
                         time_interval: 'hours'
                     },
-                    {
-                        name: 'ferment-days',
+                    'ferment': {
                         time: values['ferment-days'],
                         time_interval: 'days'
+                    },
+                    'package': {
+                        time: 24.0,
+                        time_interval: 'hours'
                     }
-                ],
+                },
                 end_type: values['end-type'],
                 requested_preferred_date: moment(values['preferred-run-date']).format('YYYY-MM-DD HH:mm:00'),
                 notes: values[
