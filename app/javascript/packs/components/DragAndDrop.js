@@ -11,6 +11,149 @@ import ResourceItem from './ResourceItem'
 import ResourceList from './ResourceList'
 import withDragDropContext from './withDnDContext'
 import '../../../assets/stylesheets/style.css'
+import {Form} from "antd/lib/index";
+import update from "immutability-helper/index";
+import moment from "moment/moment";
+
+import {
+    Button, Modal,
+    Select, InputNumber,
+    Input, DatePicker, Icon, message, Spin
+} from 'antd';
+
+const CollectionCreateForm = Form.create({name: 'form_in_modal'})(
+    // eslint-disable-next-line
+    class extends React.Component {
+        render() {
+            const {
+                visible, onCancel, onCreate, form,
+            } = this.props;
+            const {getFieldDecorator} = form;
+            return (
+                <Modal
+                    visible={visible}
+                    title="Create a new collection"
+                    okText="Create"
+                    onCancel={onCancel}
+                    onOk={onCreate}
+                >
+                    <Form layout="vertical">
+
+                        <Form.Item
+                            label="Select"
+                            hasFeedback
+                        >
+                            {getFieldDecorator('product', {
+                                rules: [
+                                    {
+                                        required: true,
+                                        message: 'Please select a product!'
+                                    },
+                                ],
+                            })(
+                                <Select placeholder="Please select a product">
+                                    <Option value="Brown">Brown</Option>
+                                    <Option value="IPA">IPA</Option>
+                                    <Option value="Pale-ale">Pale Ale</Option>
+                                    <Option value="Whiskey-stout">Whiskey
+                                        Stout</Option>
+                                    <Option value="Rye-beer">Rye Beer</Option>
+                                </Select>
+                            )}
+                        </Form.Item>
+
+                        <Form.Item
+                            label="Number of Runs"
+                        >
+                            {getFieldDecorator('run-quantity', {
+                                rules: [
+                                    {required: true},
+                                ],
+                                initialValue: 1
+                            })(
+                                <InputNumber min={1} max={10}/>
+                            )}
+                            <span className="ant-form-text"> run(s)</span>
+                        </Form.Item>
+
+
+                        <Form.Item
+                            label="Brew Hours"
+                        >
+                            {getFieldDecorator('brew-hours', {
+                                rules: [
+                                    {required: true},
+                                ],
+                                initialValue: 1
+                            })(
+                                <InputNumber min={1}/>
+                            )}
+                            <span className="ant-form-text"> hour(s)</span>
+                        </Form.Item>
+
+
+                        <Form.Item
+                            label="Fermentation Days"
+                        >
+                            {getFieldDecorator('ferment-days', {
+                                rules: [
+                                    {required: true},
+                                ],
+                                initialValue: 1
+                            })(
+                                <InputNumber min={1}/>
+                            )}
+                            <span className="ant-form-text"> day(s)</span>
+                        </Form.Item>
+
+                        <Form.Item
+                            label="Select"
+                            hasFeedback
+                        >
+                            {getFieldDecorator('end-type', {
+                                rules: [
+                                    {
+                                        required: true,
+                                        message: 'Please select an end type!'
+                                    },
+                                ],
+                            })(
+                                <Select
+                                    placeholder="Please select an end type">
+                                    <Option value="Can">Can</Option>
+                                    <Option value="Bottle">Bottle</Option>
+                                    <Option value="Keg 1/4">Keg 1/4</Option>
+                                    <Option value="Keg 1/2">Keg 1/2</Option>
+                                </Select>
+                            )}
+                        </Form.Item>
+
+                        <Form.Item
+                            label="Preferred Run Date"
+                        >
+                            {getFieldDecorator('preferred-run-date',
+                                {
+                                    rules: [{
+                                        type: 'object',
+                                        required:
+                                            true,
+                                        message: 'Please select a preferred date'
+                                    }]
+                                })(
+                                <DatePicker/>
+                            )}
+                        </Form.Item>
+
+                        <Form.Item label="Notes">
+                            {getFieldDecorator('notes')(<Input
+                                type="textarea"/>)}
+                        </Form.Item>
+                    </Form>
+                </Modal>
+            );
+        }
+    }
+);
 
 class DragAndDrop extends Component{
     constructor(props){
@@ -18,7 +161,7 @@ class DragAndDrop extends Component{
 
         let schedulerData = new SchedulerData('2017-12-18', ViewTypes.Month, false, false, {
             schedulerWidth: '80%',
-            schedulerMaxHeight: 500,
+            schedulerMaxHeight: 0,
             views: [
                 {viewName: 'Agenda View', viewType: ViewTypes.Month, showAgenda: true, isEventPerspective: false},
                 {viewName: 'Resource View', viewType: ViewTypes.Month, showAgenda: false, isEventPerspective: false},
@@ -33,11 +176,90 @@ class DragAndDrop extends Component{
             taskDndSource: new DnDSource((props) => {return props.task;}, TaskItem, DnDTypes.TASK),
             resourceDndSource: new DnDSource((props) => {return props.resource;}, ResourceItem, DnDTypes.RESOURCE),
         }
+        this.showModal = this.showModal.bind(this)
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        // Typical usage (don't forget to compare props):
+        console.log("here");
+        if (prevProps.schedule_requests !== this.props.schedule_requests) {
+            this.state.viewModel.setEvents(this.props.schedule_requests);
+            this.setState({viewModel: this.state.viewModel});
+        }
+    }
+
+    showModal() {
+        this.setState({show_form: true});
+    }
+
+    handleCreate = () => {
+        const form = this.formRef.props.form;
+        form.validateFields((err, values) => {
+            if (err) {
+                return;
+            }
+
+            console.log('Received values of form: ', values);
+
+            var schedule_request_params = {
+                product_name: values['product'],
+                run_quantity: values['run-quantity'],
+                status: 'not_scheduled',
+                scheduled: false,
+                scheduled_tasks: {
+
+                    'brew': {
+                        time: values['brew-hours'],
+                        time_interval: 'hours'
+                    },
+                    'ferment': {
+                        time: values['ferment-days'],
+                        time_interval: 'days'
+                    },
+                    'package': {
+                        time: 24.0,
+                        time_interval: 'hours'
+                    }
+                },
+                end_type: values['end-type'],
+                requested_preferred_date: moment(values['preferred-run-date']).format('YYYY-MM-DD HH:mm:00'),
+                notes: values[
+                    'notes'
+                    ]
+            }
+
+            console.log(schedule_request_params);
+            this.handleFormSubmit(schedule_request_params);
+            form.resetFields();
+            this.setState({show_form: false});
+        });
+    }
+
+    saveFormRef = (formRef) => {
+        this.formRef = formRef;
+    }
+
+
+    handleFormSubmit(params) {
+        this.props.addScheduleRequests(params);
+    }
+
+    handleCancel = () => {
+        this.setState({show_form: false});
     }
 
     render(){
         const {viewModel, taskDndSource, resourceDndSource} = this.state;
         let h3 = viewModel.isEventPerspective ? 'Drag and drop from outside: Drag a resource and drop to the task view' : 'Drag and drop from outside: Drag a task and drop to the resource view';
+
+        let buttonContainer = (
+            <div className="button-container">
+                <Button type="primary"
+                        onClick={this.showModal}>
+                    <Icon type="plus"/> Add Request</Button>
+            </div>
+        )
+
         let dndList = viewModel.isEventPerspective ? (
             <ResourceList schedulerData={viewModel} newEvent={this.newEvent} resourceDndSource={resourceDndSource}/>
         ) : (
@@ -71,9 +293,18 @@ class DragAndDrop extends Component{
                                        dndSources={dndSources}
                             />
                         </Col>
-                        <Col span={4}>
+                        <Col span={4} style={{padding: '10px 10px 0'}}>
+                            {buttonContainer }
                             {dndList}
                         </Col>
+
+                        <CollectionCreateForm
+                            {...this.props}
+                            wrappedComponentRef={this.saveFormRef}
+                            visible={this.state.show_form}
+                            onCancel={this.handleCancel}
+                            onCreate={this.handleCreate}
+                        />
                     </Row>
                 </div>
             </div>

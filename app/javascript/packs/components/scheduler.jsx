@@ -7,11 +7,13 @@ import '../../../assets/stylesheets/schedule_requests.scss'
 import '../../../assets/stylesheets/index.scss'
 import 'antd/dist/antd.css';
 import logo from '../../../assets/images/uwu.jpg'
+import antlogo from '../../../assets/images/antlogo.svg'
+import antdesign from '../../../assets/images/antdesign.svg'
 import Basic from './Basic'
 import DragAndDrop from './DragAndDrop'
 import {
     Layout, Menu, Button, Modal,
-    Select, InputNumber, Form,
+    Select, InputNumber, Form, PageHeader,
     Input, DatePicker, Icon, message, Spin
 } from 'antd';
 
@@ -80,44 +82,43 @@ export default class Scheduler extends React.Component {
         if (this.props.vessels.isLoading == false && this.props.schedule_requests.isLoading == false) return (
             <div>
                 <Layout className="layout">
-                    <Header>
-                        <div className="logo">
-                            <img src={logo}/>
+                    <div id='header'>
+                        <div className="ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-5 ant-col-lg-5 ant-col-xl-5 ant-col-xxl-3">
+                            <a id="logo">
+                                <img className="brandLogo" src={antlogo}/>
+                                <img className="brandName" src={antdesign}/>
+                            </a>
+
                         </div>
                         <Menu
-                            theme="dark"
                             mode="horizontal"
                             defaultSelectedKeys={['1']}
                             style={{lineHeight: '64px'}}
                         >
                             <Menu.Item key="1">
-                                <Link to='/'>
-                                    Request
-                                </Link>
-                            </Menu.Item>
-                            <Menu.Item key="2">Product Type</Menu.Item>
-                            <Menu.Item key="3">
                                 <Link to='/scheduler'>
-                                    Scheduler
+                                        <Icon type="calendar" />Scheduler
                                 </Link>
                             </Menu.Item>
                         </Menu>
-                    </Header>
+                    </div>
                     <Content style={{
                         height: '100vh',
                         width: '100%',
-                        margin: 'auto'
+                        margin: 'auto',
+                        background: '#fff',
+                        padding: '40px 0 0'
                     }}>
                     <DragAndDrop schedule_requests={this.props.schedule_requests.payload}
-                                 resources={this.props.vessels.payload}/>
+                                 resources={this.props.vessels.payload}
+                                 addScheduleRequests={this.props.addScheduleRequests}
+                    />
 
                     </Content>
                     <Footer style={{textAlign: 'center'}}>
                         <PandaIcon style={{fontSize: '32px'}}/> uluwu ©2019
                     </Footer>
                 </Layout>
-
-
             </div>
         )
         return (

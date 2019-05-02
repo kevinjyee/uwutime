@@ -32,7 +32,7 @@ export default {
     customMaxEvents: 99,
 
     eventItemHeight: 22,
-    eventItemLineHeight: 60,
+    eventItemLineHeight: 80,
     nonAgendaSlotMinHeight: 0,
     dayStartFrom: 0,
     dayStopTo: 23,

@@ -3,13 +3,39 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-.logo {
-  margin-right: 25px;
+#logo {
   float: left;
+  height: 64px;
+  padding-left: 40px;
+  overflow: hidden;
+  line-height: 64px;
+  white-space: nowrap;
+  text-decoration: none;
   img {
-    width: 43px;
-    height: 43px;
+    vertical-align: middle;
+    border-style: none;
   }
+
+  .brandLogo {
+    height: 32px;
+    margin-right: 16px;
+  }
+  .brandName {
+    position: relative;
+    top: 1px;
+    height: 16px;
+  }
+}
+
+
+#header {
+  position: relative;
+  z-index: 10;
+  max-width: 100%;
+  background: #fff;
+  -webkit-box-shadow: 0 2px 8px #f0f1f2;
+  box-shadow: 0 2px 8px #f0f1f2;
+  padding: 10px 0 0;
 }
 
 .footer {

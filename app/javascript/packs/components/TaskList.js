@@ -21,9 +21,9 @@ class TaskList extends Component{
         });
 
         return (
-            <ul>
+            <div className="ant-list ant-list-sm ant-list-split ant-list-bordered ant-list-something-after-last-item">
                 {taskList}
-            </ul>
+            </div>
         )
     }
 }
