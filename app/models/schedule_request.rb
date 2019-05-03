@@ -26,9 +26,9 @@ class ScheduleRequest < ApplicationRecord
   COLOR_PICKER = {
       'brew' => {
       hours: 24.0,
-      backgroundColor: '#2ab7ca',
-      color: '#2f54eb',
-      background: '#f0f5ff',
+      backgroundColor: '#17E9E0',
+      color: '#fff',
+      background: '#17E9E0',
       border: '#adc6ff',
       borderStyle: 'solid',
       borderRadius: '10px',
@@ -36,18 +36,18 @@ class ScheduleRequest < ApplicationRecord
   },
       'ferment' => {
       hours: 120.0,
-      color: '#52c41a',
-      background: '#f6ffed',
-      backgroundColor:'#fed766',
+      color: '#fff',
+      background: '#ffb48f',
+      backgroundColor:'#ffb48f',
       border: '#b7eb8f',
       borderStyle: 'solid',
       borderRadius:'10px'
   },
       'package' => {
       hours: 24.0,
-      backgroundColor:'#f4f4f8',
-      color: '#faad14',
-      background: '#fffbe6',
+      backgroundColor:'#fccd04',
+      color: '#fff',
+      background: '#fccd04',
       border: '#ffe58f',
       borderStyle: 'solid',
       borderRadius:'10px'
