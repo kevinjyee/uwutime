@@ -159,7 +159,7 @@ class DragAndDrop extends Component{
     constructor(props){
         super(props);
 
-        let schedulerData = new SchedulerData('2017-12-18', ViewTypes.Month, false, false, {
+        let schedulerData = new SchedulerData('2019-05-20', ViewTypes.Month, false, false, {
             schedulerWidth: '80%',
             schedulerMaxHeight: 0,
             views: [
@@ -272,7 +272,7 @@ class DragAndDrop extends Component{
         let dndList = viewModel.isEventPerspective ? (
             <ResourceList schedulerData={viewModel} newEvent={this.newEvent} resourceDndSource={resourceDndSource}/>
         ) : (
-            <TaskList schedulerData={viewModel} newEvent={this.newEvent} taskDndSource={taskDndSource} />
+            <TaskList schedulerData={viewModel} removedEvent={this.ops1} newEvent={this.newEvent} taskDndSource={taskDndSource} />
         );
 
         //register the external DnDSources
@@ -359,6 +359,9 @@ class DragAndDrop extends Component{
     ops1 = (schedulerData, event) => {
         console.log("Attempting to remove event")
         schedulerData.removeEvent(event)
+        this.setState({
+            viewModel: schedulerData
+        })
     };
 
     ops2 = (schedulerData, event) => {

@@ -379,6 +379,7 @@ export default class SchedulerData {
         if(index !== -1) {
             this.events.splice(index, 1);
             event['visible'] = 'hidden';
+            this._generateEventGroups();
             this._createRenderData();
         }
     }
@@ -649,12 +650,15 @@ export default class SchedulerData {
             let groupId = this._getEventGroupId(item);
             let groupName = this._getEventGroupName(item);
 
+
             if(!set.has(groupId)){
-                eventGroups.push({
-                    id: groupId,
-                    name: groupName,
-                    state: item,
-                });
+                if (item.totalHours) {
+                    eventGroups.push({
+                        id: groupId,
+                        name: groupName,
+                        state: item,
+                    });
+                }
                 set.add(groupId);
             }
         })
