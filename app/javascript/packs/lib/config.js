@@ -50,7 +50,7 @@ export default {
     creatable: true,
     crossResourceMove: true,
     checkConflict: false,
-    scrollToSpecialMomentEnabled: true,
+    scrollToSpecialMomentEnabled: false,
     eventItemPopoverEnabled: true,
     calendarPopoverEnabled: true,
     recurringEventsEnabled: true,

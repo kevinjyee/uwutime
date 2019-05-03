@@ -378,6 +378,7 @@ export default class SchedulerData {
         let index = this.events.indexOf(event);
         if(index !== -1) {
             this.events.splice(index, 1);
+            event['visible'] = 'hidden';
             this._createRenderData();
         }
     }

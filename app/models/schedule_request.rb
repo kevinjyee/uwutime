@@ -31,7 +31,7 @@ class ScheduleRequest < ApplicationRecord
       background: '#17E9E0',
       border: '#adc6ff',
       borderStyle: 'solid',
-      borderRadius: '10px',
+      borderRadius: '10px'
 
   },
       'ferment' => {

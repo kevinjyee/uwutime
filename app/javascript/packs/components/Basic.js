@@ -109,7 +109,7 @@ class Basic extends Component{
                 start: start,
                 end: end,
                 resourceId: slotId,
-                bgColor: 'purple'
+                bgColor: 'transparent'
             }
             schedulerData.addEvent(newEvent);
             this.setState({

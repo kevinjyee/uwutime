@@ -550,7 +550,8 @@ class EventItem extends Component {
 
         let eventItemTemplate = (
             <div className={roundCls + ' event-item'} key={eventItem.id}
-                 style={{height: config.eventItemHeight, backgroundColor: bgColor, zIndex: -1}}>
+                 style={{height: config.eventItemHeight, backgroundColor: bgColor, zIndex: -1,
+                     visibility: eventItem.visible}}>
                 <div className='event-wrapper'>
                 {scheduleBody}
                 </div>

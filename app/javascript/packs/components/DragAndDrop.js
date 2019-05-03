@@ -253,10 +253,19 @@ class DragAndDrop extends Component{
         let h3 = viewModel.isEventPerspective ? 'Drag and drop from outside: Drag a resource and drop to the task view' : 'Drag and drop from outside: Drag a task and drop to the resource view';
 
         let buttonContainer = (
-            <div className="button-container">
-                <Button type="primary"
+            <div className="task-container">
+                <Button className='add-request-btn'
+                    type="primary"
                         onClick={this.showModal}>
-                    <Icon type="plus"/> Add Request</Button>
+                    <Icon type="plus"/> Request
+                </Button>
+
+                <Button className='save-schedule-btn'
+                        type="primary"
+                        onClick={this.showModal}>
+                    <Icon type="cloud-upload" /> Schedule
+                </Button>
+
             </div>
         )
 
@@ -281,8 +290,7 @@ class DragAndDrop extends Component{
                                        onViewChange={this.onViewChange}
                                        eventItemClick={this.eventClicked}
                                        viewEventClick={this.ops1}
-                                       viewEventText="Ops 1"
-                                       viewEvent2Text="Ops 2"
+                                       viewEventText="Remove From Schedule"
                                        viewEvent2Click={this.ops2}
                                        updateEventStart={this.updateEventStart}
                                        updateEventEnd={this.updateEventEnd}
@@ -349,11 +357,16 @@ class DragAndDrop extends Component{
     };
 
     ops1 = (schedulerData, event) => {
-        alert(`You just executed ops1 to event: {id: ${event.id}, title: ${event.title}}`);
+        console.log("Attempting to remove event")
+        schedulerData.removeEvent(event)
     };
 
     ops2 = (schedulerData, event) => {
         alert(`You just executed ops2 to event: {id: ${event.id}, title: ${event.title}}`);
+    };
+
+    ops3 = (schedulerData, event) => {
+        alert(`You just executed ops3 to event: {id: ${event.id}, title: ${event.title}}`);
     };
 
     newEvent = (schedulerData, slotId, slotName, start, end, type, item) => {
@@ -371,7 +384,8 @@ class DragAndDrop extends Component{
                 start: start,
                 end: end,
                 resourceId: slotId,
-                bgColor: 'purple',
+                bgColor: 'transparent',
+                visibility: 'visible'
 
             }
 
@@ -385,7 +399,7 @@ class DragAndDrop extends Component{
             }
             else if(type === DnDTypes.TASK){
                 let newEnd = new Date(start);
-                newEnd.setHours(newEnd.getHours() + 168);
+                newEnd.setHours(newEnd.getHours() + item.state.totalHours);
                 newEvent = {
                     ...newEvent,
                     end: newEnd.toString(),
