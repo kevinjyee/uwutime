@@ -18,7 +18,18 @@ function schedule_requests(state = [], action){
                 action,
                 payload:  [...state.payload, action.payload],
                 isLoading: false
-            }
+            };
+        case 'PUBLISH SCHEDULE_STARTED':
+            console.log("Publishing Schedule...");
+            return { state, isLoading: true, action, payload: action.payload };
+        case 'PUBLISH_SCHEDULE_SUCCESS':
+            console.log("Published Schedule");
+            return {
+                state,
+                action,
+                payload:  [...state.payload, action.payload],
+                isLoading: false
+            };
         default:
             return state;
     }

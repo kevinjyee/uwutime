@@ -659,7 +659,6 @@ export default class SchedulerData {
                         state: item,
                     });
                 }
-                set.add(groupId);
             }
         })
         this.eventGroups = eventGroups;
@@ -757,7 +756,7 @@ export default class SchedulerData {
                 console.error(`Event undefined: ${index}`);
                 throw new Error(`Event undefined: ${index}`);
             }
-            if(e.id == undefined || e.resourceId == undefined || e.title == undefined || e.start == undefined || e.end == undefined)
+            if(e.id == undefined || e.resourceId == undefined || e.title == undefined)
             {
                 console.error('Event property missed', index, e);
                 throw new Error(`Event property undefined: ${index}`);

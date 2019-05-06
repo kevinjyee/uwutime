@@ -112,6 +112,7 @@ export default class Scheduler extends React.Component {
                     <DragAndDrop schedule_requests={this.props.schedule_requests.payload}
                                  resources={this.props.vessels.payload}
                                  addScheduleRequests={this.props.addScheduleRequests}
+                                 publishSchedule={this.props.publishSchedule}
                     />
 
                     </Content>

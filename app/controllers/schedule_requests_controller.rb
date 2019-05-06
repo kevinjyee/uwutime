@@ -19,6 +19,22 @@ class ScheduleRequestsController < ApplicationController
     end
   end
 
+  def bulk_update
+    byebug
+    @schedule = []
+    if params[:schedule_request].present?
+      resources = Array(params[:schedule_request])
+      resources.each do |resource|
+        puts resource[:id]
+        byebug
+        schedule = ScheduleRequest.first_or_initialize(identifier: resource[:groupName])
+        schedule.update_attributes(update_request_params(resource))
+        @schedule.append(schedule)
+      end
+    end
+    render json: @schedule ||= ScheduleRequest.all.order('requested_preferred_date ASC')
+  end
+
   private
 
   def schedule_request_params
@@ -29,6 +45,12 @@ class ScheduleRequestsController < ApplicationController
                                              :notes,
                                              :status,
                                              :scheduled,
-                                             :scheduled_tasks => {})
+                                             :start,
+                                             :end,
+                                             :scheduled_tasks => {},)
+  end
+
+  def update_request_params(resource)
+    resource.permit(:start, :end, :vessel_id)
   end
 end
