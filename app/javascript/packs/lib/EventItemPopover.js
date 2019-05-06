@@ -3,6 +3,8 @@ import {PropTypes} from 'prop-types'
 import Col from 'antd/lib/col'
 import Row from 'antd/lib/row'
 import 'antd/lib/grid/style/index.css'
+import { TimePicker } from 'antd';
+import moment from 'moment';
 
 class EventItemPopover extends Component {
     constructor(props) {
@@ -89,6 +91,7 @@ class EventItemPopover extends Component {
             }
 
             let dateFormat = config.eventItemPopoverDateFormat;
+            let timeFormat =  'HH:mm';
             return (
                 <div style={{width: '300px'}}>
                     <Row type="flex" align="middle">

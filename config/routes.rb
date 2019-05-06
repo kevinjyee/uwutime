@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   get '/scheduler' => "pages#root"
   root to: "pages#root"
   resources :schedule_requests
+  post '/schedule_requests/bulk_update' => 'schedule_requests#bulk_update'
   resources :vessels, only: [:index]
 end

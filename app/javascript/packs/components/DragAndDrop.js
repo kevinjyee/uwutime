@@ -18,7 +18,7 @@ import moment from "moment/moment";
 import {
     Button, Modal,
     Select, InputNumber,
-    Input, DatePicker, Icon, message, Spin
+    Input, DatePicker, Icon, TimePicker, message, Spin
 } from 'antd';
 
 const CollectionCreateForm = Form.create({name: 'form_in_modal'})(
@@ -155,6 +155,68 @@ const CollectionCreateForm = Form.create({name: 'form_in_modal'})(
     }
 );
 
+
+
+const EditEventForm = Form.create({name: 'form_in_modal'})(
+    // eslint-disable-next-line
+    class extends React.Component {
+        render() {
+            const {
+                visible, onCancel, onCreate, form, event
+            } = this.props;
+            const {getFieldDecorator} = form;
+            let title = 'Edit event';
+            const timeFormat = 'HH:mm';
+            if (event !== null) {
+                return (
+                    <Modal
+                        visible={visible}
+                        title={title}
+                        okText="Create"
+                        onCancel={onCancel}
+                        onOk={onCreate}
+                    >
+                        <Form layout="vertical">
+                            <div>
+                                Editing {event.title}
+                            </div>
+                            <Form.Item
+                                label="Start Time"
+                            >
+                                {getFieldDecorator('start-time', {
+                                    rules: [
+                                        {required: true},
+                                    ],
+                                    initialValue: moment(event.start, timeFormat)
+                                })(
+                                    <TimePicker
+                                        defaultValue={moment(event.start, timeFormat)}
+                                        format={timeFormat}/>
+                                )}
+                            </Form.Item>
+
+
+                        </Form>
+                    </Modal>
+                );
+            }
+            return (
+                <Modal
+                    visible={visible}
+                    title={title}
+                    okText="Create"
+                    onCancel={onCancel}
+                    onOk={onCreate}
+                >
+                    <Form layout="vertical">
+
+                    </Form>
+                </Modal>
+            );
+        }
+    }
+);
+
 class DragAndDrop extends Component{
     constructor(props){
         super(props);
@@ -175,8 +237,10 @@ class DragAndDrop extends Component{
             viewModel: schedulerData,
             taskDndSource: new DnDSource((props) => {return props.task;}, TaskItem, DnDTypes.TASK),
             resourceDndSource: new DnDSource((props) => {return props.resource;}, ResourceItem, DnDTypes.RESOURCE),
+            selectedEvent: null
         }
-        this.showModal = this.showModal.bind(this)
+        this.showModal = this.showModal.bind(this);
+        this.publishData = this.publishData.bind(this);
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -235,10 +299,19 @@ class DragAndDrop extends Component{
         });
     }
 
+    handleEventEdit = () => {
+        const form = this.formRef.props.form
+        console.log('edit submitted')
+        this.setState({show_edit_form: false});
+    }
+
     saveFormRef = (formRef) => {
         this.formRef = formRef;
     }
 
+    saveEditRef = (formRef) => {
+        this.editRef = formRef;
+    }
 
     handleFormSubmit(params) {
         this.props.addScheduleRequests(params);
@@ -246,6 +319,21 @@ class DragAndDrop extends Component{
 
     handleCancel = () => {
         this.setState({show_form: false});
+    }
+
+    handleEditCancel = () => {
+        this.setState({show_edit_form: false})
+    }
+
+    publishData() {
+        let events = this.state.viewModel.events;
+        let scheduledEvents = events.filter((event) => {
+            return event.start != null;
+        });
+
+        console.log(scheduledEvents);
+        this.props.publishSchedule(scheduledEvents);
+
     }
 
     render(){
@@ -262,7 +350,7 @@ class DragAndDrop extends Component{
 
                 <Button className='save-schedule-btn'
                         type="primary"
-                        onClick={this.showModal}>
+                        onClick={this.publishData}>
                     <Icon type="cloud-upload" /> Schedule
                 </Button>
 
@@ -313,6 +401,15 @@ class DragAndDrop extends Component{
                             onCancel={this.handleCancel}
                             onCreate={this.handleCreate}
                         />
+
+                        < EditEventForm {...this.props}
+                                        wrappedComponentRef={this.saveEditRef}
+                                        visible={this.state.show_edit_form}
+                                        onCancel={this.handleEditCancel}
+                                        onCreate={this.handleCreate}
+                                        event={this.state.selectedEvent}
+
+                        />
                     </Row>
                 </div>
             </div>
@@ -353,7 +450,9 @@ class DragAndDrop extends Component{
     }
 
     eventClicked = (schedulerData, event) => {
-        alert(`You just clicked an event: {id: ${event.id}, title: ${event.title}}`);
+        // alert(`You just clicked an event: {id: ${event.id}, title: ${event.title}}`);
+        this.setState({selectedEvent: event});
+        this.setState({show_edit_form: true});
     };
 
     ops1 = (schedulerData, event) => {
@@ -387,6 +486,7 @@ class DragAndDrop extends Component{
                 start: start,
                 end: end,
                 resourceId: slotId,
+                vessel_id: slotId,
                 bgColor: 'transparent',
                 visibility: 'visible'
 
@@ -408,7 +508,8 @@ class DragAndDrop extends Component{
                     end: newEnd.toString(),
                     groupId: item.id,
                     children: item.state.children,
-                    groupName: item.name
+                    groupName: item.name,
+
                 };
             }
 

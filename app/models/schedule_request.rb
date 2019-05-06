@@ -23,6 +23,8 @@ class ScheduleRequest < ApplicationRecord
   scope :unscheduled, -> { with_status(NOT_SCHEDULED) }
   scope :scheduled, -> { with_status(SCHEDULED) }
 
+  after_create :add_identifier
+
   COLOR_PICKER = {
       'brew' => {
       hours: 24.0,
@@ -98,20 +100,20 @@ class ScheduleRequest < ApplicationRecord
     totalHours
   end
 
-  def start
-    scheduled_run_start.nil? ? "" : scheduled_run_start
-  end
-
-  def end
-    scheduled_run_start.nil? ? "" : scheduled_run_start
-  end
-
   def resourceId
     vessel_id.nil? ? "" : vessel_id
   end
 
   def title
-    "#{product_name}-#{id}"
+    identifier
+  end
+
+  def groupName
+    start.nil? ? nil : identifier
+  end
+
+  def groupId
+    start.nil? ? nil : id.to_s
   end
 
 
@@ -120,6 +122,7 @@ class ScheduleRequest < ApplicationRecord
   def create_task_templates(key, value)
     value = value.symbolize_keys
     hours = value[:time]
+
     if value[:time_interval] == DAYS
       hours = hours*24
     end
@@ -133,5 +136,10 @@ class ScheduleRequest < ApplicationRecord
         border: COLOR_PICKER[key][:borderStyle],
         borderRadius: COLOR_PICKER[key][:borderRadius]
     }
+  end
+
+  def add_identifier
+    self.identifier = "#{product_name}-#{id}"
+    self.save!
   end
 end

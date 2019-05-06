@@ -1,6 +1,6 @@
 import axios from "axios/index";
 
-//
+// Fetch Schedule
 export function fetchScheduleRequests() {
     return function(dispatch) {
         dispatch(requestSchedule());
@@ -27,6 +27,7 @@ export function receivedSchedule(data) {
 }
 
 
+// Fetch Vessel
 export function fetchVessels() {
     return function(dispatch) {
         dispatch(requestVessels());
@@ -53,6 +54,7 @@ export function receivedVessels(data) {
 }
 
 
+// Add Schedule
 export const addScheduleRequests = (params) => {
     return dispatch => {
         dispatch(addScheduleStarted);
@@ -83,5 +85,32 @@ const addScheduleFailure = error => ({
 });
 
 
+// Find or Initialize Schedule
+
+export const publishSchedule = (params) => {
+    return dispatch => {
+        dispatch(publishScheduleStarted);
+        axios.post('/schedule_requests/bulk_update', {
+            schedule_request: params
+        }).then( res => {
+            dispatch(publishScheduleData(res.data));
+        }).catch(err => {
+            dispatch(publishScheduleFailure(err.message));
+        })
+    };
+};
 
 
+const publishScheduleStarted = () => ({
+    type: 'PUBLISH_SCHEDULE_STARTED'
+});
+
+const publishScheduleData = data => ({
+    type: 'PUBLISH_SCHEDULE_SUCCESS',
+    payload: {...data}
+});
+
+const publishScheduleFailure = data => ({
+    type: 'PUBLISH_SCHEDULE_FAILURE',
+    payload: {...data}
+});
