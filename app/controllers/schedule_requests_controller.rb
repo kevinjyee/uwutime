@@ -21,6 +21,7 @@ class ScheduleRequestsController < ApplicationController
 
   def bulk_update
     @schedule = []
+    byebug
     if params[:schedule_request].present?
       resources = Array(params[:schedule_request])
       resources.each do |resource|

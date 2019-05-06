@@ -659,6 +659,7 @@ export default class SchedulerData {
                         state: item,
                     });
                 }
+                    set.add(groupId);
             }
         })
         this.eventGroups = eventGroups;
