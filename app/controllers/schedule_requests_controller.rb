@@ -20,14 +20,11 @@ class ScheduleRequestsController < ApplicationController
   end
 
   def bulk_update
-    byebug
     @schedule = []
     if params[:schedule_request].present?
       resources = Array(params[:schedule_request])
       resources.each do |resource|
-        puts resource[:id]
-        byebug
-        schedule = ScheduleRequest.first_or_initialize(identifier: resource[:groupName])
+        schedule = ScheduleRequest.find_or_initialize_by(identifier: resource[:groupName])
         schedule.update_attributes(update_request_params(resource))
         @schedule.append(schedule)
       end
