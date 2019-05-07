@@ -6,10 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="027dbcea-88e0-4835-8ae9-ff9a8ff356d2" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/schedule_requests_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/schedule_requests_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/javascript/packs/components/DragAndDrop.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/components/DragAndDrop.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/javascript/packs/lib/EventItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/lib/EventItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/javascript/packs/reducers/schedule_requests.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/reducers/schedule_requests.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/lib/DnDContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/lib/DnDContext.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -94,11 +91,23 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="schedule_requests.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="schedule_requests.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/javascript/packs/reducers/schedule_requests.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="435">
-                  <caret line="29" column="25" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
+                <state relative-caret-position="585">
+                  <caret line="39" column="32" lean-forward="true" selection-start-line="39" selection-start-column="32" selection-end-line="39" selection-end-column="32" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="DnDContext.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/javascript/packs/lib/DnDContext.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="336">
+                  <caret line="64" column="66" selection-start-line="64" selection-start-column="66" selection-end-line="64" selection-end-column="66" />
+                  <folding>
+                    <element signature="e#0#38#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -128,8 +137,8 @@
           <file leaf-file-name="actionCreators.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/javascript/packs/actions/actionCreators.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="477">
-                  <caret line="103" column="33" lean-forward="true" selection-start-line="103" selection-start-column="33" selection-end-line="103" selection-end-column="33" />
+                <state relative-caret-position="537">
+                  <caret line="107" column="14" lean-forward="true" selection-start-line="107" selection-start-column="14" selection-end-line="107" selection-end-column="14" />
                 </state>
               </provider>
             </entry>
@@ -171,7 +180,7 @@
             <entry file="file://$PROJECT_DIR$/app/javascript/packs/reducers/schedule_requests.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="360">
-                  <caret line="24" column="40" lean-forward="true" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="40" />
+                  <caret line="24" column="40" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="40" />
                 </state>
               </provider>
             </entry>
@@ -228,7 +237,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/javascript/packs/schedule_request.jsx" />
         <option value="$PROJECT_DIR$/app/javascript/packs/scheduler.jsx" />
         <option value="$PROJECT_DIR$/app/controllers/scheduler_controller.rb" />
         <option value="$PROJECT_DIR$/app/javascript/packs/schedule_requests.jsx" />
@@ -279,6 +287,7 @@
         <option value="$PROJECT_DIR$/app/javascript/packs/lib/EventItem.js" />
         <option value="$PROJECT_DIR$/app/controllers/schedule_requests_controller.rb" />
         <option value="$PROJECT_DIR$/app/javascript/packs/reducers/schedule_requests.js" />
+        <option value="$PROJECT_DIR$/app/javascript/packs/lib/DnDContext.js" />
       </list>
     </option>
   </component>
@@ -463,15 +472,15 @@
       <workItem from="1556617234259" duration="12181000" />
       <workItem from="1556789466998" duration="8955000" />
       <workItem from="1557220763870" duration="11045000" />
-      <workItem from="1557239843839" duration="5177000" />
+      <workItem from="1557239843839" duration="6709000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="216754000" />
+    <option name="totallyTimeSpent" value="218286000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1920" height="1104" extended-state="6" />
+    <frame x="0" y="23" width="1920" height="1100" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
@@ -557,9 +566,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/pages_controller.rb">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -877,13 +883,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/actions/actionCreators.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="477">
-          <caret line="103" column="33" lean-forward="true" selection-start-line="103" selection-start-column="33" selection-end-line="103" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/schedule_requests_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="338">
@@ -891,10 +890,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/actions/actionCreators.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="537">
+          <caret line="107" column="14" lean-forward="true" selection-start-line="107" selection-start-column="14" selection-end-line="107" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/javascript/packs/reducers/schedule_requests.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="25" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
+        <state relative-caret-position="585">
+          <caret line="39" column="32" lean-forward="true" selection-start-line="39" selection-start-column="32" selection-end-line="39" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/lib/DnDContext.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="64" column="66" selection-start-line="64" selection-start-column="66" selection-end-line="64" selection-end-column="66" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

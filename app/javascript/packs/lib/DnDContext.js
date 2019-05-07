@@ -64,6 +64,9 @@ export default class DnDContext {
                 }
                 const point = monitor.getClientOffset();                
                 let leftIndex = Math.floor((point.x - pos.x)/cellWidth);
+                if (leftIndex > resourceEvents.headerItems.length -1) {
+                    leftIndex = resourceEvents.headerItems.length -1
+                }
                 let newStart = resourceEvents.headerItems[leftIndex].start;
                 let newEnd = resourceEvents.headerItems[leftIndex].end;
                 if(cellUnit !== CellUnits.Hour)
