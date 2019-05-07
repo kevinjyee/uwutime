@@ -113,6 +113,7 @@ export default class Scheduler extends React.Component {
                                  resources={this.props.vessels.payload}
                                  addScheduleRequests={this.props.addScheduleRequests}
                                  publishSchedule={this.props.publishSchedule}
+                                 removeSchedule={this.props.removeSchedule}
                     />
 
                     </Content>

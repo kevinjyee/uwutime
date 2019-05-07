@@ -510,6 +510,14 @@ class EventItem extends Component {
             if (Object.keys(eventItem.children).length > 0) {
                 scheduleBody = Object.keys(eventItem.children).map((key) => {
 
+                    if(eventItem.maxChild != key) {
+                        eventItem.children[key].displayName = key
+                    }
+                    else
+                    {
+                        eventItem.children[key].displayName = `${key}-${eventItem.groupName}`
+                    }
+
                     return (<div className= {key} key={key}
                                  style={{height: config.eventItemHeight,
                                      backgroundColor: eventItem.children[key].background,
@@ -520,7 +528,7 @@ class EventItem extends Component {
                                      width: (eventItem.children[key].hours/totalHours) * width}}>
                         <span style={{marginLeft: '10px',
                             lineHeight: `${config.eventItemHeight}px`,
-                         }}>{key}</span>
+                         }}>{eventItem.children[key].displayName}</span>
                         </div>
                         );
                 })

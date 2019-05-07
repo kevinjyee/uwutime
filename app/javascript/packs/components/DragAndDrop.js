@@ -456,8 +456,14 @@ class DragAndDrop extends Component{
     };
 
     ops1 = (schedulerData, event) => {
-        console.log("Attempting to remove event")
-        schedulerData.removeEvent(event)
+        console.log("Attempting to remove event");
+        schedulerData.removeEvent(event);
+        event.start = null;
+        event.end = null;
+        console.log(event);
+        if(event.title != 'New event you just created') {
+            this.props.removeSchedule(event);
+        }
         this.setState({
             viewModel: schedulerData
         })

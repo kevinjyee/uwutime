@@ -114,3 +114,34 @@ const publishScheduleFailure = data => ({
     type: 'PUBLISH_SCHEDULE_FAILURE',
     payload: {...data}
 });
+
+
+// Remove an Event from Schedule
+
+export const removeSchedule = (params) => {
+    return dispatch => {
+        dispatch(removeScheduleStarted);
+        axios.put(`/schedule_requests/${params.id}`, {
+            schedule_request: params
+        }).then( res => {
+            dispatch(removeScheduleEvent(res.data));
+        }).catch(err => {
+            dispatch(removeScheduleFailure(err.message));
+        })
+    };
+}
+
+
+const removeScheduleStarted = () => ({
+    type: 'REMOVE_SCHEDULE_STARTED'
+});
+
+const removeScheduleEvent = data => ({
+    type: 'REMOVE_SCHEDULE_SUCCESS',
+    payload: {...data}
+});
+
+const removeScheduleFailure = data => ({
+    type: 'REMOVE_SCHEDULE_FAILURE',
+    payload: {...data}
+});

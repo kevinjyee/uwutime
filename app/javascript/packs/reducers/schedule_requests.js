@@ -30,6 +30,15 @@ function schedule_requests(state = [], action){
                 payload:  [...state.payload, action.payload],
                 isLoading: false
             };
+        case 'REMOVE_SCHEDULE_STARTED':
+            console.log("Removing Schedule...");
+        case 'REMOVE_SCHEDULE_SUCCESS':
+            return {
+                state,
+                action,
+                payload:  [...state.payload, action.payload],
+                isLoading: false
+            };
         default:
             return state;
     }

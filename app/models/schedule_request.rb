@@ -74,6 +74,7 @@ class ScheduleRequest < ApplicationRecord
   def children
     # hardcode background, border, color, borderStyle, borderRadius for now
     attributes = {}
+
     self.scheduled_tasks.each do |key, value|
       attributes[key] = create_task_templates(key, value)
     end

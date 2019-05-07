@@ -652,7 +652,7 @@ export default class SchedulerData {
 
 
             if(!set.has(groupId)){
-                if (item.totalHours) {
+                if (!item.start) {
                     eventGroups.push({
                         id: groupId,
                         name: groupName,
