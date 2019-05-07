@@ -525,7 +525,7 @@ class EventItem extends Component {
                                      borderStyle: eventItem.children[key].borderStyle,
                                      borderRadius: eventItem.children[key].borderRadius,
                                      color: eventItem.children[key].color,
-                                     width: (eventItem.children[key].hours/totalHours) * width}}>
+                                     minWidth: (eventItem.children[key].hours/totalHours) * width}}>
                         <span style={{marginLeft: '10px',
                             lineHeight: `${config.eventItemHeight}px`,
                          }}>{eventItem.children[key].displayName}</span>

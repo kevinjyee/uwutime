@@ -309,6 +309,7 @@ class DragAndDrop extends Component{
         this.formRef = formRef;
     }
 
+
     saveEditRef = (formRef) => {
         this.editRef = formRef;
     }
@@ -340,11 +341,21 @@ class DragAndDrop extends Component{
         const {viewModel, taskDndSource, resourceDndSource} = this.state;
         let h3 = viewModel.isEventPerspective ? 'Drag and drop from outside: Drag a resource and drop to the task view' : 'Drag and drop from outside: Drag a task and drop to the resource view';
 
+        let disableAdd = false;
+
+        if (this.props.schedule_requests.length != this.state.viewModel.events.length)
+        {
+            disableAdd = true;
+        }
+
         let buttonContainer = (
             <div className="task-container">
                 <Button className='add-request-btn'
                     type="primary"
-                        onClick={this.showModal}>
+                        disabled={disableAdd}
+                        onClick={this.showModal}
+
+                >
                     <Icon type="plus"/> Request
                 </Button>
 

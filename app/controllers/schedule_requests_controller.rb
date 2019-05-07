@@ -37,8 +37,10 @@ class ScheduleRequestsController < ApplicationController
       resources = Array(params[:schedule_request])
       resources.each do |resource|
         schedule = ScheduleRequest.find_or_initialize_by(identifier: resource[:groupName])
-        schedule.update_attributes(update_request_params(resource))
-        @schedule.append(schedule)
+         unless (resource[:start].to_datetime  == schedule.start)  && (resource[:vessel_id] == schedule.vessel_id)
+           schedule.update_attributes(update_request_params(resource))
+           @schedule.append(schedule)
+         end
       end
     end
     render json: @schedule ||= ScheduleRequest.all.order('requested_preferred_date ASC')

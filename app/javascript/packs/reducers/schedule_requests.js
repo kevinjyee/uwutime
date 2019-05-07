@@ -27,7 +27,7 @@ function schedule_requests(state = [], action){
             return {
                 state,
                 action,
-                payload:  [...state.payload],
+                payload: [...Object.values(action.payload), ...state.payload],
                 isLoading: false
             };
         case 'REMOVE_SCHEDULE_STARTED':
