@@ -84,7 +84,7 @@ const CollectionCreateForm = Form.create({name: 'form_in_modal'})(
                                 rules: [
                                     {required: true},
                                 ],
-                                initialValue: 1
+                                initialValue: 24
                             })(
                                 <InputNumber min={1}/>
                             )}
@@ -99,7 +99,7 @@ const CollectionCreateForm = Form.create({name: 'form_in_modal'})(
                                 rules: [
                                     {required: true},
                                 ],
-                                initialValue: 1
+                                initialValue: 7
                             })(
                                 <InputNumber min={1}/>
                             )}
@@ -360,7 +360,7 @@ class DragAndDrop extends Component{
         let dndList = viewModel.isEventPerspective ? (
             <ResourceList schedulerData={viewModel} newEvent={this.newEvent} resourceDndSource={resourceDndSource}/>
         ) : (
-            <TaskList schedulerData={viewModel} removedEvent={this.ops1} newEvent={this.newEvent} taskDndSource={taskDndSource} />
+            <TaskList schedulerData={viewModel} removeTask={this.removeTask} newEvent={this.newEvent} taskDndSource={taskDndSource} />
         );
 
         //register the external DnDSources
@@ -469,6 +469,17 @@ class DragAndDrop extends Component{
         })
     };
 
+    removeTask  = (schedulerData, task) => {
+        console.log("Deleting Task");
+        console.log(task);
+        this.props.deleteTask(task);
+        schedulerData.removeTask(task);
+        this.setState({
+            viewModel: schedulerData
+        })
+    }
+
+
     ops2 = (schedulerData, event) => {
         alert(`You just executed ops2 to event: {id: ${event.id}, title: ${event.title}}`);
     };
@@ -494,7 +505,7 @@ class DragAndDrop extends Component{
                 resourceId: slotId,
                 vessel_id: slotId,
                 bgColor: 'transparent',
-                visibility: 'visible'
+                visibility: 'visible',
 
             }
 
@@ -515,6 +526,7 @@ class DragAndDrop extends Component{
                     groupId: item.id,
                     children: item.state.children,
                     groupName: item.name,
+                    maxChild: item.state.maxChild
 
                 };
             }

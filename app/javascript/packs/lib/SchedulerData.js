@@ -384,6 +384,21 @@ export default class SchedulerData {
         }
     }
 
+    removeTask(task) {
+        let index = -1;
+        for(var i =0; i < this.events.length; i ++){
+            if (this.events[i].id == task.id) {
+                index = i
+                break;
+            }
+        }
+        if(index !== -1) {
+            this.events.splice(index, 1);
+            this._generateEventGroups();
+            this._createRenderData();
+        }
+    }
+
     removeEventById(eventId) {
         let index = -1;
         this.events.forEach((item, idx) => {

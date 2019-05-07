@@ -13,11 +13,11 @@ class TaskList extends Component{
     }
 
     render(){
-        const {schedulerData, newEvent, taskDndSource} = this.props;
+        const {schedulerData, newEvent, taskDndSource, removeTask} = this.props;
         let DnDTaskItem = taskDndSource.getDragSource();
         let tasks = schedulerData.eventGroups;
         let taskList = tasks.map((item) => {
-            return <DnDTaskItem key={item.id} task={item} newEvent={newEvent} schedulerData={schedulerData} />
+            return <DnDTaskItem key={item.id} task={item} newEvent={newEvent} removeTask={removeTask} schedulerData={schedulerData} />
         });
 
         return (

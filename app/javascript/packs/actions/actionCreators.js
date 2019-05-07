@@ -131,7 +131,6 @@ export const removeSchedule = (params) => {
     };
 }
 
-
 const removeScheduleStarted = () => ({
     type: 'REMOVE_SCHEDULE_STARTED'
 });
@@ -143,5 +142,35 @@ const removeScheduleEvent = data => ({
 
 const removeScheduleFailure = data => ({
     type: 'REMOVE_SCHEDULE_FAILURE',
+    payload: {...data}
+});
+
+
+// Remove a Task
+
+export const deleteTask = (params) => {
+    return dispatch => {
+        dispatch(deleteTaskStarted);
+        axios.delete(`/schedule_requests/${params.id}`, {
+            schedule_request: params
+        }).then( res => {
+            dispatch(deleteTaskEvent(res.data));
+        }).catch(err => {
+            dispatch(deleteTaskFailure(err.message));
+        })
+    };
+}
+
+const deleteTaskStarted = () => ({
+    type: 'DELETE_TASK_STARTED'
+});
+
+const deleteTaskEvent = data => ({
+    type: 'DELETE_TASK_SUCCESS',
+    payload: {...data}
+});
+
+const deleteTaskFailure = data => ({
+    type: 'DELETE_TASK_FAILURE',
     payload: {...data}
 });

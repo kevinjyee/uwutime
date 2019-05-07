@@ -25,6 +25,12 @@ class ScheduleRequestsController < ApplicationController
     render json: schedule_request
   end
 
+  def destroy
+    schedule_request = ScheduleRequest.find(schedule_request_id)
+    schedule_request.destroy
+    render json: schedule_request
+  end
+
   def bulk_update
     @schedule = []
     if params[:schedule_request].present?
@@ -60,6 +66,6 @@ class ScheduleRequestsController < ApplicationController
   end
 
   def schedule_request_id
-    params[:schedule_request][:id] || params[:id]
+    params.try(:schedule_request).try(:id) || params[:id]
   end
 end

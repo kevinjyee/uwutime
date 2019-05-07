@@ -27,7 +27,7 @@ function schedule_requests(state = [], action){
             return {
                 state,
                 action,
-                payload:  [...state.payload, action.payload],
+                payload:  [...state.payload],
                 isLoading: false
             };
         case 'REMOVE_SCHEDULE_STARTED':
@@ -39,6 +39,15 @@ function schedule_requests(state = [], action){
                 payload:  [...state.payload, action.payload],
                 isLoading: false
             };
+        case 'DELETE_TASK_STARTED':
+            console.log("Deleting Task...");
+        case 'DELETE_TASK_SUCCESS':
+            return {
+                state,
+                action,
+                payload:  state.payload.filter((data, i) => data.id !== action.payload.id),
+                isLoading: false
+            }
         default:
             return state;
     }

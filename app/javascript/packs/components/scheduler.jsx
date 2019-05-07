@@ -114,6 +114,7 @@ export default class Scheduler extends React.Component {
                                  addScheduleRequests={this.props.addScheduleRequests}
                                  publishSchedule={this.props.publishSchedule}
                                  removeSchedule={this.props.removeSchedule}
+                                 deleteTask={this.props.deleteTask}
                     />
 
                     </Content>

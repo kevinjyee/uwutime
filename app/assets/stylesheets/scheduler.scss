@@ -5,6 +5,10 @@
 .task-list-container {
   display: flex;
   justify-content: flex-start;
+  .delete-task-icon-container {
+    position: absolute;
+    left: 90%;
+  }
 }
 
 .ant-task-name {
