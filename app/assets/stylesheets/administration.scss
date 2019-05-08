@@ -1,0 +1,22 @@
+// Place all the styles related to the ScheduleRequests controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.menu-table-container {
+  display: flex;
+  flex-direction: row;
+
+ .admin-table-container {
+   width: 100%;
+ }
+  .antd-table-wrapper {
+    margin-top: 40px;
+  }
+  .add-request-btn {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-bottom: 10px;
+    float: right;
+  }
+}

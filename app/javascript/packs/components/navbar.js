@@ -28,7 +28,7 @@ export default class NavBar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            current: this.props.currentPage,
+            current: this.props.currentPage || 1,
         }
     }
 
