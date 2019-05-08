@@ -16,6 +16,7 @@ import {
 } from 'antd';
 
 import { Link } from 'react-router-dom';
+import NavBar from "./navbar";
 
 const {Header, Content, Footer} = Layout;
 
@@ -288,67 +289,7 @@ export default class ScheduleRequests extends React.Component {
         if (this.props.schedule_requests.isLoading == false) return (
             <div>
                 <div>
-                    <Layout className="layout">
-                        <Header>
-                            <div className="logo">
-                                <img src={logo}/>
-                            </div>
-                            <Menu
-                                theme="dark"
-                                mode="horizontal"
-                                defaultSelectedKeys={['1']}
-                                style={{lineHeight: '64px'}}
-                            >
-                                <Menu.Item key="1">
-                                    <Link to='/'>
-                                    Request
-                                </Link>
-                                </Menu.Item>
-                                <Menu.Item key="2">Product Type</Menu.Item>
-                                <Menu.Item key="3">
-                                    <Link to='/scheduler'>
-                                        Scheduler
-                                    </Link>
-                                </Menu.Item>
-                            </Menu>
-                        </Header>
-                        <Content style={{
-                            height: '100vh',
-                            width: '90%',
-                            margin: 'auto'
-                        }}>
-
-                            <div className="button-container">
-                                <Button type="primary"
-                                        onClick={this.showModal}>
-                                    <Icon type="plus"/> Add Request</Button>
-                            </div>
-
-                            <CollectionCreateForm
-                                {...this.props}
-                                wrappedComponentRef={this.saveFormRef}
-                                visible={this.state.show_form}
-                                onCancel={this.handleCancel}
-                                onCreate={this.handleCreate}
-                            />
-
-                            <div className='content-grid'>
-                                <ScheduleRequestsList
-
-                                    schedule_requests={this.props.schedule_requests.payload}
-                                    status={true}/>
-
-                                <ScheduleRequestsList
-                                    schedule_requests={this.props.schedule_requests.payload}
-                                    status={false}/>
-                            </div>
-
-
-                        </Content>
-                        <Footer style={{textAlign: 'center'}}>
-                            <PandaIcon style={{fontSize: '32px'}}/> uluwu ©2019
-                        </Footer>
-                    </Layout>
+                <NavBar currentPage='2'/>
 
 
                 </div>
