@@ -15,8 +15,10 @@ const AppRoute = (props) => (
     <Router>
         <div>
             <Switch>
-                <Route path='/scheduler' component={SchedulerContainer}/>
+                <Route path='/administration/vessels' component={AdministrationContainer}/>
                 <Route path='/administration' component={AdministrationContainer }/>
+                <Route path='/scheduler' component={SchedulerContainer}/>
+                <Route path='/' component={SchedulerContainer}/>
             </Switch>
         </div>
     </Router>

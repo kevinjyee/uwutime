@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   post '/users' => 'users#create'
   get '/scheduler' => "pages#root"
   get '/administration' => "pages#root"
+  get '/administration/vessels' => "pages#root"
+  get '/administration/mash_profiles' => "pages#root"
   root to: "pages#root"
   resources :schedule_requests
   post '/schedule_requests/bulk_update' => 'schedule_requests#bulk_update'

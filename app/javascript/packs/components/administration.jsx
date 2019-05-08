@@ -7,12 +7,14 @@ import '../../../assets/stylesheets/administration.scss'
 import '../../../assets/stylesheets/index.scss'
 import 'antd/dist/antd.css';
 import {message} from 'antd';
+import { Link } from 'react-router-dom';
 
 import Admin_sub_menu from './admin_sub_menu'
 
 import NavBar from './navbar'
 
 import {Table, Spin, Button, Icon} from 'antd';
+
 import '../../../assets/stylesheets/schedule_request_list.scss'
 
 const columns = [{
