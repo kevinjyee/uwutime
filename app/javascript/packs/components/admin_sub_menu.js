@@ -4,19 +4,19 @@ import 'bootstrap/dist/css/bootstrap-theme.css'
 import '../../../assets/stylesheets/schedule_requests.scss'
 import '../../../assets/stylesheets/index.scss'
 import 'antd/dist/antd.css';
-import { Link } from 'react-router-dom';
 
 var $ = require('jquery')
 import { Menu, Icon } from 'antd';
+import { Link } from 'react-router-dom';
 
-export default class Admin_sub_menu extends React.Component {
+export default class AdminSubMenu extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
             mode: 'vertical',
             theme: 'light',
-            current: this.props.currentState
+            current: this.props.currentState || "1"
         }
     }
 
@@ -26,7 +26,6 @@ export default class Admin_sub_menu extends React.Component {
             current: e.key,
         });
     }
-
 
     render() {
         return (
@@ -40,13 +39,13 @@ export default class Admin_sub_menu extends React.Component {
                 >
                     <Menu.Item key="1">
                         <Link to='/administration/vessels'>
-                        <Icon type="mail" />
-                        Tanks
+                        <Icon type="mail" /> Tanks
                         </Link>
+
                     </Menu.Item>
                     <Menu.Item key="2">
                         <Icon type="calendar" />
-                        Mash
+                        Profiles
                     </Menu.Item>
                 </Menu>
             </div>

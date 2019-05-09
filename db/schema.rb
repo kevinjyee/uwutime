@@ -10,7 +10,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_06_112447) do
+ActiveRecord::Schema.define(version: 2019_05_09_211919) do
+
+  create_table "ferment_steps", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.string "name"
+    t.string "display_name"
+    t.integer "temperature"
+    t.string "temperature_unit"
+    t.integer "pressure"
+    t.string "pressure_unit"
+    t.integer "day"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "ferment_task_id"
+  end
+
+  create_table "ferment_tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.string "name"
+    t.string "step"
+    t.integer "step_order"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "day_start"
+    t.integer "schedule_profile_id"
+  end
+
+  create_table "mash_steps", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.string "name"
+    t.string "display_name"
+    t.integer "temperature"
+    t.string "temperature_unit"
+    t.integer "duration_hours"
+    t.integer "step_order"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "mash_task_id"
+  end
+
+  create_table "mash_tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.string "name"
+    t.string "step"
+    t.integer "step_order"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "schedule_profile_id"
+  end
 
   create_table "organization_task_template_associations", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "organization_id"
@@ -20,6 +64,39 @@ ActiveRecord::Schema.define(version: 2019_05_06_112447) do
   end
 
   create_table "organizations", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "packaging_steps", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.string "name"
+    t.string "display_name"
+    t.integer "day"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "packaging_task_id"
+  end
+
+  create_table "packaging_tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.string "name"
+    t.string "step"
+    t.integer "step_order"
+    t.integer "day_start"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "schedule_profile_id"
+  end
+
+  create_table "recipes", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.string "name"
+    t.string "brew_type"
+    t.integer "schedule_profile_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "schedule_profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

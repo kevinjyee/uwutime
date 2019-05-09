@@ -9,7 +9,8 @@ import 'antd/dist/antd.css';
 import {message} from 'antd';
 import { Link } from 'react-router-dom';
 
-import Admin_sub_menu from './admin_sub_menu'
+import AdminSubMenu from './admin_sub_menu'
+import AddVesselModal from './add_vessel_modal'
 
 import NavBar from './navbar'
 
@@ -48,32 +49,96 @@ export default class Scheduler extends React.Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            show_form: false,
+            vessels: this.props.vessels.payload || []
+        }
+        this.showModal = this.showModal.bind(this);
     }
 
     componentDidMount() {
         this.props.fetchVessels();
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        // Typical usage (don't forget to compare props):
+        if (prevProps.vessels.payload !== this.props.vessels.payload) {
+            this.setState({vessels: this.props.vessels.payload});
+        }
+    }
+
+    showModal() {
+        this.setState({show_form: true});
+    }
+
+
+    saveFormRef = (formRef) => {
+        this.formRef = formRef;
+    }
+
+
+    handleCancel = () => {
+        this.setState({show_form: false});
+    }
+
+
+    handleCreate = () => {
+        const form = this.formRef.props.form;
+        form.validateFields((err, values) => {
+            if (err) {
+                return;
+            }
+
+            console.log('Received values of form: ', values);
+
+            var vessel_params = {
+                identifier: values['identifier'],
+                volume: values['volume'],
+                volume_unit: values['volume_unit'],
+                vessel_type: values['vessel_type']
+            }
+
+            this.props.addVessel(vessel_params);
+
+            form.resetFields();
+            this.setState({show_form: false});
+        });
+    }
+
     render() {
-        let data = this.props.vessels.payload;
+        let data = this.state.vessels;
         if (data && data.length > 0) {
             return (
                 <div>
-                    <NavBar currentState="4"/>
+                    <NavBar currentState="2"/>
                     <div className='menu-table-container'>
-                        <Admin_sub_menu currentState="1"/>
+                        <AdminSubMenu currentState="1"/>
 
 
                         <div className='admin-table-container'>
-
+                            <div className='admin-button-container'>
                             <Button className='add-request-btn'
                                     type="primary"
+                                    disabled={false}
+                                    onClick={this.showModal}
                             >
+
                                 <Icon type="plus"/> Add Vessel
                             </Button>
+                            </div>
 
                             <Table pagination={{pageSize: 25}}
                                    columns={columns} dataSource={data}/>
+
+
+                            <AddVesselModal
+                                {...this.props}
+                                wrappedComponentRef={this.saveFormRef}
+                                visible={this.state.show_form}
+                                onCancel={this.handleCancel}
+                                onCreate={this.handleCreate}
+                                />
+
                         </div>
                     </div>
                 </div>
@@ -83,9 +148,8 @@ export default class Scheduler extends React.Component {
         else {
             return (
                 <div>
-                    <NavBar currentState="4"/>
-                    <Admin_sub_menu currentState="1"/>
-                    <Spin/>
+                    <NavBar currentState="2"/>
+                    <AdminSubMenu currentState="1"/>
                 </div>
             )
         }

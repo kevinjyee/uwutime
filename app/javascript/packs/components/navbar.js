@@ -28,7 +28,7 @@ export default class NavBar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            current: this.props.currentPage || 1,
+            current: this.props.currentPage || "1",
         }
     }
 
@@ -60,7 +60,7 @@ export default class NavBar extends React.Component {
                                 <Icon type="calendar" />Scheduler
                             </Link>
                         </Menu.Item>
-                        <Menu.Item key="4">
+                        <Menu.Item key="2">
                             <Link to='/administration'>
                                 <Icon type="ordered-list" />Administration
                             </Link>

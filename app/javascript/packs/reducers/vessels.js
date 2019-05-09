@@ -11,6 +11,11 @@ function vessels(state = [], action){
         case 'RECEIVED_VESSELS':
             console.log('Received_Vessels');
             return { state, isLoading: false, action, payload: action.payload};
+        case 'ADD_VESSEL_STARTED':
+            console.log('Adding Vessel');
+            return { state, isLoading: true}
+        case 'ADD_VESSEL_EVENT':
+            return { state, isLoading: false, action, payload: [...state.payload, action.payload]}
         default:
             return state;
     }

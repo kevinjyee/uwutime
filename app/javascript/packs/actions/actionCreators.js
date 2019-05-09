@@ -53,6 +53,36 @@ export function receivedVessels(data) {
     }
 }
 
+// Add Vessel
+export const addVessel = (params) => {
+    return dispatch => {
+        dispatch(addVesselStarted);
+        axios.post('/vessels', {
+            vessel: params
+        }).then( res => {
+            dispatch(addVesselEvent(res.data));
+        }).catch(err => {
+            dispatch(addVesselFailure(err.message));
+        })
+    };
+};
+
+const addVesselStarted = () => ({
+    type: 'ADD_VESSEL_STARTED'
+});
+
+const addVesselEvent = data => ({
+    type: 'ADD_VESSEL_EVENT',
+    payload: {...data}
+});
+
+const addVesselFailure = error => ({
+    type: 'ADD_VESSEL_FAILURE',
+    payload: {
+        error
+    }
+});
+
 
 // Add Schedule
 export const addScheduleRequests = (params) => {

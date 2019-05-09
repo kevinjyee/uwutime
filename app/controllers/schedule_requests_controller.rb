@@ -46,8 +46,6 @@ class ScheduleRequestsController < ApplicationController
     render json: @schedule ||= ScheduleRequest.all.order('requested_preferred_date ASC')
   end
 
-
-
   private
 
   def schedule_request_params
