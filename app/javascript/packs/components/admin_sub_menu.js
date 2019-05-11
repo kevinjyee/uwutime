@@ -45,7 +45,9 @@ export default class AdminSubMenu extends React.Component {
                     </Menu.Item>
                     <Menu.Item key="2">
                         <Icon type="calendar" />
+                        <Link to='/administration/profiles'>
                         Profiles
+                        </Link>
                     </Menu.Item>
                 </Menu>
             </div>

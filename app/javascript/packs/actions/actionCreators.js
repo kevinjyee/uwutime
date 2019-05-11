@@ -204,3 +204,30 @@ const deleteTaskFailure = data => ({
     type: 'DELETE_TASK_FAILURE',
     payload: {...data}
 });
+
+
+// Fetch ScheduleProfiles
+export function fetchScheduleProfiles() {
+    return function(dispatch) {
+        dispatch(requestScheduleProfiles());
+        return axios.get('/schedule_profiles').then(
+            response => response,
+            error => console.log('An error occurred', error)
+        ).then(({data}) => {
+            dispatch(receivedScheduleProfiles(data));
+        })
+    }
+}
+
+export function requestScheduleProfiles() {
+    return {
+        type: 'REQUEST_SCHEDULE_PROFILES'
+    }
+}
+
+export function receivedScheduleProfiles(data) {
+    return {
+        type: 'RECEIVED_SCHEDULE_PROFILES',
+        payload: data
+    }
+}

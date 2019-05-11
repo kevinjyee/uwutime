@@ -8,9 +8,11 @@ Rails.application.routes.draw do
   get '/administration' => "pages#root"
   get '/administration/mash_profiles' => "pages#root"
   get '/administration/vessels' => "pages#root"
-  get '/administration/mash_profiles' => "pages#root"
+  get '/administration/profiles' => "pages#root"
+  get '/recipe_list' => "pages#root"
   root to: "pages#root"
   resources :schedule_requests
   post '/schedule_requests/bulk_update' => 'schedule_requests#bulk_update'
   resources :vessels
+  resources :schedule_profiles
 end

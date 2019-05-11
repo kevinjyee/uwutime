@@ -5,7 +5,7 @@ import {
     Switch
 } from 'react-router-dom'
 
-import { App, SchedulerContainer, AdministrationContainer } from './app';
+import { App, SchedulerContainer, AdministrationContainer, AdministrationProfilesContainer } from './app';
 
 import { Provider } from 'react-redux';
 import store from './store'
@@ -15,8 +15,10 @@ const AppRoute = (props) => (
     <Router>
         <div>
             <Switch>
+                <Route path='/administration/profiles' component={AdministrationProfilesContainer}/>
                 <Route path='/administration/vessels' component={AdministrationContainer}/>
                 <Route path='/administration' component={AdministrationContainer }/>
+                <Route path='/recipe_list' component={AdministrationContainer}/>
                 <Route path='/scheduler' component={SchedulerContainer}/>
                 <Route path='/' component={SchedulerContainer}/>
             </Switch>

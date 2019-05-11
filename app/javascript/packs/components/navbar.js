@@ -62,7 +62,12 @@ export default class NavBar extends React.Component {
                         </Menu.Item>
                         <Menu.Item key="2">
                             <Link to='/administration'>
-                                <Icon type="ordered-list" />Administration
+                            <Icon type="ordered-list" />Administration
+                        </Link>
+                        </Menu.Item>
+                        <Menu.Item key="3">
+                            <Link to='/recipe_list'>
+                                <Icon type="ordered-list" />Recipes
                             </Link>
                         </Menu.Item>
                     </Menu>
