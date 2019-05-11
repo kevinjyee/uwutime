@@ -22,7 +22,7 @@ const columns = [{
     title: 'Name',
     dataIndex: 'name',
     key: 'name',
-    render: text => <a href='/administration/profile/1'>{text}</a>,
+    render: (text, record) => <Link to={'/administration/profile/' + record.id}>{text}</Link>,
     width: 300,
 }, {
     title: 'Brew Hours',
@@ -45,7 +45,7 @@ const success = () => {
     message.success('Request successfully submitted');
 };
 
-export default class AdministrationProfile extends React.Component {
+export default class AdministrationProfiles extends React.Component {
 
     constructor(props) {
         super(props);

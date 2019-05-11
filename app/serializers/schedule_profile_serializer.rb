@@ -1,6 +1,6 @@
 class ScheduleProfileSerializer <  BaseSerializer
 
-  attributes :name, :brew_hours, :ferment_days, :packaging_days
+  attributes :id, :name, :brew_hours, :ferment_days, :packaging_days
 
   has_many :mash_tasks, embed: :ids, if: :include_mash_tasks?
   has_many :ferment_tasks, embed: :ids, if: :include_ferment_tasks?

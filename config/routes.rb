@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get '/administration/mash_profiles' => "pages#root"
   get '/administration/vessels' => "pages#root"
   get '/administration/profiles' => "pages#root"
-  get '/administration/profiles/:id' => "pages#root"
+  get '/administration/profile/:id' => "pages#root"
   get '/recipe_list' => "pages#root"
   root to: "pages#root"
   resources :schedule_requests

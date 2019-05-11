@@ -231,3 +231,33 @@ export function receivedScheduleProfiles(data) {
         payload: data
     }
 }
+
+
+
+// Fetch ScheduleProfile
+
+export const fetchScheduleProfile = (params) => {
+    return dispatch => {
+        dispatch(requestScheduleProfile);
+        axios.get(`/schedule_profiles/${params.id}`, {
+            schedule_request: params
+        }).then( res => {
+            dispatch(receivedScheduleProfile(res.data));
+        }).catch(err => {
+
+        })
+    }
+}
+
+export function requestScheduleProfile() {
+    return {
+        type: 'REQUEST_SCHEDULE_PROFILE'
+    }
+}
+
+export function receivedScheduleProfile(data) {
+    return {
+        type: 'RECEIVED_SCHEDULE_PROFILE',
+        payload: data
+    }
+}
