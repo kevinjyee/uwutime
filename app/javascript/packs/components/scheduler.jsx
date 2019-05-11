@@ -60,7 +60,7 @@ export default class Scheduler extends React.Component {
         )
         return (
             <div className="spinner">
-                <NavBar/>
+                <NavBar currentPage="1"/>
                 <Spin/>
             </div>
         )

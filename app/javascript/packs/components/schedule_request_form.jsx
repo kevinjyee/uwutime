@@ -39,10 +39,7 @@ export default class ScheduleRequestForm extends React.Component{
 
         return (
 
-
-
             <form onSubmit={this.handleSubmit}>
-
                 <div className="form-row">
                         <input name='input_product_name' placeholder='Product Name'
                                value={this.props.input_product_name}
@@ -52,11 +49,8 @@ export default class ScheduleRequestForm extends React.Component{
                             selected={this.props.input_preferred_date}
                             onChange={this.handleChange}
                         />
-
                     <Button type="primary" htmlType="submit">Submit</Button>
                 </div>
-
-
             </form>
         )
     }

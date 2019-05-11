@@ -6,8 +6,9 @@ import '../../../assets/stylesheets/index.scss'
 import 'antd/dist/antd.css';
 
 var $ = require('jquery')
-import { Menu, Icon } from 'antd';
+import { Menu, Icon, Spin } from 'antd';
 import { Link } from 'react-router-dom';
+
 
 export default class AdminSubMenu extends React.Component {
 
@@ -16,7 +17,14 @@ export default class AdminSubMenu extends React.Component {
         this.state = {
             mode: 'vertical',
             theme: 'light',
-            current: this.props.currentState || "1"
+            current: this.props.currentPage
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        // Typical usage (don't forget to compare props):
+        if (prevProps.currentPage !== this.props.currentPage) {
+            this.setState({current: this.props.currentPage});
         }
     }
 
@@ -28,29 +36,37 @@ export default class AdminSubMenu extends React.Component {
     }
 
     render() {
-        return (
-            <div>
-                <Menu
-                    style={{ width: 256 }}
-                    onClick={this.handleClick}
-                    selectedKeys={[this.state.current]}
-                    mode={this.state.mode}
-                    theme={this.state.theme}
-                >
-                    <Menu.Item key="1">
-                        <Link to='/administration/vessels'>
-                        <Icon type="mail" /> Tanks
-                        </Link>
+        if (this.state.current) {
+            return (
+                <div>
+                    <Menu
+                        style={{ width: 256 }}
+                        onClick={this.handleClick}
+                        selectedKeys={[this.state.current]}
+                        mode={this.state.mode}
+                        theme={this.state.theme}
+                    >
+                        <Menu.Item key="1">
+                            <Link to='/administration/vessels'>
+                                <Icon type="mail" /> Tanks
+                            </Link>
 
-                    </Menu.Item>
-                    <Menu.Item key="2">
+                        </Menu.Item>
+                        <Menu.Item key="2">
+                            <Link to='/administration/profiles'>
+                                <Icon type="calendar" /> Profiles
+                            </Link>
+                        </Menu.Item>
+                    </Menu>
+                </div>
+            );
+        }
+        else {
+            return (
 
-                        <Link to='/administration/profiles'>
-                            <Icon type="calendar" /> Profiles
-                        </Link>
-                    </Menu.Item>
-                </Menu>
-            </div>
-        );
+            <Spin/>
+            )
+        }
+
     }
 }

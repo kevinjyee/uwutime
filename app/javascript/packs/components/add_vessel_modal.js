@@ -7,8 +7,6 @@ import 'antd/dist/antd.css';
 
 var $ = require('jquery')
 
-
-
 import {
     Button, Modal, Form,
     Select, InputNumber,

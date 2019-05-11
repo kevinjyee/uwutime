@@ -22,7 +22,7 @@ const columns = [{
     title: 'Name',
     dataIndex: 'name',
     key: 'name',
-    render: text => <a href="javascript:;">{text}</a>,
+    render: text => <a href='/administration/profile/1'>{text}</a>,
     width: 300,
 }, {
     title: 'Brew Hours',
@@ -110,10 +110,9 @@ export default class AdministrationProfile extends React.Component {
         if (data && data.length > 0) {
             return (
                 <div>
-                    <NavBar currentState="2"/>
+                    <NavBar currentPage="2"/>
                     <div className='menu-table-container'>
-                        <AdminSubMenu currentState="1"/>
-
+                        <AdminSubMenu currentPage="1"/>
 
                         <div className='admin-table-container'>
                             <div className='admin-button-container'>
@@ -148,8 +147,8 @@ export default class AdministrationProfile extends React.Component {
         else {
             return (
                 <div>
-                    <NavBar currentState="2"/>
-                    <AdminSubMenu currentState="1"/>
+                    <NavBar currentPage="2"/>
+                    <AdminSubMenu currentPage="1"/>
                 </div>
             )
         }
