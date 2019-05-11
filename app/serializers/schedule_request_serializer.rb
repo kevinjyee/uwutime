@@ -1,4 +1,4 @@
-class ScheduleRequestSerializer < ActiveModel::Serializer
+class ScheduleRequestSerializer < BaseSerializer
 
   attributes :id, :product_name, :children, :maxChild, :start, :end, :vessel_id,
              :run_quantity, :requested_preferred_date, :scheduled, :created_at, :end_type,

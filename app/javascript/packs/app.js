@@ -10,7 +10,8 @@ import AdministrationProfile from './components/administration_profile'
 function mapStateToProps(state) {
     return {
         schedule_requests: state.schedule_requests,
-        vessels: state.vessels
+        vessels: state.vessels,
+        schedule_profiles: state.schedule_profiles
     }
 }
 

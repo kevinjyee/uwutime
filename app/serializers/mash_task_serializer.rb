@@ -1,4 +1,4 @@
-class MashTaskSerializer < ActiveModel::Serializer
+class MashTaskSerializer < BaseSerializer
 
   attributes :name, :step, :step_order, :mash_steps
 

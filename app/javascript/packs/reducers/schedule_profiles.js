@@ -8,7 +8,7 @@ function schedule_profiles(state = [], action){
         case 'REQUEST_SCHEDULE_PROFILES':
             console.log('Requesting Schedule Profiles...')
             return { state, isLoading: true, action, payload: action.payload };
-        case 'RECEIVE_SCHEDULE_PROFILES':
+        case 'RECEIVED_SCHEDULE_PROFILES':
             console.log('Received_Schedule_Profiles');
             return { state, isLoading: false, action, payload: action.payload};
         default:

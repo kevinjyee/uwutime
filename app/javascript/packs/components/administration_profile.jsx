@@ -19,25 +19,25 @@ import {Table, Spin, Button, Icon} from 'antd';
 import '../../../assets/stylesheets/schedule_request_list.scss'
 
 const columns = [{
-    title: 'Identifier',
-    dataIndex: 'identifier',
-    key: 'identifier',
+    title: 'Name',
+    dataIndex: 'name',
+    key: 'name',
     render: text => <a href="javascript:;">{text}</a>,
     width: 300,
 }, {
-    title: 'Volume',
-    dataIndex: 'volume',
-    key: 'volume',
+    title: 'Brew Hours',
+    dataIndex: 'brew_hours',
+    key: 'brew_hours',
     width: 300,
 }, {
-    title: 'Volume Unit',
-    dataIndex: 'volume_unit',
-    key: 'volume_unit',
+    title: 'Ferment Days',
+    dataIndex: 'ferment_days',
+    key: 'ferment_days',
     width: 300,
 }, {
-    title: 'Vessel Type',
-    dataIndex: 'vessel_type',
-    key: 'vessel_type',
+    title: 'Packaging Days',
+    dataIndex: 'packaging_days',
+    key: 'packaging_days',
     width: 300,
 }];
 
@@ -45,25 +45,25 @@ const success = () => {
     message.success('Request successfully submitted');
 };
 
-export default class Administration extends React.Component {
+export default class AdministrationProfile extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
             show_form: false,
-            vessels: this.props.vessels.payload || []
+            schedule_profiles: this.props.schedule_profiles.payload || []
         }
         this.showModal = this.showModal.bind(this);
     }
 
     componentDidMount() {
-        this.props.fetchVessels();
+        this.props.fetchScheduleProfiles();
     }
 
     componentDidUpdate(prevProps, prevState) {
         // Typical usage (don't forget to compare props):
-        if (prevProps.vessels.payload !== this.props.vessels.payload) {
-            this.setState({vessels: this.props.vessels.payload});
+        if (prevProps.schedule_profiles.payload !== this.props.schedule_profiles.payload) {
+            this.setState({schedule_profiles: this.props.schedule_profiles.payload});
         }
     }
 
@@ -106,7 +106,7 @@ export default class Administration extends React.Component {
     }
 
     render() {
-        let data = this.state.vessels;
+        let data = this.state.schedule_profiles;
         if (data && data.length > 0) {
             return (
                 <div>
@@ -119,11 +119,11 @@ export default class Administration extends React.Component {
                             <div className='admin-button-container'>
                             <Button className='add-request-btn'
                                     type="primary"
-                                    disabled={false}
+                                    disabled={true}
                                     onClick={this.showModal}
                             >
 
-                                <Icon type="plus"/> Add Vessel
+                                <Icon type="plus"/> Add Profile
                             </Button>
                             </div>
 
