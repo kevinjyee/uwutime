@@ -112,7 +112,7 @@ export default class AdministrationProfiles extends React.Component {
                 <div>
                     <NavBar currentPage="2"/>
                     <div className='menu-table-container'>
-                        <AdminSubMenu currentPage="1"/>
+                        <AdminSubMenu currentPage="2"/>
 
                         <div className='admin-table-container'>
                             <div className='admin-button-container'>
@@ -148,7 +148,7 @@ export default class AdministrationProfiles extends React.Component {
             return (
                 <div>
                     <NavBar currentPage="2"/>
-                    <AdminSubMenu currentPage="1"/>
+                    <AdminSubMenu currentPage="2"/>
                 </div>
             )
         }

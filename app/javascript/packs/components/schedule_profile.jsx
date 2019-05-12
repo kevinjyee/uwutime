@@ -7,14 +7,16 @@ import '../../../assets/stylesheets/administration.scss'
 import '../../../assets/stylesheets/index.scss'
 import 'antd/dist/antd.css';
 import {message} from 'antd';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 import AdminSubMenu from './admin_sub_menu'
 import AddVesselModal from './add_vessel_modal'
 
 import NavBar from './navbar'
 
-import {Table, Spin, Button, Icon} from 'antd';
+import {Menu, Table, Spin, Button, Icon} from 'antd';
+
+const SubMenu = Menu.SubMenu;
 
 import '../../../assets/stylesheets/schedule_request_list.scss'
 
@@ -51,7 +53,8 @@ export default class ScheduleProfile extends React.Component {
         super(props);
         this.state = {
             show_form: false,
-            schedule_profile: this.props.schedule_profile.payload || []
+            schedule_profile: this.props.schedule_profile.payload || [],
+            current: '1',
         }
         this.showModal = this.showModal.bind(this);
     }
@@ -72,6 +75,12 @@ export default class ScheduleProfile extends React.Component {
         this.setState({show_form: true});
     }
 
+    handleClick = (e) => {
+        console.log('click ', e);
+        this.setState({
+            current: e.key,
+        });
+    }
 
     saveFormRef = (formRef) => {
         this.formRef = formRef;
@@ -108,29 +117,110 @@ export default class ScheduleProfile extends React.Component {
 
     render() {
         let data = this.state.schedule_profile;
-        if (data && data.length > 0) {
+        let mashNavBody = <div/>;
+        let fermentNavBody = <div/>;
+        let packagingNavBody = <div/>;
+
+        if (data) {
+
+
+            let mashTasks = data.mash_tasks;
+            let fermentTasks = data.ferment_tasks;
+            let packagingTasks = data.packaging_tasks;
+
+            if (mashTasks) {
+                mashNavBody = mashTasks.map((mash_task) => {
+                    let mashSteps = mash_task.mash_steps;
+                    let mashNavSteps = <div/>;
+
+                    if (mashSteps) {
+                        mashNavSteps = mashSteps.map((mash_step) => {
+                            return (
+                                <Menu.Item key={mash_step.id}>{mash_step.name}</Menu.Item>
+                            );
+                        })
+                    }
+                    return (
+                        <SubMenu key={mash_task.step} title={mash_task.name}>
+                            {mashNavSteps}
+                        </SubMenu>
+                    );
+                })
+            }
+
+            if (fermentTasks) {
+                fermentNavBody = fermentTasks .map((ferment_task) => {
+                    let fermentSteps = ferment_task.ferment_steps;
+                    let fermentNavSteps = <div/>;
+
+                    if (fermentSteps) {
+                        fermentNavSteps = fermentSteps.map((ferment_step) => {
+                            return (
+                                <Menu.Item key={ferment_step.id}>{ferment_step.name}</Menu.Item>
+                            );
+                        })
+                    }
+                    return (
+                        <SubMenu key={ferment_task.step} title={ferment_task.name}>
+                            {fermentNavSteps}
+                        </SubMenu>
+                    );
+                })
+            }
+
+            if (packagingTasks) {
+                packagingNavBody = packagingTasks .map((packaging_task) => {
+                    let packagingSteps = packaging_task.packaging_steps;
+                    let packagingNavSteps = <div/>;
+
+                    if (packagingSteps) {
+                        packagingNavSteps = packagingSteps.map((packaging_step) => {
+                            return (
+                                <Menu.Item key={packaging_step.id}>{packaging_step.name}</Menu.Item>
+                            );
+                        })
+                    }
+                    return (
+                        <SubMenu key={packaging_task.step} title={packaging_task.name}>
+                            {packagingNavSteps}
+                        </SubMenu>
+                    );
+                })
+            }
+
+
+
+
             return (
                 <div>
                     <NavBar currentPage="2"/>
                     <div className='menu-table-container'>
-                        <AdminSubMenu currentPage="1"/>
-
-                        <div className='admin-table-container'>
-                            <div className='admin-button-container'>
-                            <Button className='add-request-btn'
-                                    type="primary"
-                                    disabled={true}
-                                    onClick={this.showModal}
-                            >
-
-                                <Icon type="plus"/> Add Profile
-                            </Button>
-                            </div>
-
-                            Hi! I'm a single profile
+                        <AdminSubMenu currentPage="2"/>
 
 
-                        </div>
+                        <br/>
+                        <br/>
+                        <Menu
+                            style={{width: 256}}
+                            defaultSelectedKeys={['1']}
+                            selectedKeys={[this.state.current]}
+                            defaultOpenKeys={['sub1']}
+                            mode={'inline'}
+                            theme={'light'}
+                        >
+                            <SubMenu key="sub1" title={<span><Icon
+                                type="appstore"/><span>Mash</span></span>}>
+                                {mashNavBody}
+                            </SubMenu>
+                            <SubMenu key="sub2" title={<span><Icon
+                                type="appstore"/><span>Ferment</span></span>}>
+                                {fermentNavBody}
+                            </SubMenu>
+                            <SubMenu key="sub3" title={<span><Icon
+                                type="appstore"/><span>Packaging</span></span>}>
+                                {packagingNavBody}
+                            </SubMenu>
+                        </Menu>
                     </div>
                 </div>
 
@@ -140,7 +230,7 @@ export default class ScheduleProfile extends React.Component {
             return (
                 <div>
                     <NavBar currentPage="2"/>
-                    <AdminSubMenu currentPage="1"/>
+                    <AdminSubMenu currentPage="2"/>
                 </div>
             )
         }
