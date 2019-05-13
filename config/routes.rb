@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   post '/schedule_requests/bulk_update' => 'schedule_requests#bulk_update'
   resources :vessels
   resources :schedule_profiles
+  resources :recipes
 end

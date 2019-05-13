@@ -54,7 +54,7 @@ export default class ScheduleProfile extends React.Component {
         this.state = {
             show_form: false,
             schedule_profile: this.props.schedule_profile.payload || [],
-            current: '1',
+            current: 'sub1',
         }
         this.showModal = this.showModal.bind(this);
     }
@@ -123,7 +123,6 @@ export default class ScheduleProfile extends React.Component {
 
         if (data) {
 
-
             let mashTasks = data.mash_tasks;
             let fermentTasks = data.ferment_tasks;
             let packagingTasks = data.packaging_tasks;
@@ -135,13 +134,17 @@ export default class ScheduleProfile extends React.Component {
 
                     if (mashSteps) {
                         mashNavSteps = mashSteps.map((mash_step) => {
+                            let mash_step_id = `mash-step_${mash_step.id}`;
+                            let mash_step_label = `${mash_step.name} (${mash_step.duration_hours} hour(s))`
                             return (
-                                <Menu.Item key={mash_step.id}>{mash_step.name}</Menu.Item>
+                                <Menu.Item key={mash_step_id}>{mash_step_label}</Menu.Item>
                             );
                         })
                     }
+                    let mash_task_id = `mash-task_${mash_task.id}`;
+                    let mash_task_label = `${mash_task.name} (Day 1)`
                     return (
-                        <SubMenu key={mash_task.step} title={mash_task.name}>
+                        <SubMenu key={mash_task_id} title={mash_task_label}>
                             {mashNavSteps}
                         </SubMenu>
                     );
@@ -149,19 +152,24 @@ export default class ScheduleProfile extends React.Component {
             }
 
             if (fermentTasks) {
+
                 fermentNavBody = fermentTasks .map((ferment_task) => {
                     let fermentSteps = ferment_task.ferment_steps;
                     let fermentNavSteps = <div/>;
 
                     if (fermentSteps) {
                         fermentNavSteps = fermentSteps.map((ferment_step) => {
+                            let ferment_step_id = `ferment-step_${ferment_step.id}`
+                            let ferment_step_label = `${ferment_step.name} (Day ${ferment_step.day})`
                             return (
-                                <Menu.Item key={ferment_step.id}>{ferment_step.name}</Menu.Item>
+                                <Menu.Item key={ferment_step_id}>{ferment_step_label}</Menu.Item>
                             );
                         })
                     }
+                    let ferment_task_id = `ferment-task_${ferment_task.id}`;
+                    let ferment_task_label = `${ferment_task.name} (Day ${ferment_task.day_start})`
                     return (
-                        <SubMenu key={ferment_task.step} title={ferment_task.name}>
+                        <SubMenu key={ferment_task_id} title={ferment_task_label}>
                             {fermentNavSteps}
                         </SubMenu>
                     );
@@ -174,22 +182,24 @@ export default class ScheduleProfile extends React.Component {
                     let packagingNavSteps = <div/>;
 
                     if (packagingSteps) {
+
                         packagingNavSteps = packagingSteps.map((packaging_step) => {
+                            let packaging_step_id = `packaging-step_${packaging_step.id}`
+                            let packaging_step_label = `${packaging_step.name} (Day ${packaging_step.day})`
                             return (
-                                <Menu.Item key={packaging_step.id}>{packaging_step.name}</Menu.Item>
+                                <Menu.Item key={packaging_step_id}>{packaging_step_label }</Menu.Item>
                             );
                         })
                     }
+                    let packaging_task_id = `packaging-task_${packaging_task.id}`;
+                    let packaging_task_label = `${packaging_task.name} (Day ${packaging_task.day_start})`
                     return (
-                        <SubMenu key={packaging_task.step} title={packaging_task.name}>
+                        <SubMenu key={packaging_task_id} title={packaging_task_label}>
                             {packagingNavSteps}
                         </SubMenu>
                     );
                 })
             }
-
-
-
 
             return (
                 <div>
@@ -197,19 +207,18 @@ export default class ScheduleProfile extends React.Component {
                     <div className='menu-table-container'>
                         <AdminSubMenu currentPage="2"/>
 
-
                         <br/>
                         <br/>
                         <Menu
                             style={{width: 256}}
-                            defaultSelectedKeys={['1']}
                             selectedKeys={[this.state.current]}
                             defaultOpenKeys={['sub1']}
                             mode={'inline'}
                             theme={'light'}
+                            onClick={this.handleClick}
                         >
                             <SubMenu key="sub1" title={<span><Icon
-                                type="appstore"/><span>Mash</span></span>}>
+                                type="appstore"/><span>Brew</span></span>}>
                                 {mashNavBody}
                             </SubMenu>
                             <SubMenu key="sub2" title={<span><Icon

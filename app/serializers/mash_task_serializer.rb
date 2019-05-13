@@ -1,5 +1,5 @@
 class MashTaskSerializer < BaseSerializer
 
-  attributes :name, :step, :step_order, :mash_steps
+  attributes :id, :name, :step, :step_order, :mash_steps
 
 end

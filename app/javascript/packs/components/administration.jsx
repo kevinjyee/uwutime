@@ -110,7 +110,7 @@ export default class Administration extends React.Component {
         if (data && data.length > 0) {
             return (
                 <div>
-                    <NavBar currentPage="2"/>
+                    <NavBar currentPage="3"/>
                     <div className='menu-table-container'>
                         <AdminSubMenu currentPage="1"/>
 
@@ -147,7 +147,7 @@ export default class Administration extends React.Component {
         else {
             return (
                 <div>
-                    <NavBar currentPage="2"/>
+                    <NavBar currentPage="3"/>
                     <AdminSubMenu currentPage="1"/>
                 </div>
             )

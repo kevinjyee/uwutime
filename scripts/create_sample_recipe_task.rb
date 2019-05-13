@@ -49,7 +49,7 @@ ferment_task_1 = FermentTask.create!({name: 'Ferment Primary',
 ferment_task_2 = FermentTask.create!({name: 'Ferment Secondary',
                                       step: 'secondary',
                                       step_order: 2,
-                                      day_start: 14,
+                                      day_start: 7,
                                       schedule_profile_id: schedule_profile_id
                                      })
 
@@ -138,5 +138,8 @@ PackagingStep.create!({
 Recipe.create!({
     name: 'Sample Blonde Ale',
     brew_type: 'Ale',
-    schedule_profile_id: 1
+    schedule_profile_id: 1,
+    brew_hours: 3,
+    ferment_days: 14,
+    packaging_days: 2
                })
