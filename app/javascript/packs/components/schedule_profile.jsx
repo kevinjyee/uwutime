@@ -203,7 +203,7 @@ export default class ScheduleProfile extends React.Component {
 
             return (
                 <div>
-                    <NavBar currentPage="2"/>
+                    <NavBar currentPage="3"/>
                     <div className='menu-table-container'>
                         <AdminSubMenu currentPage="2"/>
 
@@ -238,7 +238,7 @@ export default class ScheduleProfile extends React.Component {
         else {
             return (
                 <div>
-                    <NavBar currentPage="2"/>
+                    <NavBar currentPage="3"/>
                     <AdminSubMenu currentPage="2"/>
                 </div>
             )

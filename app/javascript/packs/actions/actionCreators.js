@@ -233,7 +233,6 @@ export function receivedScheduleProfiles(data) {
 }
 
 
-
 // Fetch ScheduleProfile
 
 export const fetchScheduleProfile = (params) => {
@@ -261,3 +260,60 @@ export function receivedScheduleProfile(data) {
         payload: data
     }
 }
+
+
+
+// Fetch Recipes
+export function fetchRecipes() {
+    return function(dispatch) {
+        dispatch(requestRecipes());
+        return axios.get('/recipes').then(
+            response => response,
+            error => console.log('An error occurred', error)
+        ).then(({data}) => {
+            dispatch(receivedRecipes(data));
+        })
+    }
+}
+
+export function requestRecipes() {
+    return {
+        type: 'REQUEST_RECIPES'
+    }
+}
+
+export function receivedRecipes(data) {
+    return {
+        type: 'RECEIVED_RECIPES',
+        payload: data
+    }
+}
+
+
+// Fetch Recipe
+export const fetchRecipe = (params) => {
+    return dispatch => {
+        dispatch(requestRecipe);
+        axios.get(`/recipes/${params.id}`, {
+            id: params.id
+        }).then( res => {
+            dispatch(receivedRecipe(res.data));
+        }).catch(err => {
+
+        })
+    }
+}
+
+export function requestRecipe() {
+    return {
+        type: 'REQUEST_RECIPE'
+    }
+}
+
+export function receivedRecipe(data) {
+    return {
+        type: 'RECEIVED_RECIPE',
+        payload: data
+    }
+}
+

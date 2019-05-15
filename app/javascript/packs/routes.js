@@ -8,7 +8,8 @@ import {
 import { App, SchedulerContainer,
     AdministrationContainer,
     AdministrationProfilesContainer,
-    ScheduleProfileContainer
+    ScheduleProfileContainer,
+    RecipesContainer
 
 } from './app';
 
@@ -24,7 +25,7 @@ const AppRoute = (props) => (
                 <Route path='/administration/profiles' component={AdministrationProfilesContainer}/>
                 <Route path='/administration/vessels' component={AdministrationContainer}/>
                 <Route path='/administration' component={AdministrationContainer }/>
-                <Route path='/recipe_list' component={AdministrationContainer}/>
+                <Route path='/recipe_list' component={RecipesContainer}/>
                 <Route path='/scheduler' component={SchedulerContainer}/>
                 <Route path='/' component={SchedulerContainer}/>
             </Switch>

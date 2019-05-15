@@ -6,18 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="027dbcea-88e0-4835-8ae9-ff9a8ff356d2" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/recipe_list_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/recipe_list_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/javascript/packs/components/administration.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/components/administration.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/javascript/packs/components/administration_profiles.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/components/administration_profiles.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/javascript/packs/components/navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/components/navbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/actions/actionCreators.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/actions/actionCreators.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/javascript/packs/components/schedule_profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/components/schedule_profile.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/recipe.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/recipe.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/serializers/ferment_task_serializer.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/serializers/ferment_task_serializer.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/serializers/mash_task_serializer.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/serializers/mash_task_serializer.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/serializers/packaging_task_serializer.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/serializers/packaging_task_serializer.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/create_sample_recipe_task.rb" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/create_sample_recipe_task.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/reducers/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -27,95 +22,107 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
+    <splitter split-orientation="horizontal" split-proportion="0.4748508">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="administration_controller.rb" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/controllers/administration_controller.rb">
+          <file leaf-file-name="navbar.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/navbar.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="60">
-                  <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+                <state relative-caret-position="780">
+                  <caret line="55" column="41" lean-forward="true" selection-start-line="55" selection-start-column="41" selection-end-line="55" selection-end-column="41" />
+                  <folding>
+                    <element signature="e#0#26#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="recipe_ferment_task_serializer.rb" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/serializers/recipe_ferment_task_serializer.rb">
+          <file leaf-file-name="recipes.jsx" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/recipes.jsx">
               <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret column="12" selection-start-column="12" selection-end-column="12" />
+                <state relative-caret-position="540">
+                  <caret line="36" column="1" lean-forward="true" selection-start-line="36" selection-start-column="1" selection-end-line="36" selection-end-column="1" />
+                  <folding>
+                    <element signature="e#0#26#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="recipe_mash_task_serializer.rb" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/serializers/recipe_mash_task_serializer.rb">
+          <file leaf-file-name="admin_sub_menu.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/admin_sub_menu.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret column="12" selection-start-column="12" selection-end-column="12" />
+                <state relative-caret-position="-162">
+                  <folding>
+                    <element signature="e#0#26#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="recipe_packaging_task_serializer.rb" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/serializers/recipe_packaging_task_serializer.rb">
+          <file leaf-file-name="administration.jsx" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/administration.jsx">
               <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret column="12" selection-start-column="12" selection-end-column="12" />
+                <state relative-caret-position="258">
+                  <caret line="114" column="52" lean-forward="true" selection-start-line="114" selection-start-column="52" selection-end-line="114" selection-end-column="52" />
+                  <folding>
+                    <element signature="e#0#26#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="recipe_serializer.rb" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/app/serializers/recipe_serializer.rb">
+          <file leaf-file-name="administration_profiles.jsx" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/administration_profiles.jsx">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="90">
-                  <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+                <state relative-caret-position="558">
+                  <caret line="134" column="36" selection-start-line="134" selection-start-column="36" selection-end-line="134" selection-end-column="36" />
+                  <folding>
+                    <element signature="e#0#26#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="recipe.rb" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/models/recipe.rb">
+          <file leaf-file-name="schedule_profile.jsx" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/schedule_profile.jsx">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="180">
-                  <caret line="12" column="28" lean-forward="true" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
+                <state relative-caret-position="811">
+                  <caret line="240" column="45" lean-forward="true" selection-start-line="240" selection-start-column="45" selection-end-line="240" selection-end-column="45" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="recipes_controller.rb" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/controllers/recipes_controller.rb">
+          <file leaf-file-name="Basic.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/Basic.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="375">
-                  <caret line="25" column="5" lean-forward="true" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+                <state relative-caret-position="2415">
+                  <caret line="164" column="40" lean-forward="true" selection-start-line="164" selection-start-column="40" selection-end-line="164" selection-end-column="40" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="mash_task_serializer.rb" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/serializers/mash_task_serializer.rb">
+          <file leaf-file-name="DnDTypes.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/DnDTypes.js">
+              <provider selected="true" editor-type-id="text-editor" />
+            </entry>
+          </file>
+          <file leaf-file-name="add_vessel_modal.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/add_vessel_modal.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="75">
-                  <caret line="5" selection-start-line="5" selection-end-line="5" />
+                <state relative-caret-position="-477">
+                  <folding>
+                    <element signature="e#0#26#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="packaging_task_serializer.rb" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/serializers/packaging_task_serializer.rb">
+          <file leaf-file-name="recipe.jsx" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/recipe.jsx">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="75">
-                  <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="schedule_profile_serializer.rb" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/serializers/schedule_profile_serializer.rb">
-              <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret column="49" lean-forward="true" selection-start-column="49" selection-end-column="49" />
+                <state relative-caret-position="377">
+                  <caret line="93" column="34" selection-start-line="93" selection-start-column="34" selection-end-line="93" selection-end-column="34" />
                 </state>
               </provider>
             </entry>
@@ -124,20 +131,59 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="recipes_controller.rb" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/controllers/recipes_controller.rb">
+          <file leaf-file-name="recipe.jsx" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/recipe.jsx">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="615">
-                  <caret line="41" column="5" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
+                <state relative-caret-position="243">
+                  <caret line="57" column="21" lean-forward="true" selection-start-line="57" selection-start-column="21" selection-end-line="57" selection-end-column="21" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="create_sample_recipe_task.rb" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/scripts/create_sample_recipe_task.rb">
+          <file leaf-file-name="recipes.jsx" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/recipes.jsx">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="428">
-                  <caret line="111" column="32" lean-forward="true" selection-start-line="111" selection-start-column="32" selection-end-line="111" selection-end-column="32" />
+                <state relative-caret-position="693">
+                  <caret line="237" column="22" lean-forward="true" selection-start-line="237" selection-start-column="22" selection-end-line="237" selection-end-column="22" />
+                  <folding>
+                    <element signature="e#0#26#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="actionCreators.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/javascript/packs/actions/actionCreators.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="438">
+                  <caret line="289" column="1" lean-forward="true" selection-start-line="289" selection-start-column="1" selection-end-line="289" selection-end-column="1" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="schedule_requests.jsx" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/schedule_requests.jsx">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="635">
+                  <caret line="268" column="13" selection-start-line="268" selection-start-column="13" selection-end-line="268" selection-end-column="13" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="schedule_profile.jsx" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/schedule_profile.jsx">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="421">
+                  <caret line="214" column="18" selection-start-line="214" selection-start-column="18" selection-end-line="214" selection-end-column="18" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="recipes.scss" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/recipes.scss">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="540">
+                  <caret line="36" column="17" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="17" />
                 </state>
               </provider>
             </entry>
@@ -156,28 +202,7 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>schedule_profiles</find>
-      <find>mash_task</find>
-      <find>ferment_step</find>
-      <find>byebug</find>
-      <find>ferment_</find>
-      <find>packaging_</find>
-      <find>vessel</find>
-      <find>Spin</find>
-      <find>prevoP</find>
-      <find>navbar</find>
-      <find>SPin</find>
-      <find>currentS</find>
-      <find>colum</find>
-      <find>profiles</find>
-      <find>delete</find>
-      <find>params</find>
-      <find>handleC</find>
-      <find>Navigation</find>
-      <find>if</find>
-      <find>array</find>
       <find>key</find>
-      <find>handleClick</find>
       <find>mash</find>
       <find>mashTask</find>
       <find>mash_step</find>
@@ -186,6 +211,27 @@
       <find>currentState</find>
       <find>schedule_profile</find>
       <find>include</find>
+      <find>actionCre</find>
+      <find>fe re</find>
+      <find>l</find>
+      <find>style</find>
+      <find>style=</find>
+      <find>avatar</find>
+      <find>onClick</find>
+      <find>goB</find>
+      <find>Meta</find>
+      <find>List</find>
+      <find>handleClick</find>
+      <find>onclick</find>
+      <find>slotClicked</find>
+      <find>onCli</find>
+      <find>goba</find>
+      <find>selected</find>
+      <find>selectedRe</find>
+      <find>Item</find>
+      <find>data</find>
+      <find>componentDidUpdate</find>
+      <find>.id</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -194,11 +240,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/javascript/packs/reducers/vessels.js" />
-        <option value="$PROJECT_DIR$/app/models/ferment_step.rb" />
-        <option value="$PROJECT_DIR$/app/models/mash_step.rb" />
-        <option value="$PROJECT_DIR$/app/models/packaging_task.rb" />
-        <option value="$PROJECT_DIR$/app/models/ferment_task.rb" />
         <option value="$PROJECT_DIR$/app/models/mash_task.rb" />
         <option value="$PROJECT_DIR$/app/models/packaging_step.rb" />
         <option value="$PROJECT_DIR$/app/controllers/schedule_requests_controller.rb" />
@@ -217,18 +258,13 @@
         <option value="$PROJECT_DIR$/app/javascript/packs/components/admin_sub_menu.js" />
         <option value="$PROJECT_DIR$/app/javascript/packs/components/administration_profile.jsx" />
         <option value="$PROJECT_DIR$/app/javascript/packs/reducers/schedule_profile.js" />
-        <option value="$PROJECT_DIR$/app/javascript/packs/reducers/index.js" />
-        <option value="$PROJECT_DIR$/app/javascript/packs/app.js" />
         <option value="$PROJECT_DIR$/app/serializers/schedule_profile_serializer.rb" />
-        <option value="$PROJECT_DIR$/app/javascript/packs/routes.js" />
-        <option value="$PROJECT_DIR$/app/javascript/packs/actions/actionCreators.js" />
         <option value="$PROJECT_DIR$/app/javascript/packs/components/navbar.js" />
         <option value="$PROJECT_DIR$/app/javascript/packs/components/administration_profiles.jsx" />
         <option value="$PROJECT_DIR$/app/javascript/packs/components/administration.jsx" />
         <option value="$PROJECT_DIR$/app/serializers/mash_task_serializer.rb" />
         <option value="$PROJECT_DIR$/app/serializers/packaging_task_serializer.rb" />
         <option value="$PROJECT_DIR$/app/serializers/ferment_task_serializer.rb" />
-        <option value="$PROJECT_DIR$/app/javascript/packs/components/schedule_profile.jsx" />
         <option value="$PROJECT_DIR$/app/models/recipe_mash_step.rb" />
         <option value="$PROJECT_DIR$/app/models/recipe_ferment_task.rb" />
         <option value="$PROJECT_DIR$/app/models/recipe_ferment_step.rb" />
@@ -245,6 +281,16 @@
         <option value="$PROJECT_DIR$/app/serializers/recipe_packaging_task_serializer.rb" />
         <option value="$PROJECT_DIR$/app/controllers/recipes_controller.rb" />
         <option value="$PROJECT_DIR$/app/serializers/recipe_serializer.rb" />
+        <option value="$PROJECT_DIR$/app/javascript/packs/reducers/recipes.js" />
+        <option value="$PROJECT_DIR$/app/javascript/packs/reducers/index.js" />
+        <option value="$PROJECT_DIR$/app/javascript/packs/actions/actionCreators.js" />
+        <option value="$PROJECT_DIR$/app/javascript/packs/routes.js" />
+        <option value="$PROJECT_DIR$/app/javascript/packs/reducers/recipe.js" />
+        <option value="$PROJECT_DIR$/app/javascript/packs/app.js" />
+        <option value="$PROJECT_DIR$/app/javascript/packs/components/recipes.jsx" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/recipes.scss" />
+        <option value="$PROJECT_DIR$/app/javascript/packs/components/recipe.jsx" />
+        <option value="$PROJECT_DIR$/app/javascript/packs/components/schedule_profile.jsx" />
       </list>
     </option>
   </component>
@@ -268,17 +314,19 @@
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="289" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="424" />
     <option name="y" value="23" />
-    <option name="width" value="1631" />
-    <option name="height" value="1104" />
+    <option name="width" value="1496" />
+    <option name="height" value="1099" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -295,27 +343,50 @@
               <item name="uluwu-services" type="b2602c69:ProjectViewProjectNode" />
               <item name="uluwu-services" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="uluwu-services" type="b2602c69:ProjectViewProjectNode" />
               <item name="uluwu-services" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="serializers" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="uluwu-services" type="b2602c69:ProjectViewProjectNode" />
               <item name="uluwu-services" type="462c0819:PsiDirectoryNode" />
-              <item name="scripts" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="javascript" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="uluwu-services" type="b2602c69:ProjectViewProjectNode" />
+              <item name="uluwu-services" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="javascript" type="462c0819:PsiDirectoryNode" />
+              <item name="packs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="uluwu-services" type="b2602c69:ProjectViewProjectNode" />
+              <item name="uluwu-services" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="javascript" type="462c0819:PsiDirectoryNode" />
+              <item name="packs" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="uluwu-services" type="b2602c69:ProjectViewProjectNode" />
+              <item name="uluwu-services" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="javascript" type="462c0819:PsiDirectoryNode" />
+              <item name="packs" type="462c0819:PsiDirectoryNode" />
+              <item name="reducers" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="RailsProjectView" />
-      <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -333,15 +404,15 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/javascript/packs/components" />
+      <recent name="$PROJECT_DIR$/app/assets/stylesheets" />
+      <recent name="$PROJECT_DIR$/app/javascript/packs/reducers" />
       <recent name="$PROJECT_DIR$/app/serializers" />
       <recent name="$PROJECT_DIR$/app/controllers" />
-      <recent name="$PROJECT_DIR$/scripts" />
-      <recent name="$PROJECT_DIR$/app/models" />
-      <recent name="$PROJECT_DIR$/app/javascript/packs/reducers" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -429,15 +500,20 @@
       <workItem from="1557220763870" duration="11045000" />
       <workItem from="1557239843839" duration="19439000" />
       <workItem from="1557345230859" duration="9016000" />
-      <workItem from="1557431050668" duration="37045000" />
+      <workItem from="1557431050668" duration="40129000" />
+      <workItem from="1557764620780" duration="8000" />
+      <workItem from="1557859419087" duration="590000" />
+      <workItem from="1557864530672" duration="385000" />
+      <workItem from="1557866713204" duration="329000" />
+      <workItem from="1557913560758" duration="7954000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="277077000" />
+    <option name="totallyTimeSpent" value="289427000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="289" y="23" width="1631" height="1104" extended-state="0" />
+    <frame x="0" y="23" width="1920" height="1099" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
@@ -448,12 +524,12 @@
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.32883316" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19251993" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14791666" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3278846" />
@@ -462,8 +538,8 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="TypeScript" order="8" />
@@ -524,189 +600,10 @@
           <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="8" />
+      <option name="time" value="9" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="102" selection-start-line="27" selection-start-column="102" selection-end-line="27" selection-end-column="102" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/reducers/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/admin_sub_menu.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="498">
-          <caret line="45" column="46" lean-forward="true" selection-start-line="45" selection-start-column="46" selection-end-line="45" selection-end-column="46" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/reducers/schedule_profiles.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="33" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/DragAndDrop.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3615">
-          <caret line="241" column="44" selection-start-line="241" selection-start-column="44" selection-end-line="241" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/schedule_requests.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="35" column="13" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/reducers/schedule_profile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/actions/actionCreators.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="519">
-          <caret line="238" column="23" selection-start-line="238" selection-start-column="23" selection-end-line="238" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/lib/EventItem.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="506" column="8" selection-start-line="506" selection-start-column="8" selection-end-line="506" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/withDnDContext.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/TaskList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/TaskItem.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/schedule_requests_list.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="51" column="5" lean-forward="true" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/administration.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="65" column="47" selection-start-line="65" selection-start-column="47" selection-end-line="65" selection-end-column="47" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/administration_profiles.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="121" column="60" lean-forward="true" selection-start-line="121" selection-start-column="60" selection-end-line="121" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/serializers/ferment_task_serializer.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/serializers/schedule_request_serializer.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/Basic.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="661">
-          <caret line="164" column="40" lean-forward="true" selection-start-line="164" selection-start-column="40" selection-end-line="164" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/navbar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="41" column="4" selection-start-line="41" selection-start-column="4" selection-end-line="46" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/schedule_profile.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="214" column="18" selection-start-line="214" selection-start-column="18" selection-end-line="214" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/recipe_mash_step.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -815,35 +712,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/administration_controller.rb">
+    <entry file="file://$PROJECT_DIR$/scripts/create_sample_recipe_task.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        <state relative-caret-position="465">
+          <caret line="31" column="35" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/serializers/mash_task_serializer.rb">
+    <entry file="file://$PROJECT_DIR$/app/serializers/recipe_serializer.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        <state relative-caret-position="285">
+          <caret line="19" column="3" lean-forward="true" selection-start-line="19" selection-start-column="3" selection-end-line="19" selection-end-column="3" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/serializers/schedule_profile_serializer.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="49" lean-forward="true" selection-start-column="49" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/serializers/packaging_task_serializer.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/serializers/recipe_ferment_task_serializer.rb">
+    <entry file="file://$PROJECT_DIR$/app/serializers/recipe_packaging_task_serializer.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="12" selection-start-column="12" selection-end-column="12" />
@@ -857,38 +740,210 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/serializers/recipe_packaging_task_serializer.rb">
+    <entry file="file://$PROJECT_DIR$/app/serializers/recipe_ferment_task_serializer.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="12" selection-start-column="12" selection-end-column="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/recipes_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/administration_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="5" lean-forward="true" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+        <state relative-caret-position="60">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/recipe.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
-          <caret line="12" column="28" lean-forward="true" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
+          <caret line="12" column="28" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/create_sample_recipe_task.rb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/recipes_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
-          <caret line="111" column="32" lean-forward="true" selection-start-line="111" selection-start-column="32" selection-end-line="111" selection-end-column="32" />
+        <state relative-caret-position="375">
+          <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/serializers/recipe_serializer.rb">
+    <entry file="file://$PROJECT_DIR$/app/serializers/mash_task_serializer.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/serializers/packaging_task_serializer.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/serializers/schedule_profile_serializer.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="3" lean-forward="true" selection-start-line="19" selection-start-column="3" selection-end-line="19" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/application.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="19" column="28" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/reducers/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
-          <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="17" selection-start-column="17" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/schedule_requests.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="635">
+          <caret line="268" column="13" selection-start-line="268" selection-start-column="13" selection-end-line="268" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/reducers/recipe.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/reducers/recipes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/navbar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="780">
+          <caret line="55" column="41" lean-forward="true" selection-start-line="55" selection-start-column="41" selection-end-line="55" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/add_vessel_modal.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-477">
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/admin_sub_menu.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-162">
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/Basic.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2415">
+          <caret line="164" column="40" lean-forward="true" selection-start-line="164" selection-start-column="40" selection-end-line="164" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/DnDTypes.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/recipes.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="36" column="1" lean-forward="true" selection-start-line="36" selection-start-column="1" selection-end-line="36" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/actions/actionCreators.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="438">
+          <caret line="289" column="1" lean-forward="true" selection-start-line="289" selection-start-column="1" selection-end-line="289" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/recipes.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="36" column="17" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/recipe.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="93" column="34" selection-start-line="93" selection-start-column="34" selection-end-line="93" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/administration.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="114" column="52" lean-forward="true" selection-start-line="114" selection-start-column="52" selection-end-line="114" selection-end-column="52" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/administration_profiles.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="558">
+          <caret line="134" column="36" selection-start-line="134" selection-start-column="36" selection-end-line="134" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/schedule_profile.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="811">
+          <caret line="240" column="45" lean-forward="true" selection-start-line="240" selection-start-column="45" selection-end-line="240" selection-end-column="45" />
         </state>
       </provider>
     </entry>
