@@ -1,14 +1,38 @@
-require 'net/http'
+# generate the ingredients from existing ones
 
-url = URI.parse('http://api.brewerydb.com/v2/ingredients/?p=1&&key=324a96ac481682f2462d66504fb83b12')
-req = Net::HTTP::Get.new(url.to_s)
-res = Net::HTTP.start(url.host, url.port) {|http|
-  http.request(req)
-}
-JSON.parse(res.body)['data'].each do |data|
-  Ingredient.create!(id: data['id'],
-                     name: data['name'],
-                     category: data['category'],
-                     categoryDisplay: data['categoryDisplay']
-                     )
+
+Fermentable.all.each do |fermentable|
+  Ingredient.create!({
+      name: fermentable.name,
+      category: 'fermentable',
+      categoryDisplay: 'Malts, Grains & Fermentables',
+      entity_type: 'Fermentable',
+      entity_id: fermentable.id
+                     })
+end
+
+
+Hop.all.each do |hop|
+  Ingredient.create!({
+      name: hop.name,
+      category: 'hop',
+      categoryDisplay: 'Hops',
+      entity_type: 'Hop',
+      entity_id: hop.id
+                     })
+end
+
+
+Yeast.all.each do |yeast|
+  Ingredient.create!({
+      name: yeast.name,
+      category: 'hop',
+      categoryDisplay: 'Yeast',
+      entity_type: 'Yeast',
+      entity_id: yeast.id
+                     })
+end
+
+Ingredient.all.each do |ingredient|
+  ingredient.destroy
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_13_112334) do
+ActiveRecord::Schema.define(version: 2019_05_19_213317) do
 
   create_table "ferment_steps", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "name"
@@ -35,12 +35,70 @@ ActiveRecord::Schema.define(version: 2019_05_13_112334) do
     t.integer "schedule_profile_id"
   end
 
+  create_table "fermentable_characteristics", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.integer "fermentable_id"
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "fermentables", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "country_of_origin"
+    t.integer "srm_id"
+    t.integer "srm_precise"
+    t.integer "moisture_content"
+    t.decimal "dry_yield", precision: 10
+    t.decimal "potential", precision: 10
+    t.integer "protein"
+    t.string "max_in_batch"
+    t.string "integer"
+    t.string "requires_mashing"
+    t.string "category"
+    t.string "category_display"
+    t.string "string"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "hops", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "country_of_origin"
+    t.decimal "alpha_acid_min", precision: 10
+    t.decimal "alpha_acid_max", precision: 10
+    t.decimal "beta_acid_min", precision: 10
+    t.decimal "beta_acid_max", precision: 10
+    t.decimal "humulene_min", precision: 10
+    t.decimal "humulene_max", precision: 10
+    t.decimal "caryophyllene_min", precision: 10
+    t.decimal "caryophyllene_max", precision: 10
+    t.decimal "cohumulone_min", precision: 10
+    t.decimal "cohumulone_max", precision: 10
+    t.decimal "myrcene_min", precision: 10
+    t.decimal "myrcene_max", precision: 10
+    t.decimal "farnesene_min", precision: 10
+    t.decimal "farnesene_max", precision: 10
+    t.string "is_noble"
+    t.string "for_bittering"
+    t.string "for_flavor"
+    t.string "for_aroma"
+    t.string "category"
+    t.string "category_display"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "ingredients", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "name"
     t.string "category"
     t.string "categoryDisplay"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "entity_type"
+    t.integer "entity_id"
   end
 
   create_table "mash_steps", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
@@ -62,6 +120,12 @@ ActiveRecord::Schema.define(version: 2019_05_13_112334) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "schedule_profile_id"
+  end
+
+  create_table "miscs", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "organization_task_template_associations", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
@@ -206,6 +270,13 @@ ActiveRecord::Schema.define(version: 2019_05_13_112334) do
     t.string "identifier"
   end
 
+  create_table "srms", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.string "name"
+    t.string "hex"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "task_templates", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "organization_id"
     t.string "task_type"
@@ -232,6 +303,24 @@ ActiveRecord::Schema.define(version: 2019_05_13_112334) do
     t.string "vessel_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "yeasts", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.decimal "attenuation_min", precision: 10
+    t.decimal "attenuation_max", precision: 10
+    t.decimal "ferment_temp_min", precision: 10
+    t.decimal "ferment_temp_max", precision: 10
+    t.decimal "alcohol_tolerance_min", precision: 10
+    t.decimal "alcohol_tolerance_max", precision: 10
+    t.string "supplier"
+    t.string "yeast_format"
+    t.string "category"
+    t.string "category_display"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "yeast_type"
   end
 
 end

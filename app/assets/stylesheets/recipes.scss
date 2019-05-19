@@ -4,14 +4,14 @@
 
 .recipe-list-container {
   width: 300px;
-  height:100vh;
+  height: 100vh;
   border-right: 1px solid #e8e8e8;
 }
 
 .ant-list-item-meta-avatar {
-    margin-top: 10px;
-    margin-left: 20px;
-  }
+  margin-top: 10px;
+  margin-left: 20px;
+}
 
 .recipe-item-container {
   cursor: pointer;
@@ -23,6 +23,8 @@
 }
 
 .recipe-contents {
+  display: flex;
+  flex-direction: column;
   margin-top: 3%;
   margin-left: 5%;
   margin-right: 5%;
@@ -35,4 +37,16 @@
 
 .recipe-overview-slot {
   margin-right: 40px;
+}
+
+.process-overview-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 50px;
+  .ant-card-bordered {
+    width: 100%;
+    margin-right: 50px;
+
+  }
 }
