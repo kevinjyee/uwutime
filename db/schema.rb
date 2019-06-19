@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_19_213317) do
+ActiveRecord::Schema.define(version: 2019_06_19_121554) do
 
   create_table "ferment_steps", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "name"
@@ -54,11 +54,9 @@ ActiveRecord::Schema.define(version: 2019_05_19_213317) do
     t.decimal "potential", precision: 10
     t.integer "protein"
     t.string "max_in_batch"
-    t.string "integer"
     t.string "requires_mashing"
     t.string "category"
     t.string "category_display"
-    t.string "string"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -94,7 +92,7 @@ ActiveRecord::Schema.define(version: 2019_05_19_213317) do
   create_table "ingredients", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "name"
     t.string "category"
-    t.string "categoryDisplay"
+    t.string "category_display"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "entity_type"
@@ -188,10 +186,12 @@ ActiveRecord::Schema.define(version: 2019_05_19_213317) do
     t.integer "ingredient_id"
     t.integer "amount"
     t.string "amount_unit"
-    t.integer "time"
-    t.string "time_unit"
+    t.integer "duration"
+    t.string "duration_unit"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "recipe_step_type"
+    t.integer "recipe_step_id"
   end
 
   create_table "recipe_mash_steps", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|

@@ -3,6 +3,7 @@ class Recipe < ApplicationRecord
   has_many :recipe_mash_tasks
   has_many :recipe_ferment_tasks
   has_many :recipe_packaging_tasks
+  has_many :recipe_ingredients
 
   after_create :copy_schedule_profile
 

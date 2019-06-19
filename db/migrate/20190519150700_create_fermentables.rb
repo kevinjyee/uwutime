@@ -11,12 +11,9 @@ class CreateFermentables < ActiveRecord::Migration[5.2]
       t.decimal :potential
       t.integer :protein
       t.string :max_in_batch
-      t.string :integer
       t.string :requires_mashing
       t.string :category
       t.string :category_display
-      t.string :string
-
       t.timestamps
     end
   end
