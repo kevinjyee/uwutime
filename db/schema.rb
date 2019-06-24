@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_19_121554) do
+ActiveRecord::Schema.define(version: 2019_06_24_125043) do
 
   create_table "ferment_steps", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "name"
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2019_06_19_121554) do
     t.decimal "dry_yield", precision: 10
     t.decimal "potential", precision: 10
     t.integer "protein"
-    t.string "max_in_batch"
+    t.integer "max_in_batch"
     t.string "requires_mashing"
     t.string "category"
     t.string "category_display"
@@ -181,6 +181,40 @@ ActiveRecord::Schema.define(version: 2019_06_19_121554) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "recipe_fermentables", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "recipe_id"
+    t.integer "fermentable_id"
+    t.integer "moisture_content"
+    t.decimal "dry_yield", precision: 10
+    t.decimal "potential", precision: 10
+    t.integer "protein"
+    t.string "requires_mashing"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "recipe_hops", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "recipe_id"
+    t.string "hop_id"
+    t.string "integer"
+    t.decimal "alpha_acid_min", precision: 10
+    t.decimal "alpha_acid_max", precision: 10
+    t.decimal "beta_acid_min", precision: 10
+    t.decimal "beta_acid_max", precision: 10
+    t.decimal "humulene_min", precision: 10
+    t.decimal "humulene_max", precision: 10
+    t.decimal "caryophyllene_min", precision: 10
+    t.decimal "caryophyllene_max", precision: 10
+    t.decimal "cohumulone_min", precision: 10
+    t.decimal "cohumulone_max", precision: 10
+    t.decimal "myrcene_min", precision: 10
+    t.decimal "myrcene_max", precision: 10
+    t.decimal "farnesene_min", precision: 10
+    t.decimal "farnesene_max", precision: 10
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "recipe_ingredients", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "recipe_id"
     t.integer "ingredient_id"
@@ -231,6 +265,19 @@ ActiveRecord::Schema.define(version: 2019_06_19_121554) do
     t.integer "step_order"
     t.integer "day_start"
     t.integer "recipe_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "recipe_yeasts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "recipe_id"
+    t.integer "yeast_id"
+    t.decimal "attenuation_min", precision: 10
+    t.decimal "attenuation_max", precision: 10
+    t.decimal "ferment_temp_min", precision: 10
+    t.decimal "ferment_temp_max", precision: 10
+    t.decimal "alcohol_tolerance_min", precision: 10
+    t.decimal "alcohol_tolerance_max", precision: 10
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -26,10 +26,20 @@ end
 Yeast.all.each do |yeast|
   Ingredient.create!({
       name: yeast.name,
-      category: 'hop',
+      category: 'yeast',
       category_display: 'Yeast',
       entity_type: 'Yeast',
       entity_id: yeast.id
+                     })
+end
+
+Misc.all.each do |yeast|
+  Ingredient.create!({
+                         name: misc.name,
+                         category: 'misc',
+                         category_display: 'Yeast',
+                         entity_type: 'Yeast',
+                         entity_id: yeast.id
                      })
 end
 
