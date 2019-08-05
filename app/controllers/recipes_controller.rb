@@ -38,7 +38,8 @@ class RecipesController < ApplicationController
   def includes
     { recipe_mash_tasks: action_name == 'show',
       recipe_ferment_tasks: action_name == 'show',
-      recipe_packaging_tasks: action_name == 'show'
+      recipe_packaging_tasks: action_name == 'show',
+      recipe_ingredients: action_name == 'show'
     }
   end
 end

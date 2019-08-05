@@ -6,6 +6,7 @@ import '../../../assets/stylesheets/administration.scss'
 
 import '../../../assets/stylesheets/index.scss'
 import '../../../assets/stylesheets/recipes.scss'
+import  Readonly from './Readonly'
 import beericon from '../../../assets/images/beer-icon.svg'
 import 'antd/dist/antd.css';
 import {List, message, Avatar, Spin} from 'antd';
@@ -226,6 +227,19 @@ export default class Recipe extends React.Component {
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+                    <div className='operations-overview-row'>
+                        <div className="ant-card-head-title">
+                            Operations
+                        </div>
+                        <Readonly
+                            resources={[
+                                {
+                                    id: 'r1',
+                                    identifier: 'Resource1',
+                                }]}
+                        />
                     </div>
 
                     <div className='process-overview-row'>
