@@ -22,6 +22,9 @@ gem 'coffee-rails', '~> 4.2'
 # Serializers
 gem 'active_model_serializers', '~> 0.10.2'
 
+# Services/Interactor
+gem "interactor", "~> 3.0"
+
 # Add haml for ruby rendering 
 gem 'haml', '~> 5.0', '>= 5.0.4'
 

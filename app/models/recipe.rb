@@ -12,8 +12,18 @@ class Recipe < ApplicationRecord
 
   after_create :copy_schedule_profile
 
+  def events
+    @_events ||= BuildScheduleTemplate.call({recipe: self})
+  end
+
+  def steps
+    @_steps ||= recipe_mash_tasks.map{ |step| step.recipe_mash_steps} +
+        recipe_ferment_tasks.map{ |step| step.recipe_ferment_steps} +
+        recipe_packaging_tasks.map{ |step| step.recipe_packaging_steps}.flatten!
+  end
 
   protected
+
 
   def copy_schedule_profile
     calculate_brew_templates
