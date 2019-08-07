@@ -12,6 +12,7 @@ class Readonly extends Component{
             endResizable: false,
             movable: false,
             creatable: false,
+            scrollToSpecialMomentEnabled: true
         });
         schedulerData.localeMoment.locale('en');
         schedulerData.setResources(this.props.resources);

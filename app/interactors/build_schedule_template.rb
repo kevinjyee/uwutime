@@ -71,45 +71,65 @@ class BuildScheduleTemplate
     maxHours = -1
     totalHours = 0
     resource_index = 1
+    last_cumulated_hours = 0
 
 
     recipe.steps.flatten.each_with_index do |recipe_step, index|
-      children_steps[recipe_step.display_name] = {
-          hours: recipe_step.duration_hours,
-          backgroundColor: COLOR_PICKER[recipe_step.class.name][:backgroundColor],
-          color: COLOR_PICKER[recipe_step.class.name][:color],
-          background: COLOR_PICKER[recipe_step.class.name][:background],
-          border: COLOR_PICKER[recipe_step.class.name][:border],
-          borderRadius: COLOR_PICKER[recipe_step.class.name][:borderRadius]
-      }
+      if recipe_step.class.name == 'RecipeMashStep'
+        children_steps['brew'] = {
+            hours: 24,
+            class_name: recipe_step.class.name,
+            backgroundColor: COLOR_PICKER[recipe_step.class.name][:backgroundColor],
+            color: COLOR_PICKER[recipe_step.class.name][:color],
+            background: COLOR_PICKER[recipe_step.class.name][:background],
+            border: COLOR_PICKER[recipe_step.class.name][:border],
+            borderRadius: COLOR_PICKER[recipe_step.class.name][:borderRadius]
+        }
+        totalHours += 24
+      else
+        children_steps[recipe_step.display_name] = {
+              hours: recipe_step.duration_hours,
+              class_name: recipe_step.class.name,
+              backgroundColor: COLOR_PICKER[recipe_step.class.name][:backgroundColor],
+              color: COLOR_PICKER[recipe_step.class.name][:color],
+              background: COLOR_PICKER[recipe_step.class.name][:background],
+              border: COLOR_PICKER[recipe_step.class.name][:border],
+              borderRadius: COLOR_PICKER[recipe_step.class.name][:borderRadius]
+        }
+        totalHours += recipe_step.duration_hours
+      end
 
-      totalHours += recipe_step.duration_hours
+
+
+
       if recipe_step.duration_hours > maxHours
         maxHours = recipe_step.duration_hours
         maxChild = recipe_step.name
       end
 
       if recipe_step.name == 'Transfer'
-        tasks << build_task(children_steps, maxChild, totalHours, resource_index)
+        tasks << build_task(children_steps, maxChild, totalHours, resource_index, last_cumulated_hours)
+        last_cumulated_hours += totalHours
         children_steps = {}
         maxChild = nil
         maxHours = -1
         totalHours = 0
         resource_index += 1
+
       end
       if index == recipe.steps.flatten.size - 1
-        tasks << build_task(children_steps, maxChild, totalHours, resource_index)
+        tasks << build_task(children_steps, maxChild, totalHours, resource_index, last_cumulated_hours)
       end
     end
     tasks
   end
 
-  def build_task(children_steps, maxChild, totalHours, resource_index)
+  def build_task(children_steps, maxChild, totalHours, resource_index, last_cumulated_hours)
     resources.push({id: resource_index, identifier: "Resource #{resource_index}"})
     {
       maxChild: maxChild,
-      start: Time.now(),
-      end: Time.now() + totalHours*60*60,
+      start: Time.now() + last_cumulated_hours*60*60,
+      end: Time.now() + totalHours*60*60 + last_cumulated_hours*60*60,
       totalHours: totalHours,
       children: children_steps,
       title: "#{recipe.name}-#{recipe.id}-#{resource_index}",

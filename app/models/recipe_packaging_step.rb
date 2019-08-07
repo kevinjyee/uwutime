@@ -3,7 +3,7 @@ class RecipePackagingStep < ApplicationRecord
 
   def duration_hours
     if next_step
-      (next_step.day - day + 1) *24
+      (next_step.day - day) *24
     else
       24
     end
