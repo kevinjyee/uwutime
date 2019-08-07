@@ -33,7 +33,8 @@ class BuildScheduleTemplate
   }
 
   def call
-    context.result = calculate_templates
+    templates = calculate_templates
+    context.result = {resources: resources.uniq, templates: templates }
   end
 
   def maxChild
@@ -56,6 +57,10 @@ class BuildScheduleTemplate
     totalHours
   end
 
+  def resources
+    @_resources ||= []
+  end
+
   protected
 
   def calculate_templates
@@ -65,8 +70,10 @@ class BuildScheduleTemplate
     maxChild = nil
     maxHours = -1
     totalHours = 0
+    resource_index = 1
 
-    recipe.steps.flatten.each do |recipe_step|
+
+    recipe.steps.flatten.each_with_index do |recipe_step, index|
       children_steps[recipe_step.display_name] = {
           hours: recipe_step.duration_hours,
           backgroundColor: COLOR_PICKER[recipe_step.class.name][:backgroundColor],
@@ -83,27 +90,31 @@ class BuildScheduleTemplate
       end
 
       if recipe_step.name == 'Transfer'
-        tasks << build_task(children_steps, maxChild, totalHours)
+        tasks << build_task(children_steps, maxChild, totalHours, resource_index)
         children_steps = {}
         maxChild = nil
         maxHours = -1
         totalHours = 0
-        next
+        resource_index += 1
       end
-      tasks << build_task(children_steps, maxChild, totalHours)
+      if index == recipe.steps.flatten.size - 1
+        tasks << build_task(children_steps, maxChild, totalHours, resource_index)
+      end
     end
     tasks
   end
 
-  def build_task(children_steps, maxChild, totalHours)
+  def build_task(children_steps, maxChild, totalHours, resource_index)
+    resources.push({id: resource_index, identifier: "Resource #{resource_index}"})
     {
       maxChild: maxChild,
       start: Time.now(),
       end: Time.now() + totalHours*60*60,
       totalHours: totalHours,
       children: children_steps,
-      title: "#{recipe.name}-#{recipe.id}"
-
+      title: "#{recipe.name}-#{recipe.id}-#{resource_index}",
+      resourceId: resource_index,
+      id: "#{recipe.name}-#{recipe.id}-#{resource_index}"
     }
   end
 end

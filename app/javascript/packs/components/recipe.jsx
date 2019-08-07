@@ -234,11 +234,8 @@ export default class Recipe extends React.Component {
                             Operations
                         </div>
                         <Readonly
-                            resources={[
-                                {
-                                    id: 'r1',
-                                    identifier: 'Resource1',
-                                }]}
+                            resources={data.events.resources}
+                            events={data.events.templates}
                         />
                     </div>
 

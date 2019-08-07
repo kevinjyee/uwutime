@@ -13,7 +13,7 @@ class Recipe < ApplicationRecord
   after_create :copy_schedule_profile
 
   def events
-    @_events ||= BuildScheduleTemplate.call({recipe: self})
+    @_events ||= BuildScheduleTemplate.call({recipe: self}).result
   end
 
   def steps

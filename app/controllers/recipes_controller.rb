@@ -26,7 +26,6 @@ class RecipesController < ApplicationController
   end
 
   protected
-
   def recipe_params
     params.require(:recipe).permit(:name)
   end
@@ -39,7 +38,8 @@ class RecipesController < ApplicationController
     { recipe_mash_tasks: action_name == 'show',
       recipe_ferment_tasks: action_name == 'show',
       recipe_packaging_tasks: action_name == 'show',
-      recipe_ingredients: action_name == 'show'
+      recipe_ingredients: action_name == 'show',
+      recipe_events: action_name == 'show'
     }
   end
 end

@@ -7,7 +7,7 @@ class Readonly extends Component{
     constructor(props){
         super(props);
 
-        let schedulerData = new SchedulerData('2017-12-18', ViewTypes.Week, false, false, {
+        let schedulerData = new SchedulerData('2019-08-07', ViewTypes.Month, false, false, {
             startResizable: false,
             endResizable: false,
             movable: false,
@@ -15,7 +15,8 @@ class Readonly extends Component{
         });
         schedulerData.localeMoment.locale('en');
         schedulerData.setResources(this.props.resources);
-        schedulerData.setEvents(DemoData.events);
+        // schedulerData.setEvents(DemoData.events);
+        schedulerData.setEvents(this.props.events);
         this.state = {
             schedulerData: schedulerData
         }
