@@ -85,6 +85,23 @@ const packagingColumns = [
     },
 ];
 
+const recipeFermentableColumns = [
+    {
+        title: 'Name',
+        dataIndex:'name',
+        key:'name',
+        render: text => <a href="javascript:;">{text}</a>}
+        ,
+    {   title: 'Amount',
+        dataIndex: 'amount',
+        key: 'amount'
+    },
+    {   title: 'Usage',
+        dataIndex: 'usage',
+        key: 'usage'
+    }
+];
+
 
 // rowSelection objects indicates the need for row selection
 const rowSelection = {
@@ -191,8 +208,25 @@ export default class Recipe extends React.Component {
                 packagingData.push(current_task);
             }
 
+            let recipe_fermentables_data = [];
+            let recipe_hops_data =[];
+            for(let i =0; i < data.recipe_ingredients.length; i++) {
+                let ingredient = data.recipe_ingredients[i]
+                if (ingredient.category == 'fermentable') {
+                    let currentTask = {
+                        key: `recipe_fermentable_${ingredient.id}`,
+                        name: ingredient.name,
+                        amount: `${ingredient.amount}${ingredient.amount_unit}`,
+                        usage: ingredient.recipe_step
+                    };
+                    recipe_fermentables_data.push(currentTask);
+                }
+            }
 
-            return (
+
+
+
+                return (
                 <div className='recipe-contents'>
                     <div className='recipe-overview-row'>
                         <div className="ant-card ant-card-bordered">
@@ -285,6 +319,37 @@ export default class Recipe extends React.Component {
                                 <Table columns={packagingColumns}
                                        rowSelection={rowSelection}
                                        dataSource={packagingData}/>,
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className='ingredients process-overview-row'>
+                        <div className="ant-card ant-card-bordered">
+                            <div className="ant-card-head">
+                                <div className="ant-card-head-wrapper">
+                                    <div className="ant-card-head-title">
+                                        Malts, Grains & Fermentables
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="ant-card-body">
+                                <Table columns={recipeFermentableColumns}
+                                       dataSource={recipe_fermentables_data} />,
+                            </div>
+                        </div>
+
+                        <div className="ant-card ant-card-bordered">
+                            <div className="ant-card-head">
+                                <div className="ant-card-head-wrapper">
+                                    <div
+                                        className="ant-card-head-title">Hops
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="ant-card-body">
+                                <Table columns={fermentColumns}
+                                       rowSelection={rowSelection}
+                                       dataSource={fermentData}/>,
                             </div>
                         </div>
                     </div>

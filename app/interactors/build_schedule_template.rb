@@ -49,14 +49,6 @@ class BuildScheduleTemplate
     maxChild
   end
 
-  def totalHours
-    totalHours = 0
-    self.children.each do |key, value|
-      totalHours += value[:hours]
-    end
-    totalHours
-  end
-
   def resources
     @_resources ||= []
   end
@@ -72,7 +64,7 @@ class BuildScheduleTemplate
     totalHours = 0
     resource_index = 1
     last_cumulated_hours = 0
-
+    totalBrewHours = 0
 
     recipe.steps.flatten.each_with_index do |recipe_step, index|
       if recipe_step.class.name == 'RecipeMashStep'
@@ -85,7 +77,7 @@ class BuildScheduleTemplate
             border: COLOR_PICKER[recipe_step.class.name][:border],
             borderRadius: COLOR_PICKER[recipe_step.class.name][:borderRadius]
         }
-        totalHours += 24
+        totalBrewHours += recipe_step.duration_hours
       else
         children_steps[recipe_step.display_name] = {
               hours: recipe_step.duration_hours,
@@ -100,20 +92,21 @@ class BuildScheduleTemplate
       end
 
 
-
-
       if recipe_step.duration_hours > maxHours
         maxHours = recipe_step.duration_hours
         maxChild = recipe_step.name
       end
 
       if recipe_step.name == 'Transfer'
+
+        totalHours += 24 if totalBrewHours > 0
         tasks << build_task(children_steps, maxChild, totalHours, resource_index, last_cumulated_hours)
         last_cumulated_hours += totalHours
         children_steps = {}
         maxChild = nil
         maxHours = -1
         totalHours = 0
+        totalBrewHours = 0
         resource_index += 1
 
       end
