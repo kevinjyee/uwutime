@@ -5,5 +5,9 @@ class Ingredient < ApplicationRecord
   def srm
     entity.try(:srm_id)
   end
+
+  def srm_precise
+    entity.try(:srm_precise)
+  end
 end
 

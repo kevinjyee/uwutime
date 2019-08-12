@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_24_125043) do
+ActiveRecord::Schema.define(version: 2019_08_12_150448) do
 
   create_table "ferment_steps", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "name"
@@ -181,7 +181,7 @@ ActiveRecord::Schema.define(version: 2019_06_24_125043) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "recipe_fermentables", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "recipe_fermentables", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "recipe_id"
     t.integer "fermentable_id"
     t.integer "moisture_content"
@@ -193,7 +193,7 @@ ActiveRecord::Schema.define(version: 2019_06_24_125043) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "recipe_hops", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "recipe_hops", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "recipe_id"
     t.string "hop_id"
     t.string "integer"
@@ -269,7 +269,7 @@ ActiveRecord::Schema.define(version: 2019_06_24_125043) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "recipe_yeasts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "recipe_yeasts", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "recipe_id"
     t.integer "yeast_id"
     t.decimal "attenuation_min", precision: 10
@@ -291,6 +291,8 @@ ActiveRecord::Schema.define(version: 2019_06_24_125043) do
     t.integer "brew_hours"
     t.integer "ferment_days"
     t.integer "packaging_days"
+    t.decimal "volume_per_turn", precision: 10, scale: 2
+    t.string "volume_per_turn_unit"
   end
 
   create_table "schedule_profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|

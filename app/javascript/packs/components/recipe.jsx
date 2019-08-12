@@ -90,8 +90,11 @@ const recipeFermentableColumns = [
         title: 'Name',
         dataIndex:'name',
         key:'name',
-        render: text => <a href="javascript:;">{text}</a>}
-        ,
+        render: text => <a href="javascript:;">{text}</a>},
+    {   title: 'SRM',
+        dataIndex: 'srm_precise',
+        key: 'srm_precise'
+    },
     {   title: 'Amount',
         dataIndex: 'amount',
         key: 'amount'
@@ -216,6 +219,7 @@ export default class Recipe extends React.Component {
                     let currentTask = {
                         key: `recipe_fermentable_${ingredient.id}`,
                         name: ingredient.name,
+                        srm_precise: ingredient.srm_precise,
                         amount: `${ingredient.amount}${ingredient.amount_unit}`,
                         usage: ingredient.recipe_step
                     };
@@ -245,6 +249,9 @@ export default class Recipe extends React.Component {
                                         </li>
                                         <li>
                                             <b>Style: </b> {data.brew_type}
+                                        </li>
+                                        <li>
+                                            <b>Volume per Turn: </b> {data.volume_per_turn} {data.volume_per_turn_unit}
                                         </li>
                                     </div>
                                     <div className='recipe-overview-slot'>
