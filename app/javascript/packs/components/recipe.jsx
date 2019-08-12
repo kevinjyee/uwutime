@@ -9,6 +9,8 @@ import '../../../assets/stylesheets/recipes.scss'
 import brewant_thermometer from '../../../assets/images/brewant_thermometer_ico.svg'
 import brewant_fermenter from '../../../assets/images/brewant_fermenter_ico.svg'
 import brewant_packaging from '../../../assets/images/brewant_packaging_ico.svg'
+import brewant_grains from '../../../assets/images/brewant_grain_ico.svg'
+import brewant_hops from '../../../assets/images/brewant_hop_ico.svg'
 import  Readonly from './Readonly'
 import beericon from '../../../assets/images/beer-icon.svg'
 import 'antd/dist/antd.css';
@@ -345,6 +347,9 @@ export default class Recipe extends React.Component {
                             <div className="ant-card-head">
                                 <div className="ant-card-head-wrapper">
                                     <div className="ant-card-head-title">
+                                        <span>
+                                            <img className="recipe-icon" src={brewant_grains}/>
+                                        </span>
                                         Malts, Grains & Fermentables
                                     </div>
                                 </div>
@@ -358,8 +363,11 @@ export default class Recipe extends React.Component {
                         <div className="ant-card ant-card-bordered">
                             <div className="ant-card-head">
                                 <div className="ant-card-head-wrapper">
-                                    <div
-                                        className="ant-card-head-title">Hops
+                                    <div className="ant-card-head-title">
+                                        <span>
+                                            <img className="recipe-icon" src={brewant_hops}/>
+                                        </span>
+                                        Hops
                                     </div>
                                 </div>
                             </div>
