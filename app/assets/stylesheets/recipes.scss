@@ -48,11 +48,32 @@
   .ant-card-bordered {
     width: 100%;
     margin-right: 50px;
-
   }
 }
 
 .operations-overview-row {
   max-width: 100%;
   overflow: auto;
+}
+
+/* Ipad 3 */
+@media screen and (max-width: 1536px) {
+  .process-overview-row {
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+    flex-wrap: wrap;
+    .ant-card-bordered {
+      width: 100%;
+      margin-right: 50px;
+    }
+  }
+
+  .recipe-list-container {
+    display: none
+  }
+
+  .recipe-contents {
+    max-width: 100%;
+  }
 }

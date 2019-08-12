@@ -3,5 +3,5 @@ class RecipeIngredient < ApplicationRecord
   belongs_to :recipe
   belongs_to :ingredient
 
-  delegate :name, :category_display, :category, to: :ingredient
+  delegate :name, :category_display, :category, :srm, to: :ingredient
 end
