@@ -6,6 +6,9 @@ import '../../../assets/stylesheets/administration.scss'
 
 import '../../../assets/stylesheets/index.scss'
 import '../../../assets/stylesheets/recipes.scss'
+import brewant_thermometer from '../../../assets/images/brewant_thermometer_ico.svg'
+import brewant_fermenter from '../../../assets/images/brewant_fermenter_ico.svg'
+import brewant_packaging from '../../../assets/images/brewant_packaging_ico.svg'
 import  Readonly from './Readonly'
 import beericon from '../../../assets/images/beer-icon.svg'
 import 'antd/dist/antd.css';
@@ -284,8 +287,11 @@ export default class Recipe extends React.Component {
                         <div className="ant-card ant-card-bordered">
                             <div className="ant-card-head">
                                 <div className="ant-card-head-wrapper">
-                                    <div className="ant-card-head-title">Brew
-                                        Profile
+                                    <div className="ant-card-head-title">
+                                        <span>
+                                            <img className="recipe-icon" src={brewant_thermometer}/>
+                                        </span>
+                                            Brew Profile
                                     </div>
                                 </div>
                             </div>
@@ -300,8 +306,11 @@ export default class Recipe extends React.Component {
                             <div className="ant-card-head">
                                 <div className="ant-card-head-wrapper">
                                     <div
-                                        className="ant-card-head-title">Ferment
-                                        Profile
+                                        className="ant-card-head-title">
+                                        <span>
+                                            <img className="recipe-icon" src={brewant_fermenter}/>
+                                        </span>
+                                        Ferment Profile
                                     </div>
                                 </div>
                             </div>
@@ -316,8 +325,9 @@ export default class Recipe extends React.Component {
                             <div className="ant-card-head">
                                 <div className="ant-card-head-wrapper">
                                     <div
-                                        className="ant-card-head-title">Packaging
-                                        Profile
+                                        className="ant-card-head-title">
+                                        <img className="recipe-icon" src={brewant_packaging}/>
+                                        Packaging Profile
                                     </div>
                                 </div>
                             </div>
