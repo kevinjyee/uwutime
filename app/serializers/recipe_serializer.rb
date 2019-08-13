@@ -7,6 +7,7 @@ class RecipeSerializer <  BaseSerializer
   has_many :recipe_packaging_tasks, embed: :ids, if: :include_recipe_packaging_tasks?
   has_many :recipe_ingredients, embed: :ids, if: :include_recipe_ingredients?
 
+
   def include_recipe_mash_tasks?
     includes[:recipe_mash_tasks]
   end

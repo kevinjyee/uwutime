@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_12_150448) do
+ActiveRecord::Schema.define(version: 2019_08_13_124414) do
 
   create_table "ferment_steps", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "name"
@@ -191,12 +191,13 @@ ActiveRecord::Schema.define(version: 2019_08_12_150448) do
     t.string "requires_mashing"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "srm_id"
+    t.integer "srm_precise"
   end
 
   create_table "recipe_hops", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "recipe_id"
     t.string "hop_id"
-    t.string "integer"
     t.decimal "alpha_acid_min", precision: 10
     t.decimal "alpha_acid_max", precision: 10
     t.decimal "beta_acid_min", precision: 10
@@ -226,6 +227,8 @@ ActiveRecord::Schema.define(version: 2019_08_12_150448) do
     t.datetime "updated_at", null: false
     t.string "recipe_step_type"
     t.integer "recipe_step_id"
+    t.string "entity_type"
+    t.integer "entity_id"
   end
 
   create_table "recipe_mash_steps", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
