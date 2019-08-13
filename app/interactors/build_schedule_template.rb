@@ -121,8 +121,8 @@ class BuildScheduleTemplate
     resources.push({id: resource_index, identifier: "Resource #{resource_index}"})
     {
       maxChild: maxChild,
-      start: Time.now() + last_cumulated_hours*60*60,
-      end: Time.now() + totalHours*60*60 + last_cumulated_hours*60*60,
+      start: Time.now().beginning_of_month + last_cumulated_hours*60*60,
+      end: Time.now().beginning_of_month + totalHours*60*60 + last_cumulated_hours*60*60,
       totalHours: totalHours,
       children: children_steps,
       title: "#{recipe.name}-#{recipe.id}-#{resource_index}",

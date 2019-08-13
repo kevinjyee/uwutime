@@ -4,7 +4,7 @@ class RecipeIngredient < ApplicationRecord
   belongs_to :ingredient
   belongs_to :entity, polymorphic: true, optional: true
 
-  delegate :name, :category_display, :category, :srm, :srm_precise, to: :ingredient
+  delegate :name, :category_display, :category, to: :ingredient
 
   before_create :create_associative_entities
 

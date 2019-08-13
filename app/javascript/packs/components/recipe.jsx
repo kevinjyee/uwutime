@@ -11,6 +11,9 @@ import brewant_fermenter from '../../../assets/images/brewant_fermenter_ico.svg'
 import brewant_packaging from '../../../assets/images/brewant_packaging_ico.svg'
 import brewant_grains from '../../../assets/images/brewant_grain_ico.svg'
 import brewant_hops from '../../../assets/images/brewant_hop_ico.svg'
+import brewant_yeasts from '../../../assets/images/brewant_yeast_ico.svg'
+import brewant_miscs from '../../../assets/images/brewant_miscs_ico.svg'
+
 import  Readonly from './Readonly'
 import beericon from '../../../assets/images/beer-icon.svg'
 import 'antd/dist/antd.css';
@@ -110,6 +113,60 @@ const recipeFermentableColumns = [
     }
 ];
 
+const recipeHopColumns = [
+    {
+        title: 'Name',
+        dataIndex:'name',
+        key:'name',
+        render: text => <a href="javascript:;">{text}</a>
+    },
+    {   title: 'Alpha Acid',
+        dataIndex: 'alpha_acid',
+        key: 'alpha_acid'
+    },
+    {   title: 'Amount',
+        dataIndex: 'amount',
+        key: 'amount'
+    },
+    {   title: 'Usage',
+        dataIndex: 'usage',
+        key: 'usage'
+    }
+];
+
+const recipeYeastColumns = [
+    {
+        title: 'Name',
+        dataIndex:'name',
+        key:'name',
+        render: text => <a href="javascript:;">{text}</a>
+    },
+    {   title: 'Amount',
+        dataIndex: 'amount',
+        key: 'amount'
+    },
+    {   title: 'Usage',
+        dataIndex: 'usage',
+        key: 'usage'
+    }
+];
+
+const recipeMiscColumns = [
+    {
+        title: 'Name',
+        dataIndex:'name',
+        key:'name',
+        render: text => <a href="javascript:;">{text}</a>
+    },
+    {   title: 'Amount',
+        dataIndex: 'amount',
+        key: 'amount'
+    },
+    {   title: 'Usage',
+        dataIndex: 'usage',
+        key: 'usage'
+    }
+];
 
 // rowSelection objects indicates the need for row selection
 const rowSelection = {
@@ -218,17 +275,47 @@ export default class Recipe extends React.Component {
 
             let recipe_fermentables_data = [];
             let recipe_hops_data =[];
+            let recipe_yeasts_data = [];
+            let recipe_miscs_data = [];
             for(let i =0; i < data.recipe_ingredients.length; i++) {
                 let ingredient = data.recipe_ingredients[i]
                 if (ingredient.category == 'fermentable') {
                     let currentTask = {
                         key: `recipe_fermentable_${ingredient.id}`,
                         name: ingredient.name,
-                        srm_precise: ingredient.srm_precise,
+                        srm_precise: ingredient.entity.srm_precise,
                         amount: `${ingredient.amount}${ingredient.amount_unit}`,
                         usage: ingredient.recipe_step
                     };
                     recipe_fermentables_data.push(currentTask);
+                }
+                else if(ingredient.category == 'hop') {
+                    let currentTask = {
+                        key: `recipe_hop_${ingredient.id}`,
+                        name: ingredient.name,
+                        alpha_acid: ingredient.entity.alpha_acid_min,
+                        amount: `${ingredient.amount}${ingredient.amount_unit}`,
+                        usage: ingredient.recipe_step
+                    };
+                    recipe_hops_data.push(currentTask);
+                }
+                else if(ingredient.category == 'yeast') {
+                    let currentTask = {
+                        key: `recipe_yeast_${ingredient.id}`,
+                        name: ingredient.name,
+                        amount: `${ingredient.amount}${ingredient.amount_unit}`,
+                        usage: ingredient.recipe_step
+                    };
+                    recipe_yeasts_data.push(currentTask);
+                }
+                else if(ingredient.category == 'misc') {
+                    let currentTask = {
+                        key: `recipe_misc_${ingredient.id}`,
+                        name: ingredient.name,
+                        amount: `${ingredient.amount}${ingredient.amount_unit}`,
+                        usage: ingredient.recipe_step
+                    };
+                    recipe_miscs_data.push(currentTask);
                 }
             }
 
@@ -356,7 +443,7 @@ export default class Recipe extends React.Component {
                             </div>
                             <div className="ant-card-body">
                                 <Table columns={recipeFermentableColumns}
-                                       dataSource={recipe_fermentables_data} />,
+                                       dataSource={recipe_fermentables_data} />
                             </div>
                         </div>
 
@@ -372,9 +459,44 @@ export default class Recipe extends React.Component {
                                 </div>
                             </div>
                             <div className="ant-card-body">
-                                <Table columns={fermentColumns}
-                                       rowSelection={rowSelection}
-                                       dataSource={fermentData}/>,
+                                <Table columns={recipeHopColumns}
+                                       dataSource={recipe_hops_data} />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className='ingredients process-overview-row'>
+                        <div className="ant-card ant-card-bordered">
+                            <div className="ant-card-head">
+                                <div className="ant-card-head-wrapper">
+                                    <div className="ant-card-head-title">
+                                        <span>
+                                            <img className="recipe-icon" src={brewant_yeasts}/>
+                                        </span>
+                                        Yeasts
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="ant-card-body">
+                                <Table columns={recipeYeastColumns}
+                                       dataSource={recipe_yeasts_data} />
+                            </div>
+                        </div>
+
+                        <div className="ant-card ant-card-bordered">
+                            <div className="ant-card-head">
+                                <div className="ant-card-head-wrapper">
+                                    <div className="ant-card-head-title">
+                                        <span>
+                                            <img className="recipe-icon" src={brewant_miscs}/>
+                                        </span>
+                                        Misc
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="ant-card-body">
+                                <Table columns={recipeMiscColumns}
+                                       dataSource={recipe_miscs_data} />
                             </div>
                         </div>
                     </div>
