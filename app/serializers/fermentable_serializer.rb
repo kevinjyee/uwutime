@@ -1,5 +1,5 @@
 class FermentableSerializer < BaseSerializer
 
-  attributes :id, :name, :description, :srm_precise
+  attributes :id, :display_name, :name, :description, :srm_precise
 
 end

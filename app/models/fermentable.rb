@@ -17,4 +17,12 @@ class Fermentable < ApplicationRecord
                  ].join(' OR '), options)
     end
   end
+
+  def display_name
+    if srm_precise
+      "#{name} (SRM: #{srm_precise})"
+    else
+      "#{name}"
+    end
+  end
 end

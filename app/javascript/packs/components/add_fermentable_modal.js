@@ -4,13 +4,14 @@ import 'bootstrap/dist/css/bootstrap-theme.css'
 import '../../../assets/stylesheets/schedule_requests.scss'
 import '../../../assets/stylesheets/index.scss'
 import 'antd/dist/antd.css';
+import brewant_grain_ava from '../../../assets/images/brewant_grain_ava.svg'
 
 
 var $ = require('jquery')
 
 import {
     Button, Modal, Form, List,
-    Select, InputNumber,
+    Select, InputNumber, Avatar,
     Input, DatePicker, Icon, TimePicker, message, Spin
 } from 'antd';
 import axios from "axios/index";
@@ -58,6 +59,13 @@ const AddFermentableModal = Form.create({name: 'form_in_modal'})(
             })
         }
 
+        clickedItem = (item) => {
+            console.log(item);
+            this.setState({
+                searching: false
+            });
+        }
+
         render() {
             const {
                 visible, onCancel, onCreate, form,
@@ -86,10 +94,12 @@ const AddFermentableModal = Form.create({name: 'form_in_modal'})(
                         itemLayout="horizontal"
                         dataSource={this.state.fermentable_db}
                         renderItem={item => (
-                            <List.Item>
+                            <List.Item className='antd-list-item' onClick={() => { this.clickedItem(item)}}>
                                 <List.Item.Meta
-                                    title={<a href="https://ant.design">{item.name}</a>}
+                                    avatar={<Avatar className='grain-srm' src={brewant_grain_ava} />}
+                                    title={item.display_name}
                                     description={item.description}
+
                                 />
                             </List.Item>
                         )}
