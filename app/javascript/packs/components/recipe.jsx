@@ -28,6 +28,14 @@ import AdminSubMenu from './admin_sub_menu'
 import AddVesselModal from './add_vessel_modal'
 
 import NavBar from './navbar'
+import {Form} from "antd/lib/index";
+
+
+import {
+    Modal,
+    Select, InputNumber,
+    Input, DatePicker, TimePicker
+} from 'antd';
 
 import {Table, Button, Icon} from 'antd';
 
@@ -36,6 +44,140 @@ import '../../../assets/stylesheets/schedule_request_list.scss'
 const success = () => {
     message.success('Request successfully submitted');
 };
+
+const CollectionCreateForm = Form.create({name: 'form_in_modal'})(
+    // eslint-disable-next-line
+    class extends React.Component {
+        render() {
+            const {
+                visible, onCancel, onCreate, form,
+            } = this.props;
+            const {getFieldDecorator} = form;
+            return (
+                <Modal
+                    visible={visible}
+                    title="Create a new collection"
+                    okText="Create"
+                    onCancel={onCancel}
+                    onOk={onCreate}
+                >
+                    <Form layout="vertical">
+
+                        <Form.Item
+                            label="Select"
+                            hasFeedback
+                        >
+                            {getFieldDecorator('product', {
+                                rules: [
+                                    {
+                                        required: true,
+                                        message: 'Please select a product!'
+                                    },
+                                ],
+                            })(
+                                <Select placeholder="Please select a product">
+                                    <Option value="Brown">Brown</Option>
+                                    <Option value="IPA">IPA</Option>
+                                    <Option value="Pale-ale">Pale Ale</Option>
+                                    <Option value="Whiskey-stout">Whiskey
+                                        Stout</Option>
+                                    <Option value="Rye-beer">Rye Beer</Option>
+                                </Select>
+                            )}
+                        </Form.Item>
+
+                        <Form.Item
+                            label="Number of Runs"
+                        >
+                            {getFieldDecorator('run-quantity', {
+                                rules: [
+                                    {required: true},
+                                ],
+                                initialValue: 1
+                            })(
+                                <InputNumber min={1} max={10}/>
+                            )}
+                            <span className="ant-form-text"> run(s)</span>
+                        </Form.Item>
+
+
+                        <Form.Item
+                            label="Brew Hours"
+                        >
+                            {getFieldDecorator('brew-hours', {
+                                rules: [
+                                    {required: true},
+                                ],
+                                initialValue: 24
+                            })(
+                                <InputNumber min={1}/>
+                            )}
+                            <span className="ant-form-text"> hour(s)</span>
+                        </Form.Item>
+
+
+                        <Form.Item
+                            label="Fermentation Days"
+                        >
+                            {getFieldDecorator('ferment-days', {
+                                rules: [
+                                    {required: true},
+                                ],
+                                initialValue: 7
+                            })(
+                                <InputNumber min={1}/>
+                            )}
+                            <span className="ant-form-text"> day(s)</span>
+                        </Form.Item>
+
+                        <Form.Item
+                            label="Select"
+                            hasFeedback
+                        >
+                            {getFieldDecorator('end-type', {
+                                rules: [
+                                    {
+                                        required: true,
+                                        message: 'Please select an end type!'
+                                    },
+                                ],
+                            })(
+                                <Select
+                                    placeholder="Please select an end type">
+                                    <Option value="Can">Can</Option>
+                                    <Option value="Bottle">Bottle</Option>
+                                    <Option value="Keg 1/4">Keg 1/4</Option>
+                                    <Option value="Keg 1/2">Keg 1/2</Option>
+                                </Select>
+                            )}
+                        </Form.Item>
+
+                        <Form.Item
+                            label="Preferred Run Date"
+                        >
+                            {getFieldDecorator('preferred-run-date',
+                                {
+                                    rules: [{
+                                        type: 'object',
+                                        required:
+                                            true,
+                                        message: 'Please select a preferred date'
+                                    }]
+                                })(
+                                <DatePicker/>
+                            )}
+                        </Form.Item>
+
+                        <Form.Item label="Notes">
+                            {getFieldDecorator('notes')(<Input
+                                type="textarea"/>)}
+                        </Form.Item>
+                    </Form>
+                </Modal>
+            );
+        }
+    }
+);
 
 const brewColumns = [
     {
@@ -189,6 +331,7 @@ export default class Recipe extends React.Component {
             selectedRecipe: this.props.selectedRecipe,
             recipe: this.props.recipe.payload
         }
+        this.showModal = this.showModal.bind(this);
     }
 
     componentDidMount() {
@@ -202,6 +345,29 @@ export default class Recipe extends React.Component {
         if (prevProps.recipe.payload !== this.props.recipe.payload) {
             this.setState({recipe: this.props.recipe});
         }
+    }
+
+    showModal() {
+        this.setState({show_form: true});
+    }
+
+    saveFormRef = (formRef) => {
+        this.formRef = formRef;
+    }
+
+    handleCancel = () => {
+        this.setState({show_form: false});
+    }
+
+    handleCreate = () => {
+        const form = this.formRef.props.form;
+        form.validateFields((err, values) => {
+            if (err) {
+                return;
+            }
+            console.log('Received values of form: ', values);
+            this.setState({show_form: false});
+        });
     }
 
     render() {
@@ -323,7 +489,15 @@ export default class Recipe extends React.Component {
 
 
                 return (
+
                 <div className='recipe-contents'>
+                    <CollectionCreateForm
+                        {...this.props}
+                        wrappedComponentRef={this.saveFormRef}
+                        visible={this.state.show_form}
+                        onCancel={this.handleCancel}
+                        onCreate={this.handleCreate}
+                    />
                     <div className='recipe-overview-row'>
                         <div className="ant-card ant-card-bordered">
                             <div className="ant-card-head">
@@ -438,6 +612,14 @@ export default class Recipe extends React.Component {
                                             <img className="recipe-icon" src={brewant_grains}/>
                                         </span>
                                         Malts, Grains & Fermentables
+                                        <span className='ingredient-button-container'>
+                                        <Button className='add-request-btn'
+                                                type="primary"
+                                                onClick={this.showModal}
+                                        >
+                                            <Icon type="plus"/> Add
+                                        </Button>
+                                        </span>
                                     </div>
                                 </div>
                             </div>
