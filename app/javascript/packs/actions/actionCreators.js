@@ -289,7 +289,6 @@ export function receivedRecipes(data) {
     }
 }
 
-
 // Fetch Recipe
 export const fetchRecipe = (params) => {
     return dispatch => {
@@ -316,4 +315,3 @@ export function receivedRecipe(data) {
         payload: data
     }
 }
-

@@ -26,8 +26,17 @@ import InfiniteLoader from 'react-virtualized/dist/commonjs/InfiniteLoader';
 
 import AdminSubMenu from './admin_sub_menu'
 import AddVesselModal from './add_vessel_modal'
+import AddFermentableModal from './add_fermentable_modal'
 
 import NavBar from './navbar'
+import {Form} from "antd/lib/index";
+
+
+import {
+    Modal,
+    Select, InputNumber,
+    Input, DatePicker, TimePicker
+} from 'antd';
 
 import {Table, Button, Icon} from 'antd';
 
@@ -189,6 +198,7 @@ export default class Recipe extends React.Component {
             selectedRecipe: this.props.selectedRecipe,
             recipe: this.props.recipe.payload
         }
+        this.showModal = this.showModal.bind(this);
     }
 
     componentDidMount() {
@@ -202,6 +212,29 @@ export default class Recipe extends React.Component {
         if (prevProps.recipe.payload !== this.props.recipe.payload) {
             this.setState({recipe: this.props.recipe});
         }
+    }
+
+    showModal() {
+        this.setState({show_form: true});
+    }
+
+    saveFormRef = (formRef) => {
+        this.formRef = formRef;
+    }
+
+    handleCancel = () => {
+        this.setState({show_form: false});
+    }
+
+    handleCreate = () => {
+        const form = this.formRef.props.form;
+        form.validateFields((err, values) => {
+            if (err) {
+                return;
+            }
+            console.log('Received values of form: ', values);
+            this.setState({show_form: false});
+        });
     }
 
     render() {
@@ -323,7 +356,15 @@ export default class Recipe extends React.Component {
 
 
                 return (
+
                 <div className='recipe-contents'>
+                    <AddFermentableModal
+                        {...this.props}
+                        wrappedComponentRef={this.saveFormRef}
+                        visible={this.state.show_form}
+                        onCancel={this.handleCancel}
+                        onCreate={this.handleCreate}
+                    />
                     <div className='recipe-overview-row'>
                         <div className="ant-card ant-card-bordered">
                             <div className="ant-card-head">
@@ -438,6 +479,14 @@ export default class Recipe extends React.Component {
                                             <img className="recipe-icon" src={brewant_grains}/>
                                         </span>
                                         Malts, Grains & Fermentables
+                                        <span className='ingredient-button-container'>
+                                        <Button className='add-request-btn'
+                                                type="primary"
+                                                onClick={this.showModal}
+                                        >
+                                            <Icon type="plus"/> Add
+                                        </Button>
+                                        </span>
                                     </div>
                                 </div>
                             </div>
