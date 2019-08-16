@@ -6,10 +6,15 @@ class FermentablesController < ApplicationController
   end
 
   def fermentables
-    Fermentable.query(term)
+    Fermentable.query(term, search_by_prefix)
   end
 
   def term
     params[:q]
   end
+
+  def search_by_prefix
+    @_search_by_prefix = params[:search_by_prefix] || false
+  end
 end
+

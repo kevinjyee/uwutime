@@ -12,8 +12,10 @@ var $ = require('jquery')
 import {
     Button, Modal, Form, List,
     Select, InputNumber, Avatar,
-    Input, DatePicker, Icon, TimePicker, message, Spin
+    Input, DatePicker, Icon, TimePicker, message, Spin, AutoComplete,
 } from 'antd';
+
+const AutoCompleteOption = AutoComplete.Option;
 import axios from "axios/index";
 import {receivedRecipe} from "../actions/actionCreators";
 
@@ -29,7 +31,8 @@ const AddFermentableModal = Form.create({name: 'form_in_modal'})(
             this.state = {
                 searching: false,
                 fermentable_db: [],
-                fermentable_name: null
+                fermentable_name: null,
+                autoCompleteResult: [],
             }
         }
 
@@ -60,6 +63,25 @@ const AddFermentableModal = Form.create({name: 'form_in_modal'})(
             })
         }
 
+        handleFermentableChange = (value) => {
+            let autoCompleteResult = [];
+            if (!value) {
+                this.setState({ autoCompleteResult: []});
+            } else {
+                axios.get(`/fermentables`, {
+                    params: {
+                        q: value,
+                        search_by_prefix: true
+                    }
+                }).then( res => {
+                    console.log(res.data);
+                    this.setState({ autoCompleteResult: res.data });
+                }).catch(err => {
+                })
+            }
+
+        };
+
         clickedItem = (item) => {
             console.log(item);
             this.setState({
@@ -78,6 +100,10 @@ const AddFermentableModal = Form.create({name: 'form_in_modal'})(
                 labelCol: { span: 6 },
                 wrapperCol: { span: 14 },
             };
+
+            const recipeNameOptions = this.state.autoCompleteResult.map(fermentable => (
+                <AutoCompleteOption key={fermentable.id}>{fermentable.name}</AutoCompleteOption>
+            ));
 
 
             return (
@@ -118,10 +144,15 @@ const AddFermentableModal = Form.create({name: 'form_in_modal'})(
                     <Form {...formItemLayout}>
                         <Form.Item label="Name">
                             {getFieldDecorator('name', {
-                                rules: [{required: true, message: 'Recipe Name'}],
-                                 initialValue: this.state.fermentable_name
+                                rules: [{ required: true, message: 'Please input an ingredient name!' }],
+                                initialValue: this.state.fermentable_name
                             })(
-                                <Input/>
+                                <AutoComplete
+                                    dataSource={recipeNameOptions}
+                                    onChange={this.handleFermentableChange}
+                                >
+                                    <Input />
+                                </AutoComplete>,
                             )}
                         </Form.Item>
                         <Form.Item
