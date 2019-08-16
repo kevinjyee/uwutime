@@ -28,7 +28,8 @@ const AddFermentableModal = Form.create({name: 'form_in_modal'})(
             super(props);
             this.state = {
                 searching: false,
-                fermentable_db: []
+                fermentable_db: [],
+                fermentable_name: null
             }
         }
 
@@ -62,7 +63,8 @@ const AddFermentableModal = Form.create({name: 'form_in_modal'})(
         clickedItem = (item) => {
             console.log(item);
             this.setState({
-                searching: false
+                searching: false,
+                fermentable_name: item.name
             });
         }
 
@@ -72,6 +74,10 @@ const AddFermentableModal = Form.create({name: 'form_in_modal'})(
             } = this.props;
             const {getFieldDecorator} = form;
             let searching = this.state.searching;
+            const formItemLayout = {
+                labelCol: { span: 6 },
+                wrapperCol: { span: 14 },
+            };
 
 
             return (
@@ -82,12 +88,15 @@ const AddFermentableModal = Form.create({name: 'form_in_modal'})(
                     onCancel={onCancel}
                     onOk={onCreate}
                 >
-                    <Search
-                        placeholder="input search text"
-                        onSearch={value => console.log(value)}
-                        onChange={this.onChange}
+                    <div className='recipe-search'>
+                        <Search
+                            placeholder="Search by Recipe Name or SRM"
+                            onSearch={value => console.log(value)}
+                            onChange={this.onChange}
 
-                    />
+                        />
+                    </div>
+
                     <br/>
                     {searching ? ( <div>
                         <List
@@ -105,10 +114,12 @@ const AddFermentableModal = Form.create({name: 'form_in_modal'})(
                         )}
                         />
                     </div>) : (
-                    <Form layout="vertical">
-                        <Form.Item label="Identifier">
-                            {getFieldDecorator('identifier', {
-                                rules: [{required: true, message: 'Vessel Identifier is required'}],
+
+                    <Form {...formItemLayout}>
+                        <Form.Item label="Name">
+                            {getFieldDecorator('name', {
+                                rules: [{required: true, message: 'Recipe Name'}],
+                                 initialValue: this.state.fermentable_name
                             })(
                                 <Input/>
                             )}
@@ -116,51 +127,15 @@ const AddFermentableModal = Form.create({name: 'form_in_modal'})(
                         <Form.Item
                             label="Volume"
                         >
-                            {getFieldDecorator('volume', {
+                            {getFieldDecorator('Amount', {
                                 rules: [
                                     {required: true},
                                 ],
-                                initialValue: 1
+                                initialValue: 0
                             })(
                                 <InputNumber min={1} max={10000}/>
                             )}
-                        </Form.Item>
-                        <Form.Item
-                            label="Unit"
-                            hasFeedback
-                        >
-                            {getFieldDecorator('volume_unit', {
-                                rules: [
-                                    {
-                                        required: true,
-                                        message: 'Please select a unit'
-                                    },
-                                ],
-                            })(
-                                <Select placeholder="Please select a unit">
-                                    <Option value="bbl">bbl</Option>
-                                    <Option value="L">liter</Option>
-                                </Select>
-                            )}
-                        </Form.Item>
-                        <Form.Item
-                            label="Vessel Type"
-                            hasFeedback
-                        >
-                            {getFieldDecorator('vessel_type', {
-                                rules: [
-                                    {
-                                        required: true,
-                                        message: 'Please select a vessel type'
-                                    },
-                                ],
-                            })(
-                                <Select placeholder="Please select an equipment">
-                                    <Option value="kettle">Kettle</Option>
-                                    <Option value="fermenter">Fermenter</Option>
-                                    <Option value="packaging">Packaging</Option>
-                                </Select>
-                            )}
+                            <span className="ant-form-text"> lb(s)</span>
                         </Form.Item>
                     </Form>
                         )}

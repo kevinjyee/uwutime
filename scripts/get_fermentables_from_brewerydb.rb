@@ -1,32 +1,32 @@
 require 'net/http'
 
-url = URI.parse('http://api.brewerydb.com/v2/fermentables/?p=1&&key=324a96ac481682f2462d66504fb83b12&p=2')
+url = URI.parse('http://api.brewerydb.com/v2/fermentables/?p=1&&key=324a96ac481682f2462d66504fb83b12')
 req = Net::HTTP::Get.new(url.to_s)
 res = Net::HTTP.start(url.host, url.port) {|http|
   http.request(req)
 }
 begin
-JSON.parse(res.body)['data'].each do |data|
-  data = data.symbolize_keys!
-  puts data
-  data_srm = data[:srm]
-  @srm = nil
-  puts "HERE1"
-  if data_srm
-    puts "HERE2"
-    puts data_srm
-    if Srm.exists?(data_srm["id"])
-      @srm = Srm.find(data_srm["id"])
-    else
-      @srm = Srm.create!({id: data_srm["id"],
-                          name: data_srm["name"],
-                          hex: data_srm["hex"]})
+  JSON.parse(res.body)['data'].each do |data|
+    data = data.symbolize_keys!
+    puts data
+    data_srm = data[:srm]
+    @srm = nil
+    puts "HERE1"
+    if data_srm
+      puts "HERE2"
+      puts data_srm
+      if Srm.exists?(data_srm["id"])
+        @srm = Srm.find(data_srm["id"])
+      else
+        @srm = Srm.create!({id: data_srm["id"],
+                            name: data_srm["name"],
+                            hex: data_srm["hex"]})
+      end
     end
-  end
-  @fermentable = nil
+    @fermentable = nil
 
-  country = data[:country]
-  country_of_origin =  country ? country["displayName"] : nil
+    country = data[:country]
+    country_of_origin = country ? country["displayName"] : nil
 
     if Fermentable.exists?(data[:id])
       @fermentable = Fermentable.find(data[:id])
@@ -61,3 +61,17 @@ FermentableCharacteristic.all.each do |fc|
   fc.destroy!
 end
 
+
+###### update decimals
+#
+
+JSON.parse(res.body)['data'].each do |data|
+  data = data.symbolize_keys!
+  if Fermentable.exists?(data[:id])
+    fermentable = Fermentable.find(data[:id])
+    fermentable.dry_yield = data[:dryYield]
+    fermentable.potential = data[:potential]
+    fermentable.protein = data[:protein]
+    fermentable.save!
+  end
+end

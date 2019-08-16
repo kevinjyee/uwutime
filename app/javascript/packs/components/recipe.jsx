@@ -226,7 +226,7 @@ export default class Recipe extends React.Component {
         this.setState({show_form: false});
     }
 
-    handleCreate = () => {
+    handleCreateRecipeFermentable = () => {
         const form = this.formRef.props.form;
         form.validateFields((err, values) => {
             if (err) {
@@ -363,7 +363,7 @@ export default class Recipe extends React.Component {
                         wrappedComponentRef={this.saveFormRef}
                         visible={this.state.show_form}
                         onCancel={this.handleCancel}
-                        onCreate={this.handleCreate}
+                        onCreate={this.handleCreateRecipeFermentable}
                     />
                     <div className='recipe-overview-row'>
                         <div className="ant-card ant-card-bordered">

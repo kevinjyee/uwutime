@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_13_124414) do
+ActiveRecord::Schema.define(version: 2019_08_16_125802) do
 
   create_table "ferment_steps", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "name"
@@ -50,9 +50,9 @@ ActiveRecord::Schema.define(version: 2019_08_13_124414) do
     t.integer "srm_id"
     t.integer "srm_precise"
     t.integer "moisture_content"
-    t.decimal "dry_yield", precision: 10
-    t.decimal "potential", precision: 10
-    t.integer "protein"
+    t.decimal "dry_yield", precision: 10, scale: 2
+    t.decimal "potential", precision: 10, scale: 2
+    t.decimal "protein", precision: 10, scale: 2
     t.integer "max_in_batch"
     t.string "requires_mashing"
     t.string "category"
@@ -185,9 +185,9 @@ ActiveRecord::Schema.define(version: 2019_08_13_124414) do
     t.integer "recipe_id"
     t.integer "fermentable_id"
     t.integer "moisture_content"
-    t.decimal "dry_yield", precision: 10
-    t.decimal "potential", precision: 10
-    t.integer "protein"
+    t.decimal "dry_yield", precision: 10, scale: 2
+    t.decimal "potential", precision: 10, scale: 2
+    t.decimal "protein", precision: 10, scale: 2
     t.string "requires_mashing"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -219,7 +219,7 @@ ActiveRecord::Schema.define(version: 2019_08_13_124414) do
   create_table "recipe_ingredients", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "recipe_id"
     t.integer "ingredient_id"
-    t.integer "amount"
+    t.decimal "amount", precision: 10, scale: 2
     t.string "amount_unit"
     t.integer "duration"
     t.string "duration_unit"
