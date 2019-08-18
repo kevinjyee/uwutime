@@ -31,6 +31,7 @@ const AddFermentableModal = Form.create({name: 'form_in_modal'})(
             this.state = {
                 searching: false,
                 fermentable_db: [],
+                selected_fermentable: null,
                 fermentable_name: null,
                 autoCompleteResult: [],
             }
@@ -86,6 +87,7 @@ const AddFermentableModal = Form.create({name: 'form_in_modal'})(
             console.log(item);
             this.setState({
                 searching: false,
+                selected_fermentable: item,
                 fermentable_name: item.name
             });
         }
@@ -96,6 +98,7 @@ const AddFermentableModal = Form.create({name: 'form_in_modal'})(
             } = this.props;
             const {getFieldDecorator} = form;
             let searching = this.state.searching;
+            let selected_fermentable = this.state.selected_fermentable;
             const formItemLayout = {
                 labelCol: { span: 6 },
                 wrapperCol: { span: 14 },
@@ -140,20 +143,13 @@ const AddFermentableModal = Form.create({name: 'form_in_modal'})(
                         )}
                         />
                     </div>) : (
+                        <div></div>
 
-                    <Form {...formItemLayout}>
+                        )}
+
+                    {!searching && selected_fermentable ? (<Form {...formItemLayout}>
                         <Form.Item label="Name">
-                            {getFieldDecorator('name', {
-                                rules: [{ required: true, message: 'Please input an ingredient name!' }],
-                                initialValue: this.state.fermentable_name
-                            })(
-                                <AutoComplete
-                                    dataSource={recipeNameOptions}
-                                    onChange={this.handleFermentableChange}
-                                >
-                                    <Input />
-                                </AutoComplete>,
-                            )}
+                            <span className="ant-form-text">{this.state.fermentable_name}</span>
                         </Form.Item>
                         <Form.Item
                             label="Volume"
@@ -168,8 +164,20 @@ const AddFermentableModal = Form.create({name: 'form_in_modal'})(
                             )}
                             <span className="ant-form-text"> lb(s)</span>
                         </Form.Item>
-                    </Form>
-                        )}
+                        <Form.Item
+                            label="Color"
+                        >
+                            {getFieldDecorator('srm', {
+                                rules: [
+                                    {required: false},
+                                ],
+                                initialValue: this.state.selected_fermentable.srm_precise
+                            })(
+                                <InputNumber min={1} max={10000}/>
+                            )}
+                            <span className="ant-form-text"> SRM </span>
+                        </Form.Item>
+                    </Form>) : (<div></div>)}
                 </Modal>
             );
         }
