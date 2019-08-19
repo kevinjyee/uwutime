@@ -24,9 +24,7 @@ class RecipeFermentablesController < ApplicationController
   end
 
   def index
-    byebug
     @recipe_fermentables = RecipeFermentable.where({recipe_id: recipe_id})
-    byebug
     render json: @recipe_fermentables
   end
 

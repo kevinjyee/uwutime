@@ -212,7 +212,7 @@ export default class Recipe extends React.Component {
     componentDidUpdate(prevProps, prevState) {
         // Typical usage (don't forget to compare props):
         if (prevProps.recipe.payload !== this.props.recipe.payload) {
-            this.setState({recipe: this.props.recipe});
+            this.setState({recipe: this.props.recipe.payload});
         }
     }
 
