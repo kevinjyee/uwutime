@@ -16,7 +16,8 @@ function mapStateToProps(state) {
         schedule_profiles: state.schedule_profiles,
         schedule_profile: state.schedule_profile,
         recipes: state.recipes,
-        recipe: state.recipe
+        recipe: state.recipe,
+        recipe_fermentables: state.recipe_fermentables
     }
 }
 

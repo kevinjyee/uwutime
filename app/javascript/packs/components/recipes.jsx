@@ -233,6 +233,7 @@ export default class Recipes extends React.Component {
                         selectedRecipe={this.state.selectedRecipe}
                         recipe={this.props.recipe}
                         fetchRecipe={this.props.fetchRecipe}
+                        fetchRecipeFermentables={this.props.fetchRecipeFermentables}
                     />
                     </div>
 

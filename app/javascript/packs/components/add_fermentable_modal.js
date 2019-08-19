@@ -149,12 +149,18 @@ const AddFermentableModal = Form.create({name: 'form_in_modal'})(
 
                     {!searching && selected_fermentable ? (<Form {...formItemLayout}>
                         <Form.Item label="Name">
-                            <span className="ant-form-text">{this.state.fermentable_name}</span>
+                            {getFieldDecorator('name', {
+                                rules: [{ required: true, message: 'Please input an ingredient name!' }],
+                                initialValue: this.state.fermentable_name,
+                                disabled: true
+                            })(
+                                <Input disabled/>
+                            )}
                         </Form.Item>
                         <Form.Item
                             label="Volume"
                         >
-                            {getFieldDecorator('Amount', {
+                            {getFieldDecorator('amount', {
                                 rules: [
                                     {required: true},
                                 ],
@@ -167,7 +173,7 @@ const AddFermentableModal = Form.create({name: 'form_in_modal'})(
                         <Form.Item
                             label="Color"
                         >
-                            {getFieldDecorator('srm', {
+                            {getFieldDecorator('srm_precise', {
                                 rules: [
                                     {required: false},
                                 ],

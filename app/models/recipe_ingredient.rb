@@ -6,7 +6,7 @@ class RecipeIngredient < ApplicationRecord
 
   delegate :name, :category_display, :category, to: :ingredient
 
-  before_create :create_associative_entities
+  after_create :create_associative_entities
 
   protected
 
@@ -21,7 +21,7 @@ class RecipeIngredient < ApplicationRecord
                                                                      :srm_id,
                                                                      :srm_precise)
 
-      attributes.merge!({recipe_id: recipe_id, fermentable_id: ingredient.entity.id})
+      attributes.merge!({recipe_id: recipe_id, recipe_ingredient_id: self.id, fermentable_id: ingredient.entity.id})
 
       recipe_fermentable = RecipeFermentable.create!(attributes)
       self.entity_type = recipe_fermentable.class.name
@@ -42,7 +42,7 @@ class RecipeIngredient < ApplicationRecord
                                                                      :farnesene_min,
                                                                      :farnesene_max)
 
-      attributes.merge!({recipe_id: recipe_id, hop_id: ingredient.entity.id})
+      attributes.merge!({recipe_id: recipe_id, recipe_ingredient_id: self.id, hop_id: ingredient.entity.id})
 
     when 'Yeast'
       attributes = ingredient.entity.attributes.symbolize_keys.slice(:attenuation_min,
@@ -52,7 +52,7 @@ class RecipeIngredient < ApplicationRecord
                                                                      :alcohol_tolerance_min,
                                                                      :alcohol_tolerance_max)
 
-      attributes.merge!({recipe_id: recipe_id, yeast_id: ingredient.entity.id})
+      attributes.merge!({recipe_id: recipe_id, recipe_ingredient_id: self.id, yeast_id: ingredient.entity.id})
 
     end
   end

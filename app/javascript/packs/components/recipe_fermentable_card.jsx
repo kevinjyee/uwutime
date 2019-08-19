@@ -42,66 +42,6 @@ import {Table, Button, Icon} from 'antd';
 
 import '../../../assets/stylesheets/schedule_request_list.scss'
 
-const success = () => {
-    message.success('Request successfully submitted');
-};
-
-const brewColumns = [
-    {
-        title: 'Name',
-        dataIndex: 'name',
-        key: 'name',
-    },
-    {
-        title: 'Temperature',
-        dataIndex: 'temperature',
-        key: 'temperature',
-        width: '10%',
-    },
-    {
-        title: 'Hours',
-        dataIndex: 'duration',
-        width: '10%%',
-        key: 'duration',
-    },
-];
-
-
-const fermentColumns = [
-    {
-        title: 'Name',
-        dataIndex: 'name',
-        key: 'name',
-    },
-    {
-        title: 'Temperature',
-        dataIndex: 'temperature',
-        key: 'temperature',
-        width: '10%',
-    },
-    {
-        title: 'Day',
-        dataIndex: 'day',
-        width: '10%%',
-        key: 'day',
-    },
-];
-
-
-const packagingColumns = [
-    {
-        title: 'Name',
-        dataIndex: 'name',
-        key: 'name',
-    },
-    {
-        title: 'Day',
-        dataIndex: 'day',
-        width: '10%%',
-        key: 'day',
-    },
-];
-
 const recipeFermentableColumns = [
     {
         title: 'Name',
@@ -122,81 +62,14 @@ const recipeFermentableColumns = [
     }
 ];
 
-const recipeHopColumns = [
-    {
-        title: 'Name',
-        dataIndex:'name',
-        key:'name',
-        render: text => <a href="javascript:;">{text}</a>
-    },
-    {   title: 'Alpha Acid',
-        dataIndex: 'alpha_acid',
-        key: 'alpha_acid'
-    },
-    {   title: 'Amount',
-        dataIndex: 'amount',
-        key: 'amount'
-    },
-    {   title: 'Usage',
-        dataIndex: 'usage',
-        key: 'usage'
-    }
-];
 
-const recipeYeastColumns = [
-    {
-        title: 'Name',
-        dataIndex:'name',
-        key:'name',
-        render: text => <a href="javascript:;">{text}</a>
-    },
-    {   title: 'Amount',
-        dataIndex: 'amount',
-        key: 'amount'
-    },
-    {   title: 'Usage',
-        dataIndex: 'usage',
-        key: 'usage'
-    }
-];
-
-const recipeMiscColumns = [
-    {
-        title: 'Name',
-        dataIndex:'name',
-        key:'name',
-        render: text => <a href="javascript:;">{text}</a>
-    },
-    {   title: 'Amount',
-        dataIndex: 'amount',
-        key: 'amount'
-    },
-    {   title: 'Usage',
-        dataIndex: 'usage',
-        key: 'usage'
-    }
-];
-
-// rowSelection objects indicates the need for row selection
-const rowSelection = {
-    onChange: (selectedRowKeys, selectedRows) => {
-        console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
-    },
-    onSelect: (record, selected, selectedRows) => {
-        console.log(record, selected, selectedRows);
-    },
-    onSelectAll: (selected, selectedRows, changeRows) => {
-        console.log(selected, selectedRows, changeRows);
-    },
-};
-
-export default class Recipe extends React.Component {
+export default class RecipeFermentableCard extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            selectedRecipe: this.props.selectedRecipe,
-            recipe: this.props.recipe.payload
+            recipeFermentables: this.props.recipeFermentables,
+
         }
         this.showModal = this.showModal.bind(this);
         this.handleRecipeFermentableSubmit = this.handleRecipeFermentableSubmit.bind(this);
@@ -205,13 +78,12 @@ export default class Recipe extends React.Component {
     componentDidMount() {
         if (this.state.selectedRecipe && this.state.selectedRecipe.id) {
             this.props.fetchRecipe({id: this.state.selectedRecipe.id});
-            this.props.fetchRecipeFermentables({recipe_id: this.state.selectedRecipe.id})
         }
     }
 
     componentDidUpdate(prevProps, prevState) {
         // Typical usage (don't forget to compare props):
-        if (prevProps.recipe.payload !== this.props.recipe.payload) {
+        if (prevProps.recipeFermentables.payload !== this.props.recipeFermentables.payload) {
             this.setState({recipe: this.props.recipe});
         }
     }

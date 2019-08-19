@@ -7,8 +7,9 @@ import schedule_profiles from './schedule_profiles'
 import schedule_profile from './schedule_profile'
 import recipes from './recipes'
 import recipe from './recipe'
+import recipe_fermentables from './recipe_fermentables'
 
 const rootReducer = combineReducers({ schedule_requests,
-    vessels, schedule_profiles, schedule_profile, recipes, recipe, routing: routerReducer});
+    vessels, schedule_profiles, schedule_profile, recipes, recipe, recipe_fermentables, routing: routerReducer});
 
 export default rootReducer;

@@ -315,3 +315,66 @@ export function receivedRecipe(data) {
         payload: data
     }
 }
+
+
+// Fetch RecipeFermentables
+export const fetchRecipeFermentables = (params) => {
+    return dispatch => {
+        dispatch(requestRecipeFermentables);
+        axios.get(`/recipe_fermentables`, {
+            params: {
+                recipe_id: params.recipe_id
+            }
+        }).then( res => {
+            dispatch(receivedRecipeFermentables(res.data));
+        }).catch(err => {
+
+        })
+    }
+}
+
+export function requestRecipeFermentables() {
+    return {
+        type: 'REQUEST_RECIPE_FERMENTABLES'
+    }
+}
+
+export function receivedRecipeFermentables(data) {
+    return {
+        type: 'RECEIVED_RECIPE_FERMENTABLES',
+        payload: data
+    }
+}
+
+
+// Add RecipeFermentable
+export const addRecipeFermentable = (params) => {
+    return dispatch => {
+        dispatch(addRecipeFermentableStarted);
+        axios.get('/recipe_fermentables', {
+            params: {
+                q: e.target.value
+            }
+        }).then( res => {
+            dispatch(addRecipeFermentableSuccess(res.data));
+        }).catch(err => {
+            dispatch(addRecipeFermentableFailure (err.message));
+        })
+    };
+};
+
+const addRecipeFermentableStarted = () => ({
+    type: 'ADD_RECIPE_FERMENTABLE_STARTED'
+});
+
+const addRecipeFermentableSuccess = data => ({
+    type: 'ADD_RECIPE_FERMENTABLE_SUCCESS',
+    payload: {...data}
+});
+
+const addRecipeFermentableFailure = error => ({
+    type: 'ADD_RECIPE_FERMENTABLE_FAILURE',
+    payload: {
+        error
+    }
+});
