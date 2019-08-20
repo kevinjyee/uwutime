@@ -6,20 +6,17 @@ import '../../../assets/stylesheets/index.scss'
 import 'antd/dist/antd.css';
 import brewant_grain_ava from '../../../assets/images/brewant_grain_ava.svg'
 
-
-var $ = require('jquery')
-
 import {
-    Button, Modal, Form, List,
-    Select, InputNumber, Avatar,
-    Input, DatePicker, Icon, TimePicker, message, Spin, AutoComplete,
+    Modal, Form, List,
+    InputNumber, Avatar,
+    Input, AutoComplete,
 } from 'antd';
 
 const AutoCompleteOption = AutoComplete.Option;
 import axios from "axios/index";
-import {receivedRecipe} from "../actions/actionCreators";
 
-const { Search } = Input;
+
+const {Search} = Input;
 
 const AddFermentableModal = Form.create({name: 'form_in_modal'})(
     // eslint-disable-next-line
@@ -37,7 +34,7 @@ const AddFermentableModal = Form.create({name: 'form_in_modal'})(
             }
         }
 
-        onChange = (e) => {
+        onSearch = (e) => {
 
             if (e.target.value.length > 0) {
                 this.setState({
@@ -55,7 +52,7 @@ const AddFermentableModal = Form.create({name: 'form_in_modal'})(
                 params: {
                     q: e.target.value
                 }
-            }).then( res => {
+            }).then(res => {
                 console.log(res.data);
                 this.setState({
                     fermentable_db: res.data
@@ -64,25 +61,6 @@ const AddFermentableModal = Form.create({name: 'form_in_modal'})(
             })
         }
 
-        handleFermentableChange = (value) => {
-            let autoCompleteResult = [];
-            if (!value) {
-                this.setState({ autoCompleteResult: []});
-            } else {
-                axios.get(`/fermentables`, {
-                    params: {
-                        q: value,
-                        search_by_prefix: true
-                    }
-                }).then( res => {
-                    console.log(res.data);
-                    this.setState({ autoCompleteResult: res.data });
-                }).catch(err => {
-                })
-            }
-
-        };
-
         clickedItem = (item) => {
             console.log(item);
             this.setState({
@@ -90,6 +68,7 @@ const AddFermentableModal = Form.create({name: 'form_in_modal'})(
                 selected_fermentable: item,
                 fermentable_name: item.name
             });
+            this.props.metaDataCallBack({selectedFermentable: item})
         }
 
         render() {
@@ -100,14 +79,9 @@ const AddFermentableModal = Form.create({name: 'form_in_modal'})(
             let searching = this.state.searching;
             let selected_fermentable = this.state.selected_fermentable;
             const formItemLayout = {
-                labelCol: { span: 6 },
-                wrapperCol: { span: 14 },
+                labelCol: {span: 6},
+                wrapperCol: {span: 14},
             };
-
-            const recipeNameOptions = this.state.autoCompleteResult.map(fermentable => (
-                <AutoCompleteOption key={fermentable.id}>{fermentable.name}</AutoCompleteOption>
-            ));
-
 
             return (
                 <Modal
@@ -121,63 +95,77 @@ const AddFermentableModal = Form.create({name: 'form_in_modal'})(
                         <Search
                             placeholder="Search by Recipe Name or SRM"
                             onSearch={value => console.log(value)}
-                            onChange={this.onChange}
+                            onChange={this.onSearch}
 
                         />
                     </div>
 
                     <br/>
-                    {searching ? ( <div>
+                    {searching ? (<div>
                         <List
-                        itemLayout="horizontal"
-                        dataSource={this.state.fermentable_db}
-                        renderItem={item => (
-                            <List.Item className='antd-list-item' onClick={() => { this.clickedItem(item)}}>
-                                <List.Item.Meta
-                                    avatar={<Avatar className='grain-srm' src={brewant_grain_ava} />}
-                                    title={item.display_name}
-                                    description={item.description}
+                            itemLayout="horizontal"
+                            dataSource={this.state.fermentable_db}
+                            renderItem={item => (
+                                <List.Item className='antd-list-item'
+                                           onClick={() => {
+                                               this.clickedItem(item)
+                                           }}>
+                                    <List.Item.Meta
+                                        avatar={<Avatar className='grain-srm'
+                                                        src={brewant_grain_ava}/>}
+                                        title={item.display_name}
+                                        description={item.description}
 
-                                />
-                            </List.Item>
-                        )}
+                                    />
+                                </List.Item>
+                            )}
                         />
                     </div>) : (
                         <div></div>
 
-                        )}
+                    )}
 
-                    {!searching && selected_fermentable ? (<Form {...formItemLayout}>
-                        <Form.Item label="Name">
-                            <span className="ant-form-text">{this.state.fermentable_name}</span>
-                        </Form.Item>
-                        <Form.Item
-                            label="Volume"
-                        >
-                            {getFieldDecorator('Amount', {
-                                rules: [
-                                    {required: true},
-                                ],
-                                initialValue: 0
-                            })(
-                                <InputNumber min={1} max={10000}/>
-                            )}
-                            <span className="ant-form-text"> lb(s)</span>
-                        </Form.Item>
-                        <Form.Item
-                            label="Color"
-                        >
-                            {getFieldDecorator('srm', {
-                                rules: [
-                                    {required: false},
-                                ],
-                                initialValue: this.state.selected_fermentable.srm_precise
-                            })(
-                                <InputNumber min={1} max={10000}/>
-                            )}
-                            <span className="ant-form-text"> SRM </span>
-                        </Form.Item>
-                    </Form>) : (<div></div>)}
+                    {!searching && selected_fermentable ? (
+                        <Form {...formItemLayout}>
+                            <Form.Item label="Name">
+                                {getFieldDecorator('name', {
+                                    rules: [{
+                                        required: true,
+                                        message: 'Please input an ingredient name!'
+                                    }],
+                                    initialValue: this.state.fermentable_name,
+                                    disabled: true
+                                })(
+                                    <Input disabled/>
+                                )}
+                            </Form.Item>
+                            <Form.Item
+                                label="Volume"
+                            >
+                                {getFieldDecorator('amount', {
+                                    rules: [
+                                        {required: true},
+                                    ],
+                                    initialValue: 1
+                                })(
+                                    <InputNumber min={1} max={10000}/>
+                                )}
+                                <span className="ant-form-text"> lb(s)</span>
+                            </Form.Item>
+                            <Form.Item
+                                label="Color"
+                            >
+                                {getFieldDecorator('srm_precise', {
+                                    rules: [
+                                        {required: false},
+                                    ],
+                                    initialValue: this.state.selected_fermentable.srm_precise
+                                })(
+                                    <InputNumber min={1} max={10000}/>
+                                )}
+                                <span className="ant-form-text"> SRM </span>
+                            </Form.Item>
+                        </Form>) : (<div></div>)}
                 </Modal>
             );
         }

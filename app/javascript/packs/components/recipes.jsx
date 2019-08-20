@@ -232,7 +232,10 @@ export default class Recipes extends React.Component {
                     <Recipe
                         selectedRecipe={this.state.selectedRecipe}
                         recipe={this.props.recipe}
+                        recipe_fermentables={this.props.recipe_fermentables}
                         fetchRecipe={this.props.fetchRecipe}
+                        fetchRecipeFermentables={this.props.fetchRecipeFermentables}
+                        addRecipeFermentable={this.props.addRecipeFermentable}
                     />
                     </div>
 
