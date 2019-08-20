@@ -1,16 +1,6 @@
 class RecipeFermentablesController < ApplicationController
   def create
-    unless fermentable_name
-      render json: {message: 'Missing fermentable name'}, status: :unprocessable_entity
-    end
-
-    fermentable = Fermentable.where({name: fermentable_name}).first
-
-    unless fermentable
-      render json: {message: "Couldn't find ingredient with name #{fermentable_name}"}, status: :unprocessable_entity
-    end
-
-    recipe_fermentable = RecipeFermentable.new(recipe_fermentable_params)
+    recipe_fermentable = RecipeFermentable.new(new_recipe_fermentable_params)
     if recipe_fermentable.save
       render json: recipe_fermentable
     else
@@ -45,6 +35,28 @@ class RecipeFermentablesController < ApplicationController
     )
   end
 
+  def new_recipe_fermentable_params
+    attributes = (params[:recipe_fermentable] || ActionController::Parameters.new({})).permit(
+        :recipe_id,
+        :fermentable_id,
+        :srm_precise,
+        recipe_ingredient: [:id,
+                            :recipe_id,
+                            :amount,
+                            :amount_unit,
+                            :recipe_step_type,
+                            :recipe_step_id
+        ])
+
+    if (attributes[:recipe_ingredient])
+      attributes.merge!({ recipe_ingredient_attributes: attributes.delete(:recipe_ingredient) })
+
+      attributes[:recipe_ingredient_attributes][:ingredient_id] = ingredient_id
+    end
+
+    attributes
+  end
+
   def recipe_fermentable_id
     params.try(:recipe_fermentable).try(:id) || params[:id]
   end
@@ -55,6 +67,13 @@ class RecipeFermentablesController < ApplicationController
 
   def recipe_id
     params[:recipe_id]
+  end
+
+  def ingredient_id
+    if fermentable_id = params[:recipe_fermentable][:fermentable_id]
+      ingredient = Ingredient.where({entity_type: 'Fermentable', entity_id: fermentable_id}).first
+      return ingredient.id unless ingredient.nil?
+    end
   end
 end
 

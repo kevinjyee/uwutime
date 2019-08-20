@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_19_130740) do
+ActiveRecord::Schema.define(version: 2019_08_20_102317) do
 
   create_table "ferment_steps", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "name"
@@ -194,6 +194,8 @@ ActiveRecord::Schema.define(version: 2019_08_19_130740) do
     t.integer "srm_id"
     t.integer "srm_precise"
     t.integer "recipe_ingredient_id"
+    t.decimal "amount", precision: 10, scale: 2
+    t.string "amount_unit"
   end
 
   create_table "recipe_hops", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|

@@ -27,6 +27,7 @@ import InfiniteLoader from 'react-virtualized/dist/commonjs/InfiniteLoader';
 import AdminSubMenu from './admin_sub_menu'
 import AddVesselModal from './add_vessel_modal'
 import AddFermentableModal from './add_fermentable_modal'
+import RecipeFermentableCard from './recipe_fermentable_card'
 
 import NavBar from './navbar'
 import {Form} from "antd/lib/index";
@@ -205,7 +206,6 @@ export default class Recipe extends React.Component {
     componentDidMount() {
         if (this.state.selectedRecipe && this.state.selectedRecipe.id) {
             this.props.fetchRecipe({id: this.state.selectedRecipe.id});
-            this.props.fetchRecipeFermentables({recipe_id: this.state.selectedRecipe.id})
         }
     }
 
@@ -481,30 +481,12 @@ export default class Recipe extends React.Component {
                     </div>
 
                     <div className='ingredients process-overview-row'>
-                        <div className="ant-card ant-card-bordered">
-                            <div className="ant-card-head">
-                                <div className="ant-card-head-wrapper">
-                                    <div className="ant-card-head-title">
-                                        <span>
-                                            <img className="recipe-icon" src={brewant_grains}/>
-                                        </span>
-                                        Malts, Grains & Fermentables
-                                        <span className='ingredient-button-container'>
-                                        <Button className='add-request-btn'
-                                                type="primary"
-                                                onClick={this.showModal}
-                                        >
-                                            <Icon type="plus"/> Add
-                                        </Button>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="ant-card-body">
-                                <Table columns={recipeFermentableColumns}
-                                       dataSource={recipe_fermentables_data} />
-                            </div>
-                        </div>
+                        <RecipeFermentableCard
+                            selectedRecipe={this.state.selectedRecipe}
+                            fetchRecipeFermentables={this.props.fetchRecipeFermentables}
+                            recipe_fermentables={this.props.recipe_fermentables}
+                            addRecipeFermentable={this.props.addRecipeFermentable}
+                        />
 
                         <div className="ant-card ant-card-bordered">
                             <div className="ant-card-head">

@@ -351,10 +351,8 @@ export function receivedRecipeFermentables(data) {
 export const addRecipeFermentable = (params) => {
     return dispatch => {
         dispatch(addRecipeFermentableStarted);
-        axios.get('/recipe_fermentables', {
-            params: {
-                q: e.target.value
-            }
+        axios.post('/recipe_fermentables', {
+            recipe_fermentable: params
         }).then( res => {
             dispatch(addRecipeFermentableSuccess(res.data));
         }).catch(err => {

@@ -1,42 +1,13 @@
 import React from 'react';
-import moment from 'moment';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css'
 import '../../../assets/stylesheets/administration.scss'
-
 import '../../../assets/stylesheets/index.scss'
 import '../../../assets/stylesheets/recipes.scss'
-import brewant_thermometer from '../../../assets/images/brewant_thermometer_ico.svg'
-import brewant_fermenter from '../../../assets/images/brewant_fermenter_ico.svg'
-import brewant_packaging from '../../../assets/images/brewant_packaging_ico.svg'
 import brewant_grains from '../../../assets/images/brewant_grain_ico.svg'
-import brewant_hops from '../../../assets/images/brewant_hop_ico.svg'
-import brewant_yeasts from '../../../assets/images/brewant_yeast_ico.svg'
-import brewant_miscs from '../../../assets/images/brewant_miscs_ico.svg'
-
-import  Readonly from './Readonly'
-import beericon from '../../../assets/images/beer-icon.svg'
 import 'antd/dist/antd.css';
-import {List, message, Avatar, Spin} from 'antd';
-import {Link} from 'react-router-dom';
-import WindowScroller from 'react-virtualized/dist/commonjs/WindowScroller';
-import AutoSizer from 'react-virtualized/dist/commonjs/AutoSizer';
-import VList from 'react-virtualized/dist/commonjs/List';
-import InfiniteLoader from 'react-virtualized/dist/commonjs/InfiniteLoader';
-
-import AdminSubMenu from './admin_sub_menu'
-import AddVesselModal from './add_vessel_modal'
 import AddFermentableModal from './add_fermentable_modal'
 
-import NavBar from './navbar'
-import {Form} from "antd/lib/index";
-
-
-import {
-    Modal,
-    Select, InputNumber,
-    Input, DatePicker, TimePicker
-} from 'antd';
 
 import {Table, Button, Icon} from 'antd';
 
@@ -45,18 +16,22 @@ import '../../../assets/stylesheets/schedule_request_list.scss'
 const recipeFermentableColumns = [
     {
         title: 'Name',
-        dataIndex:'name',
-        key:'name',
-        render: text => <a href="javascript:;">{text}</a>},
-    {   title: 'SRM',
+        dataIndex: 'name',
+        key: 'name',
+        render: text => <a href="javascript:;">{text}</a>
+    },
+    {
+        title: 'SRM',
         dataIndex: 'srm_precise',
         key: 'srm_precise'
     },
-    {   title: 'Amount',
-        dataIndex: 'amount',
-        key: 'amount'
+    {
+        title: 'Amount',
+        dataIndex: 'amount_and_unit',
+        key: 'amount_and_unit'
     },
-    {   title: 'Usage',
+    {
+        title: 'Usage',
         dataIndex: 'usage',
         key: 'usage'
     }
@@ -68,8 +43,10 @@ export default class RecipeFermentableCard extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            recipeFermentables: this.props.recipeFermentables,
-
+            recipe_fermentables: this.props.recipe_fermentables.payload,
+            selectedRecipe: this.props.selectedRecipe,
+            selectedFermentable: null,
+            selectedRecipeStep: null
         }
         this.showModal = this.showModal.bind(this);
         this.handleRecipeFermentableSubmit = this.handleRecipeFermentableSubmit.bind(this);
@@ -77,14 +54,14 @@ export default class RecipeFermentableCard extends React.Component {
 
     componentDidMount() {
         if (this.state.selectedRecipe && this.state.selectedRecipe.id) {
-            this.props.fetchRecipe({id: this.state.selectedRecipe.id});
+            this.props.fetchRecipeFermentables({recipe_id: this.state.selectedRecipe.id})
         }
     }
 
     componentDidUpdate(prevProps, prevState) {
         // Typical usage (don't forget to compare props):
-        if (prevProps.recipeFermentables.payload !== this.props.recipeFermentables.payload) {
-            this.setState({recipe: this.props.recipe});
+        if (prevProps.recipe_fermentables.payload !== this.props.recipe_fermentables.payload) {
+            this.setState({recipe_fermentables: this.props.recipe_fermentables.payload});
         }
     }
 
@@ -100,10 +77,24 @@ export default class RecipeFermentableCard extends React.Component {
         this.setState({show_form: false});
     }
 
+    metaDataCallBack = (params) => {
+        this.setState(params);
+    }
+
     handleRecipeFermentableSubmit(values) {
-        const recipe = this.props.recipe;
-        value['recipe_id'] = recipe.id;
-        this.props.addRecipeFermentable(value);
+        const recipe = this.state.selectedRecipe
+        const fermentable = this.state.selectedFermentable;
+
+        let newRecipeFermentableParams = {
+            recipe_id: recipe.id,
+            fermentable_id: fermentable.id,
+            srm_precise: values['srm_precise'],
+            recipe_ingredient: {recipe_id: recipe.id, amount: values['amount']}
+        }
+
+
+        this.props.addRecipeFermentable(newRecipeFermentableParams);
+
 
     }
 
@@ -120,248 +111,33 @@ export default class RecipeFermentableCard extends React.Component {
     }
 
     render() {
-        let data = null;
+        let recipe_fermentables_data = null;
 
-        if (this.props.recipe && this.props.recipe.payload) {
-            data = this.props.recipe.payload
+        if (this.props.recipe_fermentables && this.props.recipe_fermentables.payload) {
+            recipe_fermentables_data = this.props.recipe_fermentables.payload
         }
 
-        if (data) {
+        if (recipe_fermentables_data) {
+            return (
+                <div className="ant-card ant-card-bordered">
 
-            let brewData = [];
-            for (let i = 0; i < data.recipe_mash_tasks.length; i++) {
-                let task = data.recipe_mash_tasks[i];
-                let current_task = {
-                    key: `mash_task_${task.id}`,
-                    name: task.name,
-                    children: []
-                }
-
-                current_task.children = task.recipe_mash_steps.map((step) => {
-                    return {
-                        key: `mash_step_${step.id}`,
-                        name: step.name,
-                        temperature: `${step.temperature}${step.temperature_unit}`,
-                        duration: step.duration_hours
-                    }
-                });
-                brewData.push(current_task);
-            }
-
-
-            let fermentData = [];
-            for (let i = 0; i < data.recipe_ferment_tasks.length; i++) {
-                let task = data.recipe_ferment_tasks[i];
-                let current_task = {
-                    key: `ferment_task_${task.id}`,
-                    name: task.name,
-                    children: []
-                }
-
-                current_task.children = task.recipe_ferment_steps.map((step) => {
-                    return {
-                        key: `mash_step_${step.id}`,
-                        name: step.name,
-                        temperature: `${step.temperature}${step.temperature_unit}`,
-                        day: `Day ${step.day}`
-                    }
-                });
-                fermentData.push(current_task);
-            }
-
-            let packagingData = [];
-            for (let i = 0; i < data.recipe_packaging_tasks.length; i++) {
-                let task = data.recipe_packaging_tasks[i];
-                let current_task = {
-                    key: `packaging_task_${task.id}`,
-                    name: task.name,
-                    children: []
-                }
-
-                current_task.children = task.recipe_packaging_steps.map((step) => {
-                    return {
-                        key: `packaging_step_${step.id}`,
-                        name: step.name,
-                        day: `Day ${step.day}`
-                    }
-                });
-                packagingData.push(current_task);
-            }
-
-            let recipe_fermentables_data = [];
-            let recipe_hops_data =[];
-            let recipe_yeasts_data = [];
-            let recipe_miscs_data = [];
-            for(let i =0; i < data.recipe_ingredients.length; i++) {
-                let ingredient = data.recipe_ingredients[i]
-                if (ingredient.category == 'fermentable') {
-                    let currentTask = {
-                        key: `recipe_fermentable_${ingredient.id}`,
-                        name: ingredient.name,
-                        srm_precise: ingredient.entity.srm_precise,
-                        amount: `${ingredient.amount}${ingredient.amount_unit}`,
-                        usage: ingredient.recipe_step
-                    };
-                    recipe_fermentables_data.push(currentTask);
-                }
-                else if(ingredient.category == 'hop') {
-                    let currentTask = {
-                        key: `recipe_hop_${ingredient.id}`,
-                        name: ingredient.name,
-                        alpha_acid: ingredient.entity.alpha_acid_min,
-                        amount: `${ingredient.amount}${ingredient.amount_unit}`,
-                        usage: ingredient.recipe_step
-                    };
-                    recipe_hops_data.push(currentTask);
-                }
-                else if(ingredient.category == 'yeast') {
-                    let currentTask = {
-                        key: `recipe_yeast_${ingredient.id}`,
-                        name: ingredient.name,
-                        amount: `${ingredient.amount}${ingredient.amount_unit}`,
-                        usage: ingredient.recipe_step
-                    };
-                    recipe_yeasts_data.push(currentTask);
-                }
-                else if(ingredient.category == 'misc') {
-                    let currentTask = {
-                        key: `recipe_misc_${ingredient.id}`,
-                        name: ingredient.name,
-                        amount: `${ingredient.amount}${ingredient.amount_unit}`,
-                        usage: ingredient.recipe_step
-                    };
-                    recipe_miscs_data.push(currentTask);
-                }
-            }
-
-
-
-
-                return (
-
-                <div className='recipe-contents'>
                     <AddFermentableModal
                         {...this.props}
                         wrappedComponentRef={this.saveFormRef}
+                        metaDataCallBack={this.metaDataCallBack}
                         visible={this.state.show_form}
                         onCancel={this.handleCancel}
                         onCreate={this.handleCreateRecipeFermentable}
                     />
-                    <div className='recipe-overview-row'>
-                        <div className="ant-card ant-card-bordered">
-                            <div className="ant-card-head">
-                                <div className="ant-card-head-wrapper">
-                                    <div
-                                        className="ant-card-head-title">{data.name}
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="ant-card-body">
-                                <div className="recipe-overview-body-flex">
-                                    <div className='recipe-overview-slot'>
-                                        <li>
-                                            <b>Name: </b> {data.name}
-                                        </li>
-                                        <li>
-                                            <b>Style: </b> {data.brew_type}
-                                        </li>
-                                        <li>
-                                            <b>Volume per Turn: </b> {data.volume_per_turn} {data.volume_per_turn_unit}
-                                        </li>
-                                    </div>
-                                    <div className='recipe-overview-slot'>
-                                        <li>
-                                            <b>Brew: </b> {data.brew_hours} Hours
-                                        </li>
-                                        <li>
-                                            <b>Ferment: </b> {data.ferment_days} Days
-                                        </li>
-                                        <li>
-                                            <b>Packaging: </b> {data.packaging_days} Days
-                                        </li>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className='operations-overview-row'>
-                        <div className="ant-card-head-title">
-                            Operations
-                        </div>
-                        <Readonly
-                            resources={data.events.resources}
-                            events={data.events.templates}
-                        />
-                    </div>
-
-                    <div className='process-overview-row'>
-                        <div className="ant-card ant-card-bordered">
-                            <div className="ant-card-head">
-                                <div className="ant-card-head-wrapper">
-                                    <div className="ant-card-head-title">
+                    <div className="ant-card-head">
+                        <div className="ant-card-head-wrapper">
+                            <div className="ant-card-head-title">
                                         <span>
-                                            <img className="recipe-icon" src={brewant_thermometer}/>
+                                            <img className="recipe-icon"
+                                                 src={brewant_grains}/>
                                         </span>
-                                            Brew Profile
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="ant-card-body">
-                                <Table columns={brewColumns}
-                                       rowSelection={rowSelection}
-                                       dataSource={brewData}/>,
-                            </div>
-                        </div>
-
-                        <div className="ant-card ant-card-bordered">
-                            <div className="ant-card-head">
-                                <div className="ant-card-head-wrapper">
-                                    <div
-                                        className="ant-card-head-title">
-                                        <span>
-                                            <img className="recipe-icon" src={brewant_fermenter}/>
-                                        </span>
-                                        Ferment Profile
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="ant-card-body">
-                                <Table columns={fermentColumns}
-                                       rowSelection={rowSelection}
-                                       dataSource={fermentData}/>,
-                            </div>
-                        </div>
-
-                        <div className="ant-card ant-card-bordered">
-                            <div className="ant-card-head">
-                                <div className="ant-card-head-wrapper">
-                                    <div
-                                        className="ant-card-head-title">
-                                        <img className="recipe-icon" src={brewant_packaging}/>
-                                        Packaging Profile
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="ant-card-body">
-                                <Table columns={packagingColumns}
-                                       rowSelection={rowSelection}
-                                       dataSource={packagingData}/>,
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className='ingredients process-overview-row'>
-                        <div className="ant-card ant-card-bordered">
-                            <div className="ant-card-head">
-                                <div className="ant-card-head-wrapper">
-                                    <div className="ant-card-head-title">
-                                        <span>
-                                            <img className="recipe-icon" src={brewant_grains}/>
-                                        </span>
-                                        Malts, Grains & Fermentables
-                                        <span className='ingredient-button-container'>
+                                Malts, Grains & Fermentables
+                                <span className='ingredient-button-container'>
                                         <Button className='add-request-btn'
                                                 type="primary"
                                                 onClick={this.showModal}
@@ -369,76 +145,43 @@ export default class RecipeFermentableCard extends React.Component {
                                             <Icon type="plus"/> Add
                                         </Button>
                                         </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="ant-card-body">
-                                <Table columns={recipeFermentableColumns}
-                                       dataSource={recipe_fermentables_data} />
-                            </div>
-                        </div>
-
-                        <div className="ant-card ant-card-bordered">
-                            <div className="ant-card-head">
-                                <div className="ant-card-head-wrapper">
-                                    <div className="ant-card-head-title">
-                                        <span>
-                                            <img className="recipe-icon" src={brewant_hops}/>
-                                        </span>
-                                        Hops
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="ant-card-body">
-                                <Table columns={recipeHopColumns}
-                                       dataSource={recipe_hops_data} />
                             </div>
                         </div>
                     </div>
-
-                    <div className='ingredients process-overview-row'>
-                        <div className="ant-card ant-card-bordered">
-                            <div className="ant-card-head">
-                                <div className="ant-card-head-wrapper">
-                                    <div className="ant-card-head-title">
-                                        <span>
-                                            <img className="recipe-icon" src={brewant_yeasts}/>
-                                        </span>
-                                        Yeasts
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="ant-card-body">
-                                <Table columns={recipeYeastColumns}
-                                       dataSource={recipe_yeasts_data} />
-                            </div>
-                        </div>
-
-                        <div className="ant-card ant-card-bordered">
-                            <div className="ant-card-head">
-                                <div className="ant-card-head-wrapper">
-                                    <div className="ant-card-head-title">
-                                        <span>
-                                            <img className="recipe-icon" src={brewant_miscs}/>
-                                        </span>
-                                        Misc
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="ant-card-body">
-                                <Table columns={recipeMiscColumns}
-                                       dataSource={recipe_miscs_data} />
-                            </div>
-                        </div>
+                    <div className="ant-card-body">
+                        <Table columns={recipeFermentableColumns}
+                               dataSource={recipe_fermentables_data}/>
                     </div>
                 </div>
-
             )
         }
         else {
             return (
-                <div>
-                    Not Loaded
+                <div className="ant-card ant-card-bordered">
+                    <div className="ant-card-head">
+                        <div className="ant-card-head-wrapper">
+                            <div className="ant-card-head-title">
+                                        <span>
+                                            <img className="recipe-icon"
+                                                 src={brewant_grains}/>
+                                        </span>
+                                Malts, Grains & Fermentables
+                                <span className='ingredient-button-container'>
+                                        <Button className='add-request-btn'
+                                                type="primary"
+                                                onClick={this.showModal}
+                                        >
+                                            <Icon type="plus"/> Add
+                                        </Button>
+                                        </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="ant-card-body">
+                        <Table columns={recipeFermentableColumns}
+                               dataSource={recipe_fermentables_data}
+                               loading={true}/>
+                    </div>
                 </div>
             )
         }

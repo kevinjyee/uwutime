@@ -11,7 +11,9 @@ function recipe_fermentables(state = [], action){
         case 'RECEIVED_RECIPE_FERMENTABLES':
             console.log('Received Recipe Fermentable');
             return { state, isLoading: false, action, payload: action.payload};
-        case 'ADD_RECIPE FERMENTABLE_SUCCESS':
+        case 'ADD_RECIPE_FERMENTABLE_STARTED':
+            return { state, isLoading: true, action, payload: action.payload };
+        case 'ADD_RECIPE_FERMENTABLE_SUCCESS':
             console.log('ADD RECIPE SUCCESSFUL');
             return {
                 state,
