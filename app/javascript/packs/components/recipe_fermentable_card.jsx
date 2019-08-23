@@ -7,6 +7,7 @@ import '../../../assets/stylesheets/recipes.scss'
 import brewant_grains from '../../../assets/images/brewant_grain_ico.svg'
 import 'antd/dist/antd.css';
 import AddFermentableModal from './add_fermentable_modal'
+import ShowFermentableModal from './show_fermentable_modal'
 
 
 import {Table, Button, Icon} from 'antd';
@@ -18,7 +19,7 @@ const recipeFermentableColumns = [
         title: 'Name',
         dataIndex: 'name',
         key: 'name',
-        render: text => <a href="javascript:;">{text}</a>
+        render: text => <a data-id={text} href="#">{text}</a>
     },
     {
         title: 'SRM',
@@ -48,8 +49,9 @@ export default class RecipeFermentableCard extends React.Component {
             selectedFermentable: null,
             selectedRecipeStep: null
         }
-        this.showModal = this.showModal.bind(this);
+        this.showAddModal = this.showAddModal.bind(this);
         this.handleRecipeFermentableSubmit = this.handleRecipeFermentableSubmit.bind(this);
+        this.onRowClick = this.onRowClick.bind(this);
     }
 
     componentDidMount() {
@@ -65,16 +67,40 @@ export default class RecipeFermentableCard extends React.Component {
         }
     }
 
-    showModal() {
-        this.setState({show_form: true});
+    onRowClick = (record, index, event) => {
+        console.log(record);
+        console.log(index);
+        console.log(event);
+
+
+        this.setState({
+            show_show_form: true,
+            selectedFermentable: record
+
+        })
+        // check if record.key in expandedRowKeys
+        // then invoke different setState and callback
     }
+
+    showAddModal() {
+        this.setState({show_add_form: true});
+    }
+
+    showShowModal() {
+        this.setState({show_show_form: true});
+    }
+
+    handleAddCancel = () => {
+        this.setState({show_add_form: false});
+    }
+
+    handleShowCancel = () => {
+        this.setState({show_show_form: false});
+    }
+
 
     saveFormRef = (formRef) => {
         this.formRef = formRef;
-    }
-
-    handleCancel = () => {
-        this.setState({show_form: false});
     }
 
     metaDataCallBack = (params) => {
@@ -92,9 +118,7 @@ export default class RecipeFermentableCard extends React.Component {
             recipe_ingredient: {recipe_id: recipe.id, amount: values['amount']}
         }
 
-
         this.props.addRecipeFermentable(newRecipeFermentableParams);
-
 
     }
 
@@ -106,8 +130,12 @@ export default class RecipeFermentableCard extends React.Component {
             }
             console.log('Received values of form: ', values);
             this.handleRecipeFermentableSubmit(values);
-            this.setState({show_form: false});
+            this.setState({show_add_form: false});
         });
+    }
+
+    handleSaveRecipeFermentable = () => {
+        this.setState({show_show_form: false});
     }
 
     render() {
@@ -125,10 +153,19 @@ export default class RecipeFermentableCard extends React.Component {
                         {...this.props}
                         wrappedComponentRef={this.saveFormRef}
                         metaDataCallBack={this.metaDataCallBack}
-                        visible={this.state.show_form}
-                        onCancel={this.handleCancel}
+                        visible={this.state.show_add_form}
+                        onCancel={this.handleAddCancel}
                         onCreate={this.handleCreateRecipeFermentable}
                     />
+
+                    <ShowFermentableModal
+                        {...this.props}
+                        visible={this.state.show_show_form}
+                        selected_fermentable={this.state.selectedFermentable}
+                        onCancel={this.handleShowCancel}
+                        onCreate={this.handleSaveRecipeFermentable}
+                    />
+
                     <div className="ant-card-head">
                         <div className="ant-card-head-wrapper">
                             <div className="ant-card-head-title">
@@ -140,7 +177,7 @@ export default class RecipeFermentableCard extends React.Component {
                                 <span className='ingredient-button-container'>
                                         <Button className='add-request-btn'
                                                 type="primary"
-                                                onClick={this.showModal}
+                                                onClick={this.showAddModal}
                                         >
                                             <Icon type="plus"/> Add
                                         </Button>
@@ -150,6 +187,9 @@ export default class RecipeFermentableCard extends React.Component {
                     </div>
                     <div className="ant-card-body">
                         <Table columns={recipeFermentableColumns}
+                               onRow={(record, index) => ({
+                                   onClick: (event) => { this.onRowClick(record, index, event) }
+                               })}
                                dataSource={recipe_fermentables_data}/>
                     </div>
                 </div>
@@ -166,14 +206,6 @@ export default class RecipeFermentableCard extends React.Component {
                                                  src={brewant_grains}/>
                                         </span>
                                 Malts, Grains & Fermentables
-                                <span className='ingredient-button-container'>
-                                        <Button className='add-request-btn'
-                                                type="primary"
-                                                onClick={this.showModal}
-                                        >
-                                            <Icon type="plus"/> Add
-                                        </Button>
-                                        </span>
                             </div>
                         </div>
                     </div>
