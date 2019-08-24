@@ -9,10 +9,9 @@ import brewant_grain_ava from '../../../assets/images/brewant_grain_ava.svg'
 import {
     Modal, Form, List,
     InputNumber, Avatar,
-    Input, AutoComplete,
+    Input,
 } from 'antd';
 
-const AutoCompleteOption = AutoComplete.Option;
 import axios from "axios/index";
 
 
@@ -32,6 +31,10 @@ const AddFermentableModal = Form.create({name: 'form_in_modal'})(
                 fermentable_name: null,
                 autoCompleteResult: [],
             }
+            this.onAmountPrimaryChanged = this.onAmountPrimaryChanged.bind(this);
+            this.onAmountSecondaryChanged = this.onAmountSecondaryChanged.bind(this);
+            this.onDryYieldChanged = this.onDryYieldChanged.bind(this);
+            this.onPotentialChanged = this.onPotentialChanged.bind(this);
         }
 
         onSearch = (e) => {
@@ -61,6 +64,30 @@ const AddFermentableModal = Form.create({name: 'form_in_modal'})(
             })
         }
 
+        onAmountPrimaryChanged = (value) => {
+            this.props.form.setFieldsValue({
+                amount_oz: value * 16
+            });
+        }
+
+        onAmountSecondaryChanged = (value) => {
+            this.props.form.setFieldsValue({
+                amount: value / 16.0
+            })
+        }
+
+        onDryYieldChanged = (value) => {
+            this.props.form.setFieldsValue({
+                potential: 1 + (value / 100.00) * 0.04621
+            })
+        }
+
+        onPotentialChanged = (value) => {
+            this.props.form.setFieldsValue({
+                dry_yield: ((value-1)/0.04621)*100.00
+            })
+        }
+
         clickedItem = (item) => {
             console.log(item);
             this.setState({
@@ -82,6 +109,17 @@ const AddFermentableModal = Form.create({name: 'form_in_modal'})(
                 labelCol: {span: 6},
                 wrapperCol: {span: 14},
             };
+
+            let amount = 1;
+            let amount_oz = 16;
+
+            if(this.state.selected_fermentable && this.state.selected_fermentable.amount) {
+                amount = this.state.selected_fermentable.amount;
+                amount_oz = this.state.selected_fermentable.amount * 16;
+            } else {
+                amount  = 1;
+                amount_oz = 16;
+            }
 
             return (
                 <Modal
@@ -139,6 +177,7 @@ const AddFermentableModal = Form.create({name: 'form_in_modal'})(
                                     <Input disabled/>
                                 )}
                             </Form.Item>
+
                             <Form.Item
                                 label="Volume"
                             >
@@ -146,12 +185,35 @@ const AddFermentableModal = Form.create({name: 'form_in_modal'})(
                                     rules: [
                                         {required: true},
                                     ],
-                                    initialValue: 1
+                                    initialValue: amount
                                 })(
-                                    <InputNumber min={1} max={10000}/>
+                                    <InputNumber min={0.1} max={10000}
+                                                 onChange={(value) => {
+                                                     console.log(value)
+                                                     this.onAmountPrimaryChanged(value)
+                                                 }}/>
                                 )}
                                 <span className="ant-form-text"> lb(s)</span>
                             </Form.Item>
+
+                            <Form.Item
+                                label="Volume"
+                            >
+                                {getFieldDecorator('amount_oz', {
+                                    rules: [
+                                        {required: true},
+                                    ],
+                                    initialValue: amount_oz
+                                })(
+                                    <InputNumber min={1} max={10000}
+                                                 onChange={(value) => {
+                                                     console.log(value)
+                                                     this.onAmountSecondaryChanged(value)
+                                                 }}/>
+                                )}
+                                <span className="ant-form-text"> oz(s)</span>
+                            </Form.Item>
+
                             <Form.Item
                                 label="Color"
                             >
@@ -165,6 +227,44 @@ const AddFermentableModal = Form.create({name: 'form_in_modal'})(
                                 )}
                                 <span className="ant-form-text"> SRM </span>
                             </Form.Item>
+
+                            <Form.Item
+                                label="Potential"
+                            >
+                                {getFieldDecorator('potential', {
+                                    rules: [
+                                        {required: false},
+                                    ],
+                                    initialValue: this.state.selected_fermentable.potential
+                                })(
+                                    <InputNumber min={1} max={1.04621}
+                                                 onChange={(value) => {
+                                                     console.log(value)
+                                                     this.onPotentialChanged(value)
+                                                 }}/>
+                                )}
+                                <span className="ant-form-text"> S.G. </span>
+                            </Form.Item>
+
+                            <Form.Item
+                                label="Dry Yield"
+                            >
+                                {getFieldDecorator('dry_yield', {
+                                    rules: [
+                                        {required: false},
+                                    ],
+                                    initialValue: this.state.selected_fermentable.dry_yield
+                                })(
+                                    <InputNumber min={0} max={100}
+                                                 onChange={(value) => {
+                                                     console.log(value)
+                                                     this.onDryYieldChanged(value)
+                                                 }}/>
+                                )}
+                                <span className="ant-form-text"> % </span>
+                            </Form.Item>
+
+
                         </Form>) : (<div></div>)}
                 </Modal>
             );

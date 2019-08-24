@@ -115,7 +115,11 @@ export default class RecipeFermentableCard extends React.Component {
             recipe_id: recipe.id,
             fermentable_id: fermentable.id,
             srm_precise: values['srm_precise'],
-            recipe_ingredient: {recipe_id: recipe.id, amount: values['amount']}
+            dry_yield: values['dry_yield'],
+            potential: values['potential'],
+            recipe_ingredient: {recipe_id: recipe.id, amount: values['amount'], amount_unit: 'lb(s)'},
+
+
         }
 
         this.props.addRecipeFermentable(newRecipeFermentableParams);
