@@ -6,15 +6,18 @@ import '../../../assets/stylesheets/administration.scss'
 
 import '../../../assets/stylesheets/index.scss'
 import '../../../assets/stylesheets/recipes.scss'
-import brewant_thermometer from '../../../assets/images/brewant_thermometer_ico.svg'
-import brewant_fermenter from '../../../assets/images/brewant_fermenter_ico.svg'
-import brewant_packaging from '../../../assets/images/brewant_packaging_ico.svg'
+import brewant_thermometer
+    from '../../../assets/images/brewant_thermometer_ico.svg'
+import brewant_fermenter
+    from '../../../assets/images/brewant_fermenter_ico.svg'
+import brewant_packaging
+    from '../../../assets/images/brewant_packaging_ico.svg'
 import brewant_grains from '../../../assets/images/brewant_grain_ico.svg'
 import brewant_hops from '../../../assets/images/brewant_hop_ico.svg'
 import brewant_yeasts from '../../../assets/images/brewant_yeast_ico.svg'
 import brewant_miscs from '../../../assets/images/brewant_miscs_ico.svg'
 
-import  Readonly from './Readonly'
+import Readonly from './Readonly'
 import beericon from '../../../assets/images/beer-icon.svg'
 import 'antd/dist/antd.css';
 import {List, message, Avatar, Spin} from 'antd';
@@ -27,6 +30,7 @@ import InfiniteLoader from 'react-virtualized/dist/commonjs/InfiniteLoader';
 import AdminSubMenu from './admin_sub_menu'
 import AddVesselModal from './add_vessel_modal'
 import AddFermentableModal from './add_fermentable_modal'
+import TableEnterLeave from './table_enter_leave'
 import RecipeFermentableCard from './recipe_fermentable_card'
 
 import NavBar from './navbar'
@@ -106,18 +110,22 @@ const packagingColumns = [
 const recipeFermentableColumns = [
     {
         title: 'Name',
-        dataIndex:'name',
-        key:'name',
-        render: text => <a href="javascript:;">{text}</a>},
-    {   title: 'SRM',
+        dataIndex: 'name',
+        key: 'name',
+        render: text => <a href="javascript:;">{text}</a>
+    },
+    {
+        title: 'SRM',
         dataIndex: 'srm_precise',
         key: 'srm_precise'
     },
-    {   title: 'Amount',
+    {
+        title: 'Amount',
         dataIndex: 'amount',
         key: 'amount'
     },
-    {   title: 'Usage',
+    {
+        title: 'Usage',
         dataIndex: 'usage',
         key: 'usage'
     }
@@ -126,19 +134,22 @@ const recipeFermentableColumns = [
 const recipeHopColumns = [
     {
         title: 'Name',
-        dataIndex:'name',
-        key:'name',
+        dataIndex: 'name',
+        key: 'name',
         render: text => <a href="javascript:;">{text}</a>
     },
-    {   title: 'Alpha Acid',
+    {
+        title: 'Alpha Acid',
         dataIndex: 'alpha_acid',
         key: 'alpha_acid'
     },
-    {   title: 'Amount',
+    {
+        title: 'Amount',
         dataIndex: 'amount',
         key: 'amount'
     },
-    {   title: 'Usage',
+    {
+        title: 'Usage',
         dataIndex: 'usage',
         key: 'usage'
     }
@@ -147,15 +158,17 @@ const recipeHopColumns = [
 const recipeYeastColumns = [
     {
         title: 'Name',
-        dataIndex:'name',
-        key:'name',
+        dataIndex: 'name',
+        key: 'name',
         render: text => <a href="javascript:;">{text}</a>
     },
-    {   title: 'Amount',
+    {
+        title: 'Amount',
         dataIndex: 'amount',
         key: 'amount'
     },
-    {   title: 'Usage',
+    {
+        title: 'Usage',
         dataIndex: 'usage',
         key: 'usage'
     }
@@ -164,15 +177,17 @@ const recipeYeastColumns = [
 const recipeMiscColumns = [
     {
         title: 'Name',
-        dataIndex:'name',
-        key:'name',
+        dataIndex: 'name',
+        key: 'name',
         render: text => <a href="javascript:;">{text}</a>
     },
-    {   title: 'Amount',
+    {
+        title: 'Amount',
         dataIndex: 'amount',
         key: 'amount'
     },
-    {   title: 'Usage',
+    {
+        title: 'Usage',
         dataIndex: 'usage',
         key: 'usage'
     }
@@ -317,10 +332,10 @@ export default class Recipe extends React.Component {
             }
 
             let recipe_fermentables_data = [];
-            let recipe_hops_data =[];
+            let recipe_hops_data = [];
             let recipe_yeasts_data = [];
             let recipe_miscs_data = [];
-            for(let i =0; i < data.recipe_ingredients.length; i++) {
+            for (let i = 0; i < data.recipe_ingredients.length; i++) {
                 let ingredient = data.recipe_ingredients[i]
                 if (ingredient.category == 'fermentable') {
                     let currentTask = {
@@ -332,7 +347,7 @@ export default class Recipe extends React.Component {
                     };
                     recipe_fermentables_data.push(currentTask);
                 }
-                else if(ingredient.category == 'hop') {
+                else if (ingredient.category == 'hop') {
                     let currentTask = {
                         key: `recipe_hop_${ingredient.id}`,
                         name: ingredient.name,
@@ -342,7 +357,7 @@ export default class Recipe extends React.Component {
                     };
                     recipe_hops_data.push(currentTask);
                 }
-                else if(ingredient.category == 'yeast') {
+                else if (ingredient.category == 'yeast') {
                     let currentTask = {
                         key: `recipe_yeast_${ingredient.id}`,
                         name: ingredient.name,
@@ -351,7 +366,7 @@ export default class Recipe extends React.Component {
                     };
                     recipe_yeasts_data.push(currentTask);
                 }
-                else if(ingredient.category == 'misc') {
+                else if (ingredient.category == 'misc') {
                     let currentTask = {
                         key: `recipe_misc_${ingredient.id}`,
                         name: ingredient.name,
@@ -363,9 +378,7 @@ export default class Recipe extends React.Component {
             }
 
 
-
-
-                return (
+            return (
 
                 <div className='recipe-contents'>
                     <AddFermentableModal
@@ -394,7 +407,8 @@ export default class Recipe extends React.Component {
                                             <b>Style: </b> {data.brew_type}
                                         </li>
                                         <li>
-                                            <b>Volume per Turn: </b> {data.volume_per_turn} {data.volume_per_turn_unit}
+                                            <b>Volume per
+                                                Turn: </b> {data.volume_per_turn} {data.volume_per_turn_unit}
                                         </li>
                                     </div>
                                     <div className='recipe-overview-slot'>
@@ -429,9 +443,10 @@ export default class Recipe extends React.Component {
                                 <div className="ant-card-head-wrapper">
                                     <div className="ant-card-head-title">
                                         <span>
-                                            <img className="recipe-icon" src={brewant_thermometer}/>
+                                            <img className="recipe-icon"
+                                                 src={brewant_thermometer}/>
                                         </span>
-                                            Brew Profile
+                                        Brew Profile
                                     </div>
                                 </div>
                             </div>
@@ -448,7 +463,8 @@ export default class Recipe extends React.Component {
                                     <div
                                         className="ant-card-head-title">
                                         <span>
-                                            <img className="recipe-icon" src={brewant_fermenter}/>
+                                            <img className="recipe-icon"
+                                                 src={brewant_fermenter}/>
                                         </span>
                                         Ferment Profile
                                     </div>
@@ -466,7 +482,8 @@ export default class Recipe extends React.Component {
                                 <div className="ant-card-head-wrapper">
                                     <div
                                         className="ant-card-head-title">
-                                        <img className="recipe-icon" src={brewant_packaging}/>
+                                        <img className="recipe-icon"
+                                             src={brewant_packaging}/>
                                         Packaging Profile
                                     </div>
                                 </div>
@@ -486,6 +503,7 @@ export default class Recipe extends React.Component {
                             fetchRecipeFermentables={this.props.fetchRecipeFermentables}
                             recipe_fermentables={this.props.recipe_fermentables}
                             addRecipeFermentable={this.props.addRecipeFermentable}
+                            deleteRecipeFermentable={this.props.deleteRecipeFermentable}
                         />
 
                         <div className="ant-card ant-card-bordered">
@@ -493,7 +511,8 @@ export default class Recipe extends React.Component {
                                 <div className="ant-card-head-wrapper">
                                     <div className="ant-card-head-title">
                                         <span>
-                                            <img className="recipe-icon" src={brewant_hops}/>
+                                            <img className="recipe-icon"
+                                                 src={brewant_hops}/>
                                         </span>
                                         Hops
                                     </div>
@@ -501,7 +520,7 @@ export default class Recipe extends React.Component {
                             </div>
                             <div className="ant-card-body">
                                 <Table columns={recipeHopColumns}
-                                       dataSource={recipe_hops_data} />
+                                       dataSource={recipe_hops_data}/>
                             </div>
                         </div>
                     </div>
@@ -512,7 +531,8 @@ export default class Recipe extends React.Component {
                                 <div className="ant-card-head-wrapper">
                                     <div className="ant-card-head-title">
                                         <span>
-                                            <img className="recipe-icon" src={brewant_yeasts}/>
+                                            <img className="recipe-icon"
+                                                 src={brewant_yeasts}/>
                                         </span>
                                         Yeasts
                                     </div>
@@ -520,7 +540,7 @@ export default class Recipe extends React.Component {
                             </div>
                             <div className="ant-card-body">
                                 <Table columns={recipeYeastColumns}
-                                       dataSource={recipe_yeasts_data} />
+                                       dataSource={recipe_yeasts_data}/>
                             </div>
                         </div>
 
@@ -529,7 +549,8 @@ export default class Recipe extends React.Component {
                                 <div className="ant-card-head-wrapper">
                                     <div className="ant-card-head-title">
                                         <span>
-                                            <img className="recipe-icon" src={brewant_miscs}/>
+                                            <img className="recipe-icon"
+                                                 src={brewant_miscs}/>
                                         </span>
                                         Misc
                                     </div>
@@ -537,7 +558,7 @@ export default class Recipe extends React.Component {
                             </div>
                             <div className="ant-card-body">
                                 <Table columns={recipeMiscColumns}
-                                       dataSource={recipe_miscs_data} />
+                                       dataSource={recipe_miscs_data}/>
                             </div>
                         </div>
                     </div>

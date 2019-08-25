@@ -21,6 +21,16 @@ function recipe_fermentables(state = [], action){
                 payload:  [...state.payload, action.payload],
                 isLoading: false
             };
+        case 'DELETE_RECIPE_FERMENTABLE_STARTED':
+            console.log("Removing Recipe Fermentable...");
+            return { state, isLoading: true }
+        case 'DELETE_RECIPE_FERMENTABLE_SUCCESS':
+            return {
+                state,
+                action,
+                payload:  state.payload.filter((data, i) => data.id !== action.payload.id),
+                isLoading: false
+            }
         default:
             return state;
     }

@@ -236,6 +236,7 @@ export default class Recipes extends React.Component {
                         fetchRecipe={this.props.fetchRecipe}
                         fetchRecipeFermentables={this.props.fetchRecipeFermentables}
                         addRecipeFermentable={this.props.addRecipeFermentable}
+                        deleteRecipeFermentable={this.props.deleteRecipeFermentable}
                     />
                     </div>
 
