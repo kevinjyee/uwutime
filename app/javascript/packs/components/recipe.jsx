@@ -30,7 +30,6 @@ import InfiniteLoader from 'react-virtualized/dist/commonjs/InfiniteLoader';
 import AdminSubMenu from './admin_sub_menu'
 import AddVesselModal from './add_vessel_modal'
 import AddFermentableModal from './add_fermentable_modal'
-import TableEnterLeave from './table_enter_leave'
 import RecipeFermentableCard from './recipe_fermentable_card'
 
 import NavBar from './navbar'

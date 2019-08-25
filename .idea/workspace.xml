@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="027dbcea-88e0-4835-8ae9-ff9a8ff356d2" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/fermentable.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/fermentable.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/recipe.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/recipe.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/yeast.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/yeast.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/create_sample_recipe_ingredients.rb" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/create_sample_recipe_ingredients.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/generate_inventory_from_all_ingredients.rb" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/generate_inventory_from_all_ingredients.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/recipes.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/recipes.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/components/recipe.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/components/recipe.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/components/recipe_fermentable_card.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/components/recipe_fermentable_card.jsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,90 +16,258 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="uluwu-services" />
+  </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="schema.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db/schema.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="333" selection-start-line="333" selection-end-line="333" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="recipe_yeasts.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/spec/factories/recipe_yeasts.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="33" lean-forward="true" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="recipe_yeast.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/recipe_yeast.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="yeast.rb" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/models/yeast.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="recipe_fermentables.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/spec/factories/recipe_fermentables.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" selection-start-line="11" selection-end-line="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="recipe_fermentable.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/recipe_fermentable.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="recipe_hop.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/recipe_hop.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="recipe.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/recipe.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fermentable.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/fermentable.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="2" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.28554216">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="actionCreators.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/javascript/packs/actions/actionCreators.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="372">
+                  <caret line="374" column="14" selection-start-line="374" selection-start-column="14" selection-end-line="374" selection-end-column="14" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="recipe_ingredient.rb" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/models/recipe_ingredient.rb">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="270">
+                  <caret line="18" selection-start-line="18" selection-end-line="18" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="add_fermentable_modal.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/add_fermentable_modal.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="158">
+                  <caret line="224" column="35" selection-start-line="224" selection-start-column="35" selection-end-line="224" selection-end-column="35" />
+                  <folding>
+                    <element signature="e#0#26#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="recipe_fermentables.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/javascript/packs/reducers/recipe_fermentables.js">
+              <provider selected="true" editor-type-id="text-editor" />
+            </entry>
+          </file>
+          <file leaf-file-name="scheduler.scss" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/scheduler.scss">
+              <provider selected="true" editor-type-id="text-editor" />
+            </entry>
+          </file>
+          <file leaf-file-name="schedule_requests.scss" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/schedule_requests.scss">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="15">
+                  <caret line="1" selection-start-line="1" selection-end-line="1" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="table-enter-leave.scss" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/table-enter-leave.scss">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="675">
+                  <caret line="45" column="23" selection-start-line="45" selection-start-column="23" selection-end-line="45" selection-end-column="23" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="table_enter_leave.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/table_enter_leave.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="602">
+                  <caret line="124" column="31" selection-start-line="124" selection-start-column="31" selection-end-line="124" selection-end-column="31" />
+                  <folding>
+                    <element signature="e#0#26#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="show_fermentable_modal.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/show_fermentable_modal.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="15">
+                  <caret line="1" selection-start-line="1" selection-end-line="5" selection-end-column="28" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="schedule_requests_list.jsx" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/schedule_requests_list.jsx">
+              <provider selected="true" editor-type-id="text-editor">
+                <state>
+                  <caret selection-end-column="26" />
+                  <folding>
+                    <element signature="e#0#26#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <splitter split-orientation="horizontal" split-proportion="0.5">
+          <split-first>
+            <leaf>
+              <file leaf-file-name="actionCreators.js" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/app/javascript/packs/actions/actionCreators.js">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="615">
+                      <caret line="41" selection-start-line="41" selection-end-line="41" />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="recipe_fermentables_controller.rb" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/app/controllers/recipe_fermentables_controller.rb">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="383">
+                      <caret line="44" column="21" selection-start-line="44" selection-start-column="21" selection-end-line="44" selection-end-column="21" />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="recipe_fermentables.js" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/app/javascript/packs/reducers/recipe_fermentables.js">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="495">
+                      <caret line="33" column="16" selection-start-line="33" selection-start-column="16" selection-end-line="33" selection-end-column="16" />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="schedule_requests_controller.rb" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/app/controllers/schedule_requests_controller.rb">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="368">
+                      <caret line="35" column="32" selection-start-line="35" selection-start-column="32" selection-end-line="35" selection-end-column="32" />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="table_enter_leave.js" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/table_enter_leave.js">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="2505">
+                      <caret line="167" column="30" selection-start-line="167" selection-start-column="30" selection-end-line="167" selection-end-column="30" />
+                      <folding>
+                        <element signature="e#0#26#0" expanded="true" />
+                      </folding>
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="recipe.jsx" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/recipe.jsx">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="-6561">
+                      <caret line="41" column="12" selection-start-line="41" selection-start-column="12" selection-end-line="41" selection-end-column="12" />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="recipe_fermentable_card.jsx" pinned="false" current-in-tab="true">
+                <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/recipe_fermentable_card.jsx">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="705">
+                      <caret line="47" column="14" lean-forward="true" selection-start-line="47" selection-start-column="14" selection-end-line="47" selection-end-column="14" />
+                      <folding>
+                        <element signature="e#0#26#0" expanded="true" />
+                        <element signature="e#545#583#0" expanded="true" />
+                      </folding>
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="TweenOneGroup.js" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/node_modules/rc-tween-one/es/TweenOneGroup.js">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="645">
+                      <caret line="256" column="23" selection-start-line="256" selection-start-column="23" selection-end-line="256" selection-end-column="23" />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="recipe_fermentable.rb" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/app/models/recipe_fermentable.rb">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="45">
+                      <caret line="3" column="52" selection-start-line="3" selection-start-column="52" selection-end-line="3" selection-end-column="52" />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+            </leaf>
+          </split-first>
+          <split-second>
+            <leaf>
+              <file leaf-file-name="recipe_fermentables.js" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/app/javascript/packs/reducers/recipe_fermentables.js">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="525">
+                      <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="schedule_requests.js" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/app/javascript/packs/reducers/schedule_requests.js">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="360">
+                      <caret line="24" column="24" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="recipes.jsx" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/recipes.jsx">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="222">
+                      <caret line="211" column="35" lean-forward="true" selection-start-line="211" selection-start-column="35" selection-end-line="211" selection-end-column="35" />
+                      <folding>
+                        <element signature="e#0#26#0" expanded="true" />
+                      </folding>
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="recipes.scss" pinned="false" current-in-tab="true">
+                <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/recipes.scss">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="443">
+                      <caret line="60" column="10" selection-start-line="60" selection-start-column="10" selection-end-line="60" selection-end-column="10" />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="DragAndDrop.js" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/DragAndDrop.js">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="294">
+                      <caret line="483" column="26" selection-start-line="483" selection-start-column="26" selection-end-line="483" selection-end-column="26" />
+                      <folding>
+                        <element signature="e#0#38#0" expanded="true" />
+                      </folding>
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+            </leaf>
+          </split-second>
+        </splitter>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -115,8 +279,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>componentDidUpdate</find>
-      <find>rowSele</find>
       <find>.id</find>
       <find>recipe-overview-row</find>
       <find>columns</find>
@@ -145,6 +307,8 @@
       <find>ActiveLog</find>
       <find>fermentable</find>
       <find>yest</find>
+      <find>Delete</find>
+      <find>is</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -153,7 +317,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/scripts/create_sample_recipe_task.rb" />
         <option value="$PROJECT_DIR$/app/controllers/recipe_list_controller.rb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/app/serializers/recipe_ferment_task_serializer.rb" />
@@ -170,7 +333,6 @@
         <option value="$PROJECT_DIR$/app/javascript/packs/components/recipes.jsx" />
         <option value="$PROJECT_DIR$/app/javascript/packs/components/schedule_profile.jsx" />
         <option value="$PROJECT_DIR$/app/javascript/packs/components/recipe.jsx" />
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/recipes.scss" />
         <option value="$PROJECT_DIR$/app/models/srm.rb" />
         <option value="$PROJECT_DIR$/app/models/fermentable_characteristic.rb" />
         <option value="$PROJECT_DIR$/scripts/get_fermentables_from_brewerydb.rb" />
@@ -204,6 +366,8 @@
         <option value="$PROJECT_DIR$/app/models/recipe.rb" />
         <option value="$PROJECT_DIR$/app/models/recipe_yeast.rb" />
         <option value="$PROJECT_DIR$/app/models/yeast.rb" />
+        <option value="$PROJECT_DIR$/app/javascript/packs/components/recipe_fermentable_card.jsx" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/recipes.scss" />
       </list>
     </option>
   </component>
@@ -238,10 +402,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="RailsProjectView" />
       <pane id="PackagesPane" />
       <pane id="AndroidView" />
       <pane id="Scope" />
+      <pane id="RailsProjectView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -258,30 +422,47 @@
               <item name="uluwu-services" type="b2602c69:ProjectViewProjectNode" />
               <item name="uluwu-services" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="uluwu-services" type="b2602c69:ProjectViewProjectNode" />
               <item name="uluwu-services" type="462c0819:PsiDirectoryNode" />
-              <item name="spec" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="javascript" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="uluwu-services" type="b2602c69:ProjectViewProjectNode" />
               <item name="uluwu-services" type="462c0819:PsiDirectoryNode" />
-              <item name="spec" type="462c0819:PsiDirectoryNode" />
-              <item name="factories" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="javascript" type="462c0819:PsiDirectoryNode" />
+              <item name="packs" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="uluwu-services" type="b2602c69:ProjectViewProjectNode" />
               <item name="uluwu-services" type="462c0819:PsiDirectoryNode" />
-              <item name="spec" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="javascript" type="462c0819:PsiDirectoryNode" />
+              <item name="packs" type="462c0819:PsiDirectoryNode" />
+              <item name="actions" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="uluwu-services" type="b2602c69:ProjectViewProjectNode" />
               <item name="uluwu-services" type="462c0819:PsiDirectoryNode" />
-              <item name="spec" type="462c0819:PsiDirectoryNode" />
-              <item name="support" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="javascript" type="462c0819:PsiDirectoryNode" />
+              <item name="packs" type="462c0819:PsiDirectoryNode" />
+              <item name="reducers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="uluwu-services" type="b2602c69:ProjectViewProjectNode" />
+              <item name="uluwu-services" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="uluwu-services" type="b2602c69:ProjectViewProjectNode" />
+              <item name="uluwu-services" type="462c0819:PsiDirectoryNode" />
+              <item name="scripts" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -304,15 +485,15 @@
     <property name="settings.editor.selected.configurable" value="configurable.group.language" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/scripts" />
       <recent name="$PROJECT_DIR$/app/javascript/packs/components" />
       <recent name="$PROJECT_DIR$/app/assets/stylesheets" />
       <recent name="$PROJECT_DIR$/app/javascript/packs/reducers" />
       <recent name="$PROJECT_DIR$/app/serializers" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -411,10 +592,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="328910000" />
+    <option name="totallyTimeSpent" value="329034000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="960" y="23" width="960" height="1121" extended-state="0" />
+    <frame x="0" y="23" width="1920" height="1119" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
@@ -425,12 +606,12 @@
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.32883316" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27083334" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13541667" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3278846" />
@@ -439,14 +620,38 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="TypeScript" order="8" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.32883316" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27083334" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info anchor="right" id="Maven Projects" order="3" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3278846" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info id="UI Designer" order="2" />
+      <window_info anchor="bottom" id="TypeScript" order="8" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info id="Designer" order="2" />
     </layout>
     <layout-to-restore>
       <window_info id="Designer" order="2" />
@@ -510,34 +715,9 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/models/hop.rb">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/fermentable_characteristic.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="25" selection-start-line="1" selection-start-column="25" selection-end-line="1" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/srm.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="24" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/recipe_fermentable_association.rb" />
     <entry file="file://$PROJECT_DIR$/app/models/recipe_hop_association.rb" />
     <entry file="file://$PROJECT_DIR$/app/models/recipe_misc_association.rb" />
     <entry file="file://$PROJECT_DIR$/app/models/recipe_yeast_association.rb" />
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/recipe.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="56" column="6" selection-start-line="56" selection-start-column="6" selection-end-line="56" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/db/migrate/20190519210059_add_yeast_type_to_yeasts.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -725,8 +905,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/recipe_ingredient.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
+        <state relative-caret-position="270">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
         </state>
       </provider>
     </entry>
@@ -798,8 +978,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/recipe_fermentable.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        <state relative-caret-position="45">
+          <caret line="3" column="52" selection-start-line="3" selection-start-column="52" selection-end-line="3" selection-end-column="52" />
         </state>
       </provider>
     </entry>
@@ -814,6 +994,51 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/recipe.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6561">
+          <caret line="41" column="12" selection-start-line="41" selection-start-column="12" selection-end-line="41" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/recipes.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="211" column="35" lean-forward="true" selection-start-line="211" selection-start-column="35" selection-end-line="211" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/recipes.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="443">
+          <caret line="60" column="10" selection-start-line="60" selection-start-column="10" selection-end-line="60" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/recipe_fermentable_card.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="705">
+          <caret line="47" column="14" lean-forward="true" selection-start-line="47" selection-start-column="14" selection-end-line="47" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#545#583#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/components/table_enter_leave.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="602">
+          <caret line="124" column="31" selection-start-line="124" selection-start-column="31" selection-end-line="124" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

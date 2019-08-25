@@ -21,7 +21,7 @@ import axios from "axios/index";
 export default class RecipeFermentableCard extends React.Component {
 
     static defaultProps = {
-        className: 'table-enter-leave',
+        className: 'recipe-table',
     };
 
     constructor(props) {
