@@ -376,3 +376,33 @@ const addRecipeFermentableFailure = error => ({
         error
     }
 });
+
+
+// Delete a RecipeFermentable
+
+export const deleteRecipeFermentable = (params) => {
+    return dispatch => {
+        dispatch(deleteRecipeFermentableStarted);
+        axios.delete(`/recipe_fermentables/${params.id}`, {
+            recipe_fermentables: params
+        }).then( res => {
+            dispatch(deleteRecipeFermentableEvent(res.data));
+        }).catch(err => {
+            dispatch(deleteRecipeFermentableFailure(err.message));
+        })
+    };
+}
+
+const deleteRecipeFermentableStarted = () => ({
+    type: 'DELETE_TASK_STARTED'
+});
+
+const deleteRecipeFermentableEvent = data => ({
+    type: 'DELETE_RECIPE_FERMENTABLE_SUCCESS',
+    payload: {...data}
+});
+
+const deleteRecipeFermentableFailure = data => ({
+    type: 'DELETE_RECIPE_FERMENTABLE_FAILURE',
+    payload: {...data}
+});
