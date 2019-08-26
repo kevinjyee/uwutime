@@ -26,7 +26,7 @@ export default class AdminSubMenu extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     console.log(prevState);
     // Typical usage (don't forget to compare props):
-    const { currentPage } = this.prop;
+    const { currentPage } = this.props;
     if (prevProps.currentPage !== currentPage) {
       // eslint-disable-next-line react/no-did-update-set-state
       this.setState({ current: currentPage });

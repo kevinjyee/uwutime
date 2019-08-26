@@ -25,7 +25,7 @@ const AddFermentableModal = Form.create({ name: 'form_in_modal' })(
             this.state = {
                 searching: false,
                 fermentableDb: [],
-                selectedFermentable: null,
+                selectedFermentable: this.props.selectedFermentable,
                 fermentableName: null,
                 autoCompleteResult: [],
             };

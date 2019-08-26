@@ -136,6 +136,8 @@ export default class RecipeFermentableCard extends React.Component {
 
         this.showAddModal = this.showAddModal.bind(this);
         this.handleRecipeFermentableSubmit = this.handleRecipeFermentableSubmit.bind(this);
+        this.handleSaveRecipeFermentable = this.handleSaveRecipeFermentable.bind(this);
+        this.handleShowCancel = this.handleShowCancel.bind(this)
         this.onSelect = this.onSelect.bind(this);
         this.onDelete = this.onDelete.bind(this);
     }
@@ -202,9 +204,8 @@ export default class RecipeFermentableCard extends React.Component {
         console.log(event);
 
         this.setState({
-            show_show_form: true,
             selectedFermentable: record,
-
+            show_show_form: true,
         });
     }
 
@@ -242,10 +243,6 @@ export default class RecipeFermentableCard extends React.Component {
 
     showAddModal() {
         this.setState({ show_add_form: true });
-    }
-
-    showShowModal() {
-        this.setState({ show_show_form: true });
     }
 
     handleRecipeFermentableSubmit(values) {
@@ -288,14 +285,18 @@ export default class RecipeFermentableCard extends React.Component {
                         visible={this.state.show_add_form}
                         onCancel={this.handleAddCancel}
                         onCreate={this.handleCreateRecipeFermentable}
+                        isNew={true}
                     />
 
                     <ShowFermentableModal
                         {...this.props}
+                        wrappedComponentRef={this.saveFormRef}
+                        metaDataCallBack={this.metaDataCallBack}
+                        selectedFermentable={selectedFermentable}
                         visible={this.state.show_show_form}
-                        selected_fermentable={selectedFermentable}
                         onCancel={this.handleShowCancel}
                         onCreate={this.handleSaveRecipeFermentable}
+                        isNew={false}
                     />
 
                     <div className="ant-card-head">
