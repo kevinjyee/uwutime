@@ -190,7 +190,6 @@ export default class RecipeFermentableCard extends React.Component {
         });
     };
 
-
     pageChange = () => {
         this.setState({
             isPageTween: true,
@@ -271,7 +270,7 @@ export default class RecipeFermentableCard extends React.Component {
     }
 
     render() {
-        const { recipeFermentables } = this.state;
+        const { recipeFermentables, selectedFermentable, isPageTween } = this.state;
         let recipeFermentablesData = null;
 
         if (recipeFermentables) {
@@ -294,7 +293,7 @@ export default class RecipeFermentableCard extends React.Component {
                     <ShowFermentableModal
                         {...this.props}
                         visible={this.state.show_show_form}
-                        selected_fermentable={this.state.selectedFermentable}
+                        selected_fermentable={selectedFermentable}
                         onCancel={this.handleShowCancel}
                         onCreate={this.handleSaveRecipeFermentable}
                     />
@@ -324,7 +323,7 @@ export default class RecipeFermentableCard extends React.Component {
                         </div>
                     </div>
                     <div className="ant-card-body">
-                        <TableContext.Provider value={this.state.isPageTween}>
+                        <TableContext.Provider value={isPageTween}>
                             <Table
                                 columns={this.recipeFermentableColumns}
                                 dataSource={recipeFermentablesData}

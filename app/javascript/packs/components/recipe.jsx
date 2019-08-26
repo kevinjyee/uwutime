@@ -66,7 +66,6 @@ const fermentColumns = [
     },
 ];
 
-
 const packagingColumns = [
     {
         title: 'Name',
