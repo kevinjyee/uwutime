@@ -69,11 +69,15 @@
   margin-bottom: 20px;
 }
 
-.recipe-table-delete {
+.recipe-table-clickable {
   color: #019BF0;
   cursor: pointer;
 }
 
+.recipe-table-delete {
+  color: gray;
+  cursor: pointer;
+}
 /* Ipad 3 */
 @media screen and (max-width: 1536px) {
   .process-overview-row {
