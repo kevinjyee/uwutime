@@ -1,60 +1,29 @@
 import React from 'react';
-import moment from 'moment';
 import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap/dist/css/bootstrap-theme.css'
-import '../../../assets/stylesheets/administration.scss'
+import 'bootstrap/dist/css/bootstrap-theme.css';
+import '../../../assets/stylesheets/administration.scss';
 
-import '../../../assets/stylesheets/index.scss'
-import '../../../assets/stylesheets/recipes.scss'
-import beericon from '../../../assets/images/beer-icon.svg'
+import '../../../assets/stylesheets/index.scss';
+import '../../../assets/stylesheets/recipes.scss';
 import 'antd/dist/antd.css';
-import { List, message, Avatar, Spin } from 'antd';
+import {
+    List, message, Avatar, Spin,
+} from 'antd';
 import { Link } from 'react-router-dom';
 import WindowScroller from 'react-virtualized/dist/commonjs/WindowScroller';
 import AutoSizer from 'react-virtualized/dist/commonjs/AutoSizer';
 import VList from 'react-virtualized/dist/commonjs/List';
 import InfiniteLoader from 'react-virtualized/dist/commonjs/InfiniteLoader';
-import Recipe from './recipe'
+import beericon from '../../../assets/images/beer-icon.svg';
+import Recipe from './recipe';
 
-import AdminSubMenu from './admin_sub_menu'
-import AddVesselModal from './add_vessel_modal'
+import NavBar from './navbar';
 
 
-import NavBar from './navbar'
-
-import {Table, Button, Icon} from 'antd';
-
-import '../../../assets/stylesheets/schedule_request_list.scss'
-
-const columns = [{
-    title: 'Name',
-    dataIndex: 'name',
-    key: 'name',
-    render: (text, record) => <Link to={'/administration/profile/' + record.id}>{text}</Link>,
-    width: 300,
-}, {
-    title: 'Brew Hours',
-    dataIndex: 'brew_hours',
-    key: 'brew_hours',
-    width: 300,
-}, {
-    title: 'Ferment Days',
-    dataIndex: 'ferment_days',
-    key: 'ferment_days',
-    width: 300,
-}, {
-    title: 'Packaging Days',
-    dataIndex: 'packaging_days',
-    key: 'packaging_days',
-    width: 300,
-}];
-
-const success = () => {
-    message.success('Request successfully submitted');
-};
-
+import '../../../assets/stylesheets/schedule_request_list.scss';
 
 export default class Recipes extends React.Component {
+    loadedRowsMap = {};
 
     constructor(props) {
         super(props);
@@ -63,11 +32,9 @@ export default class Recipes extends React.Component {
             recipes: this.props.recipes.payload || [],
             loading: this.props.recipes.isLoading,
             selectedRecipe: null,
-        }
+        };
         this.showModal = this.showModal.bind(this);
     }
-
-    loadedRowsMap = {};
 
     componentDidMount() {
         this.props.fetchRecipes();
@@ -75,7 +42,7 @@ export default class Recipes extends React.Component {
 
 
     handleInfiniteOnLoad = ({ startIndex, stopIndex }) => {
-        let data = this.state.recipes;
+        const data = this.state.recipes;
         this.setState({
             loading: true,
         });
@@ -97,20 +64,29 @@ export default class Recipes extends React.Component {
 
     selectRecipe = (item) => {
         console.log(item);
+        this.setState({
+            selectedRecipe: item,
+        });
     }
 
     renderItem = ({ index, key, style }) => {
         const { recipes } = this.state;
         const item = recipes[index];
         return (
-            <div className='recipe-item-container' key={item.id} onClick={() => {this.selectRecipe(item);}}>
-            <List.Item key={key} style={style}>
-                <List.Item.Meta
-                    avatar={<Avatar src={beericon} />}
-                    title={<a href="https://ant.design">{item.name}</a>}
-                    description={item.brew_type}
-                />
-            </List.Item>
+            <div
+className="recipe-item-container"
+key={item.id}
+                 onClick={() => {
+                     this.selectRecipe(item);
+                 }}
+            >
+                <List.Item key={key} style={style}>
+                    <List.Item.Meta
+                        avatar={<Avatar src={beericon} />}
+                        title={item.name}
+                        description={item.brew_type}
+                    />
+                </List.Item>
             </div>
         );
     };
@@ -118,19 +94,19 @@ export default class Recipes extends React.Component {
     componentDidUpdate(prevProps, prevState) {
         // Typical usage (don't forget to compare props):
         if (prevProps.recipes.payload !== this.props.recipes.payload) {
-            this.setState({recipes: this.props.recipes.payload});
+            this.setState({ recipes: this.props.recipes.payload });
             if (this.props.recipes.payload && this.props.recipes.payload.length > 0 && this.state.selectedRecipe == null) {
-                this.setState({selectedRecipe: this.props.recipes.payload[0]})
+                this.setState({ selectedRecipe: this.props.recipes.payload[0] });
             }
         }
 
         if (prevProps.recipes.isLoading !== this.props.recipes.isLoading) {
-            this.setState({loading: this.props.recipes.isLoading});
+            this.setState({ loading: this.props.recipes.isLoading });
         }
     }
 
     showModal() {
-        this.setState({show_form: true});
+        this.setState({ show_form: true });
     }
 
 
@@ -140,12 +116,12 @@ export default class Recipes extends React.Component {
 
 
     handleCancel = () => {
-        this.setState({show_form: false});
+        this.setState({ show_form: false });
     }
 
 
     handleCreate = () => {
-        const form = this.formRef.props.form;
+        const { form } = this.formRef.props;
         form.validateFields((err, values) => {
             if (err) {
                 return;
@@ -153,26 +129,27 @@ export default class Recipes extends React.Component {
 
             console.log('Received values of form: ', values);
 
-            var vessel_params = {
-                identifier: values['identifier'],
-                volume: values['volume'],
-                volume_unit: values['volume_unit'],
-                vessel_type: values['vessel_type']
-            }
+            const vessel_params = {
+                identifier: values.identifier,
+                volume: values.volume,
+                volume_unit: values.volume_unit,
+                vessel_type: values.vessel_type,
+            };
 
             this.props.addVessel(vessel_params);
 
             form.resetFields();
-            this.setState({show_form: false});
+            this.setState({ show_form: false });
         });
     }
 
     render() {
-        let data = this.state.recipes;
+        const data = this.state.recipes;
 
         if (data && data.length > 0) {
-
-            const vlist = ({ height, isScrolling, onChildScroll, scrollTop, onRowsRendered, width }) => (
+            const vlist = ({
+                               height, isScrolling, onChildScroll, scrollTop, onRowsRendered, width,
+                           }) => (
                 <VList
                     autoHeight
                     height={height}
@@ -187,70 +164,72 @@ export default class Recipes extends React.Component {
                     width={width}
                 />
             );
-            const autoSize = ({ height, isScrolling, onChildScroll, scrollTop, onRowsRendered }) => (
+            const autoSize = ({
+                                  height, isScrolling, onChildScroll, scrollTop, onRowsRendered,
+                              }) => (
                 <AutoSizer disableHeight>
-                    {({ width }) =>
-                        vlist({
-                            height,
-                            isScrolling,
-                            onChildScroll,
-                            scrollTop,
-                            onRowsRendered,
-                            width,
-                        })
+                    {({ width }) => vlist({
+                        height,
+                        isScrolling,
+                        onChildScroll,
+                        scrollTop,
+                        onRowsRendered,
+                        width,
+                    })
                     }
                 </AutoSizer>
             );
-            const infiniteLoader = ({ height, isScrolling, onChildScroll, scrollTop }) => (
+            const infiniteLoader = ({
+                                        height, isScrolling, onChildScroll, scrollTop,
+                                    }) => (
                 <InfiniteLoader
                     isRowLoaded={this.isRowLoaded}
                     loadMoreRows={this.handleInfiniteOnLoad}
                     rowCount={data.length}
                 >
-                    {({ onRowsRendered }) =>
-                        autoSize({
-                            height,
-                            isScrolling,
-                            onChildScroll,
-                            scrollTop,
-                            onRowsRendered,
-                        })
+                    {({ onRowsRendered }) => autoSize({
+                        height,
+                        isScrolling,
+                        onChildScroll,
+                        scrollTop,
+                        onRowsRendered,
+                    })
                     }
                 </InfiniteLoader>
             );
 
             return (
                 <div>
-                    <NavBar currentPage="2"/>
-                    <div className = 'recipe-flex-container'>
-                        <div className='recipe-list-container'>
-                        <List>
-                            {data.length > 0 && <WindowScroller>{infiniteLoader}</WindowScroller>}
-                            {this.state.loading && <Spin className="demo-loading" />}
-                        </List>
+                    <NavBar currentPage="2" />
+                    <div className="recipe-flex-container">
+                        <div className="recipe-list-container">
+                            <List>
+                                {data.length > 0
+                                && <WindowScroller>{infiniteLoader}</WindowScroller>}
+                                {this.state.loading
+                                && <Spin className="demo-loading" />}
+                            </List>
                         </div>
-                    <Recipe
-                        selectedRecipe={this.state.selectedRecipe}
-                        recipe={this.props.recipe}
-                        recipe_fermentables={this.props.recipe_fermentables}
-                        fetchRecipe={this.props.fetchRecipe}
-                        fetchRecipeFermentables={this.props.fetchRecipeFermentables}
-                        addRecipeFermentable={this.props.addRecipeFermentable}
-                        deleteRecipeFermentable={this.props.deleteRecipeFermentable}
-                    />
+                        <Recipe
+                            selectedRecipe={this.state.selectedRecipe}
+                            recipe={this.props.recipe}
+                            recipe_fermentables={this.props.recipe_fermentables}
+                            fetchRecipe={this.props.fetchRecipe}
+                            fetchRecipeFermentables={this.props.fetchRecipeFermentables}
+                            addRecipeFermentable={this.props.addRecipeFermentable}
+                            deleteRecipeFermentable={this.props.deleteRecipeFermentable}
+                        />
                     </div>
 
                 </div>
 
-            )
-        }
-        else {
-            return (
-                <div>
-                    <NavBar currentPage="2"/>
-                </div>
-            )
+            );
         }
 
+        return (
+            <div>
+                <NavBar currentPage="2" />
+            </div>
+        );
     }
 }

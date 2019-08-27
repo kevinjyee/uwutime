@@ -137,7 +137,7 @@ export default class RecipeFermentableCard extends React.Component {
         this.showAddModal = this.showAddModal.bind(this);
         this.handleRecipeFermentableSubmit = this.handleRecipeFermentableSubmit.bind(this);
         this.handleSaveRecipeFermentable = this.handleSaveRecipeFermentable.bind(this);
-        this.handleShowCancel = this.handleShowCancel.bind(this)
+        this.handleShowCancel = this.handleShowCancel.bind(this);
         this.onSelect = this.onSelect.bind(this);
         this.onDelete = this.onDelete.bind(this);
     }
@@ -152,8 +152,13 @@ export default class RecipeFermentableCard extends React.Component {
 
     componentDidUpdate(prevProps, prevState) {
         console.log(prevState);
-        const { recipeFermentables } = this.props;
+        const { recipeFermentables, selectedRecipe, fetchRecipeFermentables } = this.props;
         // Typical usage (don't forget to compare props):
+
+        if (prevProps.selectedRecipe !== selectedRecipe) {
+            fetchRecipeFermentables({ recipe_id: selectedRecipe.id });
+        }
+
         if (prevProps.recipeFermentables.payload !== recipeFermentables.payload) {
             // eslint-disable-next-line react/no-did-update-set-state
             this.setState({ recipeFermentables: recipeFermentables.payload });
@@ -285,7 +290,7 @@ export default class RecipeFermentableCard extends React.Component {
                         visible={this.state.show_add_form}
                         onCancel={this.handleAddCancel}
                         onCreate={this.handleCreateRecipeFermentable}
-                        isNew={true}
+                        isNew
                     />
 
                     <ShowFermentableModal

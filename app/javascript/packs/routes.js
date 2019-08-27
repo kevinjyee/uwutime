@@ -1,20 +1,20 @@
-import React from 'react'
+import React from 'react';
 import {
     BrowserRouter as Router,
     Route,
     Switch
-} from 'react-router-dom'
+} from 'react-router-dom';
 
 import { App, SchedulerContainer,
     AdministrationContainer,
     AdministrationProfilesContainer,
     ScheduleProfileContainer,
-    RecipesContainer
+    RecipesContainer,
 
 } from './app';
 
 import { Provider } from 'react-redux';
-import store from './store'
+import store from './store';
 
 const AppRoute = (props) => (
     <Provider store={store}>
@@ -25,6 +25,7 @@ const AppRoute = (props) => (
                 <Route path='/administration/profiles' component={AdministrationProfilesContainer}/>
                 <Route path='/administration/vessels' component={AdministrationContainer}/>
                 <Route path='/administration' component={AdministrationContainer }/>
+                <Route path='/recipe_list/:id' component={RecipesContainer}/>
                 <Route path='/recipe_list' component={RecipesContainer}/>
                 <Route path='/scheduler' component={SchedulerContainer}/>
                 <Route path='/' component={SchedulerContainer}/>

@@ -177,7 +177,11 @@ export default class Recipe extends React.Component {
     componentDidUpdate(prevProps, prevState) {
         // Typical usage (don't forget to compare props):
         console.log(prevState);
-        const { recipe } = this.props;
+        const { recipe, selectedRecipe, fetchRecipe } = this.props;
+
+        if (prevProps.selectedRecipe !== selectedRecipe) {
+            fetchRecipe({ id: selectedRecipe.id });
+        }
         if (prevProps.recipe.payload !== recipe.payload) {
             // eslint-disable-next-line react/no-did-update-set-state
             this.setState({ recipe: recipe.payload });
@@ -452,7 +456,7 @@ export default class Recipe extends React.Component {
 
                     <div className="ingredients process-overview-row">
                         <RecipeFermentableCard
-                            selectedRecipe={this.state.selectedRecipe}
+                            selectedRecipe={this.props.selectedRecipe}
                             fetchRecipeFermentables={this.props.fetchRecipeFermentables}
                             recipeFermentables={this.props.recipe_fermentables}
                             addRecipeFermentable={this.props.addRecipeFermentable}

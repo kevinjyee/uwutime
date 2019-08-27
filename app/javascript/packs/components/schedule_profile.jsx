@@ -60,7 +60,7 @@ export default class ScheduleProfile extends React.Component {
     }
 
     componentDidMount() {
-        let id = this.props.match.params.id
+        let id = this.props.match.params.id;
         this.props.fetchScheduleProfile({id: id});
     }
 

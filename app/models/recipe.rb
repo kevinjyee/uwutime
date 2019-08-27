@@ -1,14 +1,18 @@
 class Recipe < ApplicationRecord
   belongs_to :schedule_profile
-  has_many :recipe_mash_tasks
-  has_many :recipe_ferment_tasks
-  has_many :recipe_packaging_tasks
+  has_many :recipe_mash_tasks, dependent: :destroy
+  has_many :recipe_ferment_tasks, dependent: :destroy
+  has_many :recipe_packaging_tasks, dependent: :destroy
 
-  has_many :recipe_ingredients
-  has_many :recipe_fermentables
-  has_many :recipe_hops
-  has_many :recipe_yeasts
+  has_many :recipe_ingredients, dependent: :destroy
+  has_many :recipe_fermentables, dependent: :destroy
+  has_many :recipe_hops, dependent: :destroy
+  has_many :recipe_yeasts, dependent: :destroy
 
+
+  accepts_nested_attributes_for :recipe_mash_tasks, allow_destroy: true
+  accepts_nested_attributes_for :recipe_ferment_tasks, allow_destroy: true
+  accepts_nested_attributes_for :recipe_packaging_tasks, allow_destroy: true
 
   after_create :copy_schedule_profile
 

@@ -136,10 +136,12 @@ PackagingStep.create!({
                       })
 
 Recipe.create!({
-    name: 'Sample Blonde Ale',
+    name: 'Belgian Wheat Ale',
     brew_type: 'Ale',
     schedule_profile_id: 1,
     brew_hours: 3,
     ferment_days: 14,
-    packaging_days: 2
+    packaging_days: 2,
+    volume_per_turn: 5.0,
+    volume_per_turn_unit: 'bbl'
                })

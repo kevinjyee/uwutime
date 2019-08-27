@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :vessels
   resources :schedule_profiles
   resources :recipes
+  resources :recipe_events
   resources :fermentables
   resources :recipe_fermentables
 end
