@@ -32,14 +32,20 @@ export default class Recipes extends React.Component {
             recipes: this.props.recipes.payload || [],
             loading: this.props.recipes.isLoading,
             selectedRecipe: null,
+            previousClickKey: null,
         };
+        this.recipeListItem = null;
         this.showModal = this.showModal.bind(this);
+        this.setRecipeListItemRef = this.setRecipeListItemRef(this);
     }
 
     componentDidMount() {
         this.props.fetchRecipes();
     }
 
+    setRecipeListItemRef = element => {
+        this.recipeListItem = element;
+    }
 
     handleInfiniteOnLoad = ({ startIndex, stopIndex }) => {
         const data = this.state.recipes;
@@ -62,22 +68,46 @@ export default class Recipes extends React.Component {
 
     isRowLoaded = ({ index }) => !!this.loadedRowsMap[index];
 
-    selectRecipe = (item) => {
+    selectRecipe = (item, clickKey) => {
         console.log(item);
+
+        if (this.state.previousClickKey) {
+            this[this.state.previousClickKey].className="recipe-item-container"
+            this[this.state.previousClickKey].style.backgroundColor = '';
+        }
+        this[clickKey].style.backgroundColor = 'aliceblue';
+
         this.setState({
             selectedRecipe: item,
+            previousClickKey: clickKey
         });
+
+
+
     }
 
     renderItem = ({ index, key, style }) => {
-        const { recipes } = this.state;
+        const { recipes, selectedRecipe } = this.state;
         const item = recipes[index];
+
+        let className = "recipe-item-container";
+
+        if (selectedRecipe && item.id == selectedRecipe.id)
+        {
+            className = "recipe-item-container list-item-selected";
+        }
+
+        let clickKey = `RecipeItem${item.id}`;
         return (
             <div
-className="recipe-item-container"
-key={item.id}
+                className={className}
+                key={clickKey}
+                id={clickKey}
+                ref={input => {
+                    this[clickKey] = input;
+                }}
                  onClick={() => {
-                     this.selectRecipe(item);
+                     this.selectRecipe(item, clickKey);
                  }}
             >
                 <List.Item key={key} style={style}>
@@ -96,7 +126,8 @@ key={item.id}
         if (prevProps.recipes.payload !== this.props.recipes.payload) {
             this.setState({ recipes: this.props.recipes.payload });
             if (this.props.recipes.payload && this.props.recipes.payload.length > 0 && this.state.selectedRecipe == null) {
-                this.setState({ selectedRecipe: this.props.recipes.payload[0] });
+                this.setState({ selectedRecipe: this.props.recipes.payload[0], previousClickKey: `RecipeItem${this.props.recipes.payload[0].id}` });
+
             }
         }
 
@@ -214,10 +245,12 @@ key={item.id}
                             selectedRecipe={this.state.selectedRecipe}
                             recipe={this.props.recipe}
                             recipe_fermentables={this.props.recipe_fermentables}
+                            recipe_events={this.props.recipe_events}
                             fetchRecipe={this.props.fetchRecipe}
                             fetchRecipeFermentables={this.props.fetchRecipeFermentables}
                             addRecipeFermentable={this.props.addRecipeFermentable}
                             deleteRecipeFermentable={this.props.deleteRecipeFermentable}
+                            fetchRecipeEvents={this.props.fetchRecipeEvents}
                         />
                     </div>
 

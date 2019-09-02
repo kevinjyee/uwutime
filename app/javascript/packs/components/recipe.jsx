@@ -23,6 +23,8 @@ import 'antd/dist/antd.css';
 import RecipeFermentableCard
     from './recipe_fermentable/recipe_fermentable_card';
 
+import RecipeEvent from './recipe_event/recipe_event';
+
 import '../../../assets/stylesheets/schedule_request_list.scss';
 
 const brewColumns = [
@@ -367,91 +369,12 @@ export default class Recipe extends React.Component {
                         </div>
                     </div>
 
-                    <div className="operations-overview-row">
-                        <div className="ant-card-head-title">
-                            Operations
-                        </div>
-                        <Readonly
-                            resources={data.events.resources}
-                            events={data.events.templates}
-                        />
-                    </div>
-
                     <div className="process-overview-row">
-                        <div className="ant-card ant-card-bordered">
-                            <div className="ant-card-head">
-                                <div className="ant-card-head-wrapper">
-                                    <div className="ant-card-head-title">
-                                        <span>
-                                            <img
-                                                className="recipe-icon"
-                                                src={brewantThermometer}
-                                            />
-                                        </span>
-                                        Brew Profile
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="ant-card-body">
-                                <Table
-                                    columns={brewColumns}
-                                    rowSelection={rowSelection}
-                                    dataSource={brewData}
-                                />
-                                ,
-                            </div>
-                        </div>
-
-                        <div className="ant-card ant-card-bordered">
-                            <div className="ant-card-head">
-                                <div className="ant-card-head-wrapper">
-                                    <div
-                                        className="ant-card-head-title"
-                                    >
-                                        <span>
-                                            <img
-                                                className="recipe-icon"
-                                                src={brewantFermenter}
-                                            />
-                                        </span>
-                                        Ferment Profile
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="ant-card-body">
-                                <Table
-                                    columns={fermentColumns}
-                                    rowSelection={rowSelection}
-                                    dataSource={fermentData}
-                                />
-                                ,
-                            </div>
-                        </div>
-
-                        <div className="ant-card ant-card-bordered">
-                            <div className="ant-card-head">
-                                <div className="ant-card-head-wrapper">
-                                    <div
-                                        className="ant-card-head-title"
-                                    >
-                                        <img
-                                            className="recipe-icon"
-                                            src={brewantPackaging}
-                                        />
-                                        Packaging Profile
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="ant-card-body">
-                                <Table
-                                    columns={packagingColumns}
-                                    rowSelection={rowSelection}
-                                    dataSource={packagingData}
-                                />
-                                ,
-                            </div>
-                        </div>
+                        <RecipeEvent
+                            selectedRecipe={this.props.selectedRecipe}
+                            recipeEvents={this.props.recipe_events}
+                            fetchRecipeEvents={this.props.fetchRecipeEvents}
+                        />
                     </div>
 
                     <div className="ingredients process-overview-row">

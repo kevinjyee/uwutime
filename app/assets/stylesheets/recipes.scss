@@ -18,6 +18,10 @@
   cursor: pointer;
 }
 
+.list-item-selected {
+  background-color: aliceblue;
+}
+
 .recipe-flex-container {
   display: flex;
   flex-direction: row;
