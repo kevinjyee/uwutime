@@ -10,7 +10,7 @@ class RecipeEventsController < ApplicationController
   end
 
   def show
-    @recipe_fermentable = RecipeEvent.find(recipe_event_id)
+    @recipe_fermentable = RecipeEvent.find(recipe_id)
     render json: @recipe_fermentable
   end
 
@@ -39,6 +39,10 @@ class RecipeEventsController < ApplicationController
 
   def recipe_event_id
     params.try(:recipe_event).try(:id) || params[:id]
+  end
+
+  def recipe_id
+    params[:recipe_id]
   end
 end
 
