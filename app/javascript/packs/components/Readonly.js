@@ -7,7 +7,7 @@ class Readonly extends Component{
     constructor(props){
         super(props);
 
-        let schedulerData = new SchedulerData('2019-08-07', ViewTypes.Month, false, false, {
+        let schedulerData = new SchedulerData('2019-09-01', ViewTypes.Month, false, false, {
             startResizable: false,
             endResizable: false,
             movable: false,
