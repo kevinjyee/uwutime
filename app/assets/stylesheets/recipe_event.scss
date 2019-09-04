@@ -1,0 +1,16 @@
+// Place all the styles related to the scheduler controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.task-list-container {
+  display: flex;
+  justify-content: flex-start;
+  .delete-task-icon-container {
+    position: absolute;
+    left: 90%;
+  }
+}
+
+.dynamic-form-item {
+  margin-top: 10px;
+}

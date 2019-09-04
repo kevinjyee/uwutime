@@ -13,6 +13,8 @@ import brewantFermenter
     from "../../../../assets/images/brewant_fermenter_ico.svg";
 import brewantPackaging
     from "../../../../assets/images/brewant_packaging_ico.svg";
+import AddFermentableModal from "../recipe_fermentable/add_fermentable_modal";
+import AddRecipeEventBrewModal from "./add_recipe_event_brew_modal";
 
 const TableContext = React.createContext(false);
 
@@ -93,6 +95,7 @@ export default class RecipeEvent extends React.Component {
             recipeEvents: this.props.recipeEvents.payload,
             selectedRecipe: this.props.selectedRecipe,
         };
+
     }
 
     componentDidMount() {
@@ -116,6 +119,35 @@ export default class RecipeEvent extends React.Component {
             // eslint-disable-next-line react/no-did-update-set-state
             this.setState({ recipeEvents: recipeEvents.payload });
         }
+    }
+
+    saveFormRef = (formRef) => {
+        this.formRef = formRef;
+    }
+
+    handleCreateBrewEvent = () => {
+        const { form } = this.formRef.props;
+
+        form.validateFields((err, values) => {
+            if (err) {
+                return;
+            }
+            console.log('Received values of form: ', values);
+            this.setState({ show_add_form: false });
+
+        });
+    }
+
+    metaDataCallBack = (params) => {
+        this.setState(params);
+    }
+
+    showAddModal =() => {
+        this.setState({ show_add_form: true });
+    }
+
+    handleAddCancel = () => {
+        this.setState({ show_add_form: false });
     }
 
     render() {
@@ -179,6 +211,15 @@ export default class RecipeEvent extends React.Component {
 
             return (
                 <div>
+                    <AddRecipeEventBrewModal
+                        {...this.props}
+                        wrappedComponentRef={this.saveFormRef}
+                        metaDataCallBack={this.metaDataCallBack}
+                        visible={this.state.show_add_form}
+                        onCancel={this.handleAddCancel}
+                        onCreate={this.handleCreateBrewEvent}
+                        isNew
+                    />
                     <div className="ant-card-head">
                         <div className="ant-card-head-wrapper">
                             <div
@@ -207,6 +248,17 @@ export default class RecipeEvent extends React.Component {
                                             />
                                         </span>
                                         Brew Profile
+                                        <span className="ingredient-button-container">
+                                        <Button
+                                            className="add-request-btn"
+                                            type="primary"
+                                            onClick={this.showAddModal}
+                                        >
+                                            <Icon type="plus" />
+                                            {' '}
+                                            Add
+                                        </Button>
+                                </span>
                                     </div>
                                 </div>
                             </div>
