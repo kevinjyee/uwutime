@@ -27,6 +27,35 @@ export function receivedRecipeEvents(data) {
 }
 
 
+
+// Update RecipeEvent
+export const updateRecipeEvent = params => (dispatch) => {
+    dispatch(addRecipeEventStarted);
+    axios.put(`/recipe_fermentables/${params.id}`, {
+        recipe_event: params,
+    }).then((res) => {
+        dispatch(updateRecipeEventSuccess(res.data));
+    }).catch((err) => {
+        dispatch(updateRecipeEventFailure(err.message));
+    });
+};
+
+const updateRecipeEventStarted = () => ({
+    type: 'UPDATE_RECIPE_EVENT_STARTED',
+});
+
+const updateRecipeEventSuccess = data => ({
+    type: 'UPDATE_RECIPE_EVENT_SUCCESS',
+    payload: { ...data },
+});
+
+const updateRecipeEventFailure = error => ({
+    type: 'UPDATE_RECIPE_EVENT_FAILURE',
+    payload: {
+        error,
+    },
+});
+
 // Add RecipeEvent
 export const addRecipeEvent = params => (dispatch) => {
     dispatch(addRecipeEventStarted);

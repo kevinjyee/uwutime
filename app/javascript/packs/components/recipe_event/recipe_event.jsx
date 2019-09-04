@@ -178,7 +178,7 @@ export default class RecipeEvent extends React.Component {
             }
 
             return (
-                <div className="ant-card ant-card-bordered">
+                <div>
                     <div className="ant-card-head">
                         <div className="ant-card-head-wrapper">
                             <div

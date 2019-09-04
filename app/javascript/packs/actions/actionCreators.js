@@ -145,7 +145,7 @@ const publishScheduleFailure = data => ({
 
 export const removeSchedule = params => (dispatch) => {
         dispatch(removeScheduleStarted);
-        axios.put(`/schedule_requests/${params.id}`, {
+        axios.put(`/schedule_requests/c`, {
             schedule_request: params,
         }).then((res) => {
             dispatch(removeScheduleEvent(res.data));
