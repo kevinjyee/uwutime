@@ -26,12 +26,10 @@ export function receivedRecipeEvents(data) {
     };
 }
 
-
-
 // Update RecipeEvent
-export const updateRecipeEvent = params => (dispatch) => {
-    dispatch(addRecipeEventStarted);
-    axios.put(`/recipe_fermentables/${params.id}`, {
+export const updateRecipeEvents = params => (dispatch) => {
+    dispatch(updateRecipeEventStarted);
+    axios.put(`/recipe_events/${params.id}`, {
         recipe_event: params,
     }).then((res) => {
         dispatch(updateRecipeEventSuccess(res.data));

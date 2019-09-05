@@ -26,7 +26,6 @@ export function receivedRecipeFermentables(data) {
     };
 }
 
-
 // Add RecipeFermentable
 export const addRecipeFermentable = params => (dispatch) => {
     dispatch(addRecipeFermentableStarted);

@@ -15,6 +15,7 @@ import brewantPackaging
     from "../../../../assets/images/brewant_packaging_ico.svg";
 import AddFermentableModal from "../recipe_fermentable/add_fermentable_modal";
 import AddRecipeEventBrewModal from "./add_recipe_event_brew_modal";
+import recipe from "../../reducers/recipe";
 
 const TableContext = React.createContext(false);
 
@@ -129,12 +130,32 @@ export default class RecipeEvent extends React.Component {
         const { form } = this.formRef.props;
 
         form.validateFields((err, values) => {
-            if (err) {
-                return;
-            }
-            console.log('Received values of form: ', values);
-            this.setState({ show_add_form: false });
+            if (!err) {
+                const { keys, names } = values;
+                console.log('Received values of form: ', values);
 
+
+                if (values.keys && values.keys.length > 0) {
+                    let recipeMashTask = { name: values.name };
+                    let recipeMashStepsRecords = [];
+                    values.keys.forEach((item, index) => {
+                        console.log(values.step_name[item]);
+                        const recipe_mash_steps = {
+                            name: values.step_display_name[item],
+                            display_name: values.step_name[item],
+                            duration_hours: values.step_hours[item],
+                            step_order: index
+                        }
+                        recipeMashStepsRecords.push(recipe_mash_steps);
+                    })
+
+                    recipeMashTask['recipe_mash_steps'] = recipeMashStepsRecords;
+                    const updateParams = { id: this.props.selectedRecipe.id, recipe_mash_tasks: [recipeMashTask] }
+                    this.props.updateRecipeEvents(updateParams);
+                }
+
+                this.setState({show_add_form: false})
+            }
         });
     }
 
@@ -265,7 +286,6 @@ export default class RecipeEvent extends React.Component {
                             <div className="ant-card-body">
                                 <Table
                                     columns={brewColumns}
-                                    rowSelection={rowSelection}
                                     dataSource={brewData}
                                 />
                                 ,
@@ -291,7 +311,6 @@ export default class RecipeEvent extends React.Component {
                             <div className="ant-card-body">
                                 <Table
                                     columns={fermentColumns}
-                                    rowSelection={rowSelection}
                                     dataSource={fermentData}
                                 />
                                 ,
@@ -316,7 +335,6 @@ export default class RecipeEvent extends React.Component {
                             <div className="ant-card-body">
                                 <Table
                                     columns={packagingColumns}
-                                    rowSelection={rowSelection}
                                     dataSource={packagingData}
                                 />
                                 ,
@@ -345,7 +363,6 @@ export default class RecipeEvent extends React.Component {
                     <div className="ant-card-body">
                         <Table
                             columns={brewColumns}
-                            rowSelection={rowSelection}
                             dataSource={[]}
                             loading
                         />
@@ -372,7 +389,6 @@ export default class RecipeEvent extends React.Component {
                     <div className="ant-card-body">
                         <Table
                             columns={fermentColumns}
-                            rowSelection={rowSelection}
                             dataSource={[]}
                             loading
                         />
@@ -398,7 +414,6 @@ export default class RecipeEvent extends React.Component {
                     <div className="ant-card-body">
                         <Table
                             columns={packagingColumns}
-                            rowSelection={rowSelection}
                             dataSource={[]}
                             loading
                         />

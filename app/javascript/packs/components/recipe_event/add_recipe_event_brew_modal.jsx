@@ -66,7 +66,25 @@ const AddRecipeEventBrewModal = Form.create({ name: 'form_in_modal' })(
                 if (!err) {
                     const { keys, names } = values;
                     console.log('Received values of form: ', values);
-                    // console.log('Merged values:', keys.map(key => names[key]));
+                    let brewRecords = [];
+                    if (values.keys && values.keys.length > 0) {
+                        let recipe_mash_tasks = { name: values.name}
+                        values.keys.forEach((item, index) => {
+                            console.log(values.step_name[item]);
+                            const recipe_mash_steps = {
+                                name: values.step_display_name[item],
+                                display_name: values.step_name[item],
+                                duration_hours: values.step_hours[item],
+                                step_order: index
+                            }
+
+                            recipe_mash_tasks = { recipe_mash_steps: recipe_mash_steps}
+                            brewRecords.push(recipe_mash_tasks);
+                        })
+                    }
+                    console.log(brewRecords);
+                    const recipe_mash_tasks = { id: 1,  recipe_mash_tasks: brewRecords }
+
                 }
             });
         };
@@ -168,7 +186,7 @@ const AddRecipeEventBrewModal = Form.create({ name: 'form_in_modal' })(
                     onCancel={onCancel}
                     onOk={onCreate}
                 >
-                <Form layout='vertical' onSubmit={this.handleSubmit}>
+                <Form>
 
                     <Form.Item label="Name">
                         {getFieldDecorator('name', {
@@ -186,11 +204,6 @@ const AddRecipeEventBrewModal = Form.create({ name: 'form_in_modal' })(
                     <Form.Item {...formItemLayoutWithOutLabel}>
                         <Button type="dashed" onClick={this.add} style={{ width: '60%' }}>
                             <Icon type="plus" /> Add field
-                        </Button>
-                    </Form.Item>
-                    <Form.Item {...formItemLayoutWithOutLabel}>
-                        <Button type="primary" htmlType="submit">
-                            Submit
                         </Button>
                     </Form.Item>
                 </Form>

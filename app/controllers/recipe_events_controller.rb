@@ -1,7 +1,7 @@
 class RecipeEventsController < ApplicationController
   def update
-    recipe = Recipe.new(recipe_fermentable_params)
-    if recipe.save
+    @recipe = recipe.update_attributes(recipe_event_params)
+    if @recipe
       recipe_event = RecipeEvent.find(recipe.id)
       render json: recipe_event
     else
@@ -10,8 +10,8 @@ class RecipeEventsController < ApplicationController
   end
 
   def show
-    @recipe_fermentable = RecipeEvent.find(recipe_id)
-    render json: @recipe_fermentable
+    @recipe_event = RecipeEvent.find(recipe_id)
+    render json: @recipe_event
   end
 
   protected
@@ -27,11 +27,10 @@ class RecipeEventsController < ApplicationController
                                                 :duration_hours, :step_order]
         ])
 
+    if (attributes[:recipe_mash_tasks])
 
-    if (attributes[:recipe_ingredient])
-      attributes.merge!({ recipe_ingredient_attributes: attributes.delete(:recipe_ingredient) })
-
-      attributes[:recipe_ingredient_attributes][:ingredient_id] = ingredient_id
+      attributes[:recipe_mash_tasks].collect! {|attr| attr.merge!({ recipe_mash_steps_attributes: attr.delete(:recipe_mash_steps)})}
+      attributes.merge!({ recipe_mash_tasks_attributes: attributes.delete(:recipe_mash_tasks) })
     end
 
     attributes
@@ -42,7 +41,11 @@ class RecipeEventsController < ApplicationController
   end
 
   def recipe_id
-    params[:recipe_id]
+    params[:recipe_id] || params[:id]
+  end
+
+  def recipe
+    Recipe.find(recipe_id)
   end
 end
 

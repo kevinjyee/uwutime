@@ -374,6 +374,7 @@ export default class Recipe extends React.Component {
                             selectedRecipe={this.props.selectedRecipe}
                             recipeEvents={this.props.recipe_events}
                             fetchRecipeEvents={this.props.fetchRecipeEvents}
+                            updateRecipeEvents={this.props.updateRecipeEvents}
                     />
 
 
