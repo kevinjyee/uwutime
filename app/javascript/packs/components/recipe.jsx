@@ -369,13 +369,15 @@ export default class Recipe extends React.Component {
                         </div>
                     </div>
 
-                    <div className="process-overview-row">
-                        <RecipeEvent
+
+                    <RecipeEvent
                             selectedRecipe={this.props.selectedRecipe}
                             recipeEvents={this.props.recipe_events}
                             fetchRecipeEvents={this.props.fetchRecipeEvents}
-                        />
-                    </div>
+                            updateRecipeEvents={this.props.updateRecipeEvents}
+                            deleteRecipeEvents={this.props.deleteRecipeEvents}
+                    />
+
 
                     <div className="ingredients process-overview-row">
                         <RecipeFermentableCard

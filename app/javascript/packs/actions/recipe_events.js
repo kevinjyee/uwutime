@@ -26,6 +26,33 @@ export function receivedRecipeEvents(data) {
     };
 }
 
+// Update RecipeEvent
+export const updateRecipeEvents = params => (dispatch) => {
+    dispatch(updateRecipeEventStarted);
+    axios.put(`/recipe_events/${params.id}`, {
+        recipe_event: params,
+    }).then((res) => {
+        dispatch(updateRecipeEventSuccess(res.data));
+    }).catch((err) => {
+        dispatch(updateRecipeEventFailure(err.message));
+    });
+};
+
+const updateRecipeEventStarted = () => ({
+    type: 'UPDATE_RECIPE_EVENT_STARTED',
+});
+
+const updateRecipeEventSuccess = data => ({
+    type: 'UPDATE_RECIPE_EVENT_SUCCESS',
+    payload: { ...data },
+});
+
+const updateRecipeEventFailure = error => ({
+    type: 'UPDATE_RECIPE_EVENT_FAILURE',
+    payload: {
+        error,
+    },
+});
 
 // Add RecipeEvent
 export const addRecipeEvent = params => (dispatch) => {
@@ -58,22 +85,23 @@ const addRecipeEventFailure = error => ({
 
 // Delete a RecipeEvent
 
-export const deleteRecipeEvent = params => (dispatch) => {
+export const deleteRecipeEvents = params => (dispatch) => {
     dispatch(deleteRecipeEventStarted);
-    axios.delete(`/recipe_fermentables/${params.id}`, {
-        recipe_fermentables: params,
+    axios.put(`/recipe_events/${params.id}`, {
+        recipe_event: params,
+        destroy: true
     }).then((res) => {
-        dispatch(deleteRecipeEventEvent(res.data));
+        dispatch(deleteRecipeEventSuccess(res.data));
     }).catch((err) => {
         dispatch(deleteRecipeEventFailure(err.message));
     });
 };
 
 const deleteRecipeEventStarted = () => ({
-    type: 'DELETE_TASK_STARTED',
+    type: 'DELETE_RECIPE_EVENT_STARTED',
 });
 
-const deleteRecipeEventEvent = data => ({
+const deleteRecipeEventSuccess = data => ({
     type: 'DELETE_RECIPE_EVENT_SUCCESS',
     payload: { ...data },
 });

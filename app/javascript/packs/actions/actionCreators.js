@@ -1,6 +1,6 @@
 import axios from 'axios/index';
 export { fetchRecipeFermentables, addRecipeFermentable, deleteRecipeFermentable } from './recipe_fermentables';
-export { fetchRecipeEvents } from './recipe_events';
+export { fetchRecipeEvents, updateRecipeEvents, deleteRecipeEvents } from './recipe_events';
 // Fetch Schedule
 export function fetchScheduleRequests() {
     return function (dispatch) {
@@ -145,7 +145,7 @@ const publishScheduleFailure = data => ({
 
 export const removeSchedule = params => (dispatch) => {
         dispatch(removeScheduleStarted);
-        axios.put(`/schedule_requests/${params.id}`, {
+        axios.put(`/schedule_requests/`, {
             schedule_request: params,
         }).then((res) => {
             dispatch(removeScheduleEvent(res.data));
