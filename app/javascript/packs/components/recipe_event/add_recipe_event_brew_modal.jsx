@@ -36,7 +36,7 @@ const AddRecipeEventBrewModal = Form.create({ name: 'form_in_modal' })(
         remove = k => {
             const { form } = this.props;
             // can use data-binding to get
-            const keys = form.getFieldValue('keys');s
+            const keys = form.getFieldValue('keys');
             // We need at least one passenger
             if (keys.length === 1) {
                 return;
@@ -123,7 +123,7 @@ const AddRecipeEventBrewModal = Form.create({ name: 'form_in_modal' })(
                             {...(index === 0 ? formItemLayout : formItemLayoutWithOutLabel)}
                             label={`Step ${index + 1}`}
                             required={false}
-                            key={k}
+                            key={index}
                         >
                             {getFieldDecorator(`step_name[${index}]`, {
                                 validateTrigger: ['onChange', 'onBlur'],

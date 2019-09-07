@@ -206,6 +206,7 @@ export default class RecipeEvent extends React.Component {
                     this.props.updateRecipeEvents(updateParams);
                 }
 
+                form.resetFields();
                 this.setState({show_add_form: false})
             }
         });
@@ -220,6 +221,8 @@ export default class RecipeEvent extends React.Component {
     }
 
     handleAddCancel = () => {
+        const { form } = this.formRef.props;
+        form.resetFields();
         this.setState({ show_add_form: false, selectedMashTask: null });
     }
 
@@ -240,6 +243,7 @@ export default class RecipeEvent extends React.Component {
                 currentTask.children = task.recipe_mash_steps.map(step => ({
                     key: `mash_step_${step.id}`,
                     name: step.name,
+                    display_name: step.display_name,
                     temperature: `${step.temperature}${step.temperature_unit}`,
                     duration: step.duration_hours,
                 }));
