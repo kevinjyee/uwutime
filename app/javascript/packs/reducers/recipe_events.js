@@ -18,9 +18,14 @@ function recipe_events(state = [], action) {
             return {
                 state,
                 action,
-                payload:  [...state.payload, action.payload],
+                payload: action.payload,
                 isLoading: false
             };
+        case 'DELETE_RECIPE_EVENT_STARTED':
+            console.log("Removing Recipe Events...");
+            return { state, isLoading: true }
+        case 'DELETE_RECIPE_EVENT_SUCCESS':
+            return { state, isLoading: true, action, payload: action.payload };
         default:
             return state;
     }

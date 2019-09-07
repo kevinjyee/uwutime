@@ -28,9 +28,15 @@ class RecipeEventsController < ApplicationController
         ])
 
     if (attributes[:recipe_mash_tasks])
-
       attributes[:recipe_mash_tasks].collect! {|attr| attr.merge!({ recipe_mash_steps_attributes: attr.delete(:recipe_mash_steps)})}
       attributes.merge!({ recipe_mash_tasks_attributes: attributes.delete(:recipe_mash_tasks) })
+
+      if destroy?
+        attributes[:recipe_mash_tasks_attributes].each { |mash_task|
+          mash_task[:_destroy] = true
+        }
+      end
+
     end
 
     attributes
@@ -42,6 +48,10 @@ class RecipeEventsController < ApplicationController
 
   def recipe_id
     params[:recipe_id] || params[:id]
+  end
+
+  def destroy?
+    params[:destroy]
   end
 
   def recipe

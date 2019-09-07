@@ -19,27 +19,6 @@ import recipe from "../../reducers/recipe";
 
 const TableContext = React.createContext(false);
 
-const brewColumns = [
-    {
-        title: 'Name',
-        dataIndex: 'name',
-        key: 'name',
-    },
-    {
-        title: 'Temperature',
-        dataIndex: 'temperature',
-        key: 'temperature',
-        width: '10%',
-    },
-    {
-        title: 'Hours',
-        dataIndex: 'duration',
-        width: '10%%',
-        key: 'duration',
-    },
-];
-
-
 const fermentColumns = [
     {
         title: 'Name',
@@ -97,7 +76,58 @@ export default class RecipeEvent extends React.Component {
             selectedRecipe: this.props.selectedRecipe,
         };
 
+         this.brewColumns = [
+            {
+                title: 'Name',
+                dataIndex: 'name',
+                key: 'name',
+            },
+            {
+                title: 'Temperature',
+                dataIndex: 'temperature',
+                key: 'temperature',
+                width: '10%',
+            },
+            {
+                title: 'Hours',
+                dataIndex: 'duration',
+                width: '10%%',
+                key: 'duration',
+            },
+            {
+                title: '',
+                dataIndex: '',
+                key: 'x',
+                render: (text, record) => (
+                    <span
+                        className={`recipe-table-delete`}
+                        onClick={(e) => {
+                            this.onMashTaskDelete(record, e);
+                        }}
+                    >
+            <Icon type="delete" />
+                    </span>
+                ),
+            }
+        ];
+
+        this.onMashTaskDelete = this.onMashTaskDelete.bind(this);
     }
+
+    onMashTaskDelete = (record, e) => {
+        const { deleteRecipeEvents } = this.props;
+        e.preventDefault();
+        const { selectedRecipe } = this.state;
+        let parsed_record = record.key.split('_');
+        let record_id = parsed_record[parsed_record.length - 1];
+        const params = { id: selectedRecipe.id, recipe_mash_tasks: [{id: record_id, recipe_mash_steps: [{}] }]};
+
+        console.log(params);
+        deleteRecipeEvents(params);
+
+        // deleteRecipeFermentable({ id: record.id });
+
+    };
 
     componentDidMount() {
         const { selectedRecipe } = this.state;
@@ -285,7 +315,7 @@ export default class RecipeEvent extends React.Component {
                             </div>
                             <div className="ant-card-body">
                                 <Table
-                                    columns={brewColumns}
+                                    columns={this.brewColumns}
                                     dataSource={brewData}
                                 />
                                 ,
@@ -362,7 +392,7 @@ export default class RecipeEvent extends React.Component {
                     </div>
                     <div className="ant-card-body">
                         <Table
-                            columns={brewColumns}
+                            columns={this.brewColumns}
                             dataSource={[]}
                             loading
                         />

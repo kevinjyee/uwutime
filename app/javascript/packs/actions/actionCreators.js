@@ -1,6 +1,6 @@
 import axios from 'axios/index';
 export { fetchRecipeFermentables, addRecipeFermentable, deleteRecipeFermentable } from './recipe_fermentables';
-export { fetchRecipeEvents, updateRecipeEvents } from './recipe_events';
+export { fetchRecipeEvents, updateRecipeEvents, deleteRecipeEvents } from './recipe_events';
 // Fetch Schedule
 export function fetchScheduleRequests() {
     return function (dispatch) {
