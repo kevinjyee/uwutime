@@ -74,6 +74,7 @@ export default class RecipeEvent extends React.Component {
         this.state = {
             recipeEvents: this.props.recipeEvents.payload,
             selectedRecipe: this.props.selectedRecipe,
+            selectedMashTask: null,
         };
 
          this.brewColumns = [
@@ -81,6 +82,16 @@ export default class RecipeEvent extends React.Component {
                 title: 'Name',
                 dataIndex: 'name',
                 key: 'name',
+                render: (text, record) => (
+                    <span
+                        className='recipe-table-clickable'
+                        onClick={(e) => {
+                            this.onMashTaskSelect(record, e);
+                        }}
+                    >
+                        {text}
+                    </span>)
+
             },
             {
                 title: 'Temperature',
@@ -112,6 +123,7 @@ export default class RecipeEvent extends React.Component {
         ];
 
         this.onMashTaskDelete = this.onMashTaskDelete.bind(this);
+        this.onMashTaskSelect = this.onMashTaskSelect.bind(this);
     }
 
     onMashTaskDelete = (record, e) => {
@@ -122,10 +134,20 @@ export default class RecipeEvent extends React.Component {
         let record_id = parsed_record[parsed_record.length - 1];
         const params = { id: selectedRecipe.id, recipe_mash_tasks: [{id: record_id, recipe_mash_steps: [{}] }]};
 
-        console.log(params);
         deleteRecipeEvents(params);
 
         // deleteRecipeFermentable({ id: record.id });
+
+    };
+
+    onMashTaskSelect = (record, e) => {
+        console.log(record);
+        console.log(e);
+
+        this.setState({
+            show_add_form: true,
+            selectedMashTask: record
+        })
 
     };
 
@@ -198,7 +220,7 @@ export default class RecipeEvent extends React.Component {
     }
 
     handleAddCancel = () => {
-        this.setState({ show_add_form: false });
+        this.setState({ show_add_form: false, selectedMashTask: null });
     }
 
     render() {
@@ -266,6 +288,7 @@ export default class RecipeEvent extends React.Component {
                         {...this.props}
                         wrappedComponentRef={this.saveFormRef}
                         metaDataCallBack={this.metaDataCallBack}
+                        selectedMashTask={this.state.selectedMashTask}
                         visible={this.state.show_add_form}
                         onCancel={this.handleAddCancel}
                         onCreate={this.handleCreateBrewEvent}

@@ -27,7 +27,7 @@ const AddRecipeEventBrewModal = Form.create({ name: 'form_in_modal' })(
             this.state = {
                 searching: false,
                 fermentableDb: [],
-                selectedFermentable: this.props.selectedFermentable,
+                selectedMashTask: this.props.selectedMashTask,
                 fermentableName: null,
                 autoCompleteResult: [],
             };
@@ -36,7 +36,7 @@ const AddRecipeEventBrewModal = Form.create({ name: 'form_in_modal' })(
         remove = k => {
             const { form } = this.props;
             // can use data-binding to get
-            const keys = form.getFieldValue('keys');
+            const keys = form.getFieldValue('keys');s
             // We need at least one passenger
             if (keys.length === 1) {
                 return;
@@ -114,70 +114,146 @@ const AddRecipeEventBrewModal = Form.create({ name: 'form_in_modal' })(
             };
             getFieldDecorator('keys', { initialValue: [] });
             const keys = getFieldValue('keys');
-            const formItems = keys.map((k, index) => (
-                 <div>
-                <Form.Item
-                    {...(index === 0 ? formItemLayout : formItemLayoutWithOutLabel)}
-                    label={`Step ${index + 1}`}
-                    required={false}
-                    key={k}
-                >
-                    {getFieldDecorator(`step_name[${k}]`, {
-                        validateTrigger: ['onChange', 'onBlur'],
-                        rules: [
-                            {
-                                required: true,
-                                whitespace: true,
-                                message: "Please input a step name",
-                            },
-                        ],
-                    })(<Input placeholder="Step Name" style={{ width: '60%', marginRight: 8 }} />)}
+            let formItems;
+            if (this.props.selectedMashTask)
+            {
+                formItems = this.props.selectedMashTask.children.map((k, index) => (
+                    <div>
+                        <Form.Item
+                            {...(index === 0 ? formItemLayout : formItemLayoutWithOutLabel)}
+                            label={`Step ${index + 1}`}
+                            required={false}
+                            key={k}
+                        >
+                            {getFieldDecorator(`step_name[${index}]`, {
+                                validateTrigger: ['onChange', 'onBlur'],
+                                rules: [
+                                    {
+                                        required: true,
+                                        whitespace: true,
+                                        message: "Please input a step name",
+                                    },
+                                ],
+                                initialValue: k.name
+                            })(<Input placeholder="Step Name" style={{ width: '60%', marginRight: 8 }} />)}
 
-                    <div className="dynamic-form-item">
-                        {getFieldDecorator(`step_display_name[${k}]`, {
-                            validateTrigger: ['onChange', 'onBlur'],
-                            rules: [
-                                {
-                                    required: true,
-                                    whitespace: true,
-                                    message: "Please input display name",
-                                },
-                            ],
-                        })(<Input placeholder="Step Display Name" style={{ width: '60%', marginRight: 8 }} />)}
+                            <div className="dynamic-form-item">
+                                {getFieldDecorator(`step_display_name[${index}]`, {
+                                    validateTrigger: ['onChange', 'onBlur'],
+                                    rules: [
+                                        {
+                                            required: true,
+                                            whitespace: true,
+                                            message: "Please input display name",
+                                        },
+
+                                    ],
+                                    initialValue: k.name
+                                })(<Input placeholder="Step Display Name" style={{ width: '60%', marginRight: 8 }} />)}
+                            </div>
+
+                            <div className="dynamic-form-item">
+                                {getFieldDecorator(`step_hours[${index}]`, {
+                                    validateTrigger: ['onChange', 'onBlur'],
+                                    rules: [
+                                        {
+                                            required: true,
+                                            whitespace: true,
+                                            message: "Please input a duration",
+                                        },
+                                    ],
+                                    initialValue: k.duration
+                                })(
+                                    <InputNumber
+                                        min={0}
+                                        max={24}
+                                        placeholder='1'
+                                    /> ,
+                                )}
+
+                                <span> hr(s) </span>
+
+                                {keys.length > 1 ? (
+                                    <Icon
+                                        className="dynamic-delete-button"
+                                        type="minus-circle-o"
+                                        onClick={() => this.remove(k)}
+                                    />
+                                ) : null}
+                            </div>
+
+                        </Form.Item>
                     </div>
+                ));
+            }
+            else
+            {
+                formItems = keys.map((k, index) => (
+                    <div>
+                        <Form.Item
+                            {...(index === 0 ? formItemLayout : formItemLayoutWithOutLabel)}
+                            label={`Step ${index + 1}`}
+                            required={false}
+                            key={k}
+                        >
+                            {getFieldDecorator(`step_name[${k}]`, {
+                                validateTrigger: ['onChange', 'onBlur'],
+                                rules: [
+                                    {
+                                        required: true,
+                                        whitespace: true,
+                                        message: "Please input a step name",
+                                    },
+                                ],
+                            })(<Input placeholder="Step Name" style={{ width: '60%', marginRight: 8 }} />)}
 
-                    <div className="dynamic-form-item">
-                        {getFieldDecorator(`step_hours[${k}]`, {
-                            validateTrigger: ['onChange', 'onBlur'],
-                            rules: [
-                                {
-                                    required: true,
-                                    whitespace: true,
-                                    message: "Please input a duration",
-                                },
-                            ],
-                        })(
-                            <InputNumber
-                                min={0}
-                                max={24}
-                                placeholder='1'
-                            /> ,
-                        )}
+                            <div className="dynamic-form-item">
+                                {getFieldDecorator(`step_display_name[${k}]`, {
+                                    validateTrigger: ['onChange', 'onBlur'],
+                                    rules: [
+                                        {
+                                            required: true,
+                                            whitespace: true,
+                                            message: "Please input display name",
+                                        },
+                                    ],
+                                })(<Input placeholder="Step Display Name" style={{ width: '60%', marginRight: 8 }} />)}
+                            </div>
 
-                        <span> hr(s) </span>
+                            <div className="dynamic-form-item">
+                                {getFieldDecorator(`step_hours[${k}]`, {
+                                    validateTrigger: ['onChange', 'onBlur'],
+                                    rules: [
+                                        {
+                                            required: true,
+                                            whitespace: true,
+                                            message: "Please input a duration",
+                                        },
+                                    ],
+                                })(
+                                    <InputNumber
+                                        min={0}
+                                        max={24}
+                                        placeholder='1'
+                                    /> ,
+                                )}
 
-                        {keys.length > 1 ? (
-                            <Icon
-                                className="dynamic-delete-button"
-                                type="minus-circle-o"
-                                onClick={() => this.remove(k)}
-                            />
-                        ) : null}
+                                <span> hr(s) </span>
+
+                                {keys.length > 1 ? (
+                                    <Icon
+                                        className="dynamic-delete-button"
+                                        type="minus-circle-o"
+                                        onClick={() => this.remove(k)}
+                                    />
+                                ) : null}
+                            </div>
+
+                        </Form.Item>
                     </div>
+                ));
+            }
 
-                </Form.Item>
-                 </div>
-            ));
             return (
                 <Modal
                     visible={visible}
@@ -194,6 +270,7 @@ const AddRecipeEventBrewModal = Form.create({ name: 'form_in_modal' })(
                                 required: true,
                                 message: 'Please input a task name',
                             }],
+                            initialValue: ( this.props.selectedMashTask || {}).name,
 
                         })(
                             <Input/>,
