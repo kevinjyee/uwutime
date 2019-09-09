@@ -141,12 +141,24 @@ export default class RecipeEvent extends React.Component {
     };
 
     onMashTaskSelect = (record, e) => {
+        const { form } = this.formRef.props;
+        let existingIds = [];
+        for(let i =0; i < record.children.length; i++)
+        {
+            existingIds.push(i++);
+        }
+
+        form.setFieldsValue({
+            keys: existingIds
+        })
+
         console.log(record);
         console.log(e);
 
         this.setState({
             show_add_form: true,
-            selectedMashTask: record
+            selectedMashTask: record,
+            id: record.children.length
         })
 
     };
@@ -296,6 +308,7 @@ export default class RecipeEvent extends React.Component {
                         visible={this.state.show_add_form}
                         onCancel={this.handleAddCancel}
                         onCreate={this.handleCreateBrewEvent}
+                        id={this.state.id}
                         isNew
                     />
                     <div className="ant-card-head">

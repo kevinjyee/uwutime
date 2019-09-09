@@ -16,7 +16,7 @@ import brewantGrainAva from '../../../../assets/images/brewant_grain_ava.svg';
 
 
 const { Search } = Input;
-let id = 0;
+
 
 const AddRecipeEventBrewModal = Form.create({ name: 'form_in_modal' })(
     // eslint-disable-next-line
@@ -30,7 +30,12 @@ const AddRecipeEventBrewModal = Form.create({ name: 'form_in_modal' })(
                 selectedMashTask: this.props.selectedMashTask,
                 fermentableName: null,
                 autoCompleteResult: [],
+
             };
+            this.initializeKeys = this.initializeKeys.bind(this);
+            this.id = this.props.id || 0;
+            this.add = this.add.bind(this);
+            this.remove = this.remove.bind(this);
         }
 
         remove = k => {
@@ -52,13 +57,29 @@ const AddRecipeEventBrewModal = Form.create({ name: 'form_in_modal' })(
             const { form } = this.props;
             // can use data-binding to get
             const keys = form.getFieldValue('keys');
-            const nextKeys = keys.concat(id++);
+            while (this.id < this.props.id) {
+                this.id++;
+            }
+            const nextKeys = keys.concat(this.id++);
             // can use data-binding to set
             // important! notify form to detect changes
             form.setFieldsValue({
                 keys: nextKeys,
             });
         };
+
+        initializeKeys = () => {
+            const { form } = this.props;
+            let selectedMashTask = this.props.selectedMashTask;
+            let existingIds = [];
+            for(let i =0; i < selectedMashTask.children.length; i++)
+            {
+                existingIds.push(this.id++);
+            }
+            form.setFieldsValue({
+                keys: existingIds
+            })
+        }
 
         handleSubmit = e => {
             e.preventDefault();
@@ -117,15 +138,15 @@ const AddRecipeEventBrewModal = Form.create({ name: 'form_in_modal' })(
             let formItems;
             if (this.props.selectedMashTask)
             {
-                formItems = this.props.selectedMashTask.children.map((k, index) => (
+                formItems = keys.map((k, index) => (
                     <div>
                         <Form.Item
                             {...(index === 0 ? formItemLayout : formItemLayoutWithOutLabel)}
                             label={`Step ${index + 1}`}
                             required={false}
-                            key={index}
+                            key={k}
                         >
-                            {getFieldDecorator(`step_name[${index}]`, {
+                            {getFieldDecorator(`step_name[${k}]`, {
                                 validateTrigger: ['onChange', 'onBlur'],
                                 rules: [
                                     {
@@ -133,12 +154,13 @@ const AddRecipeEventBrewModal = Form.create({ name: 'form_in_modal' })(
                                         whitespace: true,
                                         message: "Please input a step name",
                                     },
+
                                 ],
-                                initialValue: k.name
+                                initialValue: (this.props.selectedMashTask.children[k] || {}).name
                             })(<Input placeholder="Step Name" style={{ width: '60%', marginRight: 8 }} />)}
 
                             <div className="dynamic-form-item">
-                                {getFieldDecorator(`step_display_name[${index}]`, {
+                                {getFieldDecorator(`step_display_name[${k}]`, {
                                     validateTrigger: ['onChange', 'onBlur'],
                                     rules: [
                                         {
@@ -146,14 +168,13 @@ const AddRecipeEventBrewModal = Form.create({ name: 'form_in_modal' })(
                                             whitespace: true,
                                             message: "Please input display name",
                                         },
-
                                     ],
-                                    initialValue: k.name
+                                    initialValue: (this.props.selectedMashTask.children[k] || {}).name
                                 })(<Input placeholder="Step Display Name" style={{ width: '60%', marginRight: 8 }} />)}
                             </div>
 
                             <div className="dynamic-form-item">
-                                {getFieldDecorator(`step_hours[${index}]`, {
+                                {getFieldDecorator(`step_hours[${k}]`, {
                                     validateTrigger: ['onChange', 'onBlur'],
                                     rules: [
                                         {
@@ -162,7 +183,7 @@ const AddRecipeEventBrewModal = Form.create({ name: 'form_in_modal' })(
                                             message: "Please input a duration",
                                         },
                                     ],
-                                    initialValue: k.duration
+                                    initialValue: (this.props.selectedMashTask.children[k] || {}).duration
                                 })(
                                     <InputNumber
                                         min={0}
