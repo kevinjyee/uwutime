@@ -74,7 +74,7 @@ const AddRecipeEventBrewModal = Form.create({ name: 'form_in_modal' })(
             let existingIds = [];
             for(let i =0; i < selectedMashTask.children.length; i++)
             {
-                existingIds.push(this.id++);
+                existingIds.push(this.id);
             }
             form.setFieldsValue({
                 keys: existingIds
@@ -146,6 +146,19 @@ const AddRecipeEventBrewModal = Form.create({ name: 'form_in_modal' })(
                             required={false}
                             key={k}
                         >
+                            {getFieldDecorator(`mash_step_key[${k}]`, {
+                                validateTrigger: ['onChange', 'onBlur'],
+                                rules: [
+                                    {
+                                        required: false,
+                                        whitespace: true,
+                                        message: "Please input a step name",
+                                    },
+
+                                ],
+                                initialValue: (this.props.selectedMashTask.children[k] || {}).key
+                            })(<Input type="hidden" style={{ width: '60%', marginRight: 8 }} />)}
+
                             {getFieldDecorator(`step_name[${k}]`, {
                                 validateTrigger: ['onChange', 'onBlur'],
                                 rules: [
@@ -175,20 +188,12 @@ const AddRecipeEventBrewModal = Form.create({ name: 'form_in_modal' })(
 
                             <div className="dynamic-form-item">
                                 {getFieldDecorator(`step_hours[${k}]`, {
-                                    validateTrigger: ['onChange', 'onBlur'],
-                                    rules: [
-                                        {
-                                            required: true,
-                                            whitespace: true,
-                                            message: "Please input a duration",
-                                        },
-                                    ],
                                     initialValue: (this.props.selectedMashTask.children[k] || {}).duration
                                 })(
                                     <InputNumber
                                         min={0}
                                         max={24}
-                                        placeholder='1'
+                                        placeHolder={1}
                                     /> ,
                                 )}
 
@@ -199,9 +204,12 @@ const AddRecipeEventBrewModal = Form.create({ name: 'form_in_modal' })(
                                         className="dynamic-delete-button"
                                         type="minus-circle-o"
                                         onClick={() => this.remove(k)}
+
                                     />
                                 ) : null}
                             </div>
+
+
 
                         </Form.Item>
                     </div>
