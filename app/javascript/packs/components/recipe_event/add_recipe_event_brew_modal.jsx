@@ -16,7 +16,7 @@ import brewantGrainAva from '../../../../assets/images/brewant_grain_ava.svg';
 
 
 const { Search } = Input;
-let id = 0;
+
 
 const AddRecipeEventBrewModal = Form.create({ name: 'form_in_modal' })(
     // eslint-disable-next-line
@@ -27,10 +27,15 @@ const AddRecipeEventBrewModal = Form.create({ name: 'form_in_modal' })(
             this.state = {
                 searching: false,
                 fermentableDb: [],
-                selectedFermentable: this.props.selectedFermentable,
+                selectedMashTask: this.props.selectedMashTask,
                 fermentableName: null,
                 autoCompleteResult: [],
+
             };
+            this.initializeKeys = this.initializeKeys.bind(this);
+            this.id = this.props.id || 0;
+            this.add = this.add.bind(this);
+            this.remove = this.remove.bind(this);
         }
 
         remove = k => {
@@ -52,13 +57,29 @@ const AddRecipeEventBrewModal = Form.create({ name: 'form_in_modal' })(
             const { form } = this.props;
             // can use data-binding to get
             const keys = form.getFieldValue('keys');
-            const nextKeys = keys.concat(id++);
+            while (this.id < this.props.id) {
+                this.id++;
+            }
+            const nextKeys = keys.concat(this.id++);
             // can use data-binding to set
             // important! notify form to detect changes
             form.setFieldsValue({
                 keys: nextKeys,
             });
         };
+
+        initializeKeys = () => {
+            const { form } = this.props;
+            let selectedMashTask = this.props.selectedMashTask;
+            let existingIds = [];
+            for(let i =0; i < selectedMashTask.children.length; i++)
+            {
+                existingIds.push(this.id);
+            }
+            form.setFieldsValue({
+                keys: existingIds
+            })
+        }
 
         handleSubmit = e => {
             e.preventDefault();
@@ -114,70 +135,154 @@ const AddRecipeEventBrewModal = Form.create({ name: 'form_in_modal' })(
             };
             getFieldDecorator('keys', { initialValue: [] });
             const keys = getFieldValue('keys');
-            const formItems = keys.map((k, index) => (
-                 <div>
-                <Form.Item
-                    {...(index === 0 ? formItemLayout : formItemLayoutWithOutLabel)}
-                    label={`Step ${index + 1}`}
-                    required={false}
-                    key={k}
-                >
-                    {getFieldDecorator(`step_name[${k}]`, {
-                        validateTrigger: ['onChange', 'onBlur'],
-                        rules: [
-                            {
-                                required: true,
-                                whitespace: true,
-                                message: "Please input a step name",
-                            },
-                        ],
-                    })(<Input placeholder="Step Name" style={{ width: '60%', marginRight: 8 }} />)}
+            let formItems;
+            if (this.props.selectedMashTask)
+            {
+                formItems = keys.map((k, index) => (
+                    <div>
+                        <Form.Item
+                            {...(index === 0 ? formItemLayout : formItemLayoutWithOutLabel)}
+                            label={`Step ${index + 1}`}
+                            required={false}
+                            key={k}
+                        >
+                            {getFieldDecorator(`mash_step_key[${k}]`, {
+                                validateTrigger: ['onChange', 'onBlur'],
+                                rules: [
+                                    {
+                                        required: false,
+                                        whitespace: true,
+                                        message: "Please input a step name",
+                                    },
 
-                    <div className="dynamic-form-item">
-                        {getFieldDecorator(`step_display_name[${k}]`, {
-                            validateTrigger: ['onChange', 'onBlur'],
-                            rules: [
-                                {
-                                    required: true,
-                                    whitespace: true,
-                                    message: "Please input display name",
-                                },
-                            ],
-                        })(<Input placeholder="Step Display Name" style={{ width: '60%', marginRight: 8 }} />)}
+                                ],
+                                initialValue: (this.props.selectedMashTask.children[k] || {}).key
+                            })(<Input type="hidden" style={{ width: '60%', marginRight: 8 }} />)}
+
+                            {getFieldDecorator(`step_name[${k}]`, {
+                                validateTrigger: ['onChange', 'onBlur'],
+                                rules: [
+                                    {
+                                        required: true,
+                                        whitespace: true,
+                                        message: "Please input a step name",
+                                    },
+
+                                ],
+                                initialValue: (this.props.selectedMashTask.children[k] || {}).name
+                            })(<Input placeholder="Step Name" style={{ width: '60%', marginRight: 8 }} />)}
+
+                            <div className="dynamic-form-item">
+                                {getFieldDecorator(`step_display_name[${k}]`, {
+                                    validateTrigger: ['onChange', 'onBlur'],
+                                    rules: [
+                                        {
+                                            required: true,
+                                            whitespace: true,
+                                            message: "Please input display name",
+                                        },
+                                    ],
+                                    initialValue: (this.props.selectedMashTask.children[k] || {}).name
+                                })(<Input placeholder="Step Display Name" style={{ width: '60%', marginRight: 8 }} />)}
+                            </div>
+
+                            <div className="dynamic-form-item">
+                                {getFieldDecorator(`step_hours[${k}]`, {
+                                    initialValue: (this.props.selectedMashTask.children[k] || {}).duration
+                                })(
+                                    <InputNumber
+                                        min={0}
+                                        max={24}
+                                        placeHolder={1}
+                                    /> ,
+                                )}
+
+                                <span> hr(s) </span>
+
+                                {keys.length > 1 ? (
+                                    <Icon
+                                        className="dynamic-delete-button"
+                                        type="minus-circle-o"
+                                        onClick={() => this.remove(k)}
+
+                                    />
+                                ) : null}
+                            </div>
+
+
+
+                        </Form.Item>
                     </div>
+                ));
+            }
+            else
+            {
+                formItems = keys.map((k, index) => (
+                    <div>
+                        <Form.Item
+                            {...(index === 0 ? formItemLayout : formItemLayoutWithOutLabel)}
+                            label={`Step ${index + 1}`}
+                            required={false}
+                            key={k}
+                        >
+                            {getFieldDecorator(`step_name[${k}]`, {
+                                validateTrigger: ['onChange', 'onBlur'],
+                                rules: [
+                                    {
+                                        required: true,
+                                        whitespace: true,
+                                        message: "Please input a step name",
+                                    },
+                                ],
+                            })(<Input placeholder="Step Name" style={{ width: '60%', marginRight: 8 }} />)}
 
-                    <div className="dynamic-form-item">
-                        {getFieldDecorator(`step_hours[${k}]`, {
-                            validateTrigger: ['onChange', 'onBlur'],
-                            rules: [
-                                {
-                                    required: true,
-                                    whitespace: true,
-                                    message: "Please input a duration",
-                                },
-                            ],
-                        })(
-                            <InputNumber
-                                min={0}
-                                max={24}
-                                placeholder='1'
-                            /> ,
-                        )}
+                            <div className="dynamic-form-item">
+                                {getFieldDecorator(`step_display_name[${k}]`, {
+                                    validateTrigger: ['onChange', 'onBlur'],
+                                    rules: [
+                                        {
+                                            required: true,
+                                            whitespace: true,
+                                            message: "Please input display name",
+                                        },
+                                    ],
+                                })(<Input placeholder="Step Display Name" style={{ width: '60%', marginRight: 8 }} />)}
+                            </div>
 
-                        <span> hr(s) </span>
+                            <div className="dynamic-form-item">
+                                {getFieldDecorator(`step_hours[${k}]`, {
+                                    validateTrigger: ['onChange', 'onBlur'],
+                                    rules: [
+                                        {
+                                            required: true,
+                                            whitespace: true,
+                                            message: "Please input a duration",
+                                        },
+                                    ],
+                                })(
+                                    <InputNumber
+                                        min={0}
+                                        max={24}
+                                        placeholder='1'
+                                    /> ,
+                                )}
 
-                        {keys.length > 1 ? (
-                            <Icon
-                                className="dynamic-delete-button"
-                                type="minus-circle-o"
-                                onClick={() => this.remove(k)}
-                            />
-                        ) : null}
+                                <span> hr(s) </span>
+
+                                {keys.length > 1 ? (
+                                    <Icon
+                                        className="dynamic-delete-button"
+                                        type="minus-circle-o"
+                                        onClick={() => this.remove(k)}
+                                    />
+                                ) : null}
+                            </div>
+
+                        </Form.Item>
                     </div>
+                ));
+            }
 
-                </Form.Item>
-                 </div>
-            ));
             return (
                 <Modal
                     visible={visible}
@@ -194,6 +299,7 @@ const AddRecipeEventBrewModal = Form.create({ name: 'form_in_modal' })(
                                 required: true,
                                 message: 'Please input a task name',
                             }],
+                            initialValue: ( this.props.selectedMashTask || {}).name,
 
                         })(
                             <Input/>,

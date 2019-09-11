@@ -74,6 +74,7 @@ export default class RecipeEvent extends React.Component {
         this.state = {
             recipeEvents: this.props.recipeEvents.payload,
             selectedRecipe: this.props.selectedRecipe,
+            selectedMashTask: null,
         };
 
          this.brewColumns = [
@@ -81,6 +82,16 @@ export default class RecipeEvent extends React.Component {
                 title: 'Name',
                 dataIndex: 'name',
                 key: 'name',
+                render: (text, record) => (
+                    <span
+                        className='recipe-table-clickable'
+                        onClick={(e) => {
+                            this.onMashTaskSelect(record, e);
+                        }}
+                    >
+                        {text}
+                    </span>)
+
             },
             {
                 title: 'Temperature',
@@ -112,6 +123,9 @@ export default class RecipeEvent extends React.Component {
         ];
 
         this.onMashTaskDelete = this.onMashTaskDelete.bind(this);
+        this.onMashTaskSelect = this.onMashTaskSelect.bind(this);
+        this.createBrewEvent = this.createBrewEvent.bind(this);
+        this.updateBrewEvent = this.updateBrewEvent.bind(this);
     }
 
     onMashTaskDelete = (record, e) => {
@@ -122,10 +136,32 @@ export default class RecipeEvent extends React.Component {
         let record_id = parsed_record[parsed_record.length - 1];
         const params = { id: selectedRecipe.id, recipe_mash_tasks: [{id: record_id, recipe_mash_steps: [{}] }]};
 
-        console.log(params);
         deleteRecipeEvents(params);
 
         // deleteRecipeFermentable({ id: record.id });
+
+    };
+
+    onMashTaskSelect = (record, e) => {
+        const { form } = this.formRef.props;
+        let existingIds = [];
+        for(let i =0; i < record.children.length; i++)
+        {
+            existingIds.push(i);
+        }
+
+        form.setFieldsValue({
+            keys: existingIds
+        })
+
+        console.log(record);
+        console.log(e);
+
+        this.setState({
+            show_add_form: true,
+            selectedMashTask: record,
+            id: record.children.length
+        })
 
     };
 
@@ -156,6 +192,59 @@ export default class RecipeEvent extends React.Component {
         this.formRef = formRef;
     }
 
+
+    createBrewEvent = (form, values) => {
+        if (values.keys && values.keys.length > 0) {
+            let recipeMashTask = { name: values.name };
+            let recipeMashStepsRecords = [];
+            values.keys.forEach((item, index) => {
+                console.log(values.step_name[item]);
+                const recipe_mash_steps = {
+                    name: values.step_display_name[item],
+                    display_name: values.step_name[item],
+                    duration_hours: values.step_hours[item],
+                    step_order: index
+                }
+                recipeMashStepsRecords.push(recipe_mash_steps);
+            })
+
+            recipeMashTask['recipe_mash_steps'] = recipeMashStepsRecords;
+            const updateParams = { id: this.props.selectedRecipe.id, recipe_mash_tasks: [recipeMashTask] }
+            this.props.updateRecipeEvents(updateParams);
+        }
+    }
+
+    updateBrewEvent = (form, values) => {
+        if (values.keys && values.keys.length > 0) {
+            let mash_task_key =  this.state.selectedMashTask.key.split("_");
+            let recipeMashTask = { name: values.name, id: mash_task_key[mash_task_key.length-1]};
+            let recipeMashStepsRecords = [];
+            values.keys.forEach((item, index) => {
+                console.log(values.step_name[item]);
+
+                let mash_step_id;
+                if(values.mash_step_key && values.mash_step_key[item])
+                {
+                    let mash_step_key = values.mash_step_key[item].split("_");
+                    mash_step_id = mash_step_key[mash_step_key.length-1];
+                }
+
+                const recipe_mash_steps = {
+                    id: mash_step_id,
+                    name: values.step_display_name[item],
+                    display_name: values.step_name[item],
+                    duration_hours: values.step_hours[item],
+                    step_order: index
+                }
+                recipeMashStepsRecords.push(recipe_mash_steps);
+            })
+
+            recipeMashTask['recipe_mash_steps'] = recipeMashStepsRecords;
+            const updateParams = { id: this.props.selectedRecipe.id, recipe_mash_tasks: [recipeMashTask] }
+            this.props.updateRecipeEvents(updateParams);
+        }
+    }
+
     handleCreateBrewEvent = () => {
         const { form } = this.formRef.props;
 
@@ -164,26 +253,16 @@ export default class RecipeEvent extends React.Component {
                 const { keys, names } = values;
                 console.log('Received values of form: ', values);
 
-
-                if (values.keys && values.keys.length > 0) {
-                    let recipeMashTask = { name: values.name };
-                    let recipeMashStepsRecords = [];
-                    values.keys.forEach((item, index) => {
-                        console.log(values.step_name[item]);
-                        const recipe_mash_steps = {
-                            name: values.step_display_name[item],
-                            display_name: values.step_name[item],
-                            duration_hours: values.step_hours[item],
-                            step_order: index
-                        }
-                        recipeMashStepsRecords.push(recipe_mash_steps);
-                    })
-
-                    recipeMashTask['recipe_mash_steps'] = recipeMashStepsRecords;
-                    const updateParams = { id: this.props.selectedRecipe.id, recipe_mash_tasks: [recipeMashTask] }
-                    this.props.updateRecipeEvents(updateParams);
+                if(this.state.selectedMashTask)
+                {
+                    this.updateBrewEvent(form, values);
+                }
+                else
+                {
+                    this.createBrewEvent(form, values);
                 }
 
+                form.resetFields();
                 this.setState({show_add_form: false})
             }
         });
@@ -198,7 +277,9 @@ export default class RecipeEvent extends React.Component {
     }
 
     handleAddCancel = () => {
-        this.setState({ show_add_form: false });
+        const { form } = this.formRef.props;
+        form.resetFields();
+        this.setState({ show_add_form: false, selectedMashTask: null });
     }
 
     render() {
@@ -218,6 +299,7 @@ export default class RecipeEvent extends React.Component {
                 currentTask.children = task.recipe_mash_steps.map(step => ({
                     key: `mash_step_${step.id}`,
                     name: step.name,
+                    display_name: step.display_name,
                     temperature: `${step.temperature}${step.temperature_unit}`,
                     duration: step.duration_hours,
                 }));
@@ -266,9 +348,11 @@ export default class RecipeEvent extends React.Component {
                         {...this.props}
                         wrappedComponentRef={this.saveFormRef}
                         metaDataCallBack={this.metaDataCallBack}
+                        selectedMashTask={this.state.selectedMashTask}
                         visible={this.state.show_add_form}
                         onCancel={this.handleAddCancel}
                         onCreate={this.handleCreateBrewEvent}
+                        id={this.state.id}
                         isNew
                     />
                     <div className="ant-card-head">
