@@ -223,10 +223,10 @@ export default class RecipeEvent extends React.Component {
                 console.log(values.step_name[item]);
 
                 let mash_step_id;
-                if(values.mash_step_key)
+                if(values.mash_step_key && values.mash_step_key[item])
                 {
                     let mash_step_key = values.mash_step_key[item].split("_");
-                    let mash_step_id = mash_step_key[mash_step_key.length-1];
+                    mash_step_id = mash_step_key[mash_step_key.length-1];
                 }
 
                 const recipe_mash_steps = {
