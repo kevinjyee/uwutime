@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2019_08_20_102317) do
 
-  create_table "ferment_steps", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "ferment_steps", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.string "name"
     t.string "display_name"
     t.integer "temperature"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2019_08_20_102317) do
     t.integer "ferment_task_id"
   end
 
-  create_table "ferment_tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "ferment_tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.string "name"
     t.string "step"
     t.integer "step_order"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2019_08_20_102317) do
     t.integer "schedule_profile_id"
   end
 
-  create_table "fermentable_characteristics", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "fermentable_characteristics", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.integer "fermentable_id"
     t.string "name"
     t.text "description"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2019_08_20_102317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "fermentables", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "fermentables", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.string "country_of_origin"
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 2019_08_20_102317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "hops", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "hops", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.string "country_of_origin"
@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 2019_08_20_102317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "ingredients", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "ingredients", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.string "name"
     t.string "category"
     t.string "category_display"
@@ -99,7 +99,7 @@ ActiveRecord::Schema.define(version: 2019_08_20_102317) do
     t.integer "entity_id"
   end
 
-  create_table "mash_steps", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "mash_steps", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.string "name"
     t.string "display_name"
     t.integer "temperature"
@@ -111,7 +111,7 @@ ActiveRecord::Schema.define(version: 2019_08_20_102317) do
     t.integer "mash_task_id"
   end
 
-  create_table "mash_tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "mash_tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.string "name"
     t.string "step"
     t.integer "step_order"
@@ -120,26 +120,26 @@ ActiveRecord::Schema.define(version: 2019_08_20_102317) do
     t.integer "schedule_profile_id"
   end
 
-  create_table "miscs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "miscs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "organization_task_template_associations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "organization_task_template_associations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.integer "organization_id"
     t.integer "task_template_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "organizations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "organizations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "packaging_steps", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "packaging_steps", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.string "name"
     t.string "display_name"
     t.integer "day"
@@ -148,7 +148,7 @@ ActiveRecord::Schema.define(version: 2019_08_20_102317) do
     t.integer "packaging_task_id"
   end
 
-  create_table "packaging_tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "packaging_tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.string "name"
     t.string "step"
     t.integer "step_order"
@@ -158,7 +158,7 @@ ActiveRecord::Schema.define(version: 2019_08_20_102317) do
     t.integer "schedule_profile_id"
   end
 
-  create_table "recipe_ferment_steps", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "recipe_ferment_steps", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.string "name"
     t.string "display_name"
     t.integer "temperature"
@@ -171,7 +171,7 @@ ActiveRecord::Schema.define(version: 2019_08_20_102317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "recipe_ferment_tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "recipe_ferment_tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.string "name"
     t.string "step"
     t.integer "step_order"
@@ -181,7 +181,7 @@ ActiveRecord::Schema.define(version: 2019_08_20_102317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "recipe_fermentables", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "recipe_fermentables", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.integer "recipe_id"
     t.integer "fermentable_id"
     t.integer "moisture_content"
@@ -198,7 +198,7 @@ ActiveRecord::Schema.define(version: 2019_08_20_102317) do
     t.string "amount_unit"
   end
 
-  create_table "recipe_hops", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "recipe_hops", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.integer "recipe_id"
     t.string "hop_id"
     t.decimal "alpha_acid_min", precision: 10
@@ -219,7 +219,7 @@ ActiveRecord::Schema.define(version: 2019_08_20_102317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "recipe_ingredients", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "recipe_ingredients", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.integer "recipe_id"
     t.integer "ingredient_id"
     t.decimal "amount", precision: 10, scale: 2
@@ -234,7 +234,7 @@ ActiveRecord::Schema.define(version: 2019_08_20_102317) do
     t.integer "entity_id"
   end
 
-  create_table "recipe_mash_steps", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "recipe_mash_steps", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.string "name"
     t.string "display_name"
     t.string "temperature"
@@ -246,7 +246,7 @@ ActiveRecord::Schema.define(version: 2019_08_20_102317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "recipe_mash_tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "recipe_mash_tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.integer "recipe_id"
     t.integer "mash_task_id"
     t.string "name"
@@ -256,7 +256,7 @@ ActiveRecord::Schema.define(version: 2019_08_20_102317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "recipe_packaging_steps", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "recipe_packaging_steps", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.string "name"
     t.string "display_name"
     t.integer "day"
@@ -265,7 +265,7 @@ ActiveRecord::Schema.define(version: 2019_08_20_102317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "recipe_packaging_tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "recipe_packaging_tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.string "name"
     t.string "step"
     t.integer "step_order"
@@ -275,7 +275,7 @@ ActiveRecord::Schema.define(version: 2019_08_20_102317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "recipe_yeasts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "recipe_yeasts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.integer "recipe_id"
     t.integer "yeast_id"
     t.decimal "attenuation_min", precision: 10
@@ -288,7 +288,7 @@ ActiveRecord::Schema.define(version: 2019_08_20_102317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "recipes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "recipes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.string "name"
     t.string "brew_type"
     t.integer "schedule_profile_id"
@@ -301,13 +301,13 @@ ActiveRecord::Schema.define(version: 2019_08_20_102317) do
     t.string "volume_per_turn_unit"
   end
 
-  create_table "schedule_profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "schedule_profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "schedule_requests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "schedule_requests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.integer "owner_id"
     t.string "product_name"
     t.integer "run_quantity"
@@ -325,14 +325,14 @@ ActiveRecord::Schema.define(version: 2019_08_20_102317) do
     t.string "identifier"
   end
 
-  create_table "srms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "srms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.string "name"
     t.string "hex"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "task_templates", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "task_templates", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.integer "organization_id"
     t.string "task_type"
     t.text "template"
@@ -340,7 +340,7 @@ ActiveRecord::Schema.define(version: 2019_08_20_102317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "email"
@@ -350,7 +350,7 @@ ActiveRecord::Schema.define(version: 2019_08_20_102317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "vessels", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "vessels", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.integer "organization_id"
     t.string "identifier"
     t.integer "volume"
@@ -360,7 +360,7 @@ ActiveRecord::Schema.define(version: 2019_08_20_102317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "yeasts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "yeasts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.decimal "attenuation_min", precision: 10
