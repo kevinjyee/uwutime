@@ -1,0 +1,15 @@
+.git/
+.dockerignore
+.idea/
+.ruby-gemset
+api_docs/
+Dockerfile*
+**/aws.creds
+coverage/
+.github/
+node_modules/
+npm-debug.log
+tmp/
+scripts/
+log/
+public/packs/
