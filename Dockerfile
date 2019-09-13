@@ -20,7 +20,8 @@ RUN apt-get -y update && \
     apt-get update && apt-get install yarn && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists* /tmp/* /var/tmp/* && \
-    npm install -g yarn
+    npm install -g yarn && \
+    npm uninstall node-sass && npm install node-sass --sass-binary-name=linux-x64-57
 
 WORKDIR $APP_HOME
 
