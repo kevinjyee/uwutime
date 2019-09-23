@@ -1,0 +1,31 @@
+version: '3.0'
+services:
+  db:
+    image: mysql:5.7.22
+    environment:
+      MYSQL_ROOT_PASSWORD: "woot"
+      MYSQL_USER: "mysql_user"
+      MYSQL_PASSWORD: "mysql_password"
+      MYSQL_DATABASE_NAME: "uluwu_development"
+      MYSQL_USERNAME: "mysql_user"
+      MYSQL_SERVER: "db"
+      MYSQL_PORT: 3306
+    ports:
+      - "3307:3306"
+    volumes:
+      - "./db/initdb.d:/docker-entrypoint-initdb.d"
+      - "mysql:/var/lib/mysql"
+
+  web:
+    build: ""
+    image: brewant-services
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+    env_file:
+      - .env.development
+volumes:
+  mysql:

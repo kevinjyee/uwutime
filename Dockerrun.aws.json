@@ -1,0 +1,13 @@
+{
+  "AWSEBDockerrunVersion": "1",
+  "Image": {
+    "Name": " AKIAWFQBQXPOJH34ZIWZ.dkr.ecr.us-east-1.amazonaws.com/brewant_docker",
+    "Update": "true"
+  },
+  "Ports": [
+    {
+      "ContainerPort": 5000,
+      "HostPort": 80
+    }
+  ]
+}
