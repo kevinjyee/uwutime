@@ -1,0 +1,20 @@
+version: '3.0'
+services:
+  web:
+    image: 424131214300.dkr.ecr.us-east-1.amazonaws.com/brewant_docker:latest
+    ports:
+      - "80:3000"
+    environment:
+      RAILS_ENV: production
+      RDS_DB_NAME : ebdb
+      RDS_USERNAME: brewant
+      RDS_PASSWORD: greenLamp11!
+      RDS_HOSTNAME: aaploot2ruv4fd.czrybmmnb33q.us-east-1.rds.amazonaws.com
+      RDS_PORT: 3306
+      MYSQL_DATABASE_NAME: ebdb
+      MYSQL_USERNAME: brewant
+      MYSQL_PASSWORD: greenLamp11!
+      MYSQL_SERVER: aaploot2ruv4fd.czrybmmnb33q.us-east-1.rds.amazonaws.com
+      MYSQL_PORT: 3306
+    env_file:
+      - .env.staging

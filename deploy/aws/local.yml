@@ -17,7 +17,7 @@ services:
       - "mysql:/var/lib/mysql"
 
   web:
-    build: .
+    build: ""
     image: brewant-services
     ports:
       - "3000:3000"
@@ -27,13 +27,5 @@ services:
       - .:/app
     env_file:
       - .env.development
-    environment:
-      RAILS_ENV: development
-      RACK_ENV: development
-      MYSQL_DATABASE_NAME: uluwu_development
-      MYSQL_USERNAME: mysql_user
-      MYSQL_PASSWORD: mysql_password
-      MYSQL_SERVER: db
-      MYSQL_PORT: 3306
 volumes:
   mysql:

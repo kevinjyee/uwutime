@@ -1,0 +1,17 @@
+docker-machine create -d amazonec2 --amazonec2-region=us-west-2 node1
+
+
+docker-machine ls
+
+eval $(docker-machine env node1)
+env | grep DO
+
+
+
+docker tag ff0290878744 424131214300.dkr.ecr.us-west-2.amazonaws.com/brewant-docker
+docker push 424131214300.dkr.ecr.us-west-2.amazonaws.com/brewant-docker
+
+
+docker-compose -f staging.yml run --rm web bundle exec rails db:migrate
+
+docker-compose -f staging.yml up

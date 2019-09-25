@@ -12,4 +12,25 @@ npm-debug.log
 tmp/
 scripts/
 log/
-public/packs/
+public/packs/# Elastic Beanstalk Files
+.elasticbeanstalk/*
+.git
+.gitignore# Elastic Beanstalk Files
+.elasticbeanstalk/*
+.git
+.gitignore# Elastic Beanstalk Files
+.elasticbeanstalk/*
+.git
+.gitignore# Elastic Beanstalk Files
+.elasticbeanstalk/*
+.git
+.gitignore# Elastic Beanstalk Files
+.elasticbeanstalk/*
+.git
+.gitignore# Elastic Beanstalk Files
+.elasticbeanstalk/*
+.git
+.gitignore# Elastic Beanstalk Files
+.elasticbeanstalk/*
+.git
+.gitignore

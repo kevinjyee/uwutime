@@ -1,7 +1,6 @@
 process.env.NODE_ENV = process.env.NODE_ENV || 'development'
 
 var webpack = require('webpack');
-var HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 var path = require('path');
 const root = path.resolve(__dirname, '../../app/javascript/packs/');
 // const environment = require('./environment')
@@ -53,10 +52,6 @@ environment.plugins.append(
     new webpack.NoEmitOnErrorsPlugin()
 );
 
-environment.plugins.append(
-    'HardSourceWebpack',
-    new HardSourceWebpackPlugin()
-);
 
 environment.plugins.append(
     'ContextReplacement',
