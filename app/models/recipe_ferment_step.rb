@@ -1,5 +1,6 @@
 class RecipeFermentStep < ApplicationRecord
   belongs_to :recipe_ferment_task
+  has_many :recipe_ingredients, :as => :recipe_step
 
   def duration_hours
     if next_step

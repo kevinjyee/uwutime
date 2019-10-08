@@ -15,6 +15,7 @@ import brewantPackaging
     from "../../../../assets/images/brewant_packaging_ico.svg";
 import AddFermentableModal from "../recipe_fermentable/add_fermentable_modal";
 import AddRecipeEventBrewModal from "./add_recipe_event_brew_modal";
+import AddRecipeEventFermentModal from "./add_recipe_event_ferment_modal";
 import recipe from "../../reducers/recipe";
 
 const TableContext = React.createContext(false);
@@ -75,6 +76,7 @@ export default class RecipeEvent extends React.Component {
             recipeEvents: this.props.recipeEvents.payload,
             selectedRecipe: this.props.selectedRecipe,
             selectedMashTask: null,
+            selectedFermentTask: null
         };
 
          this.brewColumns = [
@@ -158,7 +160,7 @@ export default class RecipeEvent extends React.Component {
         console.log(e);
 
         this.setState({
-            show_add_form: true,
+            show_add_brew_form: true,
             selectedMashTask: record,
             id: record.children.length
         })
@@ -188,10 +190,13 @@ export default class RecipeEvent extends React.Component {
         }
     }
 
-    saveFormRef = (formRef) => {
+    saveFormRefBrew = (formRef) => {
         this.formRef = formRef;
     }
 
+    saveFormRefFermentable = (formRef) => {
+        this.formRef = formRef;
+    }
 
     createBrewEvent = (form, values) => {
         if (values.keys && values.keys.length > 0) {
@@ -245,6 +250,27 @@ export default class RecipeEvent extends React.Component {
         }
     }
 
+    createFermentableEvent = (form, values) => {
+        if (values.keys && values.keys.length > 0) {
+            let recipeFermentableTask = { name: values.name };
+            let recipeFermentableStepsRecords = [];
+            values.keys.forEach((item, index) => {
+                console.log(values.step_name[item]);
+                const recipe_fermentable_steps = {
+                    name: values.step_display_name[item],
+                    display_name: values.step_name[item],
+                    day: values.step_hours[item],
+                    step_order: index
+                }
+                recipeFermentableStepsRecords.push(recipe_fermentable_steps);
+            })
+
+            recipeFermentableTask['recipe_fermentable_steps'] = recipeFermentableStepsRecords;
+            const updateParams = { id: this.props.selectedRecipe.id, recipe_fermentable_tasks: [recipeFermentableTask] }
+            this.props.updateRecipeEvents(updateParams);
+        }
+    }
+
     handleCreateBrewEvent = () => {
         const { form } = this.formRef.props;
 
@@ -263,7 +289,32 @@ export default class RecipeEvent extends React.Component {
                 }
 
                 form.resetFields();
-                this.setState({show_add_form: false})
+                this.setState({show_add_brew_form: false})
+            }
+        });
+    }
+
+    handleCreateFermentableEvent = () => {
+        const { form } = this.formRef.props;
+
+        form.validateFields((err, values) => {
+            if (!err) {
+                const { keys, names } = values;
+                console.log('Received values of form: ', values);
+
+                // if(this.state.selectedMashTask)
+                // {
+                //     this.updateBrewEvent(form, values);
+                // }
+                // else
+                // {
+                //     this.createBrewEvent(form, values);
+                // }
+
+                this.createFermentableEvent(form, values);
+
+                form.resetFields();
+                this.setState({show_add_brew_form: false})
             }
         });
     }
@@ -272,14 +323,18 @@ export default class RecipeEvent extends React.Component {
         this.setState(params);
     }
 
-    showAddModal =() => {
-        this.setState({ show_add_form: true });
+    showAddBrewModal =() => {
+        this.setState({ show_add_brew_form: true });
+    }
+
+    showAddFermentModal =() => {
+        this.setState({ show_add_ferment_form: true });
     }
 
     handleAddCancel = () => {
         const { form } = this.formRef.props;
         form.resetFields();
-        this.setState({ show_add_form: false, selectedMashTask: null });
+        this.setState({ show_add_brew_form: false, show_add_ferment_form: false, selectedMashTask: null, selectedFermentTask: null });
     }
 
     render() {
@@ -346,15 +401,27 @@ export default class RecipeEvent extends React.Component {
                 <div>
                     <AddRecipeEventBrewModal
                         {...this.props}
-                        wrappedComponentRef={this.saveFormRef}
+                        wrappedComponentRef={this.saveFormRefBrew}
                         metaDataCallBack={this.metaDataCallBack}
                         selectedMashTask={this.state.selectedMashTask}
-                        visible={this.state.show_add_form}
+                        visible={this.state.show_add_brew_form}
                         onCancel={this.handleAddCancel}
                         onCreate={this.handleCreateBrewEvent}
                         id={this.state.id}
                         isNew
                     />
+
+                    <AddRecipeEventFermentModal
+                        {...this.props}
+                        wrappedComponentRef={this.saveFormRefFermentable}
+                        metaDataCallBack={this.metaDataCallBack}
+                        selectedFermentTask={this.state.selectedFermentTask}
+                        visible={this.state.show_add_ferment_form}
+                        onCancel={this.handleAddCancel}
+                        onCreate={this.handleCreateFermentableEvent}
+                        id={this.state.id}
+                    />
+
                     <div className="ant-card-head">
                         <div className="ant-card-head-wrapper">
                             <div
@@ -384,16 +451,14 @@ export default class RecipeEvent extends React.Component {
                                         </span>
                                         Brew Profile
                                         <span className="ingredient-button-container">
-                                        <Button
-                                            className="add-request-btn"
-                                            type="primary"
-                                            onClick={this.showAddModal}
-                                        >
-                                            <Icon type="plus" />
-                                            {' '}
-                                            Add
-                                        </Button>
-                                </span>
+                                            <Button
+                                                className="add-request-btn"
+                                                type="primary"
+                                                onClick={this.showAddBrewModal}
+                                            >
+                                                <Icon type="plus" /> Add
+                                            </Button>
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -419,6 +484,15 @@ export default class RecipeEvent extends React.Component {
                                             />
                                         </span>
                                         Ferment Profile
+                                        <span className="ingredient-button-container">
+                                            <Button
+                                                className="add-request-btn"
+                                                type="primary"
+                                                onClick={this.showAddFermentModal}
+                                            >
+                                                <Icon type="plus" /> Add
+                                            </Button>
+                                        </span>
                                     </div>
                                 </div>
                             </div>
