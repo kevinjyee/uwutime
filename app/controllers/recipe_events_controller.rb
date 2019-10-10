@@ -24,7 +24,7 @@ class RecipeEventsController < ApplicationController
                             :step_order,
                             recipe_mash_steps: [:id, :name, :display_name,
                                                 :temperature, :temperature_unit,
-                                                :duration_hours, :step_order],
+                                                :duration_hours, :step_order]],
         recipe_ferment_tasks: [:id,
                                :name,
                                :step_order,
@@ -33,15 +33,18 @@ class RecipeEventsController < ApplicationController
                                                       :temperature, :temperature_unit,
                                                       :day, :pressure, :pressure_unit]
                               ]
-        ])
+        )
 
     if (attributes[:recipe_mash_tasks])
       attributes = normalize_resource_mash_tasks(attributes)
     end
 
+    if (attributes[:recipe_ferment_tasks])
+      attributes = normalize_resource_ferment_tasks(attributes)
+    end
+
     attributes
   end
-
 
   def normalize_resource_mash_tasks(attributes)
     attributes[:recipe_mash_tasks].collect! {|attr| attr.merge!({ recipe_mash_steps_attributes: attr.delete(:recipe_mash_steps)})}
@@ -55,7 +58,6 @@ class RecipeEventsController < ApplicationController
       return attributes
     end
 
-
     # if the mash tasks already exist check which ids no longer exist
     sparse_mash_tasks_map = {}
     attributes[:recipe_mash_tasks_attributes].map { |task| sparse_mash_tasks_map[task[:id]] = {mash_task_id: task[:id], mash_step_ids: task[:recipe_mash_steps_attributes].map{ |step| step[:id].to_i} } }
@@ -67,6 +69,36 @@ class RecipeEventsController < ApplicationController
         ids_to_remove = existing_recipe_mash_step_ids(sparse_mash_task[:mash_task_id]) - sparse_mash_task[:mash_step_ids]
         if ids_to_remove.present?
           ids_to_remove.map { |removed_id| mash_task_attr[:recipe_mash_steps_attributes] << { id: removed_id, _destroy: true } }
+        end
+      end
+    end
+    attributes
+  end
+
+
+  def normalize_resource_ferment_tasks(attributes)
+    attributes[:recipe_ferment_tasks].collect! {|attr| attr.merge!({ recipe_ferment_steps_attributes: attr.delete(:recipe_ferment_steps)})}
+    attributes.merge!({ recipe_ferment_tasks_attributes: attributes.delete(:recipe_ferment_tasks) })
+
+    # delete recipe ferment task
+    if destroy?
+      attributes[:recipe_ferment_tasks_attributes].each { |ferment_task|
+        ferment_task[:_destroy] = true
+      }
+      return attributes
+    end
+
+    # if the ferment tasks already exist check which ids no longer exist
+    sparse_ferment_tasks_map = {}
+    attributes[:recipe_ferment_tasks_attributes].map { |task| sparse_ferment_tasks_map[task[:id]] = {ferment_task_id: task[:id], ferment_step_ids: task[:recipe_ferment_steps_attributes].map{ |step| step[:id].to_i} } }
+    ids_to_remove = []
+    attributes[:recipe_ferment_tasks_attributes].each do |ferment_task_attr|
+      # ferment task exist since it has an id
+      if(sparse_ferment_tasks_map[ferment_task_attr[:id]][:ferment_task_id])
+        sparse_ferment_task = sparse_ferment_tasks_map[ferment_task_attr[:id]]
+        ids_to_remove = existing_recipe_ferment_step_ids(sparse_ferment_task[:ferment_task_id]) - sparse_ferment_task[:ferment_step_ids]
+        if ids_to_remove.present?
+          ids_to_remove.map { |removed_id| ferment_task_attr[:recipe_ferment_steps_attributes] << { id: removed_id, _destroy: true } }
         end
       end
     end

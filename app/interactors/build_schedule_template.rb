@@ -67,6 +67,7 @@ class BuildScheduleTemplate
     totalBrewHours = 0
 
     recipe.steps.flatten.each_with_index do |recipe_step, index|
+
       if recipe_step.class.name == 'RecipeMashStep'
         children_steps['brew'] = {
             hours: 24,
@@ -96,9 +97,7 @@ class BuildScheduleTemplate
         maxHours = recipe_step.duration_hours
         maxChild = recipe_step.name
       end
-
       if recipe_step.name == 'Transfer'
-
         totalHours += 24 if totalBrewHours > 0
         tasks << build_task(children_steps, maxChild, totalHours, resource_index, last_cumulated_hours)
         last_cumulated_hours += totalHours

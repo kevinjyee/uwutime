@@ -20,25 +20,6 @@ import recipe from "../../reducers/recipe";
 
 const TableContext = React.createContext(false);
 
-const fermentColumns = [
-    {
-        title: 'Name',
-        dataIndex: 'name',
-        key: 'name',
-    },
-    {
-        title: 'Temperature',
-        dataIndex: 'temperature',
-        key: 'temperature',
-        width: '10%',
-    },
-    {
-        title: 'Day',
-        dataIndex: 'day',
-        width: '10%%',
-        key: 'day',
-    },
-];
 
 const packagingColumns = [
     {
@@ -95,18 +76,18 @@ export default class RecipeEvent extends React.Component {
                     </span>)
 
             },
-            {
-                title: 'Temperature',
-                dataIndex: 'temperature',
-                key: 'temperature',
-                width: '10%',
-            },
-            {
-                title: 'Hours',
-                dataIndex: 'duration',
-                width: '10%%',
-                key: 'duration',
-            },
+             {
+                 title: 'Temperature',
+                 dataIndex: 'temperature',
+                 key: 'temperature',
+                 width: '10%',
+             },
+             {
+                 title: 'Hours',
+                 dataIndex: 'duration',
+                 width: '10%%',
+                 key: 'duration',
+             },
             {
                 title: '',
                 dataIndex: '',
@@ -124,8 +105,56 @@ export default class RecipeEvent extends React.Component {
             }
         ];
 
+
+        this.fermentColumns = [
+            {
+                title: 'Name',
+                dataIndex: 'name',
+                key: 'name',
+                render: (text, record) => (
+                    <span
+                        className='recipe-table-clickable'
+                        onClick={(e) => {
+                            this.onMashTaskSelect(record, e);
+                        }}
+                    >
+                        {text}
+                    </span>)
+
+            },
+            {
+                title: 'Temperature',
+                dataIndex: 'temperature',
+                key: 'temperature',
+                width: '10%',
+            },
+            {
+                title: 'Day',
+                dataIndex: 'day',
+                width: '10%%',
+                key: 'day',
+            },
+            {
+                title: '',
+                dataIndex: '',
+                key: 'x',
+                render: (text, record) => (
+                    <span
+                        className={`recipe-table-delete`}
+                        onClick={(e) => {
+                            this.onFermentTaskDelete(record, e);
+                        }}
+                    >
+            <Icon type="delete" />
+                    </span>
+                ),
+            }
+        ];
+
+
         this.onMashTaskDelete = this.onMashTaskDelete.bind(this);
         this.onMashTaskSelect = this.onMashTaskSelect.bind(this);
+        this.onFermentTaskDelete = this.onFermentTaskDelete.bind(this);
         this.createBrewEvent = this.createBrewEvent.bind(this);
         this.updateBrewEvent = this.updateBrewEvent.bind(this);
     }
@@ -165,6 +194,17 @@ export default class RecipeEvent extends React.Component {
             id: record.children.length
         })
 
+    };
+
+    onFermentTaskDelete = (record, e) => {
+        const { deleteRecipeEvents } = this.props;
+        e.preventDefault();
+        const { selectedRecipe } = this.state;
+        let parsed_record = record.key.split('_');
+        let record_id = parsed_record[parsed_record.length - 1];
+        const params = { id: selectedRecipe.id, recipe_ferment_tasks: [{id: record_id, recipe_ferment_steps: [{}] }]};
+
+        deleteRecipeEvents(params);
     };
 
     componentDidMount() {
@@ -256,17 +296,17 @@ export default class RecipeEvent extends React.Component {
             let recipeFermentableStepsRecords = [];
             values.keys.forEach((item, index) => {
                 console.log(values.step_name[item]);
-                const recipe_fermentable_steps = {
+                const recipe_ferment_steps = {
                     name: values.step_display_name[item],
                     display_name: values.step_name[item],
-                    day: values.step_hours[item],
+                    day: parseInt(values.step_hours[item]),
                     step_order: index
                 }
-                recipeFermentableStepsRecords.push(recipe_fermentable_steps);
+                recipeFermentableStepsRecords.push(recipe_ferment_steps);
             })
 
-            recipeFermentableTask['recipe_fermentable_steps'] = recipeFermentableStepsRecords;
-            const updateParams = { id: this.props.selectedRecipe.id, recipe_fermentable_tasks: [recipeFermentableTask] }
+            recipeFermentableTask['recipe_ferment_steps'] = recipeFermentableStepsRecords;
+            const updateParams = { id: this.props.selectedRecipe.id, recipe_ferment_tasks: [recipeFermentableTask] }
             this.props.updateRecipeEvents(updateParams);
         }
     }
@@ -498,7 +538,7 @@ export default class RecipeEvent extends React.Component {
                             </div>
                             <div className="ant-card-body">
                                 <Table
-                                    columns={fermentColumns}
+                                    columns={this.fermentColumns}
                                     dataSource={fermentData}
                                 />
                                 ,
@@ -576,7 +616,7 @@ export default class RecipeEvent extends React.Component {
                     </div>
                     <div className="ant-card-body">
                         <Table
-                            columns={fermentColumns}
+                            columns={this.fermentColumns}
                             dataSource={[]}
                             loading
                         />

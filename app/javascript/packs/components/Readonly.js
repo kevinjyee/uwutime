@@ -18,12 +18,47 @@ class Readonly extends Component{
             creatable: false,
             scrollToSpecialMomentEnabled: false
         });
+
         schedulerData.localeMoment.locale('en');
         schedulerData.setResources(this.props.resources);
         // schedulerData.setEvents(DemoData.events);
         schedulerData.setEvents(this.props.events);
         this.state = {
             schedulerData: schedulerData
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        console.log(prevState);
+        const { resources, events } = this.props;
+
+        // Typical usage (don't forget to compare props):
+
+        if (prevProps.resources !== resources || prevProps.events !== events) {
+            let date = new Date();
+            let firstDay = new Date(date.getFullYear(),
+                date.getMonth(), 1);
+
+            let schedulerData = new SchedulerData(firstDay, ViewTypes.Month, false, false, {
+                startResizable: false,
+                endResizable: false,
+                movable: false,
+                creatable: false,
+                scrollToSpecialMomentEnabled: false
+            });
+
+            schedulerData.localeMoment.locale('en');
+
+            if (prevProps.resources !== resources) {
+                schedulerData.setResources(resources);
+            }
+
+            if (prevProps.events !== events) {
+                // eslint-disable-next-line react/no-did-update-set-state
+                schedulerData.setEvents(events);
+
+            }
+            this.setState({ schedulerData: schedulerData });
         }
     }
 
