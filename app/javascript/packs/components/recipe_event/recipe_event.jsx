@@ -115,7 +115,7 @@ export default class RecipeEvent extends React.Component {
                     <span
                         className='recipe-table-clickable'
                         onClick={(e) => {
-                            this.onMashTaskSelect(record, e);
+                            this.onFermentTaskSelect(record, e);
                         }}
                     >
                         {text}
@@ -196,6 +196,29 @@ export default class RecipeEvent extends React.Component {
 
     };
 
+    onFermentTaskSelect = (record, e) => {
+        const { form } = this.formRefFermentable.props;
+        let existingIds = [];
+        for(let i =0; i < record.children.length; i++)
+        {
+            existingIds.push(i);
+        }
+
+        form.setFieldsValue({
+            keys: existingIds
+        })
+
+        console.log(record);
+        console.log(e);
+
+        this.setState({
+            show_add_ferment_form: true,
+            selectedFermentTask: record,
+            id: record.children.length
+        })
+
+    };
+
     onFermentTaskDelete = (record, e) => {
         const { deleteRecipeEvents } = this.props;
         e.preventDefault();
@@ -235,7 +258,7 @@ export default class RecipeEvent extends React.Component {
     }
 
     saveFormRefFermentable = (formRef) => {
-        this.formRef = formRef;
+        this.formRefFermentable = formRef;
     }
 
     createBrewEvent = (form, values) => {
@@ -335,7 +358,7 @@ export default class RecipeEvent extends React.Component {
     }
 
     handleCreateFermentableEvent = () => {
-        const { form } = this.formRef.props;
+        const { form } = this.formRefFermentable.props;
 
         form.validateFields((err, values) => {
             if (!err) {
@@ -371,8 +394,14 @@ export default class RecipeEvent extends React.Component {
         this.setState({ show_add_ferment_form: true });
     }
 
-    handleAddCancel = () => {
+    handleAddBrewCancel = () => {
         const { form } = this.formRef.props;
+        form.resetFields();
+        this.setState({ show_add_brew_form: false, show_add_ferment_form: false, selectedMashTask: null, selectedFermentTask: null });
+    }
+
+    handleAddFermentCancel = () => {
+        const { form } = this.formRefFermentable.props;
         form.resetFields();
         this.setState({ show_add_brew_form: false, show_add_ferment_form: false, selectedMashTask: null, selectedFermentTask: null });
     }
@@ -445,7 +474,7 @@ export default class RecipeEvent extends React.Component {
                         metaDataCallBack={this.metaDataCallBack}
                         selectedMashTask={this.state.selectedMashTask}
                         visible={this.state.show_add_brew_form}
-                        onCancel={this.handleAddCancel}
+                        onCancel={this.handleAddBrewCancel}
                         onCreate={this.handleCreateBrewEvent}
                         id={this.state.id}
                         isNew
@@ -457,7 +486,7 @@ export default class RecipeEvent extends React.Component {
                         metaDataCallBack={this.metaDataCallBack}
                         selectedFermentTask={this.state.selectedFermentTask}
                         visible={this.state.show_add_ferment_form}
-                        onCancel={this.handleAddCancel}
+                        onCancel={this.handleAddFermentCancel}
                         onCreate={this.handleCreateFermentableEvent}
                         id={this.state.id}
                     />
